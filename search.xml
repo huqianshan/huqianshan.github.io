@@ -3,6 +3,105 @@
   
     
     <entry>
+      <title><![CDATA[百度图库爬虫脚本]]></title>
+      <url>/baidu-spider/</url>
+      <content type="html"><![CDATA[<h2 id="百度图库关键字爬虫脚本"><a href="#百度图库关键字爬虫脚本" class="headerlink" title="百度图库关键字爬虫脚本"></a>百度图库关键字爬虫脚本</h2><h4 id="本章设计了一个基于Python的爬虫模块，可以根据用户自定义的关键词、待爬取图片数量，自动从百度图库中采集并依次保存图片数据。"><a href="#本章设计了一个基于Python的爬虫模块，可以根据用户自定义的关键词、待爬取图片数量，自动从百度图库中采集并依次保存图片数据。" class="headerlink" title="本章设计了一个基于Python的爬虫模块，可以根据用户自定义的关键词、待爬取图片数量，自动从百度图库中采集并依次保存图片数据。"></a>本章设计了一个基于Python的爬虫模块，可以根据用户自定义的关键词、待爬取图片数量，自动从百度图库中采集并依次保存图片数据。</h4><h4 id="功能设计与分析"><a href="#功能设计与分析" class="headerlink" title="功能设计与分析"></a>功能设计与分析</h4><p>本模块为之后的模型训练提供数据集，属于数据采集部分。本模块的功能应解决以下问题：</p>
+<ol>
+<li>目标网站的图片数量足够多，车辆种类涵盖基本种类，且爬取难度不宜过高。 综合分析可知，百度图库能满足以上要求。所以采用百度图库为目标爬取网站。</li>
+<li>爬虫模块应能根据不同输入的危险车辆类别，爬取不同种类的车辆图片，所以要求爬虫模块能根据不同的车辆类别名称采集图片</li>
+<li>爬虫模块应该能够根据用户指定的数目采集图片，并依次编号分类</li>
+</ol>
+<h4 id="Python语言爬虫相关库"><a href="#Python语言爬虫相关库" class="headerlink" title="Python语言爬虫相关库"></a>Python语言爬虫相关库</h4><blockquote>
+<ul>
+<li><code>OS</code> 库             用于文件处理</li>
+<li><code>Re</code>  库             正则表达式库，用于解析网页结构、以及网址后缀前缀</li>
+<li><code>Json</code> 库           json文本格式库，用于处理返回的网页</li>
+<li><code>Socket</code> 库       处理网络连接超时问题</li>
+<li><code>Request</code>库      网络请求库，用于请求网页、存储图片库</li>
+</ul>
+</blockquote>
+<p><img src="https://i.loli.net/2018/06/07/5b19279936b1f.png" alt="S_2.png"></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#/*</span></span><br><span class="line"><span class="comment">#* @Author: hujinlei </span></span><br><span class="line"><span class="comment">#* @Date: 2018-06-07 20:50:31 </span></span><br><span class="line"><span class="comment">#* @Last Modified by:   hjl </span></span><br><span class="line"><span class="comment">#* @Last Modified time: 2018-06-07 20:50:31 </span></span><br><span class="line"><span class="comment">#*/</span></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="comment">#import urllib</span></span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">import</span> socket</span><br><span class="line"><span class="keyword">import</span> urllib.request</span><br><span class="line"><span class="keyword">import</span> urllib.parse</span><br><span class="line"><span class="keyword">import</span> urllib.error</span><br><span class="line"><span class="comment"># 设置超时</span></span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line">timeout = <span class="number">8</span></span><br><span class="line">socket.setdefaulttimeout(timeout)</span><br><span class="line"></span><br><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Crawler</span>:</span></span><br><span class="line">    <span class="comment"># 睡眠时长</span></span><br><span class="line">    __time_sleep = <span class="number">0.1</span></span><br><span class="line">    __amount = <span class="number">0</span></span><br><span class="line">    __start_amount = <span class="number">0</span></span><br><span class="line">    __counter = <span class="number">0</span></span><br><span class="line">    headers = &#123;<span class="string">'User-Agent'</span>: <span class="string">'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:23.0) Gecko/20100101 Firefox/23.0'</span>&#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 获取图片url内容等</span></span><br><span class="line">    <span class="comment"># t 下载图片时间间隔</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, t=<span class="number">0.1</span>)</span>:</span></span><br><span class="line">        self.time_sleep = t</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 获取后缀名</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_suffix</span><span class="params">(self, name)</span>:</span></span><br><span class="line">        m = re.search(<span class="string">r'\.[^\.]*$'</span>, name)</span><br><span class="line">        <span class="keyword">if</span> m.group(<span class="number">0</span>) <span class="keyword">and</span> len(m.group(<span class="number">0</span>)) &lt;= <span class="number">5</span>:</span><br><span class="line">            <span class="keyword">return</span> m.group(<span class="number">0</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="string">'.jpeg'</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 获取referrer，用于生成referrer</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_referrer</span><span class="params">(self, url)</span>:</span></span><br><span class="line">        par = urllib.parse.urlparse(url)</span><br><span class="line">        <span class="keyword">if</span> par.scheme:</span><br><span class="line">            <span class="keyword">return</span> par.scheme + <span class="string">'://'</span> + par.netloc</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> par.netloc</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 保存图片</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">save_image</span><span class="params">(self, rsp_data, word)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(<span class="string">"./"</span> + word):</span><br><span class="line">            os.mkdir(<span class="string">"./"</span> + word)</span><br><span class="line">        <span class="comment"># 判断名字是否重复，获取图片长度</span></span><br><span class="line">        self.__counter = len(os.listdir(<span class="string">'./'</span> + word)) + <span class="number">1</span></span><br><span class="line">        <span class="keyword">for</span> image_info <span class="keyword">in</span> rsp_data[<span class="string">'imgs'</span>]:</span><br><span class="line"></span><br><span class="line">            <span class="keyword">try</span>:</span><br><span class="line">                time.sleep(self.time_sleep)</span><br><span class="line">                suffix = self.get_suffix(image_info[<span class="string">'objURL'</span>])</span><br><span class="line">                <span class="comment"># 指定UA和referrer，减少403</span></span><br><span class="line">                refer = self.get_referrer(image_info[<span class="string">'objURL'</span>])</span><br><span class="line">                opener = urllib.request.build_opener()</span><br><span class="line">                opener.addheaders = [</span><br><span class="line">                    (<span class="string">'User-agent'</span>, <span class="string">'Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0'</span>),</span><br><span class="line">                    (<span class="string">'Referer'</span>, refer)</span><br><span class="line">                ]</span><br><span class="line">                urllib.request.install_opener(opener)</span><br><span class="line">                <span class="comment"># 保存图片</span></span><br><span class="line">                urllib.request.urlretrieve(image_info[<span class="string">'objURL'</span>], <span class="string">'./'</span> + word + <span class="string">'/'</span> + str(self.__counter) + str(suffix))</span><br><span class="line">            <span class="keyword">except</span> urllib.error.HTTPError <span class="keyword">as</span> urllib_err:</span><br><span class="line">                print(urllib_err)</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            <span class="keyword">except</span> Exception <span class="keyword">as</span> err:</span><br><span class="line">                time.sleep(<span class="number">1</span>)</span><br><span class="line">                print(err)</span><br><span class="line">                print(<span class="string">"产生未知错误，放弃保存"</span>)</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                print(<span class="string">"图+1,已有"</span> + str(self.__counter) + <span class="string">"张小图"</span>)</span><br><span class="line">                self.__counter += <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 开始获取iii</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_images</span><span class="params">(self, word=<span class="string">'iron man'</span>)</span>:</span></span><br><span class="line">        search = urllib.parse.quote(word)</span><br><span class="line">        <span class="comment"># pn int 图片数</span></span><br><span class="line">        pn = self.__start_amount</span><br><span class="line">        <span class="keyword">while</span> pn &lt; self.__amount:</span><br><span class="line">            url = <span class="string">'http://image.baidu.com/search/avatarjson?tn=resultjsonavatarnew&amp;ie=utf-8&amp;word='</span> + search + <span class="string">'&amp;cg=girl&amp;pn='</span> + str(</span><br><span class="line">                pn) + <span class="string">'&amp;rn=60&amp;itg=0&amp;z=0&amp;fr=&amp;width=&amp;height=&amp;lm=-1&amp;ic=0&amp;s=0&amp;st=-1&amp;gsm=1e0000001e'</span></span><br><span class="line">            <span class="comment"># 设置header防ban</span></span><br><span class="line">            <span class="keyword">try</span>:</span><br><span class="line">                time.sleep(self.time_sleep)</span><br><span class="line">                req = urllib.request.Request(url=url, headers=self.headers)</span><br><span class="line">                page = urllib.request.urlopen(req)</span><br><span class="line">                print(page)</span><br><span class="line">                rsp = page.read().decode(<span class="string">'unicode_escape'</span>)</span><br><span class="line">            <span class="keyword">except</span> UnicodeDecodeError <span class="keyword">as</span> e:</span><br><span class="line">                print(e)</span><br><span class="line">                print(<span class="string">'-----UnicodeDecodeErrorurl:'</span>, url)</span><br><span class="line">            <span class="keyword">except</span> urllib.error.URLError <span class="keyword">as</span> e:</span><br><span class="line">                print(e)</span><br><span class="line">                print(<span class="string">"-----urlErrorurl:"</span>, url)</span><br><span class="line">            <span class="keyword">except</span> socket.timeout <span class="keyword">as</span> e:</span><br><span class="line">                print(e)</span><br><span class="line">                print(<span class="string">"-----socket timout:"</span>, url)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="comment"># 解析json</span></span><br><span class="line">                rsp_data = json.loads(rsp)</span><br><span class="line">                self.save_image(rsp_data, word)</span><br><span class="line">                <span class="comment"># 读取下一页</span></span><br><span class="line">                print(<span class="string">"下载下一页"</span>)</span><br><span class="line">                pn += <span class="number">60</span></span><br><span class="line">            <span class="keyword">finally</span>:</span><br><span class="line">                page.close()</span><br><span class="line">        print(<span class="string">"下载任务结束"</span>)</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">start</span><span class="params">(self, word, spider_page_num=<span class="number">1</span>, start_page=<span class="number">1</span>)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        爬虫入口</span></span><br><span class="line"><span class="string">        :param word: 抓取的关键词</span></span><br><span class="line"><span class="string">        :param spider_page_num: 需要抓取数据页数 总抓取图片数量为 页数x60</span></span><br><span class="line"><span class="string">        :param start_page:起始页数</span></span><br><span class="line"><span class="string">        :return:</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        self.__start_amount = (start_page - <span class="number">1</span>) * <span class="number">60</span></span><br><span class="line">        self.__amount = spider_page_num * <span class="number">60</span> + self.__start_amount</span><br><span class="line">        self.get_images(word)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    crawler = Crawler(<span class="number">0.05</span>)  <span class="comment"># 抓取延迟为 0.05</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># crawler.start('iron', 10, 2)  # 抓取关键词为 “uestc”，总数为 1 页（即总共 1*60=60 张），开始页码为 2</span></span><br><span class="line">    crawler.start(<span class="string">'uestc'</span>, <span class="number">1</span>, <span class="number">1</span>)  <span class="comment"># 抓取关键词为 “uestc”，总数为 10 页（即总共 10*60=600 张），起始抓取的页码为 1</span></span><br><span class="line">    <span class="comment"># crawler.start('capatain', 5)  # 抓取关键词为 “uestc”，总数为 5 页（即总共 5*60=300 张）</span></span><br></pre></td></tr></table></figure>
+]]></content>
+      
+        
+        <tags>
+            
+            <tag> python </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[基于Tensor Flow的危险车辆识别]]></title>
+      <url>/Car-recognize-md/</url>
+      <content type="html"><![CDATA[<h1 id="基于Tensor-Flow的危险车辆识别"><a href="#基于Tensor-Flow的危险车辆识别" class="headerlink" title="基于Tensor Flow的危险车辆识别"></a>基于Tensor Flow的危险车辆识别</h1><h4 id="这是大二下学期的综合课程设计的一个题目，本来四周的课时，前两周因为和信安大赛、数学建模冲突了，第三周才开始。各个模块都太仓促了，尤其卷积神经网络那块，其实可以做的稍微好一点的。只是按时按要求完成了任务要求，并没有什么很好的创新点，尤其是在模型方面"><a href="#这是大二下学期的综合课程设计的一个题目，本来四周的课时，前两周因为和信安大赛、数学建模冲突了，第三周才开始。各个模块都太仓促了，尤其卷积神经网络那块，其实可以做的稍微好一点的。只是按时按要求完成了任务要求，并没有什么很好的创新点，尤其是在模型方面" class="headerlink" title="这是大二下学期的综合课程设计的一个题目，本来四周的课时，前两周因为和信安大赛、数学建模冲突了，第三周才开始。各个模块都太仓促了，尤其卷积神经网络那块，其实可以做的稍微好一点的。只是按时按要求完成了任务要求，并没有什么很好的创新点，尤其是在模型方面"></a><em>这是大二下学期的综合课程设计的一个题目，本来四周的课时，前两周因为和信安大赛、数学建模冲突了，第三周才开始。各个模块都太仓促了，尤其卷积神经网络那块，其实可以做的稍微好一点的。只是按时按要求完成了任务要求，并没有什么很好的创新点，尤其是在模型方面</em></h4><h4 id="主要任务要求为-："><a href="#主要任务要求为-：" class="headerlink" title="主要任务要求为 ："></a>主要任务要求为 ：</h4><p>利用Tenserflow框架，开发实现危险车辆识别模型，进行模型训练和验证</p>
+<h4 id="详细功能说明："><a href="#详细功能说明：" class="headerlink" title="详细功能说明："></a>详细功能说明：</h4><ol>
+<li><p>使用网络爬虫软件，自动从网络上下载正常车辆和危险车辆（易燃易爆品运输车辆）图片，图片数量超过千张</p>
+</li>
+<li><p>安装Tenserflow框架，开发实现危险车辆识别模型</p>
+</li>
+<li><p>完成模型的训练</p>
+</li>
+<li><p>进行模型验证和调优，争取识别率达到70%以上</p>
+<p>​</p>
+</li>
+</ol>
+<h4 id="模块设计"><a href="#模块设计" class="headerlink" title="模块设计"></a>模块设计</h4><ol>
+<li><a href="">百度图库爬虫模块</a>；</li>
+<li><a href="">卷积神经网络模块</a></li>
+<li><a href="">图形界面展示模块</a></li>
+</ol>
+<h4 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h4><blockquote>
+<p>危险运输品运输量逐年增加，危险品运输车辆在经过城市或乡镇街区时,一旦发生事故,后果影响很大。为了减少危险化学品车辆运输事故及其造成的损失,首先要解决的就是危险运输车辆识别的问题。</p>
+<p>因此，对载有易燃易爆危险物品的车辆进行识别成为交通管理的首要任务。</p>
+<p>本课程设计希望实现一种处理速度快,能够准确识别危险运输车型的识别方案。具体实现方法如下：</p>
+<p>通过编写python网络爬虫脚本，自动从网络中采集易燃易爆车辆及正常运输车辆，获得训练数据集。此脚本可以根据用户输入的关键词、图片数量从百度图库中自动抓取图片数据并保存。同时此程序对常见的异常进行处理，保证了异常情况下脚本仍能自动进行下去，鲁棒性及自动化程度较高。</p>
+<p>对图像数据进行初步清洗处理，模仿经典的LeNet-5卷积网络模型,实现一个简单的卷积网络模型，完成对危险车辆类别的识别。此预测模型包括卷积特征提取层，最大池化层，以及全连接层，共计11层。通过对模型的训练，发现此模型在测试集图片数据上，对于危险车辆的识别率能够达到75%左右。通过对数据集的扩充，以及模型参数调优，识别率上升至83.15%。</p>
+<p>实现一个GUI界面，能够调用本地训练好的模型，对选取的车辆图片进行预测，输出其是否为易燃易爆车辆，同时显示其置信度。</p>
+<p>总之,论文设计出的罐车危化品车辆识别系统,应能够比较快速、准确地识别出车辆类型,这就要求所采用的算法简练、运算量小。。</p>
+</blockquote>
+<p><strong>关键词</strong>：<strong>Python</strong>    <strong>数据挖掘</strong>  <strong>卷积神经网络</strong>  <strong>深度学习</strong>  <strong>GUI</strong>  <strong>QT图形界面</strong></p>
+<h4 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h4><blockquote>
+<p>目 录<br>摘  要    III<br>目 录    IV<br>第一章 绪 论    6<br>1.1 研究工作的背景    6<br>1.2.1 深度学习概述    6<br>1.2.2 CNN卷积网络模型特点    7<br>1.2.3Tensor flow深度学习框架摘要    7<br>1.2.4 网络爬虫概述    7<br>1.3 本文的主要工作与实现    7<br>1.4 研究意义    8<br>第二章 网络图片爬虫模块    9<br>2.1 网络爬虫概述    9<br>2.2 功能设计与分析    9<br>2.3 Python语言爬虫相关库    9<br>2.4 算法步骤描述    10<br>2.5 实验结果与分析    11<br>2.6本章小结    13<br>第三章 危险车辆识别模型    14<br>3.1 卷积神经网络模型概述    14<br>3.2 危险车辆识别模型    14<br>3.2.1 图片预处理    14<br>3.2.2 模型基本结构    15<br>3.2.3 危险车辆预测模型    17<br>3.2.3 训练方法    18<br>3.2.4 性能评估    21<br>3.2.5 参数调优与模型优化    23<br>3.3 模型测试结果验证    23<br>3.4 本章小结    24<br>第四章   图形界面预测模块    25<br>4.1 图形界面功能设计    25<br>4.2 PYQT 模块    25<br>4.3 界面逻辑架构    25<br>4.4 界面结果展示与测试    26<br>第五章 全文总结与展望    28<br>5.1 全文总结    28<br>5.2 后续工作展望    28<br>致  谢    29<br>参考文献    30. </p>
+</blockquote>
+<h4 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h4><blockquote>
+<p>[1].郭利荣,基于Python的网络爬虫程序设计_郭丽蓉.2013.</p>
+<p>[2].贾棋然, 基于Python专用型网络爬虫的设计及实现. 电脑知识与技术, 2017(12):第47-49页.</p>
+<p>[3].姜杉彪等, 基于Python的专业网络爬虫的设计与实现. 企业科技与发展, 2016(08):第17-19页.</p>
+<p>[4].李琳, 基于Python的网络爬虫系统的设计与实现. 信息通信, 2017(09):第26-27页.</p>
+<p>[5].刘强与于娟, 主题网络爬虫研究综述_于娟. 计算机工程与科学, 2015.</p>
+<p>[6].卢宏涛, 深度卷积神经网络在计算机视觉中的应用研究综述_卢宏涛. Journalof Data and Information Quality, 2016.</p>
+<p>[7].孙三祥等, 易燃易爆物品运输车辆的分类与检测. 公路与汽运, 2006(05):第26-28页.</p>
+<p>[8].涂辉, 王锋与商庆伟, Python3编程实现网络图片爬虫. 电脑编程技巧与维护, 2017(23):第21-22页.</p>
+<p>[9].尹宝才, 深度学习研究综述_尹宝才. 北京工业大学学报, 2015.</p>
+<p>[10]. 于成龙, 网络爬虫技术研究_于成龙. 2011.</p>
+<p>[11]. 周飞燕, 卷积神经网络研究综述_周飞燕. 计算机学报, 2017.</p>
+<p>[12].周志华， 机器学习，清华大学出版社，2015</p>
+<p>[13].龙飞，王永兴，深度学习入门与实践，2017</p>
+<p>[14], Ian Goodfellow, Yoshua Bengio, AaronCourville, Deep Learning 2016</p>
+<p>[15],王战魁. 基于PCA与BP神经网络的危险化学品车辆识别[D].首都经济贸易大学,2006.</p>
+<p>[16],徐博. 基于卷积神经网络的车辆属性识别[D].北京理工大学,2016.</p>
+</blockquote>
+]]></content>
+      
+        
+        <tags>
+            
+            <tag> TensoFlow </tag>
+            
+            <tag> CNN </tag>
+            
+            <tag> python </tag>
+            
+            <tag> UESTC </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[基于GBDT算法的不完全对称信息下的客户授信评估问题]]></title>
       <url>/xgboost/</url>
       <content type="html"><![CDATA[<h2 id="这是数学建模校赛的题目，两个人写建模论文确实太累了"><a href="#这是数学建模校赛的题目，两个人写建模论文确实太累了" class="headerlink" title="这是数学建模校赛的题目，两个人写建模论文确实太累了"></a>这是数学建模校赛的题目，两个人写建模论文确实太累了</h2><p>本文针对不完全对称信息下的客户授信评估问题，利用<code>GBDT(Gradient Boosting Decesion Tree)</code>梯度提升决策树算法等方法，综合运用了<code>Python、Xgboost、Matlab</code>等软件建立了授信额度估算模型和客户预测违约模型，定量分析了在完整数据以及数据缺失情况下的模型效果，并向公司管理层提出了关于授信额度估算的分析与建议。</p>
@@ -96,6 +195,23 @@
     </entry>
     
     <entry>
+      <title><![CDATA[Hello World]]></title>
+      <url>/hello-world/</url>
+      <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+]]></content>
+      
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[薅资本主义的羊毛，利用GitHub搭建一个hexo博客]]></title>
       <url>/the-First-MarkDown-File/</url>
       <content type="html"><![CDATA[<hr>
@@ -148,23 +264,6 @@
             <tag> GitHub </tag>
             
         </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[Hello World]]></title>
-      <url>/hello-world/</url>
-      <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-]]></content>
-      
         
     </entry>
     
