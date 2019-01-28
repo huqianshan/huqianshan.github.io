@@ -4,7 +4,7 @@
     
     <entry>
       <title><![CDATA[crapy-summary]]></title>
-      <url>/2019/01/28/crapy-summary/</url>
+      <url>/articles/crapy-summary/</url>
       <content type="html"><![CDATA[<h1 id="爬虫模块化总结-（一）"><a href="#爬虫模块化总结-（一）" class="headerlink" title="爬虫模块化总结 （一）"></a>爬虫模块化总结 （一）</h1><ul>
 <li>读取链接部分</li>
 <li>解析链接</li>
@@ -30,7 +30,7 @@
     
     <entry>
       <title><![CDATA[Modern art]]></title>
-      <url>/2019/01/17/Modern-art/</url>
+      <url>/articles/Modern-art/</url>
       <content type="html"><![CDATA[<h1 id="透过摄影观看世界-From-The-Museum-of-Modern-Art-—-New-York-Modern-Art-Museum"><a href="#透过摄影观看世界-From-The-Museum-of-Modern-Art-—-New-York-Modern-Art-Museum" class="headerlink" title="透过摄影观看世界(From The Museum of Modern Art) —-New York Modern Art Museum"></a>透过摄影观看世界(From The Museum of Modern Art) —-New York Modern Art Museum</h1><p><img src="http://www.k11artfoundation.org/wp-content/uploads/MoMA_web-banner_R3.jpg" alt="dd"></p>
 <h2 id="课程导言"><a href="#课程导言" class="headerlink" title="课程导言"></a>课程导言</h2><p>对于我们中的许多人来说，虽然拍照、分享和浏览照片已经成了日常生活中的习惯，但我们与图像的频繁接触并未培养我们在视觉表达上的素养。<br><a id="more"></a></p>
 <p><strong>课程目的</strong>: 通过介绍影响摄影作品的创意、手段与技术，讨论观看照片与真正理解照片之间距离的问题。</p>
@@ -54,7 +54,7 @@
     
     <entry>
       <title><![CDATA[Scrapy Intergrity]]></title>
-      <url>/2019/01/16/Scrapy-Intergrity/</url>
+      <url>/articles/Scrapy-Intergrity/</url>
       <content type="html"><![CDATA[<h1 id="THE-COLLECTION-OF-SCRAPY-PYTHON-SCRIPTS"><a href="#THE-COLLECTION-OF-SCRAPY-PYTHON-SCRIPTS" class="headerlink" title="THE COLLECTION OF SCRAPY PYTHON SCRIPTS"></a>THE COLLECTION OF SCRAPY PYTHON SCRIPTS</h1><a id="more"></a>
 <hr>
 <ol>
@@ -77,7 +77,7 @@
     
     <entry>
       <title><![CDATA[卷积神经网络预测危险车辆模型]]></title>
-      <url>/2018/06/07/model/</url>
+      <url>/articles/model/</url>
       <content type="html"><![CDATA[<h2 id="卷积神经网络预测危险车辆"><a href="#卷积神经网络预测危险车辆" class="headerlink" title="卷积神经网络预测危险车辆"></a>卷积神经网络预测危险车辆</h2><h4 id="卷积神经网络模型概述"><a href="#卷积神经网络模型概述" class="headerlink" title="卷积神经网络模型概述"></a>卷积神经网络模型概述</h4><p>在各种深度神经网络结构中，卷积神经网络是应用最广泛的一种，它由LeCun在1989年提出。卷积神经网络在早期被成功应用于手写字符图像识别。2012年更深层次的AlexNet网络取得成功，此后卷积神经网络蓬勃发展，被广泛用于各个领域，在很多问题上都取得了当前最好的性能。卷积神经网络通过卷积和池化操作自动学习图像在各个层次上的特征，这符合我们理解图像的常识。人在认知图像时是分层抽象的，首先理解的是颜色和亮度，然后是边缘、角点、直线等局部细节特征，接下来是纹理、几何形状等更复杂的信息和结构，最后形成整个物体的概念。<br><a id="more"></a></p>
 <h4 id="图片预处理"><a href="#图片预处理" class="headerlink" title="图片预处理"></a>图片预处理</h4><p>   从网上下载的图片质量参差不齐，对其进行如下操作：</p>
 <ol>
@@ -123,7 +123,7 @@
     
     <entry>
       <title><![CDATA[百度图库爬虫脚本]]></title>
-      <url>/2018/06/07/baidu-spider/</url>
+      <url>/articles/baidu-spider/</url>
       <content type="html"><![CDATA[<h2 id="百度图库关键字爬虫脚本"><a href="#百度图库关键字爬虫脚本" class="headerlink" title="百度图库关键字爬虫脚本"></a>百度图库关键字爬虫脚本</h2><h4 id="本章设计了一个基于Python的爬虫模块，可以根据用户自定义的关键词、待爬取图片数量，自动从百度图库中采集并依次保存图片数据。"><a href="#本章设计了一个基于Python的爬虫模块，可以根据用户自定义的关键词、待爬取图片数量，自动从百度图库中采集并依次保存图片数据。" class="headerlink" title="本章设计了一个基于Python的爬虫模块，可以根据用户自定义的关键词、待爬取图片数量，自动从百度图库中采集并依次保存图片数据。"></a>本章设计了一个基于Python的爬虫模块，可以根据用户自定义的关键词、待爬取图片数量，自动从百度图库中采集并依次保存图片数据。</h4><h4 id="功能设计与分析"><a href="#功能设计与分析" class="headerlink" title="功能设计与分析"></a>功能设计与分析</h4><p>本模块为之后的模型训练提供数据集，属于数据采集部分。本模块的功能应解决以下问题：</p>
 <ol>
 <li>目标网站的图片数量足够多，车辆种类涵盖基本种类，且爬取难度不宜过高。 综合分析可知，百度图库能满足以上要求。所以采用百度图库为目标爬取网站。</li>
@@ -155,7 +155,7 @@
     
     <entry>
       <title><![CDATA[基于Tensor Flow的危险车辆识别]]></title>
-      <url>/2018/06/07/Car-recognize-md/</url>
+      <url>/articles/Car-recognize-md/</url>
       <content type="html"><![CDATA[<h1 id="基于Tensor-Flow的危险车辆识别"><a href="#基于Tensor-Flow的危险车辆识别" class="headerlink" title="基于Tensor Flow的危险车辆识别"></a>基于Tensor Flow的危险车辆识别</h1><h4 id="这是大二下学期的综合课程设计的一个题目，本来四周的课时，前两周因为和信安大赛、数学建模冲突了，第三周才开始。各个模块都太仓促了，尤其卷积神经网络那块，其实可以做的稍微好一点的。只是按时按要求完成了任务要求，并没有什么很好的创新点，尤其是在模型方面"><a href="#这是大二下学期的综合课程设计的一个题目，本来四周的课时，前两周因为和信安大赛、数学建模冲突了，第三周才开始。各个模块都太仓促了，尤其卷积神经网络那块，其实可以做的稍微好一点的。只是按时按要求完成了任务要求，并没有什么很好的创新点，尤其是在模型方面" class="headerlink" title="这是大二下学期的综合课程设计的一个题目，本来四周的课时，前两周因为和信安大赛、数学建模冲突了，第三周才开始。各个模块都太仓促了，尤其卷积神经网络那块，其实可以做的稍微好一点的。只是按时按要求完成了任务要求，并没有什么很好的创新点，尤其是在模型方面"></a><em>这是大二下学期的综合课程设计的一个题目，本来四周的课时，前两周因为和信安大赛、数学建模冲突了，第三周才开始。各个模块都太仓促了，尤其卷积神经网络那块，其实可以做的稍微好一点的。只是按时按要求完成了任务要求，并没有什么很好的创新点，尤其是在模型方面</em></h4><h4 id="主要任务要求为-："><a href="#主要任务要求为-：" class="headerlink" title="主要任务要求为 ："></a>主要任务要求为 ：</h4><p>利用Tenserflow框架，开发实现危险车辆识别模型，进行模型训练和验证</p>
 <h4 id="详细功能说明："><a href="#详细功能说明：" class="headerlink" title="详细功能说明："></a>详细功能说明：</h4><ol>
 <li><p>使用网络爬虫软件，自动从网络上下载正常车辆和危险车辆（易燃易爆品运输车辆）图片，图片数量超过千张</p>
@@ -224,7 +224,7 @@
     
     <entry>
       <title><![CDATA[基于GBDT算法的不完全对称信息下的客户授信评估问题]]></title>
-      <url>/2018/06/02/xgboost/</url>
+      <url>/articles/xgboost/</url>
       <content type="html"><![CDATA[<h2 id="这是数学建模校赛的题目，两个人写建模论文确实太累了"><a href="#这是数学建模校赛的题目，两个人写建模论文确实太累了" class="headerlink" title="这是数学建模校赛的题目，两个人写建模论文确实太累了"></a>这是数学建模校赛的题目，两个人写建模论文确实太累了</h2><p>本文针对不完全对称信息下的客户授信评估问题，利用<code>GBDT(Gradient Boosting Decesion Tree)</code>梯度提升决策树算法等方法，综合运用了<code>Python、Xgboost、Matlab</code>等软件建立了授信额度估算模型和客户预测违约模型，定量分析了在完整数据以及数据缺失情况下的模型效果，并向公司管理层提出了关于授信额度估算的分析与建议。<br><a id="more"></a></p>
 <h4 id="针对问题1"><a href="#针对问题1" class="headerlink" title="针对问题1,"></a>针对问题1,</h4><p> 对于28个自变量的规律分析，我们首先分析自变量和目标因变量，以确定自变量参数与因变量客户违约的关联性。通过绘制自变量和两个因变量之间Pearson相关系数的热力图像，观察得到自变量和因变量的统计关系规律。为了对违约分类进行预测，利用GBDT（Gradient Boost decision tree）算法建立二分类模型，对回归树得到的连续值设定阈值，映射为离散的0-1两点；同时，我们注意到样本正负样本的显著不平衡性，通过欠采样反法，从大量的正样本中选取一定的样本数量，使得正反样本比例接近，再多次进行算法的学习。最后，求出模型的AUC值以评价此模型的准确性。</p>
 <h4 id="针对问题2，"><a href="#针对问题2，" class="headerlink" title="针对问题2，"></a>针对问题2，</h4><p>对于授信额度估算模型，利用GBDT算法建立回归预测模型。在模型的建立中，分析得到对信用额度Amount 影响权值最高的特征参数，并分析这些参数与信用额度的分布关系。根据建立的二分类模型，预测Class条目未知的客户的违约情况。最后，根据均方根误差值（RMSE）评判GBDT回归预测模型的准确性，并给出对未知客户的违约情况预测。</p>
@@ -271,7 +271,7 @@
     
     <entry>
       <title><![CDATA[基于区块链的学历认证系统]]></title>
-      <url>/2018/06/02/contract/</url>
+      <url>/articles/contract/</url>
       <content type="html"><![CDATA[<h1 id="基于区块链的学历认证系统"><a href="#基于区块链的学历认证系统" class="headerlink" title="基于区块链的学历认证系统"></a>基于区块链的学历认证系统</h1><p>目前学位证书由中心机构进行管理，并提供查询服务。一旦中心机构遭到恶意攻击，数据被篡改、增加或者删除，就会导致学位证书信息的完整性被破坏。而为了避免这种攻击，就需要对存储和管理设备进行大量的投入。</p>
 <p>针对上述问题，本作品提供一种基于区块链的学位认证系统，本系统将学位证书默克尔哈希树树根信息发布在以太坊区块链上，以减少区块存储负担。能够通过智能合约对发布的信息进行增加、修改、查询等功能，采用分布式门限签名方案可以对学校发布的默克尔哈希树树根进行签名，也可以通过学生学位证书和一笔交易的Merkel Hash Root对具体交易信息进行验证。</p>
 <p>本文构建基于论文区块链去中心化理念的学位认证系统，学历信息区块的构造机制、签名机制、共识算法确保学历信息的完整性和可溯源性；<br>设计了基于区块链的学历信息存储方式，利用Merkle哈希算法对每个学校的大学历信息进行压缩，将256bit的Merkle哈希树根存储于区块链中，大大减少了放入区块链上的数据；</p>
@@ -317,7 +317,7 @@
     
     <entry>
       <title><![CDATA[Hello World]]></title>
-      <url>/2018/06/02/hello-world/</url>
+      <url>/articles/hello-world/</url>
       <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
 <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
@@ -334,7 +334,7 @@
     
     <entry>
       <title><![CDATA[薅资本主义的羊毛，利用GitHub搭建一个hexo博客]]></title>
-      <url>/2018/06/02/the-First-MarkDown-File/</url>
+      <url>/articles/the-First-MarkDown-File/</url>
       <content type="html"><![CDATA[<hr>
 <blockquote>
 <ul>
@@ -391,7 +391,7 @@
     
     <entry>
       <title><![CDATA[基于Gabor特征的人脸识别matlab实验]]></title>
-      <url>/2018/05/04/face-PCA/</url>
+      <url>/articles/face-PCA/</url>
       <content type="html"><![CDATA[<h2 id="一、实验综述"><a href="#一、实验综述" class="headerlink" title="一、实验综述"></a>一、实验综述</h2><p>  人脸数据集中，共有16个人，每人至少有五幅图像，要求选取 5 幅图像，其中四幅图作为训练集，剩下一副图作为测试集。要求利用训练集训练模型，从测试集任选一幅图像，能够识别他的身份。</p>
 <p>本文思路如下：首先对图像进行预处理，利用最近邻算法重采样规整为 128*128的灰度图像，并对亮度异常的图像进行调整。然后利用Gabor滤波器对灰度图像进行五尺度，八个方向的特征提取。接着利用PCA算法对图像数据进行压缩，选取贡献率前95%的特征向量作为新的基。最后分类算法采取线性回归的分类器，预测测试集中图像所属类别，并得到识别率。为了探讨不同Gabor滤波器的参数对识别结果的影响，选取了多组参数进行参数敏感性分析。<br><a id="more"></a></p>
 <h2 id="二、实验原理"><a href="#二、实验原理" class="headerlink" title="二、实验原理"></a>二、实验原理</h2><h4 id="1-Gabor特征"><a href="#1-Gabor特征" class="headerlink" title="1.Gabor特征"></a>1.Gabor特征</h4><p>   Gabor变换属于加窗傅立叶变换，Gabor函数可以在频域不同尺度、不同方向上提取相关的特征。【1】Gabor小波与人类视觉系统中简单细胞的视觉刺激响应非常相似。它在提取目标的局部空间和频率域信息方面具有良好的特性。Gabor小波对于图像的边缘敏感，能够提供良好的方向选择和尺度选择特性，而且对于光照变化不敏感,能够提供对光照变化良好的适应性。上述特点使Gabor小波被广泛应用于视觉信息理解。<br>通过频率参数和高斯函数参数的选取，Gabor变换可以选取很多纹理特征，但是Gabor是非正交的，不同特征分量之间有冗余。 Gabor是有高斯核函数与复正弦函数调制而成，如下图所示。</p>
@@ -437,7 +437,7 @@
     
     <entry>
       <title><![CDATA[Uestc抢课脚本]]></title>
-      <url>/2018/03/10/Uestc-Class/</url>
+      <url>/articles/Uestc-Class/</url>
       <content type="html"><![CDATA[<h1 id="一个电子科大的模块"><a href="#一个电子科大的模块" class="headerlink" title="一个电子科大的模块"></a>一个电子科大的模块</h1><h3 id="涉及登录，查分，抢课等功能"><a href="#涉及登录，查分，抢课等功能" class="headerlink" title="涉及登录，查分，抢课等功能"></a>涉及登录，查分，抢课等功能</h3><hr>
 <ul>
 <li><p><code>import uestc</code>  <em>导入文件</em></p>
@@ -470,7 +470,7 @@
     
     <entry>
       <title><![CDATA[AboutMe]]></title>
-      <url>/2016/06/02/AboutMe/</url>
+      <url>/articles/AboutMe/</url>
       <content type="html"><![CDATA[<h1 id="Me，nothing"><a href="#Me，nothing" class="headerlink" title="Me，nothing"></a>Me，nothing</h1><h3 id="nothing-at-all"><a href="#nothing-at-all" class="headerlink" title="nothing at all"></a>nothing at all</h3>]]></content>
       
         
