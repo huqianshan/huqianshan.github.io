@@ -63,12 +63,14 @@
       <title><![CDATA[crapy-speedup]]></title>
       <url>/articles/crapy-speedup/</url>
       <content type="html"><![CDATA[<h1 id="二-让爬虫飞起来-crapy-speedup"><a href="#二-让爬虫飞起来-crapy-speedup" class="headerlink" title="(二) 让爬虫飞起来(crapy-speedup)"></a>(二) 让爬虫飞起来(<code>crapy-speedup</code>)</h1><ul>
-<li>多线程 <code>mutyprocess</code></li>
-<li>多进程 ``</li>
+<li>多线程 <code>multithreading</code>$\to$<code>threading</code>库</li>
+<li>多进程 <code>multiprocess</code></li>
 <li>协程 <code>gevent</code></li>
 <li>异步 <code>asyio</code></li>
 </ul>
 <p><img src="https://i.loli.net/2019/01/30/5c518f78e69c3.gif" alt="tumblr_mvl7699VoR1rqg00io8_r1_250.gif"><br><a id="more"></a></p>
+<p><code>关键词:</code> <code>同步</code> <code>锁</code> </p>
+<h2 id="1-多线程-multithreading"><a href="#1-多线程-multithreading" class="headerlink" title="1. 多线程 multithreading"></a>1. 多线程 <code>multithreading</code></h2><p>Python中的线程会在一个单独的系统级线程中执行（比如说一个 POSIX 线程或者一个 Windows 线程），这些线程将由操作系统来全权管理。</p>
 ]]></content>
       
         
