@@ -3,6 +3,28 @@
   
     
     <entry>
+      <title><![CDATA[some_tools_in_computer]]></title>
+      <url>/articles/some-tools-in-computer/</url>
+      <content type="html"><![CDATA[<h1 id="龙套角色也精彩"><a href="#龙套角色也精彩" class="headerlink" title="龙套角色也精彩"></a>龙套角色也精彩</h1><p>这是学习<a href="">操作系统</a>时总结的一些编程开发工具，虽然这些并不是实实在在的<br>生产力开发工具，当在实际应用中，缺少他们却是万万不能的。</p>
+<p><img src="https://i.loli.net/2019/02/14/5c64efab4c2e4.jpg" width="60%" height="60%"><br><a id="more"></a></p>
+<h2 id="Make-amp-Makefile"><a href="#Make-amp-Makefile" class="headerlink" title="Make &amp; Makefile"></a><code>Make &amp; Makefile</code></h2><p><code>GNU make</code>(简称make)是一种代码维护工具，在大中型项目中，它将根据程序各个模块的更新情况，自动的维护和生成目标代码。</p>
+<h3 id="makefile的规则。"><a href="#makefile的规则。" class="headerlink" title="makefile的规则。"></a>makefile的规则。</h3><figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">target ... : prerequisites ...</span><br><span class="line">    command</span><br><span class="line">    ...</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
+<p>target也就是一个目标文件，可以是object file，也可以是执行文件。还可以是一个标签（label）。prerequisites就是，要生成那个target所需要的文件或是目标。command也就是make需要执行的命令（任意的shell命令）。 这是一个文件的依赖关系，也就是说，target这一个或多个的目标文件依赖于prerequisites中的文件，其生成规则定义在 command中。如果prerequisites中有一个以上的文件比target文件要新，那么command所定义的命令就会被执行。这就是makefile的规则。也就是makefile中最核心的内容。</p>
+<h3 id="参考链接："><a href="#参考链接：" class="headerlink" title="参考链接："></a><code>参考链接：</code></h3><p><a href="https://gist.github.com/isaacs/62a2d1825d04437c6f08" target="_blank" rel="noopener">Isaac Schlueter的&lt;<makefile文件教程>&gt;</makefile文件教程></a></p>
+<p><a href="https://blog.csdn.net/a_ran/article/details/43937041" target="_blank" rel="noopener">Make 命令教程</a></p>
+<p><a href="https://www.gnu.org/software/make/manual/make.html" target="_blank" rel="noopener">&lt;<gnu make手册="">&gt;</gnu></a></p>
+]]></content>
+      
+        
+        <tags>
+            
+            <tag> tools </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[latency-in-programmar]]></title>
       <url>/articles/latency-in-programmar/</url>
       <content type="html"><![CDATA[<h1 id="Latency-Comparison-Numbers-2012"><a href="#Latency-Comparison-Numbers-2012" class="headerlink" title="Latency Comparison Numbers (~2012)"></a>Latency Comparison Numbers (~2012)</h1><p><img src="https://i.loli.net/2019/02/11/5c6161e41f278.jpg" width="40%" height="40%"></p>
