@@ -7,6 +7,7 @@
       <url>/articles/funds/</url>
       <content type="html"><![CDATA[<h1 id="从零开始的基金之路"><a href="#从零开始的基金之路" class="headerlink" title="从零开始的基金之路"></a>从零开始的基金之路</h1><p>人生有哲学，而哲学是指导思考的元科学。同样的，基金的操作也<br>应该有思考反思遵循的哲学。</p>
 <h2 id="根本准则-：-追求持有成本尽可能的低于现有价格"><a href="#根本准则-：-追求持有成本尽可能的低于现有价格" class="headerlink" title="根本准则 ： 追求持有成本尽可能的低于现有价格"></a>根本准则 ： <code>追求持有成本尽可能的低于现有价格</code></h2><p>若总的持有价格小于当前，且这个差值的累积之和，那么就可以使得<br>基金增持。</p>
+<a id="more"></a>
 <h3 id="此路缘何"><a href="#此路缘何" class="headerlink" title="此路缘何"></a>此路缘何</h3><ol>
 <li>当作养成游戏的娱乐</li>
 <li>养成储蓄的习惯</li>
@@ -18,12 +19,22 @@
 </ol>
 <p>还应有行业基金，国际基金</p>
 <h3 id="路向何方"><a href="#路向何方" class="headerlink" title="路向何方"></a>路向何方</h3><h3 id="路的开始"><a href="#路的开始" class="headerlink" title="路的开始"></a>路的开始</h3><h4 id="原则"><a href="#原则" class="headerlink" title="原则"></a>原则</h4><ol>
-<li>追求钻石坑<br>如果当前处于牛市，</li>
+<li>追求钻石坑<br>如果当前处于最高点附近，继续买入则会拉高成本价，而基金的现有价格却在一直下降，从而使得利润变少。<br>如果，保持继续上涨，那么继续买入虽然会拉高成本价，但基金的<br>价格也在一直增加，而因为金额的增多，也带来了新的一部分利润。</li>
 </ol>
-<h4 id="1-定投为先"><a href="#1-定投为先" class="headerlink" title="1 定投为先"></a>1 定投为先</h4><ul>
-<li><p>每月需要保持<code>￥150</code>的投入</p>
+<p>而钻石坑的关键在于，在价格下降的波谷里，购买近<br>更多的【低于均值】的份额，从而拉低成本价。</p>
+<h4 id="定投为先"><a href="#定投为先" class="headerlink" title="定投为先"></a>定投为先</h4><ul>
+<li><p>每月需要保持<code>￥150</code>的投入，每周至多操作一次</p>
 </li>
-<li></li>
+<li><p>参考以往均值，低于即可购买 若判断仍能上涨，也继续购买</p>
+</li>
+<li><p>若当前的交易不能形成钻石坑形态，则不购买。</p>
+</li>
+</ul>
+<h4 id="参考路标"><a href="#参考路标" class="headerlink" title="参考路标"></a>参考路标</h4><ul>
+<li><p><a href="http://discuss.jiucaishuo.com/" target="_blank" rel="noopener">韭菜说社区</a><br>里面有指数的 PE分位信息。</p>
+</li>
+<li><p>MA5、10、20均线</p>
+</li>
 </ul>
 ]]></content>
       
@@ -503,11 +514,11 @@
         
         <tags>
             
-            <tag> Python </tag>
-            
             <tag> TensorFlow </tag>
             
             <tag> CNN </tag>
+            
+            <tag> Python </tag>
             
         </tags>
         
@@ -602,11 +613,11 @@
         
         <tags>
             
-            <tag> Python </tag>
-            
             <tag> TensorFlow </tag>
             
             <tag> CNN </tag>
+            
+            <tag> Python </tag>
             
             <tag> UESTC </tag>
             
@@ -708,6 +719,23 @@
     </entry>
     
     <entry>
+      <title><![CDATA[Hello World]]></title>
+      <url>/articles/hello-world/</url>
+      <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+]]></content>
+      
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[薅资本主义的羊毛，利用GitHub搭建一个hexo博客]]></title>
       <url>/articles/the-First-MarkDown-File/</url>
       <content type="html"><![CDATA[<hr>
@@ -761,23 +789,6 @@
             <tag> GitHub </tag>
             
         </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[Hello World]]></title>
-      <url>/articles/hello-world/</url>
-      <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-]]></content>
-      
         
     </entry>
     
@@ -852,9 +863,9 @@
         
         <tags>
             
-            <tag> Script </tag>
-            
             <tag> Python </tag>
+            
+            <tag> Script </tag>
             
         </tags>
         
