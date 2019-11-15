@@ -1,35 +1,59 @@
 self.__precacheManifest = [
   {
-    "revision": "d04d48408d923e5bb6883a514481b7d8",
-    "url": "/fonts/KaTeX_Caligraphic-Regular.d04d4840.ttf"
+    "revision": "923e515d161a541174ba0f71e1adb54e",
+    "url": "/fonts/KaTeX_Size1-Regular.923e515d.ttf"
   },
   {
     "revision": "23060ec23044bcbdbc40a2c6ec428096",
     "url": "/img/loading.gif"
   },
   {
-    "revision": "5f8a127f01d157137113",
-    "url": "/js/archives.e751af70.js"
-  },
-  {
-    "revision": "bd76798fe98653b20de0",
-    "url": "/js/articles.9b3a51e6.js"
+    "revision": "832dae92017c394493ff",
+    "url": "/js/archives.056611fe.js"
   },
   {
     "revision": "b6216d61c03e6ce0c9aea6ca7808f7ca",
     "url": "/robots.txt"
   },
   {
-    "revision": "1f2e06c63a3ecfbd765b",
-    "url": "/js/articles~home~pages.dd6ed0fe.js"
+    "revision": "7a02c20f2c62dcd8d90c",
+    "url": "/js/articles.b0172c4b.js"
   },
   {
-    "revision": "c7e2163bd960c7672fd8696b06ff0c01",
+    "revision": "ce7163f634145a81732a2a44022688e0",
     "url": "/index.html"
   },
   {
-    "revision": "bb471d25e5346a05551e",
-    "url": "/js/chunk-vendors.092df667.js"
+    "revision": "d998ec8518b48cf0335b",
+    "url": "/js/articles~home~pages.93d92545.js"
+  },
+  {
+    "revision": "0a384f8a19a2e907aeb9",
+    "url": "/js/app.a031425c.js"
+  },
+  {
+    "revision": "b1f4d61d5e577fb5edad",
+    "url": "/js/chunk-bootstrap.3bd85c7e.js"
+  },
+  {
+    "revision": "90314993ac49f31f17eb",
+    "url": "/js/valine.bdadea88.js"
+  },
+  {
+    "revision": "2aa85a715bd3a0013a75",
+    "url": "/js/chunk-bootstrap-vue.c86bbd7c.js"
+  },
+  {
+    "revision": "7dc14716774b41ad77c1",
+    "url": "/js/chunk-font-awesome.8d2cd1c1.js"
+  },
+  {
+    "revision": "35ab5acdcf943f3b510e",
+    "url": "/js/chunk-markdown-it.61e60a46.js"
+  },
+  {
+    "revision": "fc2c2d86cab6bbab6fcb",
+    "url": "/js/chunk-vue.3748bb0e.js"
   },
   {
     "revision": "f3d9504f0b3395905769",
@@ -40,52 +64,60 @@ self.__precacheManifest = [
     "url": "/js/dplayer.059be256.js"
   },
   {
-    "revision": "87986f0126ee7912b7c9",
-    "url": "/js/app.9b89618c.js"
+    "revision": "bc5b097eec172a6cc862",
+    "url": "/js/tagcloud.8278d636.js"
   },
   {
     "revision": "f6097c8e44057cd3be14",
     "url": "/js/gitalk.09835498.js"
   },
   {
-    "revision": "90314993ac49f31f17eb",
-    "url": "/js/valine.bdadea88.js"
+    "revision": "1620ae3d13b8e457debd",
+    "url": "/js/related.c8de4528.js"
   },
   {
     "revision": "d679d5be24d0962e64f6",
     "url": "/js/gitment.5a54c974.js"
   },
   {
-    "revision": "9279cceadb462b4bd6c0",
-    "url": "/js/home.b5d21303.js"
+    "revision": "1e68fbd380b062ecd70c",
+    "url": "/js/home.2482dec2.js"
   },
   {
     "revision": "c6173cb68da561a1e2e1",
     "url": "/js/leancloud-storage.d4827b27.js"
   },
   {
-    "revision": "4a168399ef91c67893fd",
-    "url": "/js/not-found.9ebcbaac.js"
+    "revision": "fc918f980569f7d4491d",
+    "url": "/js/pages.5822fb57.js"
   },
   {
-    "revision": "43e47b912068da400a78",
-    "url": "/js/pages.240b26c9.js"
+    "revision": "c9d5a32d1fc4b3fa10f87a8e2859a1f3",
+    "url": "/fonts/KaTeX_Main-Italic.c9d5a32d.woff2"
   },
   {
-    "revision": "cd957d3aed3aa7a7a148",
-    "url": "/js/related.a5798f7e.js"
-  },
-  {
-    "revision": "bc5b097eec172a6cc862",
-    "url": "/js/tagcloud.8278d636.js"
-  },
-  {
-    "revision": "dc91856176c1350f1ee303851a422277",
-    "url": "/fonts/KaTeX_Math-Italic.dc918561.woff"
+    "revision": "fc918f980569f7d4491d",
+    "url": "/css/pages.2c079b61.css"
   },
   {
     "revision": "bc5b097eec172a6cc862",
     "url": "/css/tagcloud.4509716a.css"
+  },
+  {
+    "revision": "424335d97ef5548890673af99f4136b4",
+    "url": "/fonts/KaTeX_Main-Regular.424335d9.ttf"
+  },
+  {
+    "revision": "dffd527d95ed83d58fc7a8f88e10b2fe",
+    "url": "/fonts/KaTeX_AMS-Regular.dffd527d.ttf"
+  },
+  {
+    "revision": "7b98c94eecdab63a02cf8624e9ee4058",
+    "url": "/fonts/PlayfairDisplay-Black.7b98c94e.ttf"
+  },
+  {
+    "revision": "f78a8c62bdf3c9c27b4fa485b8c3d279",
+    "url": "/fonts/PlayfairDisplay-Bold.f78a8c62.ttf"
   },
   {
     "revision": "2870a8f86e7ba49b457e662b17c4bc20",
@@ -152,8 +184,8 @@ self.__precacheManifest = [
     "url": "/fonts/KaTeX_Script-Regular.ae1b9702.woff"
   },
   {
-    "revision": "923e515d161a541174ba0f71e1adb54e",
-    "url": "/fonts/KaTeX_Size1-Regular.923e515d.ttf"
+    "revision": "e493181d2a1b6a1f47d1a8d5c28bca9f",
+    "url": "/fonts/KaTeX_Main-Bold.e493181d.ttf"
   },
   {
     "revision": "e3717988fb1ebd63efd10fd2e05568bc",
@@ -172,8 +204,8 @@ self.__precacheManifest = [
     "url": "/fonts/KaTeX_Caligraphic-Bold.c7e386dd.ttf"
   },
   {
-    "revision": "f78a8c62bdf3c9c27b4fa485b8c3d279",
-    "url": "/fonts/PlayfairDisplay-Bold.f78a8c62.ttf"
+    "revision": "d04d48408d923e5bb6883a514481b7d8",
+    "url": "/fonts/KaTeX_Caligraphic-Regular.d04d4840.ttf"
   },
   {
     "revision": "b1a879453aae1660b06d5941c50457c5",
@@ -196,24 +228,16 @@ self.__precacheManifest = [
     "url": "/fonts/KaTeX_Main-BoldItalic.2484936f.woff2"
   },
   {
-    "revision": "c9d5a32d1fc4b3fa10f87a8e2859a1f3",
-    "url": "/fonts/KaTeX_Main-Italic.c9d5a32d.woff2"
-  },
-  {
-    "revision": "6091397cdc326cf8c8f7b648e2341483",
-    "url": "/fonts/KaTeX_Math-BoldItalic.6091397c.woff"
-  },
-  {
-    "revision": "96b229786edd80e54fa2b68c5f032960",
-    "url": "/fonts/KaTeX_Math-BoldItalic.96b22978.woff2"
+    "revision": "5d2baf751ed4a4df0ca2dbba04058de8",
+    "url": "/fonts/KaTeX_Math-Italic.5d2baf75.ttf"
   },
   {
     "revision": "4b3b168e2b5e74b24c10acd7316488d1",
     "url": "/fonts/KaTeX_Math-Italic.4b3b168e.woff2"
   },
   {
-    "revision": "7b98c94eecdab63a02cf8624e9ee4058",
-    "url": "/fonts/PlayfairDisplay-Black.7b98c94e.ttf"
+    "revision": "dc91856176c1350f1ee303851a422277",
+    "url": "/fonts/KaTeX_Math-Italic.dc918561.woff"
   },
   {
     "revision": "e08eb4331e7db133b6d2e355cd74724a",
@@ -234,6 +258,14 @@ self.__precacheManifest = [
   {
     "revision": "6a862f8ff236e321e04c326a32eb8a49",
     "url": "/fonts/KaTeX_Typewriter-Regular.6a862f8f.woff"
+  },
+  {
+    "revision": "6091397cdc326cf8c8f7b648e2341483",
+    "url": "/fonts/KaTeX_Math-BoldItalic.6091397c.woff"
+  },
+  {
+    "revision": "96b229786edd80e54fa2b68c5f032960",
+    "url": "/fonts/KaTeX_Math-BoldItalic.96b22978.woff2"
   },
   {
     "revision": "2057e5cbb505134b0a620e681abc5070",
@@ -288,16 +320,16 @@ self.__precacheManifest = [
     "url": "/fonts/KaTeX_Main-Regular.54e5ba96.woff"
   },
   {
-    "revision": "d081a42411cc6f54d404ee2de6e63a41",
-    "url": "/fonts/KaTeX_Math-BoldItalic.d081a424.ttf"
-  },
-  {
     "revision": "4c2a414abb99038cdc7d84d9711d06b2",
     "url": "/fonts/KaTeX_SansSerif-Bold.4c2a414a.ttf"
   },
   {
     "revision": "dbf31d0ed38be8d16e4386e27b18de9d",
     "url": "/fonts/KaTeX_Typewriter-Regular.dbf31d0e.ttf"
+  },
+  {
+    "revision": "d081a42411cc6f54d404ee2de6e63a41",
+    "url": "/fonts/KaTeX_Math-BoldItalic.d081a424.ttf"
   },
   {
     "revision": "a879e3a8b3c0431c9861995e7dfe937f",
@@ -308,22 +340,6 @@ self.__precacheManifest = [
     "url": "/fonts/KaTeX_Main-Italic.162d5753.ttf"
   },
   {
-    "revision": "5d2baf751ed4a4df0ca2dbba04058de8",
-    "url": "/fonts/KaTeX_Math-Italic.5d2baf75.ttf"
-  },
-  {
-    "revision": "e493181d2a1b6a1f47d1a8d5c28bca9f",
-    "url": "/fonts/KaTeX_Main-Bold.e493181d.ttf"
-  },
-  {
-    "revision": "dffd527d95ed83d58fc7a8f88e10b2fe",
-    "url": "/fonts/KaTeX_AMS-Regular.dffd527d.ttf"
-  },
-  {
-    "revision": "424335d97ef5548890673af99f4136b4",
-    "url": "/fonts/KaTeX_Main-Regular.424335d9.ttf"
-  },
-  {
     "revision": "d679d5be24d0962e64f6",
     "url": "/css/gitment.7f9b3023.css"
   },
@@ -332,15 +348,23 @@ self.__precacheManifest = [
     "url": "/css/gitalk.b6623aae.css"
   },
   {
-    "revision": "bb471d25e5346a05551e",
-    "url": "/css/chunk-vendors.186f5dab.css"
+    "revision": "b1f4d61d5e577fb5edad",
+    "url": "/css/chunk-bootstrap.6c57f554.css"
   },
   {
-    "revision": "1f2e06c63a3ecfbd765b",
-    "url": "/css/articles~home~pages.5ad3fcc6.css"
+    "revision": "2aa85a715bd3a0013a75",
+    "url": "/css/chunk-bootstrap-vue.3c36c74a.css"
   },
   {
-    "revision": "87986f0126ee7912b7c9",
-    "url": "/css/app.e0f5d487.css"
+    "revision": "d998ec8518b48cf0335b",
+    "url": "/css/articles~home~pages.c0eb9bab.css"
+  },
+  {
+    "revision": "7a02c20f2c62dcd8d90c",
+    "url": "/css/articles.2c079b61.css"
+  },
+  {
+    "revision": "0a384f8a19a2e907aeb9",
+    "url": "/css/app.efa6d461.css"
   }
 ];
