@@ -6,9 +6,9 @@
       <title><![CDATA[create-chardevice]]></title>
       <url>/articles/create-chardevice/</url>
       <content type="html"><![CDATA[<h2 id="linux字符设备驱动设计与实现"><a href="#linux字符设备驱动设计与实现" class="headerlink" title="linux字符设备驱动设计与实现"></a><code>linux</code>字符设备驱动设计与实现</h2><h3 id="TDLCD-Test-Device-For-Linux-Char-Drives-的设计"><a href="#TDLCD-Test-Device-For-Linux-Char-Drives-的设计" class="headerlink" title="TDLCD(Test Device For Linux Char Drives)的设计"></a><code>TDLCD(Test Device For Linux Char Drives)</code>的设计</h3><ul>
-<li>主要参考<code>Linux Device Drives</code>第三章-字符设备驱动程序中的<code>scull(Simple Chararter Utility for Loading Localities)</code></li>
-</ul>
-<h3 id="TDLCD实现步骤"><a href="#TDLCD实现步骤" class="headerlink" title="TDLCD实现步骤"></a><code>TDLCD</code>实现步骤</h3><ul>
+<li><p>主要参考<code>Linux Device Drives</code>第三章-字符设备驱动程序中的<code>scull(Simple Chararter Utility for Loading Localities)</code></p>
+<a id="more"></a>
+<h3 id="TDLCD实现步骤"><a href="#TDLCD实现步骤" class="headerlink" title="TDLCD实现步骤"></a><code>TDLCD</code>实现步骤</h3></li>
 <li><p>字符设备结构定义与初始化<br>定义设备结构体，并完成结构初始化函数 </p>
 </li>
 <li><p>申请字符设备号<br>动态申请主、次设备号</p>
@@ -722,11 +722,11 @@
         
         <tags>
             
+            <tag> Python </tag>
+            
             <tag> TensorFlow </tag>
             
             <tag> CNN </tag>
-            
-            <tag> Python </tag>
             
         </tags>
         
@@ -822,11 +822,11 @@
         
         <tags>
             
+            <tag> Python </tag>
+            
             <tag> TensorFlow </tag>
             
             <tag> CNN </tag>
-            
-            <tag> Python </tag>
             
             <tag> UESTC </tag>
             
@@ -1073,9 +1073,9 @@
         
         <tags>
             
-            <tag> Python </tag>
-            
             <tag> Script </tag>
+            
+            <tag> Python </tag>
             
         </tags>
         
