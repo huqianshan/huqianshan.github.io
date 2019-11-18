@@ -26,8 +26,7 @@
 </ul>
 </li>
 </ul>
-<h3 id="结构设计"><a href="#结构设计" class="headerlink" title="结构设计"></a>结构设计</h3><h4 id="模块部分"><a href="#模块部分" class="headerlink" title="模块部分"></a>模块部分</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h4 id="宏定义及头文件"><a href="#宏定义及头文件" class="headerlink" title="宏定义及头文件"></a>宏定义及头文件</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;linux/module.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;linux/init.h&gt;</span></span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">#define SIZE 0x1000</span></span><br></pre></td></tr></table></figure>
+<h3 id="结构设计"><a href="#结构设计" class="headerlink" title="结构设计"></a>结构设计</h3><h4 id="宏定义及头文件"><a href="#宏定义及头文件" class="headerlink" title="宏定义及头文件"></a>宏定义及头文件</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;linux/module.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;linux/init.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;linux/cdev.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;linux/fs.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;linux/slab.h&gt;   // kmalloc</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;linux/moduleparam.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;linux/uaccess.h&gt;  // copy_to_user</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> __exit __attribute__((__section__(<span class="meta-string">".exit.text"</span>)))</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> SIZE 0x1000</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TDLCD_MAJOR 230</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TDLCD_MINOR 0</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TDLCD_NAME <span class="meta-string">"tdlcd"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> CTRL_CLC 0x1</span></span><br></pre></td></tr></table></figure>
 <h4 id="字符设备结构设计"><a href="#字符设备结构设计" class="headerlink" title="字符设备结构设计"></a>字符设备结构设计</h4><p>为设备定义一个结构体，包含<code>cdev</code>,私有数据及锁等相关信息。</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">tdlcd_dev</span>&#123;</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">cdev</span> <span class="title">cdev</span>;</span></span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">char</span> mem[SIZE];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h4 id="file-operations结构设计"><a href="#file-operations结构设计" class="headerlink" title="file_operations结构设计"></a><code>file_operations</code>结构设计</h4><p>将自实现的驱动方法函数传递给结构</p>
@@ -49,8 +48,9 @@
 </ul>
 <h3 id="Makefile"><a href="#Makefile" class="headerlink" title="Makefile"></a><code>Makefile</code></h3><blockquote>
 </blockquote>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">KVERS = $(shell uname -r)</span><br><span class="line"></span><br><span class="line"># Kernel modules</span><br><span class="line">obj-m += globalmem.o</span><br><span class="line">obj-m += multi_globalmem.o</span><br><span class="line"></span><br><span class="line"># Specify flags <span class="keyword">for</span> the <span class="keyword">module</span> compilation.</span><br><span class="line">#EXTRA_CFLAGS=-g -O0</span><br><span class="line"></span><br><span class="line">build: kernel_modules</span><br><span class="line"></span><br><span class="line">kernel_modules:</span><br><span class="line">        make -C /lib/modules/$(KVERS)/build M=$(CURDIR) modules</span><br><span class="line"></span><br><span class="line">clean:</span><br><span class="line">        make -C /lib/modules/$(KVERS)/build M=$(CURDIR) clean</span><br></pre></td></tr></table></figure>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">KVERS = <span class="variable">$(<span class="built_in">shell</span> uname -r)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Kernel modules</span></span><br><span class="line">obj-m += tdlcd.o</span><br><span class="line"></span><br><span class="line"><span class="comment"># Specify flags for the module compilation.</span></span><br><span class="line"><span class="comment">#EXTRA_CFLAGS=-g -O0</span></span><br><span class="line"></span><br><span class="line"><span class="section">build: kernel_modules</span></span><br><span class="line"></span><br><span class="line"><span class="section">kernel_modules:</span></span><br><span class="line">	make -C /lib/modules/<span class="variable">$(KVERS)</span>/build M=<span class="variable">$(CURDIR)</span> modules</span><br><span class="line"></span><br><span class="line"><span class="section">clean:</span></span><br><span class="line">	make -C /lib/modules/<span class="variable">$(KVERS)</span>/build M=<span class="variable">$(CURDIR)</span> clean</span><br></pre></td></tr></table></figure>
 <h3 id="编译装载结果"><a href="#编译装载结果" class="headerlink" title="编译装载结果"></a>编译装载结果</h3><p><img src="https://i.loli.net/2019/11/15/FEtM5AmhCq1Nl8y.jpg" alt="04-char-devices-compiler-insert.jpg"></p>
+<p><img src="https://i.loli.net/2019/11/18/XTbrOVwendICNxv.jpg" alt="05-tdlcd-1.0.jpg"></p>
 ]]></content>
       
         
@@ -125,10 +125,26 @@
     </entry>
     
     <entry>
-      <title><![CDATA[build-hello-module-in-linux]]></title>
-      <url>/articles/build-hello-module-in-linux/</url>
-      <content type="html"><![CDATA[<h1 id="编译简单的linux内核模块"><a href="#编译简单的linux内核模块" class="headerlink" title="编译简单的linux内核模块"></a>编译简单的<code>linux</code>内核模块</h1><a id="more"></a>
-<h2 id="hello-c"><a href="#hello-c" class="headerlink" title="hello.c"></a><code>hello.c</code></h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * a simple kernel module: hello</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * Copyright (C) 2014 Barry Song  (baohua@kernel.org)</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * Licensed under GPLv2 or later.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;linux/init.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;linux/module.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">int</span> __<span class="function">init <span class="title">hello_init</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	printk(KERN_INFO <span class="string">"Hello World in hjl's linux\n"</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line">module_init(hello_init);</span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">void</span> __<span class="function"><span class="built_in">exit</span> <span class="title">hello_exit</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	printk(KERN_INFO <span class="string">"Hello World exit byebye\n "</span>);</span><br><span class="line">&#125;</span><br><span class="line">module_exit(hello_exit);</span><br><span class="line"></span><br><span class="line">MODULE_AUTHOR(<span class="string">"Hu Jinlei &lt;hjl2016060203025@std.uestc.edu.cn&gt;"</span>);</span><br><span class="line">MODULE_LICENSE(<span class="string">"GPL v2"</span>);</span><br><span class="line">MODULE_DESCRIPTION(<span class="string">"A simple Hello World Module"</span>);</span><br><span class="line">MODULE_ALIAS(<span class="string">"a simplest module"</span>);</span><br></pre></td></tr></table></figure>
+      <title><![CDATA[build-linux-kenel-in-qumu]]></title>
+      <url>/articles/build-linux-kenel-in-qumu/</url>
+      <content type="html"><![CDATA[<h2 id="在QEMU中运行编译的Linux内核"><a href="#在QEMU中运行编译的Linux内核" class="headerlink" title="在QEMU中运行编译的Linux内核"></a>在<code>QEMU</code>中运行编译的<code>Linux</code>内核</h2><a id="more"></a>
+<h3 id="内核编译脚本-build-sh"><a href="#内核编译脚本-build-sh" class="headerlink" title="内核编译脚本 build.sh"></a>内核编译脚本 <code>build.sh</code></h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">export ARCH=arm</span><br><span class="line">export EXTRADIR=$&#123;PWD&#125;/extra</span><br><span class="line">export CROSS_COMPILE=arm-linux-gnueabi-</span><br><span class="line">make LDDD3_vexpress_defconfig</span><br><span class="line">make zImage -j8</span><br><span class="line">make modules -j8</span><br><span class="line">make dtbs</span><br><span class="line">cp arch/arm/boot/zImage extra/</span><br><span class="line">cp arch/arm/boot/dts/*ca9.dtb	extra/</span><br><span class="line">cp .config extra/</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>默认的内核配置文件为 <code>LDDD3_vexpress_defconfig</code>.上述脚本会将自动编译好的<code>zImage,dtbs</code>复制到<code>extra</code>目录中</p>
+</li>
+<li><p><code>extra</code>目录下的vexpress是一张虚拟的SD卡，作为<em>根文件系统</em>的存放介质。它能以<code>loop</code>形式被挂载<code>mount</code></p>
+<blockquote>
+<p><code>sudo mount -o loop,offset=$((2048*512)) extra/vexpress.img extra/img</code></p>
+</blockquote>
+</li>
+</ul>
+<h3 id="编译模块的脚本-module-sh"><a href="#编译模块的脚本-module-sh" class="headerlink" title="编译模块的脚本 module.sh"></a>编译模块的脚本 <code>module.sh</code></h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">make ARCH=arm CROSS_COMPILE=arm-linux-gnueabi- modules</span><br><span class="line">sudo mount -o loop,offset=$((2048*512)) extra/vexpress.img extra/img</span><br><span class="line">sudo make ARCH=arm CROSS_COMPILE=arm-linux-gnueabi- modules_install INSTALL_MOD_PATH=extra/img</span><br><span class="line">sudo umount extra/img</span><br></pre></td></tr></table></figure>
+<ul>
+<li>它会自动编译内核模块并安装到<code>vexprees.img</code></li>
+</ul>
+<h3 id="启动带LCD的ARM-Linux内-核"><a href="#启动带LCD的ARM-Linux内-核" class="headerlink" title="启动带LCD的ARM Linux内 核"></a>启动带<code>LCD</code>的<code>ARM Linux</code>内 核</h3><p><img src="https://i.loli.net/2019/11/13/RV1HtyCN2Y3OPsW.jpg" alt="01-arm-linux-qemu-lcd.jpg"></p>
+<h2 id="编译简单的linux内核模块"><a href="#编译简单的linux内核模块" class="headerlink" title="编译简单的linux内核模块"></a>编译简单的<code>linux</code>内核模块</h2><!--more-->
+<h3 id="hello-c"><a href="#hello-c" class="headerlink" title="hello.c"></a><code>hello.c</code></h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * a simple kernel module: hello</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * Copyright (C) 2014 Barry Song  (baohua@kernel.org)</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * Licensed under GPLv2 or later.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;linux/init.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;linux/module.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">int</span> __<span class="function">init <span class="title">hello_init</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	printk(KERN_INFO <span class="string">"Hello World in hjl's linux\n"</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line">module_init(hello_init);</span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">void</span> __<span class="function"><span class="built_in">exit</span> <span class="title">hello_exit</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	printk(KERN_INFO <span class="string">"Hello World exit byebye\n "</span>);</span><br><span class="line">&#125;</span><br><span class="line">module_exit(hello_exit);</span><br><span class="line"></span><br><span class="line">MODULE_AUTHOR(<span class="string">"Hu Jinlei &lt;hjl2016060203025@std.uestc.edu.cn&gt;"</span>);</span><br><span class="line">MODULE_LICENSE(<span class="string">"GPL v2"</span>);</span><br><span class="line">MODULE_DESCRIPTION(<span class="string">"A simple Hello World Module"</span>);</span><br><span class="line">MODULE_ALIAS(<span class="string">"a simplest module"</span>);</span><br></pre></td></tr></table></figure>
 <ol>
 <li>编译</li>
 <li><code>insmod ./hello.ko</code>加载</li>
@@ -136,24 +152,8 @@
 <li><code>lsmod</code>显示加载的模块</li>
 </ol>
 <p><img src="https://i.loli.net/2019/11/13/1zoMHxPZeOBiFSr.jpg" alt="03-arm-linux-module.jpg"></p>
-]]></content>
-      
-        
-        <tags>
-            
-            <tag> linux </tag>
-            
-            <tag> module </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[config-kernel-arm]]></title>
-      <url>/articles/config-kernel-arm/</url>
-      <content type="html"><![CDATA[<h1 id="linux-内核的配置"><a href="#linux-内核的配置" class="headerlink" title="linux 内核的配置"></a><code>linux</code> 内核的配置</h1><a id="more"></a>
-<h2 id="四种打开方式"><a href="#四种打开方式" class="headerlink" title="四种打开方式"></a>四种打开方式</h2><ul>
+<h2 id="linux-内核的配置"><a href="#linux-内核的配置" class="headerlink" title="linux 内核的配置"></a><code>linux</code> 内核的配置</h2><!--more-->
+<h3 id="四种打开方式"><a href="#四种打开方式" class="headerlink" title="四种打开方式"></a>四种打开方式</h3><ul>
 <li><p><code>make config</code></p>
 </li>
 <li><p><code>make menuconfig</code></p>
@@ -165,38 +165,6 @@
 </ul>
 <p><code>menuconfig</code> 如下所示</p>
 <p><img src="https://i.loli.net/2019/11/13/RV1HtyCN2Y3OPsW.jpg" alt="01-arm-linux-qemu-lcd.jpg"></p>
-]]></content>
-      
-        
-        <tags>
-            
-            <tag> linux </tag>
-            
-            <tag> drivers </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[build-linux-kenel-in-qumu]]></title>
-      <url>/articles/build-linux-kenel-in-qumu/</url>
-      <content type="html"><![CDATA[<h1 id="在QEMU中运行编译的Linux内核"><a href="#在QEMU中运行编译的Linux内核" class="headerlink" title="在QEMU中运行编译的Linux内核"></a>在<code>QEMU</code>中运行编译的<code>Linux</code>内核</h1><a id="more"></a>
-<h2 id="内核编译脚本-build-sh"><a href="#内核编译脚本-build-sh" class="headerlink" title="内核编译脚本 build.sh"></a>内核编译脚本 <code>build.sh</code></h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">export ARCH=arm</span><br><span class="line">export EXTRADIR=$&#123;PWD&#125;/extra</span><br><span class="line">export CROSS_COMPILE=arm-linux-gnueabi-</span><br><span class="line">make LDDD3_vexpress_defconfig</span><br><span class="line">make zImage -j8</span><br><span class="line">make modules -j8</span><br><span class="line">make dtbs</span><br><span class="line">cp arch/arm/boot/zImage extra/</span><br><span class="line">cp arch/arm/boot/dts/*ca9.dtb	extra/</span><br><span class="line">cp .config extra/</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>默认的内核配置文件为 <code>LDDD3_vexpress_defconfig</code>.上述脚本会将自动编译好的<code>zImage,dtbs</code>复制到<code>extra</code>目录中</p>
-</li>
-<li><p><code>extra</code>目录下的vexpress是一张虚拟的SD卡，作为<em>根文件系统</em>的存放介质。它能以<code>loop</code>形式被挂载<code>mount</code></p>
-<blockquote>
-<p><code>sudo mount -o loop,offset=$((2048*512)) extra/vexpress.img extra/img</code></p>
-</blockquote>
-</li>
-</ul>
-<h2 id="编译模块的脚本-module-sh"><a href="#编译模块的脚本-module-sh" class="headerlink" title="编译模块的脚本 module.sh"></a>编译模块的脚本 <code>module.sh</code></h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">make ARCH=arm CROSS_COMPILE=arm-linux-gnueabi- modules</span><br><span class="line">sudo mount -o loop,offset=$((2048*512)) extra/vexpress.img extra/img</span><br><span class="line">sudo make ARCH=arm CROSS_COMPILE=arm-linux-gnueabi- modules_install INSTALL_MOD_PATH=extra/img</span><br><span class="line">sudo umount extra/img</span><br></pre></td></tr></table></figure>
-<ul>
-<li>它会自动编译内核模块并安装到<code>vexprees.img</code></li>
-</ul>
-<h2 id="启动带LCD的ARM-Linux内-核"><a href="#启动带LCD的ARM-Linux内-核" class="headerlink" title="启动带LCD的ARM Linux内 核"></a>启动带<code>LCD</code>的<code>ARM Linux</code>内 核</h2><p><img src="https://i.loli.net/2019/11/13/RV1HtyCN2Y3OPsW.jpg" alt="01-arm-linux-qemu-lcd.jpg"></p>
 ]]></content>
       
         
@@ -929,6 +897,24 @@
     </entry>
     
     <entry>
+      <title><![CDATA[Hello World]]></title>
+      <url>/articles/hello-world/</url>
+      <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><a id="more"></a>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+]]></content>
+      
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[薅资本主义的羊毛，利用GitHub搭建一个hexo博客]]></title>
       <url>/articles/the-First-MarkDown-File/</url>
       <content type="html"><![CDATA[<hr>
@@ -982,24 +968,6 @@
             <tag> GitHub </tag>
             
         </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[Hello World]]></title>
-      <url>/articles/hello-world/</url>
-      <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><a id="more"></a>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-]]></content>
-      
         
     </entry>
     
