@@ -5,7 +5,8 @@
     <entry>
       <title><![CDATA[char-device-update]]></title>
       <url>/articles/char-device-update/</url>
-      <content type="html"><![CDATA[<h2 id="字符设备的改进"><a href="#字符设备的改进" class="headerlink" title="字符设备的改进"></a>字符设备的改进</h2><h3 id="增加并发-解决竞态"><a href="#增加并发-解决竞态" class="headerlink" title="增加并发 解决竞态"></a>增加并发 解决竞态</h3><h4 id="可用技术方案"><a href="#可用技术方案" class="headerlink" title="可用技术方案"></a>可用技术方案</h4><ul>
+      <content type="html"><![CDATA[<h2 id="字符设备的改进"><a href="#字符设备的改进" class="headerlink" title="字符设备的改进"></a>字符设备的改进</h2><p>[TOC]<br><a id="more"></a></p>
+<h3 id="增加并发-解决竞态"><a href="#增加并发-解决竞态" class="headerlink" title="增加并发 解决竞态"></a>增加并发 解决竞态</h3><h4 id="可用技术方案"><a href="#可用技术方案" class="headerlink" title="可用技术方案"></a>可用技术方案</h4><ul>
 <li><p>屏障</p>
 </li>
 <li><p>中断屏蔽</p>
