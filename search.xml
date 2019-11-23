@@ -5,7 +5,7 @@
     <entry>
       <title><![CDATA[char-device-update]]></title>
       <url>/articles/char-device-update/</url>
-      <content type="html"><![CDATA[<h2 id="字符设备的改进"><a href="#字符设备的改进" class="headerlink" title="字符设备的改进"></a>字符设备的改进</h2><p>[TOC]<br><a id="more"></a></p>
+      <content type="html"><![CDATA[<h2 id="字符设备的改进"><a href="#字符设备的改进" class="headerlink" title="字符设备的改进"></a>字符设备的改进</h2><a id="more"></a>
 <h3 id="增加并发-解决竞态"><a href="#增加并发-解决竞态" class="headerlink" title="增加并发 解决竞态"></a>增加并发 解决竞态</h3><h4 id="可用技术方案"><a href="#可用技术方案" class="headerlink" title="可用技术方案"></a>可用技术方案</h4><ul>
 <li><p>屏障</p>
 </li>
@@ -88,7 +88,35 @@
 <ul>
 <li><a href="https://github.com/huqianshan/OperatingSystemAndCompiler/blob/master/drivers/tdlcd/tdlcd_fifo_epoll.c" target="_blank" rel="noopener">epoll 测试文件</a></li>
 </ul>
-<h3 id="异步通知及异步IO"><a href="#异步通知及异步IO" class="headerlink" title="异步通知及异步IO"></a>异步通知及异步<code>IO</code></h3><h3 id="定时器"><a href="#定时器" class="headerlink" title="定时器"></a>定时器</h3><h3 id="内存映射"><a href="#内存映射" class="headerlink" title="内存映射"></a>内存映射</h3>]]></content>
+<h3 id="异步通知及异步IO"><a href="#异步通知及异步IO" class="headerlink" title="异步通知及异步IO"></a>异步通知及异步<code>IO</code></h3><p>异步通知:<code>信号驱动的异步I/O</code></p>
+<ul>
+<li><p>通过<code>F_SETDIWB</code>命令控制设备文件的拥有者</p>
+</li>
+<li><p>通过<code>F_SETFL</code>命令设置设备文件以支持<code>FASYNC</code></p>
+</li>
+<li><p>通过<code>signal</code>函数连接信号和信号处理函数</p>
+</li>
+</ul>
+<p><img src="https://i.loli.net/2019/11/22/Wdsv39to4IgOTGr.jpg" alt="07-tdlcd-async.jpg"></p>
+<p><a href="https://github.com/huqianshan/OperatingSystemAndCompiler/commit/01a234b19a7e3167bc738e238a884907d49ca228?diff=split" target="_blank" rel="noopener">git diff for async</a></p>
+<h3 id="异步I-O"><a href="#异步I-O" class="headerlink" title="异步I/O"></a>异步<code>I/O</code></h3><p><code>Linux</code>常见情况为同步<code>I/O</code>,即发出请求之后，应用程序便会阻塞直到请求得到响应。且在等待时不需要占用<code>CPU</code></p>
+<blockquote>
+<p>爬虫是不是这样的例子？</p>
+</blockquote>
+<p>异步<code>I/O</code>则要么过一段时间来查询之前<code>I/O</code>请求完成情况，要么<code>I/O</code>请求完成了会自动调用完成绑定的<strong>回调函数</strong>。</p>
+<p>实际上阻塞<code>I/O</code>是同步的。</p>
+<p><code>Linux 异步I/O</code>在内核中得到了实现。</p>
+<blockquote>
+<p>对于块设备，<code>AIO</code>可以一次性发出大量读写调用，然后通过<strong>通用块层</strong>的调度来实现更好的吸能。用户程序也可以减少过多的同步负载，在业务逻辑层更灵活的进行并发控制和负载均衡。<br>由于相较于用户空间的<code>glibc</code>多线程同步实现，减少了线程的负载和潜在的上下文切换。<br><code>sudo apt-get install libaio-dev</code></p>
+</blockquote>
+<h3 id="中断与定时器"><a href="#中断与定时器" class="headerlink" title="中断与定时器"></a>中断与定时器</h3><p>为了在中断执行时间尽量短和中断处理需完成的工作量大之间找到平衡，<code>Linux</code>将中断处理程序分为两个半步：<code>Top Half  Bottom Half</code>.</p>
+<p>顶半部通常只完成读取状态，登记等工作，且一般不可被中断。</p>
+<p>底半部机制主要有<code>tasklet,工作队列，软中断，线程化irq</code></p>
+<ul>
+<li style="list-style: none"><input type="checkbox"> 机制未了解</li>
+<li style="list-style: none"><input type="checkbox" checked> 待做事项测试</li>
+</ul>
+<h4 id="一个基于软中断的秒设备"><a href="#一个基于软中断的秒设备" class="headerlink" title="一个基于软中断的秒设备"></a><a href="https://github.com/huqianshan/OperatingSystemAndCompiler/blob/master/drivers/second/second.c" target="_blank" rel="noopener">一个基于软中断的秒设备</a></h4><h3 id="内存映射"><a href="#内存映射" class="headerlink" title="内存映射"></a>内存映射</h3>]]></content>
       
         
         <tags>
