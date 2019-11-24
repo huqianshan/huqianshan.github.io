@@ -3,6 +3,87 @@
   
     
     <entry>
+      <title><![CDATA[block-devices]]></title>
+      <url>/articles/block-devices/</url>
+      <content type="html"><![CDATA[<h2 id="块驱动设备"><a href="#块驱动设备" class="headerlink" title="块驱动设备"></a>块驱动设备</h2><h3 id="与字符驱动设备相比"><a href="#与字符驱动设备相比" class="headerlink" title="与字符驱动设备相比"></a>与字符驱动设备相比</h3><ul>
+<li><p>性能要求更高</p>
+</li>
+<li><p>请求处理更加复杂（调度策略）</p>
+</li>
+<li><p>存在着缓冲区，且以固定大小读写，支持随机读写</p>
+</li>
+</ul>
+<h3 id="访问存储介质的架构"><a href="#访问存储介质的架构" class="headerlink" title="访问存储介质的架构"></a>访问存储介质的架构</h3><ul>
+<li><p>虚拟文件系统</p>
+</li>
+<li><p>磁盘文件系统 原始块设备</p>
+</li>
+<li><p>块<code>I/O</code>调度层</p>
+</li>
+<li><p>块设备驱动</p>
+</li>
+</ul>
+<h3 id="块设备驱动结构"><a href="#块设备驱动结构" class="headerlink" title="块设备驱动结构"></a>块设备驱动结构</h3><h4 id="block-device-operation结构体"><a href="#block-device-operation结构体" class="headerlink" title="block_device_operation结构体"></a><code>block_device_operation</code>结构体</h4><h4 id="gendisk结构体"><a href="#gendisk结构体" class="headerlink" title="gendisk结构体"></a><code>gendisk</code>结构体</h4><h4 id="bio、request、request-queue"><a href="#bio、request、request-queue" class="headerlink" title="bio、request、request_queue"></a><code>bio、request、request_queue</code></h4><p>一个<code>bio</code>结构体实例对应上层对块的<code>I/O</code>请求。内部包含了开始扇区，数据方向，数据放入的页等相关信息。</p>
+<p><code>bio_vec</code>用来描述与<code>bio</code>请求对应的所有的内存。向量描述为<code>[page,offset,len]</code>,即片段</p>
+<p>一个请求<code>request</code>是多个<code>bio</code>调整优化之后的合并操作。</p>
+<h4 id="I-O调度器"><a href="#I-O调度器" class="headerlink" title="I/O调度器"></a><code>I/O</code>调度器</h4><ul>
+<li><p><code>Noop I/O</code>调度器，即简单的<code>FIFO</code>队列，进行基本的合并，适合<code>Flash</code>的存储器。</p>
+</li>
+<li><p><code>Anticipatory I/O</code>调度器，试图推迟满足请求，以完成对请求的排序。对读临近区的请求在延时的几个微秒中一并执行。已被删除</p>
+</li>
+<li><p><code>Deadline I/O</code>调度器，尽可能的把每次请求的延迟降至最低。适合读取比较多的场合。</p>
+</li>
+<li><p><code>CFQ I/O</code>为所有任务分配均匀的<code>I/O</code>带宽。</p>
+</li>
+</ul>
+<h3 id="测试步骤"><a href="#测试步骤" class="headerlink" title="测试步骤"></a>测试步骤</h3><blockquote>
+<p>接下来即可进行测试</p>
+<ul>
+<li><code>ll /dev | grep sbull</code></li>
+<li>分区：<code>fdisk /dev/sbull</code></li>
+<li>格式化，指定文件系统：<code>mkfs.ext4 /dev/sbull</code></li>
+<li>挂载：<code>mount /dev/sbull /mnt</code></li>
+<li>查看磁盘物理分区信息：<code>cat /proc/partitions</code></li>
+<li>查看磁盘分区占用情况：<code>df -ahT</code></li>
+</ul>
+</blockquote>
+<h3 id="API的更改"><a href="#API的更改" class="headerlink" title="API的更改"></a><code>API</code>的更改</h3><p>由于内核代码的不断修改，许多函数的接口都已经发生变化。编译起来报错不断。一个个慢慢goolge修改。参考了以下资料链接。</p>
+<ul>
+<li><a href="https://lwn.net/Articles/333620/" target="_blank" rel="noopener"><code>2.6</code>内核的更改</a></li>
+<li><a href="https://github.com/duxing2007/ldd3-examples-3.x/tree/origin/linux-4.9.y" target="_blank" rel="noopener"><code>ldd</code>的<code>git</code>仓库</a></li>
+<li><a href="https://blog.csdn.net/liuqiang55888/article/details/102573174" target="_blank" rel="noopener">关于<code>sbull</code>在2.6内核版本下的测试</a></li>
+<li><a href="http://www.embeddedlinux.org.cn/ldd3/" target="_blank" rel="noopener"><code>ldd</code>在线中文版本</a></li>
+</ul>
+<h3 id="bio-kmap-atomic-被删除"><a href="#bio-kmap-atomic-被删除" class="headerlink" title="__bio_kmap_atomic 被删除"></a><code>__bio_kmap_atomic</code> 被删除</h3><ul>
+<li><a href="https://source.puri.sm/Librem5/linux-nitrogen6/commit/d004a5e7d4dd6335ce6e2044af42f5e0fbebb51d" target="_blank" rel="noopener"><code>bio_kmap_atomic</code></a></li>
+</ul>
+<blockquote>
+<p>This helper doesn’t buy us much over calling kmap_atomic directly.<br>In fact in the only caller it does a bit of useless work as the<br>caller already has the bvec at hand, and said caller would even<br>buggy for a multi-segment bio due to the use of this helper. </p>
+<p>So just remove it.<br>Signed-off-by: default avatarChristoph Hellwig <a href="&#x6d;&#x61;&#x69;&#x6c;&#116;&#111;&#58;&#104;&#99;&#x68;&#64;&#108;&#115;&#x74;&#46;&#100;&#x65;">&#104;&#99;&#x68;&#64;&#108;&#115;&#x74;&#46;&#100;&#x65;</a><br>Signed-off-by: default avatarJens Axboe <a href="&#109;&#x61;&#105;&#108;&#116;&#111;&#x3a;&#x61;&#120;&#98;&#x6f;&#101;&#x40;&#x6b;&#x65;&#114;&#110;&#x65;&#108;&#x2e;&#100;&#107;">&#x61;&#120;&#98;&#x6f;&#101;&#x40;&#x6b;&#x65;&#114;&#110;&#x65;&#108;&#x2e;&#100;&#107;</a></p>
+</blockquote>
+<h3 id="struct-request中-cmd-type被删除"><a href="#struct-request中-cmd-type被删除" class="headerlink" title="struct request中 cmd_type被删除"></a><code>struct request</code>中 <code>cmd_type</code>被删除</h3><ul>
+<li><a href="https://lkml.org/lkml/2017/1/31/562" target="_blank" rel="noopener">链接及示例</a></li>
+</ul>
+<blockquote>
+<p>From    Christoph Hellwig &lt;&gt;<br>  Subject    [PATCH 08/10] block: introduce blk_rq_is_passthrough<br>  Date    Tue, 31 Jan 2017 16:57:29 +0100</p>
+<p>This can be used to check for fs vs non-fs requests and basically<br>removes all knowledge of BLOCK_PC specific from the block layer,<br>as well as preparing for removing the cmd_type field in struct request.</p>
+<p>Signed-off-by: Christoph Hellwig <a href="&#x6d;&#x61;&#105;&#108;&#116;&#111;&#58;&#104;&#99;&#x68;&#x40;&#108;&#x73;&#116;&#46;&#x64;&#101;">&#104;&#99;&#x68;&#x40;&#108;&#x73;&#116;&#46;&#x64;&#101;</a></p>
+</blockquote>
+<h3 id="end-bio的参数变为一个"><a href="#end-bio的参数变为一个" class="headerlink" title="end_bio的参数变为一个"></a><a href="https://www.kernel.org/doc/htmldocs/filesystems/API-bio-endio.html" target="_blank" rel="noopener"><code>end_bio</code>的参数变为一个</a></h3><h3 id="构造函数必须强制类型转换"><a href="#构造函数必须强制类型转换" class="headerlink" title="构造函数必须强制类型转换"></a><a href="https://www.kernel.org/doc/htmldocs/kernel-api/API-blk-queue-make-request.html" target="_blank" rel="noopener">构造函数必须强制类型转换</a></h3><h3 id="样例块驱动代码"><a href="#样例块驱动代码" class="headerlink" title="样例块驱动代码"></a><code>样例块驱动代码</code></h3><ul>
+<li><a href="https://github.com/huqianshan/OperatingSystemAndCompiler/commit/ed07917c8e8902f8d1721dd93ce1513fb87e3b27" target="_blank" rel="noopener"><code>Test Device For Linux Block Drivers</code></a></li>
+</ul>
+]]></content>
+      
+        
+        <tags>
+            
+            <tag> drivers </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[char-device-update]]></title>
       <url>/articles/char-device-update/</url>
       <content type="html"><![CDATA[<h2 id="字符设备的改进"><a href="#字符设备的改进" class="headerlink" title="字符设备的改进"></a>字符设备的改进</h2><a id="more"></a>
@@ -121,7 +202,7 @@
         
         <tags>
             
-            <tag> devices </tag>
+            <tag> drivers </tag>
             
         </tags>
         
@@ -181,9 +262,9 @@
         
         <tags>
             
-            <tag> linux </tag>
-            
             <tag> drivers </tag>
+            
+            <tag> linux </tag>
             
         </tags>
         
@@ -295,9 +376,9 @@
         
         <tags>
             
-            <tag> linux </tag>
-            
             <tag> drivers </tag>
+            
+            <tag> linux </tag>
             
         </tags>
         
@@ -327,9 +408,9 @@
         
         <tags>
             
-            <tag> linux </tag>
-            
             <tag> drivers </tag>
+            
+            <tag> linux </tag>
             
         </tags>
         
