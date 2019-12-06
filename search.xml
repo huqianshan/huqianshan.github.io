@@ -166,7 +166,32 @@
     <entry>
       <title><![CDATA[char-device-update]]></title>
       <url>/articles/char-device-update/</url>
-      <content type="html"><![CDATA[<h2 id="字符设备的改进"><a href="#字符设备的改进" class="headerlink" title="字符设备的改进"></a>字符设备的改进</h2><a id="more"></a>
+      <content type="html"><![CDATA[<!-- TOC -->
+<ul>
+<li><a href="#字符设备的改进">字符设备的改进</a><ul>
+<li><a href="#增加并发-解决竞态">增加并发 解决竞态</a><ul>
+<li><a href="#可用技术方案">可用技术方案</a></li>
+<li><a href="#情况分析">情况分析</a></li>
+</ul>
+</li>
+<li><a href="#阻塞操作-wait-queue">阻塞操作 <code>wait-queue</code></a></li>
+<li><a href="#轮询操作-selectpollepoll">轮询操作 <code>select,poll,epoll</code></a><ul>
+<li><a href="#应用程序中的select函数">应用程序中的<code>select</code>函数</a></li>
+<li><a href="#poll函数"><code>poll</code>函数</a></li>
+</ul>
+</li>
+<li><a href="#异步通知及异步io">异步通知及异步<code>IO</code></a></li>
+<li><a href="#异步io">异步<code>I/O</code></a></li>
+<li><a href="#中断与定时器">中断与定时器</a><ul>
+<li><a href="#一个基于软中断的秒设备httpsgithubcomhuqianshanoperatingsystemandcompilerblobmasterdriverssecondsecondc"><a href="https://github.com/huqianshan/OperatingSystemAndCompiler/blob/master/drivers/second/second.c" target="_blank" rel="noopener">一个基于软中断的秒设备</a></a></li>
+</ul>
+</li>
+<li><a href="#内存映射">内存映射</a></li>
+</ul>
+</li>
+</ul>
+<!-- /TOC -->
+<h2 id="字符设备的改进"><a href="#字符设备的改进" class="headerlink" title="字符设备的改进"></a>字符设备的改进</h2><a id="more"></a>
 <h3 id="增加并发-解决竞态"><a href="#增加并发-解决竞态" class="headerlink" title="增加并发 解决竞态"></a>增加并发 解决竞态</h3><h4 id="可用技术方案"><a href="#可用技术方案" class="headerlink" title="可用技术方案"></a>可用技术方案</h4><ul>
 <li><p>屏障</p>
 </li>
@@ -291,7 +316,26 @@
     <entry>
       <title><![CDATA[create-chardevice]]></title>
       <url>/articles/create-chardevice/</url>
-      <content type="html"><![CDATA[<h2 id="linux字符设备驱动设计与实现"><a href="#linux字符设备驱动设计与实现" class="headerlink" title="linux字符设备驱动设计与实现"></a><code>linux</code>字符设备驱动设计与实现</h2><h3 id="TDLCD-Test-Device-For-Linux-Char-Drives-的设计"><a href="#TDLCD-Test-Device-For-Linux-Char-Drives-的设计" class="headerlink" title="TDLCD(Test Device For Linux Char Drives)的设计"></a><code>TDLCD(Test Device For Linux Char Drives)</code>的设计</h3><ul>
+      <content type="html"><![CDATA[<!-- TOC -->
+<ul>
+<li><a href="#linux字符设备驱动设计与实现"><code>linux</code>字符设备驱动设计与实现</a><ul>
+<li><a href="#tdlcdtest-device-for-linux-char-drives的设计"><code>TDLCD(Test Device For Linux Char Drives)</code>的设计</a></li>
+<li><a href="#tdlcd实现步骤"><code>TDLCD</code>实现步骤</a></li>
+<li><a href="#结构设计">结构设计</a><ul>
+<li><a href="#模块部分">模块部分</a></li>
+<li><a href="#宏定义及头文件">宏定义及头文件</a></li>
+<li><a href="#字符设备结构设计">字符设备结构设计</a></li>
+<li><a href="#file_operations结构设计"><code>file_operations</code>结构设计</a></li>
+<li><a href="#字符设备模块的加载与卸载函数">字符设备模块的加载与卸载函数</a></li>
+</ul>
+</li>
+<li><a href="#makefile"><code>Makefile</code></a></li>
+<li><a href="#编译装载结果">编译装载结果</a></li>
+</ul>
+</li>
+</ul>
+<!-- /TOC -->
+<h2 id="linux字符设备驱动设计与实现"><a href="#linux字符设备驱动设计与实现" class="headerlink" title="linux字符设备驱动设计与实现"></a><code>linux</code>字符设备驱动设计与实现</h2><h3 id="TDLCD-Test-Device-For-Linux-Char-Drives-的设计"><a href="#TDLCD-Test-Device-For-Linux-Char-Drives-的设计" class="headerlink" title="TDLCD(Test Device For Linux Char Drives)的设计"></a><code>TDLCD(Test Device For Linux Char Drives)</code>的设计</h3><ul>
 <li><p>主要参考<code>Linux Device Drives</code>第三章-字符设备驱动程序中的<code>scull(Simple Chararter Utility for Loading Localities)</code></p>
 <a id="more"></a>
 <h3 id="TDLCD实现步骤"><a href="#TDLCD实现步骤" class="headerlink" title="TDLCD实现步骤"></a><code>TDLCD</code>实现步骤</h3></li>
@@ -353,7 +397,18 @@
     <entry>
       <title><![CDATA[copy-virtual-ubuntu]]></title>
       <url>/articles/copy-virtual-ubuntu/</url>
-      <content type="html"><![CDATA[<h1 id="解决复制的虚拟机无法识别网卡eth0"><a href="#解决复制的虚拟机无法识别网卡eth0" class="headerlink" title="解决复制的虚拟机无法识别网卡eth0"></a>解决复制的虚拟机无法识别网卡<code>eth0</code></h1><h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>最近在学习Linux程序设计及驱动相关知识，买了宝华老师的书，但是在把baohua_linux复制到本地之后，从虚拟机进入ifconfig，只有lo网络，没有其他网卡，虚拟机的网络适配器设置为NAT模式。<br><a id="more"></a></p>
+      <content type="html"><![CDATA[<!-- TOC -->
+<ul>
+<li><a href="#解决复制的虚拟机无法识别网卡eth0">解决复制的虚拟机无法识别网卡<code>eth0</code></a><ul>
+<li><a href="#背景">背景</a></li>
+<li><a href="#原因">原因</a></li>
+<li><a href="#解决办法">解决办法</a></li>
+<li><a href="#参考链接">参考链接</a></li>
+</ul>
+</li>
+</ul>
+<!-- /TOC -->
+<h1 id="解决复制的虚拟机无法识别网卡eth0"><a href="#解决复制的虚拟机无法识别网卡eth0" class="headerlink" title="解决复制的虚拟机无法识别网卡eth0"></a>解决复制的虚拟机无法识别网卡<code>eth0</code></h1><h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>最近在学习Linux程序设计及驱动相关知识，买了宝华老师的书，但是在把baohua_linux复制到本地之后，从虚拟机进入ifconfig，只有lo网络，没有其他网卡，虚拟机的网络适配器设置为NAT模式。<br><a id="more"></a></p>
 <h2 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h2><ol>
 <li><p><code>UUID</code>为机器标识码，保证对同一时空的所有机器唯一。虚拟机同样会有一个UUID，而且这个UUID是唯一的。</p>
 </li>
@@ -499,7 +554,26 @@
     <entry>
       <title><![CDATA[funds]]></title>
       <url>/articles/funds/</url>
-      <content type="html"><![CDATA[<h1 id="从零开始的基金之路"><a href="#从零开始的基金之路" class="headerlink" title="从零开始的基金之路"></a>从零开始的基金之路</h1><p>人生有哲学，而哲学是指导思考的元科学。同样的，基金的操作也<br>应该有思考反思遵循的哲学。</p>
+      <content type="html"><![CDATA[<!-- TOC -->
+<ul>
+<li><a href="#从零开始的基金之路">从零开始的基金之路</a><ul>
+<li><a href="#根本准则--追求持有成本尽可能的低于现有价格">根本准则 ： <code>追求持有成本尽可能的低于现有价格</code></a><ul>
+<li><a href="#此路缘何">此路缘何</a></li>
+<li><a href="#选择何路">选择何路</a></li>
+<li><a href="#路向何方">路向何方</a></li>
+<li><a href="#路的开始">路的开始</a><ul>
+<li><a href="#原则">原则</a></li>
+<li><a href="#定投为先">定投为先</a></li>
+<li><a href="#参考路标">参考路标</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<!-- /TOC -->
+<h1 id="从零开始的基金之路"><a href="#从零开始的基金之路" class="headerlink" title="从零开始的基金之路"></a>从零开始的基金之路</h1><p>人生有哲学，而哲学是指导思考的元科学。同样的，基金的操作也<br>应该有思考反思遵循的哲学。</p>
 <h2 id="根本准则-：-追求持有成本尽可能的低于现有价格"><a href="#根本准则-：-追求持有成本尽可能的低于现有价格" class="headerlink" title="根本准则 ： 追求持有成本尽可能的低于现有价格"></a>根本准则 ： <code>追求持有成本尽可能的低于现有价格</code></h2><p>若总的持有价格小于当前，且这个差值的累积之和，那么就可以使得<br>基金增持。</p>
 <a id="more"></a>
 <h3 id="此路缘何"><a href="#此路缘何" class="headerlink" title="此路缘何"></a>此路缘何</h3><ol>
@@ -545,7 +619,6 @@
       <title><![CDATA[auto-google-translation]]></title>
       <url>/articles/auto-google-translation/</url>
       <content type="html"><![CDATA[<h1 id="字幕也疯狂"><a href="#字幕也疯狂" class="headerlink" title="字幕也疯狂"></a>字幕也疯狂</h1><p><code>观曲千首 不如操琴一曲</code> 试着做一个勤劳的字幕组小员工~</p>
-<p><img src="https://img1.doubanio.com/view/subject/l/public/s28051018.jpg" width="100" height="100%"></p>
 <a id="more"></a>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pathlib</span><br><span class="line"><span class="keyword">import</span> gevent</span><br><span class="line"><span class="keyword">from</span> gevent.pool <span class="keyword">import</span> Pool</span><br><span class="line"><span class="keyword">from</span> googletrans <span class="keyword">import</span> Translator</span><br><span class="line"></span><br><span class="line"><span class="keyword">global</span> sou_file</span><br><span class="line"><span class="keyword">global</span> des_file</span><br><span class="line">count = <span class="number">0</span></span><br><span class="line"><span class="keyword">global</span> translator</span><br><span class="line">translator = Translator(service_urls=[<span class="string">'translate.google.cn'</span>])</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">tran_sub</span><span class="params">(line)</span>:</span></span><br><span class="line">    <span class="keyword">global</span> des_file</span><br><span class="line">    <span class="keyword">global</span> count</span><br><span class="line">    <span class="keyword">global</span> translator</span><br><span class="line">    count += <span class="number">1</span></span><br><span class="line">    print(<span class="string">"count,%d"</span> % count)</span><br><span class="line">    line = line.decode(<span class="string">'utf-8'</span>)</span><br><span class="line">    <span class="keyword">if</span> line.startswith(<span class="string">'Dialogue'</span>) <span class="keyword">and</span> <span class="string">'student speaking'</span> <span class="keyword">not</span> <span class="keyword">in</span> line:</span><br><span class="line">        des_file.write(line.encode(<span class="string">'utf-8'</span>))</span><br><span class="line">        head_str,english_str = tuple(line.rsplit(<span class="string">',,'</span>, <span class="number">1</span>))</span><br><span class="line">        chinese_str = translator.translate(english_str, dest=<span class="string">'zh-CN'</span>).text</span><br><span class="line">        print(chinese_str)</span><br><span class="line">        c_line = <span class="string">',,'</span>.join([head_str,chinese_str+<span class="string">'\n'</span>]).replace(<span class="string">'English'</span>, <span class="string">'Chinese'</span>).replace(<span class="string">'您'</span>, <span class="string">'你'</span>).encode(<span class="string">'utf-8'</span>)</span><br><span class="line">        des_file.write(c_line)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        des_file.write(line.encode(<span class="string">'utf-8'</span>))</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">    sou_path = <span class="string">u"/Users/eugene/workspace/translationCSAPP/subtitle/English/"</span></span><br><span class="line">    des_path = <span class="string">u"/Users/eugene/workspace/translationCSAPP/subtitle/Chinese_English/"</span></span><br><span class="line"></span><br><span class="line">    filename = <span class="string">u"Lecture 23  Concurrent Programming.ass"</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">global</span> sou_file</span><br><span class="line">    <span class="keyword">global</span> des_file</span><br><span class="line">    sou_file = open(sou_path+filename, <span class="string">'rb'</span>)</span><br><span class="line">    des_file = open(des_path+filename, <span class="string">'wb+'</span>)</span><br><span class="line">    <span class="comment"># pool = Pool(10)</span></span><br><span class="line">    <span class="comment"># pool.map(tran_sub, sou_file)</span></span><br><span class="line">    threads = [gevent.spawn(tran_sub, line) <span class="keyword">for</span> line <span class="keyword">in</span> sou_file.readlines()]</span><br><span class="line">    gevent.joinall(threads)</span><br><span class="line">    sou_file.close()</span><br><span class="line">    des_file.close()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    main()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># for line in lines:</span></span><br><span class="line"><span class="comment">#      if line.startswith('Dialogue:'):</span></span><br><span class="line"><span class="comment">#         parts = line.rsplit(',,', 1)</span></span><br><span class="line"><span class="comment">#         line = ',,'.join([parts[0], parts[1].lstrip().capitalize()])</span></span><br><span class="line"><span class="comment">#     f.write(line)</span></span><br></pre></td></tr></table></figure>
 <p><code>说明：需要安装第三方库googletrans</code></p>
@@ -566,7 +639,26 @@
     <entry>
       <title><![CDATA[some_tools_in_computer]]></title>
       <url>/articles/some-tools-in-computer/</url>
-      <content type="html"><![CDATA[<h1 id="龙套角色也精彩"><a href="#龙套角色也精彩" class="headerlink" title="龙套角色也精彩"></a>龙套角色也精彩</h1><p>这是学习<a href="">操作系统</a>时总结的一些编程开发工具，虽然这些并不是实实在在的<br>生产力开发工具，当在实际应用中，缺少他们却是万万不能的。</p>
+      <content type="html"><![CDATA[<!-- TOC -->
+<ul>
+<li><a href="#龙套角色也精彩">龙套角色也精彩</a><ul>
+<li><a href="#linuxs-tools"><code>Linux’s Tools</code></a><ul>
+<li><a href="#make--makefile"><code>Make &amp; Makefile</code></a><ul>
+<li><a href="#makefile的规则">makefile的规则。</a></li>
+<li><a href="#参考链接"><code>参考链接：</code></a></li>
+</ul>
+</li>
+<li><a href="#dd命令"><code>dd命令</code></a><ul>
+<li><a href="#参考链接"><code>参考链接</code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<!-- /TOC -->
+<h1 id="龙套角色也精彩"><a href="#龙套角色也精彩" class="headerlink" title="龙套角色也精彩"></a>龙套角色也精彩</h1><p>这是学习<a href="">操作系统</a>时总结的一些编程开发工具，虽然这些并不是实实在在的<br>生产力开发工具，当在实际应用中，缺少他们却是万万不能的。</p>
 <p><img src="https://i.loli.net/2019/02/14/5c64efab4c2e4.jpg" width="60%" height="60%"><br><a id="more"></a>·</p>
 <h2 id="Linux’s-Tools"><a href="#Linux’s-Tools" class="headerlink" title="Linux’s Tools"></a><code>Linux’s Tools</code></h2><h3 id="Make-amp-Makefile"><a href="#Make-amp-Makefile" class="headerlink" title="Make &amp; Makefile"></a><code>Make &amp; Makefile</code></h3><p><code>GNU make</code>(简称make)是一种代码维护工具，在大中型项目中，它将根据程序各个模块的更新情况，自动的维护和生成目标代码。</p>
 <h4 id="makefile的规则。"><a href="#makefile的规则。" class="headerlink" title="makefile的规则。"></a>makefile的规则。</h4><figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">target ... : prerequisites ...</span><br><span class="line">    command</span><br><span class="line">    ...</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
@@ -590,8 +682,17 @@
     <entry>
       <title><![CDATA[latency-in-programmar]]></title>
       <url>/articles/latency-in-programmar/</url>
-      <content type="html"><![CDATA[<h1 id="Latency-Comparison-Numbers-2012"><a href="#Latency-Comparison-Numbers-2012" class="headerlink" title="Latency Comparison Numbers (~2012)"></a>Latency Comparison Numbers (~2012)</h1><p><img src="https://i.loli.net/2019/02/11/5c6161e41f278.jpg" width="40%" height="40%"></p>
-<a id="more"></a>
+      <content type="html"><![CDATA[<!-- TOC -->
+<ul>
+<li><a href="#latency-comparison-numbers-2012">Latency Comparison Numbers (~2012)</a><ul>
+<li><a href="#notes">Notes</a></li>
+<li><a href="#credit">Credit</a></li>
+<li><a href="#contributions">Contributions</a></li>
+</ul>
+</li>
+</ul>
+<!-- /TOC -->
+<h1 id="Latency-Comparison-Numbers-2012"><a href="#Latency-Comparison-Numbers-2012" class="headerlink" title="Latency Comparison Numbers (~2012)"></a>Latency Comparison Numbers (~2012)</h1><a id="more"></a>
 <table>
 <thead>
 <tr>
@@ -769,7 +870,29 @@
     <entry>
       <title><![CDATA[python-advanced]]></title>
       <url>/articles/python-advanced/</url>
-      <content type="html"><![CDATA[<h1 id="Python的高级烹饪方法"><a href="#Python的高级烹饪方法" class="headerlink" title="Python的高级烹饪方法"></a><code>Python</code>的高级烹饪方法</h1><ul>
+      <content type="html"><![CDATA[<!-- TOC -->
+<ul>
+<li><a href="#python的高级烹饪方法"><code>Python</code>的高级烹饪方法</a><ul>
+<li><a href="#给函数添加一个装饰器">给函数添加一个装饰器</a><ul>
+<li><a href="#需求"><code>需求</code></a></li>
+<li><a href="#解决方法"><code>解决方法</code></a></li>
+<li><a href="#说明"><code>说明</code></a></li>
+<li><a href="#参考链接">参考链接</a></li>
+</ul>
+</li>
+<li><a href="#with语句和contexmanager上下文管理器"><code>with</code>语句和<code>ContexManager</code>上下文管理器</a><ul>
+<li><a href="#上下文管理器-context-manager">上下文管理器 <code>Context Manager</code></a></li>
+<li><a href="#with语法"><code>with</code>语法</a></li>
+<li><a href="#实例自定义文件打开类">实例：自定义文件打开类</a></li>
+<li><a href="#内置库contextlib">内置库<code>contextlib</code></a></li>
+<li><a href="#参考链接-1">参考链接</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<!-- /TOC -->
+<h1 id="Python的高级烹饪方法"><a href="#Python的高级烹饪方法" class="headerlink" title="Python的高级烹饪方法"></a><code>Python</code>的高级烹饪方法</h1><ul>
 <li>装饰器</li>
 <li><code>with</code>语句和<code>ContexManager</code>上下文管理器</li>
 </ul>
@@ -875,7 +998,49 @@
     <entry>
       <title><![CDATA[crapy-summary]]></title>
       <url>/articles/crapy-summary/</url>
-      <content type="html"><![CDATA[<h1 id="一-爬虫模块化总结"><a href="#一-爬虫模块化总结" class="headerlink" title="(一) 爬虫模块化总结"></a>(一) 爬虫模块化总结</h1><ul>
+      <content type="html"><![CDATA[<!-- TOC -->
+<ul>
+<li><a href="#一-爬虫模块化总结">(一) 爬虫模块化总结</a><ul>
+<li><a href="#读取链接">读取链接</a><ul>
+<li><a href="#11-从文档从直接读取目标url">1.1 从文档从直接读取目标url</a></li>
+</ul>
+</li>
+<li><a href="#解析链接urllibparse">解析链接<code>urllib.parse</code></a><ul>
+<li><a href="#21-获取资源格式类型">2.1 获取资源格式类型</a></li>
+<li><a href="#22-直接获取文件名及后缀名">2.2 直接获取文件名及后缀名</a><ul>
+<li><a href="#a-split方法">a <code>split</code>方法</a></li>
+<li><a href="#b-ospath方法">b <code>os.path</code>方法</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#参数配置">参数配置</a><ul>
+<li><a href="#31-配置随机user_agenet">3.1 配置随机<code>user_agenet</code></a></li>
+<li><a href="#32-cookie和timeout">3.2 <code>Cookie</code>和<code>timeout</code></a></li>
+</ul>
+</li>
+<li><a href="#爬虫框架">爬虫框架</a><ul>
+<li><a href="#41-class-类框架">4.1 <code>class</code> 类框架</a></li>
+<li><a href="#42-session会话">4.2 <code>Session</code>会话</a></li>
+<li><a href="#43-ip代理池">4.3 <code>Ip</code>代理池</a></li>
+</ul>
+</li>
+<li><a href="#存储模块">存储模块</a><ul>
+<li><a href="#51-存储文件">5.1 存储文件</a></li>
+<li><a href="#52-原始套接字响应内容">5.2 原始套接字响应内容</a></li>
+</ul>
+</li>
+<li><a href="#辅助模块">辅助模块</a><ul>
+<li><a href="#61-pil和io库">6.1 <code>PIL</code>和<code>IO</code>库</a></li>
+<li><a href="#62-实时显示下载进度及下载时间">6.2 实时显示下载进度及下载时间</a></li>
+</ul>
+</li>
+<li><a href="#参考链接">参考链接</a></li>
+</ul>
+</li>
+</ul>
+<!-- /TOC -->
+<h1 id="一-爬虫模块化总结"><a href="#一-爬虫模块化总结" class="headerlink" title="(一) 爬虫模块化总结"></a>(一) 爬虫模块化总结</h1><ul>
 <li>读取链接部分</li>
 <li>解析链接</li>
 <li>参数配置</li>
@@ -922,16 +1087,29 @@
 ]]></content>
       
         
+        <tags>
+            
+            <tag> python </tag>
+            
+        </tags>
+        
     </entry>
     
     <entry>
       <title><![CDATA[Modern art]]></title>
       <url>/articles/Modern-art/</url>
-      <content type="html"><![CDATA[<h1 id="透过摄影观看世界-From-The-Museum-of-Modern-Art-—-New-York-Modern-Art-Museum"><a href="#透过摄影观看世界-From-The-Museum-of-Modern-Art-—-New-York-Modern-Art-Museum" class="headerlink" title="透过摄影观看世界(From The Museum of Modern Art) —-New York Modern Art Museum"></a>透过摄影观看世界(From The Museum of Modern Art) —-New York Modern Art Museum</h1><p><img src="http://www.k11artfoundation.org/wp-content/uploads/MoMA_web-banner_R3.jpg" alt="dd"></p>
-<h2 id="课程导言"><a href="#课程导言" class="headerlink" title="课程导言"></a>课程导言</h2><p>对于我们中的许多人来说，虽然拍照、分享和浏览照片已经成了日常生活中的习惯，但我们与图像的频繁接触并未培养我们在视觉表达上的素养。<br><a id="more"></a></p>
-<p><strong>课程目的</strong>: 通过介绍影响摄影作品的创意、手段与技术，讨论观看照片与真正理解照片之间距离的问题。</p>
-<p><strong>学习目标</strong> </p>
+      <content type="html"><![CDATA[<!-- TOC -->
 <ul>
+<li><a href="#透过摄影观看世界from-the-museum-of-modern-art-----new-york-modern-art-museum">透过摄影观看世界(From The Museum of Modern Art) —-New York Modern Art Museum</a><ul>
+<li><a href="#课程导言">课程导言</a></li>
+<li><a href="#课程目的-通过介绍影响摄影作品的创意手段与技术讨论观看照片与真正理解照片之间距离的问题"><strong>课程目的</strong>: 通过介绍影响摄影作品的创意、手段与技术，讨论观看照片与真正理解照片之间距离的问题。</a></li>
+<li><a href="#学习目标"><strong>学习目标</strong></a></li>
+</ul>
+</li>
+</ul>
+<!-- /TOC -->
+<h2 id="透过摄影观看世界-From-The-Museum-of-Modern-Art-—-New-York-Modern-Art-Museum"><a href="#透过摄影观看世界-From-The-Museum-of-Modern-Art-—-New-York-Modern-Art-Museum" class="headerlink" title="透过摄影观看世界(From The Museum of Modern Art) —-New York Modern Art Museum"></a>透过摄影观看世界(From The Museum of Modern Art) —-New York Modern Art Museum</h2><h3 id="课程导言"><a href="#课程导言" class="headerlink" title="课程导言"></a>课程导言</h3><p>对于我们中的许多人来说，虽然拍照、分享和浏览照片已经成了日常生活中的习惯，但我们与图像的频繁接触并未培养我们在视觉表达上的素养。<br><a id="more"></a></p>
+<h3 id="课程目的-通过介绍影响摄影作品的创意、手段与技术，讨论观看照片与真正理解照片之间距离的问题。"><a href="#课程目的-通过介绍影响摄影作品的创意、手段与技术，讨论观看照片与真正理解照片之间距离的问题。" class="headerlink" title="课程目的: 通过介绍影响摄影作品的创意、手段与技术，讨论观看照片与真正理解照片之间距离的问题。"></a><strong>课程目的</strong>: 通过介绍影响摄影作品的创意、手段与技术，讨论观看照片与真正理解照片之间距离的问题。</h3><h3 id="学习目标"><a href="#学习目标" class="headerlink" title="学习目标"></a><strong>学习目标</strong></h3><ul>
 <li>训练技巧，以便更好地检视和理解照片与摄影图像之间的区别。</li>
 <li>发现情境如何影响摄影图像的制作、传播和接收。</li>
 <li>学习摄影中各种不同模式的艺术和技术试验和创新。</li>
@@ -974,7 +1152,17 @@
     <entry>
       <title><![CDATA[卷积神经网络预测危险车辆模型]]></title>
       <url>/articles/model/</url>
-      <content type="html"><![CDATA[<h2 id="卷积神经网络预测危险车辆"><a href="#卷积神经网络预测危险车辆" class="headerlink" title="卷积神经网络预测危险车辆"></a>卷积神经网络预测危险车辆</h2><h4 id="卷积神经网络模型概述"><a href="#卷积神经网络模型概述" class="headerlink" title="卷积神经网络模型概述"></a>卷积神经网络模型概述</h4><p>在各种深度神经网络结构中，卷积神经网络是应用最广泛的一种，它由LeCun在1989年提出。卷积神经网络在早期被成功应用于手写字符图像识别。2012年更深层次的AlexNet网络取得成功，此后卷积神经网络蓬勃发展，被广泛用于各个领域，在很多问题上都取得了当前最好的性能。卷积神经网络通过卷积和池化操作自动学习图像在各个层次上的特征，这符合我们理解图像的常识。人在认知图像时是分层抽象的，首先理解的是颜色和亮度，然后是边缘、角点、直线等局部细节特征，接下来是纹理、几何形状等更复杂的信息和结构，最后形成整个物体的概念。<br><a id="more"></a></p>
+      <content type="html"><![CDATA[<!-- TOC -->
+<ul>
+<li><a href="#卷积神经网络预测危险车辆">卷积神经网络预测危险车辆</a><pre><code>- [卷积神经网络模型概述](#卷积神经网络模型概述)
+- [图片预处理](#图片预处理)
+- [模型结构](#模型结构)
+- [模型优化与调参](#模型优化与调参)
+- [GUI图形界面](#gui图形界面)
+</code></pre></li>
+</ul>
+<!-- /TOC -->
+<h2 id="卷积神经网络预测危险车辆"><a href="#卷积神经网络预测危险车辆" class="headerlink" title="卷积神经网络预测危险车辆"></a>卷积神经网络预测危险车辆</h2><h4 id="卷积神经网络模型概述"><a href="#卷积神经网络模型概述" class="headerlink" title="卷积神经网络模型概述"></a>卷积神经网络模型概述</h4><p>在各种深度神经网络结构中，卷积神经网络是应用最广泛的一种，它由LeCun在1989年提出。卷积神经网络在早期被成功应用于手写字符图像识别。2012年更深层次的AlexNet网络取得成功，此后卷积神经网络蓬勃发展，被广泛用于各个领域，在很多问题上都取得了当前最好的性能。卷积神经网络通过卷积和池化操作自动学习图像在各个层次上的特征，这符合我们理解图像的常识。人在认知图像时是分层抽象的，首先理解的是颜色和亮度，然后是边缘、角点、直线等局部细节特征，接下来是纹理、几何形状等更复杂的信息和结构，最后形成整个物体的概念。<br><a id="more"></a></p>
 <h4 id="图片预处理"><a href="#图片预处理" class="headerlink" title="图片预处理"></a>图片预处理</h4><p>   从网上下载的图片质量参差不齐，对其进行如下操作：</p>
 <ol>
 <li><p>去掉格式受损图片。图片下载到本地时，存在一些格式受损的图片，将其从训练集中删除。</p>
@@ -1011,7 +1199,7 @@
             
             <tag> CNN </tag>
             
-            <tag> Python </tag>
+            <tag> python </tag>
             
         </tags>
         
@@ -1020,7 +1208,17 @@
     <entry>
       <title><![CDATA[百度图库爬虫脚本]]></title>
       <url>/articles/baidu-spider/</url>
-      <content type="html"><![CDATA[<h2 id="百度图库关键字爬虫脚本"><a href="#百度图库关键字爬虫脚本" class="headerlink" title="百度图库关键字爬虫脚本"></a>百度图库关键字爬虫脚本</h2><h4 id="本章设计了一个基于Python的爬虫模块，可以根据用户自定义的关键词、待爬取图片数量，自动从百度图库中采集并依次保存图片数据。"><a href="#本章设计了一个基于Python的爬虫模块，可以根据用户自定义的关键词、待爬取图片数量，自动从百度图库中采集并依次保存图片数据。" class="headerlink" title="本章设计了一个基于Python的爬虫模块，可以根据用户自定义的关键词、待爬取图片数量，自动从百度图库中采集并依次保存图片数据。"></a>本章设计了一个基于Python的爬虫模块，可以根据用户自定义的关键词、待爬取图片数量，自动从百度图库中采集并依次保存图片数据。</h4><h4 id="功能设计与分析"><a href="#功能设计与分析" class="headerlink" title="功能设计与分析"></a>功能设计与分析</h4><p>本模块为之后的模型训练提供数据集，属于数据采集部分。本模块的功能应解决以下问题：</p>
+      <content type="html"><![CDATA[<!-- TOC -->
+<ul>
+<li><a href="#百度图库关键字爬虫脚本">百度图库关键字爬虫脚本</a><ul>
+<li><a href="#本章设计了一个基于python的爬虫模块可以根据用户自定义的关键词待爬取图片数量自动从百度图库中采集并依次保存图片数据">本章设计了一个基于Python的爬虫模块，可以根据用户自定义的关键词、待爬取图片数量，自动从百度图库中采集并依次保存图片数据。</a></li>
+<li><a href="#功能设计与分析">功能设计与分析</a></li>
+<li><a href="#python语言爬虫相关库">Python语言爬虫相关库</a></li>
+</ul>
+</li>
+</ul>
+<!-- /TOC -->
+<h2 id="百度图库关键字爬虫脚本"><a href="#百度图库关键字爬虫脚本" class="headerlink" title="百度图库关键字爬虫脚本"></a>百度图库关键字爬虫脚本</h2><h4 id="本章设计了一个基于Python的爬虫模块，可以根据用户自定义的关键词、待爬取图片数量，自动从百度图库中采集并依次保存图片数据。"><a href="#本章设计了一个基于Python的爬虫模块，可以根据用户自定义的关键词、待爬取图片数量，自动从百度图库中采集并依次保存图片数据。" class="headerlink" title="本章设计了一个基于Python的爬虫模块，可以根据用户自定义的关键词、待爬取图片数量，自动从百度图库中采集并依次保存图片数据。"></a>本章设计了一个基于Python的爬虫模块，可以根据用户自定义的关键词、待爬取图片数量，自动从百度图库中采集并依次保存图片数据。</h4><h4 id="功能设计与分析"><a href="#功能设计与分析" class="headerlink" title="功能设计与分析"></a>功能设计与分析</h4><p>本模块为之后的模型训练提供数据集，属于数据采集部分。本模块的功能应解决以下问题：</p>
 <ol>
 <li>目标网站的图片数量足够多，车辆种类涵盖基本种类，且爬取难度不宜过高。 综合分析可知，百度图库能满足以上要求。所以采用百度图库为目标爬取网站。</li>
 <li>爬虫模块应能根据不同输入的危险车辆类别，爬取不同种类的车辆图片，所以要求爬虫模块能根据不同的车辆类别名称采集图片</li>
@@ -1122,7 +1320,19 @@
     <entry>
       <title><![CDATA[基于GBDT算法的不完全对称信息下的客户授信评估问题]]></title>
       <url>/articles/xgboost/</url>
-      <content type="html"><![CDATA[<h2 id="这是数学建模校赛的题目，两个人写建模论文确实太累了"><a href="#这是数学建模校赛的题目，两个人写建模论文确实太累了" class="headerlink" title="这是数学建模校赛的题目，两个人写建模论文确实太累了"></a>这是数学建模校赛的题目，两个人写建模论文确实太累了</h2><p>本文针对不完全对称信息下的客户授信评估问题，利用<code>GBDT(Gradient Boosting Decesion Tree)</code>梯度提升决策树算法等方法，综合运用了<code>Python、Xgboost、Matlab</code>等软件建立了授信额度估算模型和客户预测违约模型，定量分析了在完整数据以及数据缺失情况下的模型效果，并向公司管理层提出了关于授信额度估算的分析与建议。<br><a id="more"></a></p>
+      <content type="html"><![CDATA[<!-- TOC -->
+<ul>
+<li><a href="#这是数学建模校赛的题目两个人写建模论文确实太累了">这是数学建模校赛的题目，两个人写建模论文确实太累了</a><pre><code>- [针对问题1,](#针对问题1)
+- [针对问题2，](#针对问题2)
+- [针对问题3，](#针对问题3)
+- [问题4，](#问题4)
+- [关键字 :](#关键字-)
+- [图片](#图片)
+- [code](#code)
+</code></pre></li>
+</ul>
+<!-- /TOC -->
+<h2 id="这是数学建模校赛的题目，两个人写建模论文确实太累了"><a href="#这是数学建模校赛的题目，两个人写建模论文确实太累了" class="headerlink" title="这是数学建模校赛的题目，两个人写建模论文确实太累了"></a>这是数学建模校赛的题目，两个人写建模论文确实太累了</h2><p>本文针对不完全对称信息下的客户授信评估问题，利用<code>GBDT(Gradient Boosting Decesion Tree)</code>梯度提升决策树算法等方法，综合运用了<code>Python、Xgboost、Matlab</code>等软件建立了授信额度估算模型和客户预测违约模型，定量分析了在完整数据以及数据缺失情况下的模型效果，并向公司管理层提出了关于授信额度估算的分析与建议。<br><a id="more"></a></p>
 <h4 id="针对问题1"><a href="#针对问题1" class="headerlink" title="针对问题1,"></a>针对问题1,</h4><p> 对于28个自变量的规律分析，我们首先分析自变量和目标因变量，以确定自变量参数与因变量客户违约的关联性。通过绘制自变量和两个因变量之间Pearson相关系数的热力图像，观察得到自变量和因变量的统计关系规律。为了对违约分类进行预测，利用GBDT（Gradient Boost decision tree）算法建立二分类模型，对回归树得到的连续值设定阈值，映射为离散的0-1两点；同时，我们注意到样本正负样本的显著不平衡性，通过欠采样反法，从大量的正样本中选取一定的样本数量，使得正反样本比例接近，再多次进行算法的学习。最后，求出模型的AUC值以评价此模型的准确性。</p>
 <h4 id="针对问题2，"><a href="#针对问题2，" class="headerlink" title="针对问题2，"></a>针对问题2，</h4><p>对于授信额度估算模型，利用GBDT算法建立回归预测模型。在模型的建立中，分析得到对信用额度Amount 影响权值最高的特征参数，并分析这些参数与信用额度的分布关系。根据建立的二分类模型，预测Class条目未知的客户的违约情况。最后，根据均方根误差值（RMSE）评判GBDT回归预测模型的准确性，并给出对未知客户的违约情况预测。</p>
 <h4 id="针对问题3，"><a href="#针对问题3，" class="headerlink" title="针对问题3，"></a>针对问题3，</h4><p>在数据有残缺的情形下，我们建立如下的模型，构建参数重要度指标，将缺失的特征参数分为两类： 重要度低于阈值α的特征（即对信用额度影响较小的特征）数值，可以利用其他客户的平均值替代，通过对比实际参数值所得到的信用额度，可以发现此方法与实际值的偏差较小。若特征参数为问题二中得到的重要参数，若利用其他客户的平均值替代 ，根据测试数据，发现偏差值较大。</p>
@@ -1156,11 +1366,9 @@
         
         <tags>
             
-            <tag> Python </tag>
+            <tag> python </tag>
             
             <tag> XGBoost </tag>
-            
-            <tag> Math_model </tag>
             
         </tags>
         
@@ -1273,7 +1481,25 @@
     <entry>
       <title><![CDATA[基于Gabor特征的人脸识别matlab实验]]></title>
       <url>/articles/face-PCA/</url>
-      <content type="html"><![CDATA[<h2 id="一、实验综述"><a href="#一、实验综述" class="headerlink" title="一、实验综述"></a>一、实验综述</h2><p>  人脸数据集中，共有16个人，每人至少有五幅图像，要求选取 5 幅图像，其中四幅图作为训练集，剩下一副图作为测试集。要求利用训练集训练模型，从测试集任选一幅图像，能够识别他的身份。</p>
+      <content type="html"><![CDATA[<!-- TOC -->
+<ul>
+<li><a href="#一实验综述">一、实验综述</a></li>
+<li><a href="#二实验原理">二、实验原理</a><pre><code>- [1.Gabor特征](#1gabor特征)
+- [2.PCA](#2pca)
+- [3.线性回归的分类器](#3线性回归的分类器)
+</code></pre></li>
+<li><a href="#三实验步骤">三、实验步骤</a><pre><code>- [1. 预处理](#1-预处理)
+- [2 特征提取](#2-特征提取)
+- [3. 预测分类](#3-预测分类)
+- [4. 参数调整](#4-参数调整)
+</code></pre></li>
+<li><a href="#四-实验结果">四、 实验结果</a><pre><code>- [实验结果讨论 ：](#实验结果讨论-)
+- [参考文献](#参考文献)
+- [实验代码](#实验代码)
+</code></pre></li>
+</ul>
+<!-- /TOC -->
+<h2 id="一、实验综述"><a href="#一、实验综述" class="headerlink" title="一、实验综述"></a>一、实验综述</h2><p>  人脸数据集中，共有16个人，每人至少有五幅图像，要求选取 5 幅图像，其中四幅图作为训练集，剩下一副图作为测试集。要求利用训练集训练模型，从测试集任选一幅图像，能够识别他的身份。</p>
 <p>本文思路如下：首先对图像进行预处理，利用最近邻算法重采样规整为 128*128的灰度图像，并对亮度异常的图像进行调整。然后利用Gabor滤波器对灰度图像进行五尺度，八个方向的特征提取。接着利用PCA算法对图像数据进行压缩，选取贡献率前95%的特征向量作为新的基。最后分类算法采取线性回归的分类器，预测测试集中图像所属类别，并得到识别率。为了探讨不同Gabor滤波器的参数对识别结果的影响，选取了多组参数进行参数敏感性分析。<br><a id="more"></a></p>
 <h2 id="二、实验原理"><a href="#二、实验原理" class="headerlink" title="二、实验原理"></a>二、实验原理</h2><h4 id="1-Gabor特征"><a href="#1-Gabor特征" class="headerlink" title="1.Gabor特征"></a>1.Gabor特征</h4><p>   Gabor变换属于加窗傅立叶变换，Gabor函数可以在频域不同尺度、不同方向上提取相关的特征。【1】Gabor小波与人类视觉系统中简单细胞的视觉刺激响应非常相似。它在提取目标的局部空间和频率域信息方面具有良好的特性。Gabor小波对于图像的边缘敏感，能够提供良好的方向选择和尺度选择特性，而且对于光照变化不敏感,能够提供对光照变化良好的适应性。上述特点使Gabor小波被广泛应用于视觉信息理解。<br>通过频率参数和高斯函数参数的选取，Gabor变换可以选取很多纹理特征，但是Gabor是非正交的，不同特征分量之间有冗余。 Gabor是有高斯核函数与复正弦函数调制而成，如下图所示。</p>
 <p><img src="https://i.loli.net/2018/05/04/5aec3e8c90a59.png" alt="adada.png"></p>
