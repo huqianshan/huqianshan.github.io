@@ -5,15 +5,37 @@
     <entry>
       <title><![CDATA[linux-kernel-address-space]]></title>
       <url>/articles/linux-kernel-address-space/</url>
-      <content type="html"><![CDATA[<h2 id="Linux内核空间"><a href="#Linux内核空间" class="headerlink" title="Linux内核空间"></a><code>Linux</code>内核空间</h2><a id="more"></a>
-<p>内存分为三个区段: 1. 用于<code>DMA</code>的内存，2. <code>常规内存</code>，3.<code>高端内存</code></p>
-<ol>
-<li><code>x86</code>平台上位于<code>RAM</code>的前<code>16MB</code></li>
-</ol>
+      <content type="html"><![CDATA[<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+<ul>
+<li><a href="#linux%E5%86%85%E6%A0%B8%E5%9C%B0%E5%9D%80%E7%A9%BA%E9%97%B4"><code>Linux</code>内核地址空间</a></li>
+<li><a href="#%E5%86%85%E6%A0%B8%E7%A9%BA%E9%97%B4%E5%88%86%E9%85%8Dapi">内核空间分配<code>api</code></a><ul>
+<li><a href="#kmalloc-and-kzalloc"><code>kmalloc and kzalloc</code></a><ul>
+<li><a href="#description"><code>Description</code></a></li>
+<li><a href="#flags-argument"><code>flags argument</code></a></li>
+<li><a href="#%E7%89%A9%E7%90%86%E5%86%85%E5%AD%98%E5%8F%AA%E8%83%BD%E6%8C%89%E9%A1%B5%E9%9D%A2%E8%BF%9B%E8%A1%8C%E5%88%86%E9%85%8D%E4%B8%8D%E8%B6%85%E8%BF%87128kb">物理内存只能按页面进行分配，不超过<code>128KB</code></a></li>
+</ul>
+</li>
+<li><a href="#get_free_page"><code>get_free_page</code></a></li>
+<li><a href="#vmalloc"><code>vmalloc</code></a><ul>
+<li><a href="#vmalloc-description"><code>vmalloc Description</code></a></li>
+<li><a href="#%E8%AF%B4%E6%98%8E"><code>说明</code></a></li>
+</ul>
+</li>
+<li><a href="#ioremap"><code>ioremap</code></a></li>
+</ul>
+</li>
+<li><a href="#linux%E7%9A%84%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86"><code>Linux</code>的内存管理</a></li>
+</ul>
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+<a id="more"></a>
+<h2 id="Linux内核地址空间"><a href="#Linux内核地址空间" class="headerlink" title="Linux内核地址空间"></a><code>Linux</code>内核地址空间</h2><p>内存分为三个区段: 1. 用于<code>DMA</code>的内存，2. <code>常规内存</code>，3.<code>高端内存</code></p>
+<p><img src="https://pic1.zhimg.com/80/v2-c381d93642b716770c6705dac13a30c8_hd.jpg" alt="funciton call"></p>
 <h2 id="内核空间分配api"><a href="#内核空间分配api" class="headerlink" title="内核空间分配api"></a>内核空间分配<code>api</code></h2><h3 id="kmalloc-and-kzalloc"><a href="#kmalloc-and-kzalloc" class="headerlink" title="kmalloc and kzalloc"></a><code>kmalloc and kzalloc</code></h3><h4 id="Description"><a href="#Description" class="headerlink" title="Description"></a><code>Description</code></h4><blockquote>
 <p><code>kmalloc is the normal method of allocating memory for objects smaller than page size in the kernel.</code></p>
 </blockquote>
-<p>最常用的内核空间内存分配函数。最终是通过调用<code>get_free_pages</code>来实现</p>
+<p>最常用的内核空间内存分配函数。最终是通过调用<code>get_free_pages</code>来实现.<code>kmalloc()</code>是基于<code>slab/slob/slub</code>分配分配算法上实现的，不少地方将其作为<code>slab/slob/slub</code>分配算法的入口，实际上是略有区别的。</p>
+<p>最小分配大小 <code>32/64 Byte</code> 最大 <code>128 KB -16</code></p>
 <h4 id="flags-argument"><a href="#flags-argument" class="headerlink" title="flags argument"></a><code>flags argument</code></h4><blockquote>
 <p>GFP_USER - Allocate memory on behalf of user. May<br>sleep.</p>
 <p>GFP_KERNEL - Allocate normal kernel ram. May sleep.</p>
@@ -21,18 +43,20 @@
 <p>GFP_HIGHUSER - Allocate pages from high memory.</p>
 </blockquote>
 <p><del>貌似也能从<strong>高端内存</strong>分配</del> <strong>并不能</strong>,是说可能会从高端内存中分配，具体由平台决定</p>
-<h4 id="物理内存只能按页面进行分配，不超过128KB"><a href="#物理内存只能按页面进行分配，不超过128KB" class="headerlink" title="物理内存只能按页面进行分配，不超过128KB"></a>物理内存只能按页面进行分配，不超过<code>128KB</code></h4><h3 id="get-free-page"><a href="#get-free-page" class="headerlink" title="get_free_page"></a><code>get_free_page</code></h3><p>参数类似于<code>kmalloc</code>.</p>
+<h4 id="物理内存只能按页面进行分配，不超过128KB"><a href="#物理内存只能按页面进行分配，不超过128KB" class="headerlink" title="物理内存只能按页面进行分配，不超过128KB"></a>物理内存只能按页面进行分配，不超过<code>128KB</code></h4><h3 id="get-free-page"><a href="#get-free-page" class="headerlink" title="get_free_page"></a><code>get_free_page</code></h3><p>参数类似于<code>kmalloc</code>.基于<code>buddy</code>机制</p>
 <p><code>alloc_pages</code>是<code>Linux</code>页分配器的核心函数<code>alloc_pages_node</code>的简单宏，主要处理了<code>NUMA</code></p>
 <h3 id="vmalloc"><a href="#vmalloc" class="headerlink" title="vmalloc"></a><code>vmalloc</code></h3><h4 id="vmalloc-Description"><a href="#vmalloc-Description" class="headerlink" title="vmalloc Description"></a><code>vmalloc Description</code></h4><p>分配虚拟地址空间的连续区域，尽管可能在物理地址上不是连续的。</p>
-<p>访问每个页面需要单独调用<code>alloc_pages</code></p>
+<p>访问每个页面需要单独调用<code>alloc_pages</code>.通过红黑树管理</p>
 <h4 id="说明"><a href="#说明" class="headerlink" title="说明"></a><code>说明</code></h4><p>是<code>Linux</code>内存分配的基础。 内存分配使用效率不高，如可能，应该直接对页面进行分配。</p>
 <p>以上三个函数获得的内存地址均为虚拟地址。但<code>kmalloc、get_free_pages</code>地址与物理内存只差基于<code>PAGE_OFFSET</code>的偏移。不需要修改页表</p>
+<p><code>kmalloc()</code>分配的内存处于<code>3GB～high_memory</code>之间，而<code>vmalloc()</code>分配的内存在<code>VMALLOC_START～4GB</code>之间，也就是非连续内存区。</p>
+<p>一般情况下在驱动程序中都是调用<code>kmalloc()</code>来给数据结构分配内存，而<code>vmalloc(</code>)用在为活动的交换区分配数据结构，为某些I/O驱动程序分配缓冲区，或为模块分配空间</p>
 <p><code>vmalloc</code>则不同。且分配得到的地址是不能在处理器之外使用。</p>
 <p>正确使用场合： <strong>分配一大堆连续的，只在软件中存在的，用于缓冲的内存区域</strong></p>
 <p>且其不能在原子上下文中使用，因为其内部实现调用了<code>kmalloc</code>来获取页表的存储空间，因而可能休眠</p>
 <h3 id="ioremap"><a href="#ioremap" class="headerlink" title="ioremap"></a><code>ioremap</code></h3><p>与<code>vmalloc</code>不同的是，<code>ioremap</code>并不实际分配内存。其返回的内存地址不能够被直接访问，需要通过特定的接口来操作。</p>
 <p>与<code>vmalloc</code>相同的是，<code>ioremap</code>也是面向页的，会修改页表</p>
-]]></content>
+<h2 id="Linux的内存管理"><a href="#Linux的内存管理" class="headerlink" title="Linux的内存管理"></a><code>Linux</code>的内存管理</h2>]]></content>
       
         
         <tags>
@@ -54,9 +78,9 @@
         
         <tags>
             
-            <tag> linux </tag>
-            
             <tag> drivers </tag>
+            
+            <tag> linux </tag>
             
         </tags>
         
@@ -120,7 +144,7 @@
 </ul>
 <blockquote>
 <p>This helper doesn’t buy us much over calling kmap_atomic directly.<br>In fact in the only caller it does a bit of useless work as the<br>caller already has the bvec at hand, and said caller would even<br>buggy for a multi-segment bio due to the use of this helper. </p>
-<p>So just remove it.<br>Signed-off-by: default avatarChristoph Hellwig <a href="&#x6d;&#x61;&#x69;&#108;&#x74;&#x6f;&#x3a;&#104;&#99;&#x68;&#x40;&#x6c;&#x73;&#116;&#46;&#x64;&#x65;">&#104;&#99;&#x68;&#x40;&#x6c;&#x73;&#116;&#46;&#x64;&#x65;</a><br>Signed-off-by: default avatarJens Axboe <a href="&#x6d;&#97;&#105;&#108;&#x74;&#x6f;&#58;&#x61;&#x78;&#98;&#x6f;&#x65;&#x40;&#107;&#101;&#114;&#110;&#101;&#108;&#46;&#x64;&#107;">&#x61;&#x78;&#98;&#x6f;&#x65;&#x40;&#107;&#101;&#114;&#110;&#101;&#108;&#46;&#x64;&#107;</a></p>
+<p>So just remove it.<br>Signed-off-by: default avatarChristoph Hellwig <a href="&#x6d;&#97;&#105;&#x6c;&#x74;&#x6f;&#x3a;&#x68;&#x63;&#104;&#64;&#108;&#115;&#x74;&#x2e;&#100;&#x65;">&#x68;&#x63;&#104;&#64;&#108;&#115;&#x74;&#x2e;&#100;&#x65;</a><br>Signed-off-by: default avatarJens Axboe <a href="&#109;&#97;&#105;&#108;&#x74;&#x6f;&#x3a;&#97;&#x78;&#98;&#111;&#x65;&#64;&#x6b;&#101;&#114;&#110;&#101;&#x6c;&#46;&#100;&#107;">&#97;&#x78;&#98;&#111;&#x65;&#64;&#x6b;&#101;&#114;&#110;&#101;&#x6c;&#46;&#100;&#107;</a></p>
 </blockquote>
 <h3 id="struct-request中-cmd-type被删除"><a href="#struct-request中-cmd-type被删除" class="headerlink" title="struct request中 cmd_type被删除"></a><code>struct request</code>中 <code>cmd_type</code>被删除</h3><ul>
 <li><a href="https://lkml.org/lkml/2017/1/31/562" target="_blank" rel="noopener">链接及示例</a></li>
@@ -128,7 +152,7 @@
 <blockquote>
 <p>From    Christoph Hellwig &lt;&gt;<br>  Subject    [PATCH 08/10] block: introduce blk_rq_is_passthrough<br>  Date    Tue, 31 Jan 2017 16:57:29 +0100</p>
 <p>This can be used to check for fs vs non-fs requests and basically<br>removes all knowledge of BLOCK_PC specific from the block layer,<br>as well as preparing for removing the cmd_type field in struct request.</p>
-<p>Signed-off-by: Christoph Hellwig <a href="&#109;&#x61;&#105;&#x6c;&#x74;&#x6f;&#58;&#104;&#99;&#x68;&#x40;&#x6c;&#x73;&#116;&#46;&#100;&#x65;">&#104;&#99;&#x68;&#x40;&#x6c;&#x73;&#116;&#46;&#100;&#x65;</a></p>
+<p>Signed-off-by: Christoph Hellwig <a href="&#109;&#x61;&#105;&#x6c;&#116;&#x6f;&#x3a;&#x68;&#x63;&#x68;&#x40;&#108;&#115;&#116;&#x2e;&#x64;&#x65;">&#x68;&#x63;&#x68;&#x40;&#108;&#115;&#116;&#x2e;&#x64;&#x65;</a></p>
 </blockquote>
 <h3 id="end-bio的参数变为一个"><a href="#end-bio的参数变为一个" class="headerlink" title="end_bio的参数变为一个"></a><a href="https://www.kernel.org/doc/htmldocs/filesystems/API-bio-endio.html" target="_blank" rel="noopener"><code>end_bio</code>的参数变为一个</a></h3><h3 id="构造函数必须强制类型转换"><a href="#构造函数必须强制类型转换" class="headerlink" title="构造函数必须强制类型转换"></a><a href="https://www.kernel.org/doc/htmldocs/kernel-api/API-blk-queue-make-request.html" target="_blank" rel="noopener">构造函数必须强制类型转换</a></h3><h3 id="样例块驱动代码"><a href="#样例块驱动代码" class="headerlink" title="样例块驱动代码"></a><code>样例块驱动代码</code></h3><ul>
 <li><a href="https://github.com/huqianshan/OperatingSystemAndCompiler/commit/ed07917c8e8902f8d1721dd93ce1513fb87e3b27" target="_blank" rel="noopener"><code>Test Device For Linux Block Drivers</code></a></li>
@@ -323,9 +347,9 @@
         
         <tags>
             
-            <tag> linux </tag>
-            
             <tag> drivers </tag>
+            
+            <tag> linux </tag>
             
         </tags>
         
@@ -437,9 +461,9 @@
         
         <tags>
             
-            <tag> linux </tag>
-            
             <tag> drivers </tag>
+            
+            <tag> linux </tag>
             
         </tags>
         
@@ -469,9 +493,9 @@
         
         <tags>
             
-            <tag> linux </tag>
-            
             <tag> drivers </tag>
+            
+            <tag> linux </tag>
             
         </tags>
         
