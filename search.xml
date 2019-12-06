@@ -23,7 +23,32 @@
 <li><a href="#ioremap"><code>ioremap</code></a></li>
 </ul>
 </li>
-<li><a href="#linux的内存管理"><code>Linux</code>的内存管理</a></li>
+<li><a href="#linux的内存管理"><code>Linux</code>的内存管理</a><ul>
+<li><a href="#地址类型">地址类型</a><ul>
+<li><a href="#用户虚拟空间地址">用户虚拟空间地址</a></li>
+<li><a href="#内核地址空间">内核地址空间</a></li>
+<li><a href="#高端内存和低端内存">高端内存和低端内存</a></li>
+</ul>
+</li>
+<li><a href="#内存管理结构">内存管理结构</a><ul>
+<li><a href="#页结构struct-page">页结构<code>struct page</code></a></li>
+<li><a href="#kmap映射"><code>kmap</code>映射</a></li>
+<li><a href="#页表与vma">页表与<code>VMA</code></a></li>
+<li><a href="#vm_area_struct结构"><code>vm_area_struct</code>结构</a></li>
+<li><a href="#struct-mm_struct"><code>struct mm_struct</code></a></li>
+</ul>
+</li>
+<li><a href="#内存映射">内存映射</a><ul>
+<li><a href="#mmap原型"><code>mmap</code>原型</a></li>
+</ul>
+</li>
+<li><a href="#建立页表的方法">建立页表的方法</a><ul>
+<li><a href="#使用remap_pfn_range一次性建立">使用<code>remap_pfn_range</code>一次性建立</a></li>
+<li><a href="#使用nopage_vma每次建立一个页表">使用<code>nopage_VMA</code>每次建立一个页表</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 <!-- /TOC -->
 <h2 id="Linux内核地址空间"><a href="#Linux内核地址空间" class="headerlink" title="Linux内核地址空间"></a><code>Linux</code>内核地址空间</h2><p>内存分为三个区段: 1. 用于<code>DMA</code>的内存，2. <code>常规内存</code>，3.<code>高端内存</code></p>
@@ -51,7 +76,107 @@
 <p>且其不能在原子上下文中使用，因为其内部实现调用了<code>kmalloc</code>来获取页表的存储空间，因而可能休眠</p>
 <h3 id="ioremap"><a href="#ioremap" class="headerlink" title="ioremap"></a><code>ioremap</code></h3><p>与<code>vmalloc</code>不同的是，<code>ioremap</code>并不实际分配内存。其返回的内存地址不能够被直接访问，需要通过特定的接口来操作。</p>
 <p>与<code>vmalloc</code>相同的是，<code>ioremap</code>也是面向页的，会修改页表</p>
-<h2 id="Linux的内存管理"><a href="#Linux的内存管理" class="headerlink" title="Linux的内存管理"></a><code>Linux</code>的内存管理</h2>]]></content>
+<h2 id="Linux的内存管理"><a href="#Linux的内存管理" class="headerlink" title="Linux的内存管理"></a><code>Linux</code>的内存管理</h2><h3 id="地址类型"><a href="#地址类型" class="headerlink" title="地址类型"></a>地址类型</h3><h4 id="用户虚拟空间地址"><a href="#用户虚拟空间地址" class="headerlink" title="用户虚拟空间地址"></a>用户虚拟空间地址</h4><h4 id="内核地址空间"><a href="#内核地址空间" class="headerlink" title="内核地址空间"></a>内核地址空间</h4><ul>
+<li><p>内核逻辑地址</p>
+<pre><code>与物理地址只差一个偏移量，如`kmalloc`
+</code></pre></li>
+<li><p>内核虚拟地址</p>
+<pre><code>不必是线性对应一对一。
+</code></pre></li>
+</ul>
+<p>宏<code>__pa(),__va()</code>完成相应的转换</p>
+<h4 id="高端内存和低端内存"><a href="#高端内存和低端内存" class="headerlink" title="高端内存和低端内存"></a>高端内存和低端内存</h4><p>内核无法直接操作没有映射到内核地址空间的内存。</p>
+<p>为了获得更多的地址空间，处理器增添了地址扩展特性。</p>
+<ul>
+<li><p>只有内存的低端部分拥有逻辑地址 剩余的部分（高端内存）没有</p>
+</li>
+<li><p>访问高端内存前，内核必须建立明确的虚拟映射</p>
+</li>
+</ul>
+<h3 id="内存管理结构"><a href="#内存管理结构" class="headerlink" title="内存管理结构"></a>内存管理结构</h3><h4 id="页结构struct-page"><a href="#页结构struct-page" class="headerlink" title="页结构struct page"></a>页结构<code>struct page</code></h4><p>因为高端内存无法使用逻辑地址，且为了保存物理内存信息，对系统中每个物理页，都有一个<code>page</code>结构相对应。</p>
+<ul>
+<li><p><code>atomic_t count;</code></p>
+<blockquote>
+<p>这个页的引用数. 当这个 count 掉到 0, 这页被返回给空闲列表.</p>
+</blockquote>
+</li>
+<li><p><code>void *virtual;</code></p>
+<blockquote>
+<p>这页的内核虚拟地址, 如果它被映射; 否则, NULL. 低内存页一直被映射; 高内存页常常不是. 这个成员不是在所有体系上出现; 它通常只在页的内核虚拟地址无法轻易计算时被编译. 如果你想查看这个成员, 正确的方法是使用 <code>page_address</code> 宏.</p>
+</blockquote>
+</li>
+<li><p><code>struct page virt_to_page(void kaddr)</code></p>
+<blockquote>
+<p>这个宏, 定义在 <code>&lt;asm/page.h&gt;</code>, 采用一个内核逻辑地址并返回它的被关联的<code>struct page</code>指针. 因为它需要一个逻辑地址, 它不能操作来自 <code>vmalloc</code> 的内存或者高端内存</p>
+</blockquote>
+</li>
+<li><p><code>struct page *pfn_to_page(int pfn)</code></p>
+<blockquote>
+<p>为给定的页帧号返回 <code>struct page</code>指针. 如果需要, 它在传递给 <code>pfn_to_page</code>之前使用<code>pfn_valid</code>来检查一个页帧号的有效性.</p>
+</blockquote>
+</li>
+<li><p><code>void page_address(struct page page)</code></p>
+<blockquote>
+<p>返回这个页的内核虚拟地址, 如果这样一个地址存在. 对于高端内存, 那个地址仅当这个页已被映射才存在. 这个函数在<code>&lt;linux/mm.h&gt;</code> 中定义. 大部分情况下, 你应该使用 <code>kmap</code> 而不是 <code>page_address</code></p>
+</blockquote>
+</li>
+</ul>
+<h4 id="kmap映射"><a href="#kmap映射" class="headerlink" title="kmap映射"></a><code>kmap</code>映射</h4><p>  <code>include &lt;linux/highmem.h&gt;</code></p>
+<p>  <code>void kmap(struct page page);</code></p>
+<p>  <code>void kunmap(struct page *page);</code></p>
+<blockquote>
+<p><code>kmap</code> 为系统中的任何页返回一个内核虚拟地址. 对于低端内存页, 它只返回页的逻辑地址; 对于高内存, <code>kmap</code> 在内核地址空间的一个专用部分中创建一个特殊的映射. 使用 <code>kmap</code> 创建的映射应当一直使用 <code>kunmap</code> 来释放;一个有限数目的这样的映射可用, 因此最好不要在它们上停留太长时间. <code>kmap</code> 调用维护一个计数器, 因此如果 2 个或 多个函数都在同一个页上调用 kmap,也是正确的. 还要注意 <code>kmap</code> 可能睡眠当没有映射可用时.</p>
+</blockquote>
+<h4 id="页表与VMA"><a href="#页表与VMA" class="headerlink" title="页表与VMA"></a>页表与<code>VMA</code></h4><ul>
+<li><p>页表<br>将虚拟地址转化为物理地址</p>
+</li>
+<li><p><code>VMA</code></p>
+<p>虚拟内存区( VMA )用来管理一个进程的地址空间的不同区域的内核数据结构. 一个 VMA 代表一个进程的虚拟内存的一个同类区域: 一个有相同许可标志和被相同对象(如, 一个文件或者交换空间)支持的连续虚拟地址范围. 它松散地对应于一个”段”的概念, 尽管可以更好地描述为”一个有它自己特性的内存对象”. 一个进程的内存映射有下列区组成:</p>
+<ul>
+<li><p>给程序的可执行代码(常常称为 text)的一个区.</p>
+</li>
+<li><p>给数据的多个区, 包括初始化的数据(它有一个明确的被分配的值, 在执行开始), 未初始化数据(BBS),以及程序堆栈.</p>
+</li>
+<li><p>给每个获得的内存映射的一个区域.</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="vm-area-struct结构"><a href="#vm-area-struct结构" class="headerlink" title="vm_area_struct结构"></a><code>vm_area_struct</code>结构</h4><ul>
+<li><p>当用户空间调用<code>mmap</code>完成地址映射时，系统会同时创建一个<code>vm_area_struct</code></p>
+</li>
+<li><p>当驱动设备需要实现<code>mmap</code>接口时，会需要对此结构的函数进行操作</p>
+</li>
+<li><p>在<code>&lt;linux/mm.h&gt;</code>中定义</p>
+</li>
+</ul>
+<h4 id="struct-mm-struct"><a href="#struct-mm-struct" class="headerlink" title="struct mm_struct"></a><code>struct mm_struct</code></h4><ul>
+<li><p>每个进程都拥有一个<code>struct mm_struct  &lt;linux/sched.h&gt;</code>负责整合其他的数据结构.</p>
+</li>
+<li><p>其中包含了：虚拟内存区域链表，页表以及相关内存管理信息，还包括自旋锁以及信号量。</p>
+</li>
+<li><p>通常的方法是使用 <code>current-&gt;mm</code> 来获得此结构. 注意内存关联结构可在进程之间共享; <code>Linux</code> 线程的实现以这种方式工作</p>
+</li>
+</ul>
+<h3 id="内存映射"><a href="#内存映射" class="headerlink" title="内存映射"></a>内存映射</h3><ul>
+<li><p>内存映射可被实现来提供用户程序对设备内存的直接存取。意味着关联一些用户空间地址到设备内存</p>
+</li>
+<li><p><code>mmap</code>限制以<code>PAGE_SIZE</code>为单位进行映射。可以极大提升吞吐量</p>
+</li>
+<li><p><code>mmap</code>是<code>file_operations</code>的结构一部分。</p>
+</li>
+</ul>
+<h4 id="mmap原型"><a href="#mmap原型" class="headerlink" title="mmap原型"></a><code>mmap</code>原型</h4><ul>
+<li><p><code>int (*mmap) (struct file *filp, struct vm_area_struct *vma);</code></p>
+</li>
+<li><p>为了执行<code>mmap</code>只需要为该地址建立页表，并将<code>vma-&gt;vm_ops</code>替换成一系列新操作。</p>
+</li>
+</ul>
+<h3 id="建立页表的方法"><a href="#建立页表的方法" class="headerlink" title="建立页表的方法"></a>建立页表的方法</h3><h4 id="使用remap-pfn-range一次性建立"><a href="#使用remap-pfn-range一次性建立" class="headerlink" title="使用remap_pfn_range一次性建立"></a>使用<code>remap_pfn_range</code>一次性建立</h4><p><code>int remap_pfn_range(struct vm_area_struct *vma, unsigned long virt_addr, unsigned long pfn, unsigned long size, pgprot_t prot);</code></p>
+<p><code>int io_remap_page_range(struct vm_area_struct *vma, unsigned long virt_addr, unsigned long phys_addr, unsigned long size, pgprot_t prot);</code></p>
+<p>负责为一段物理地址建立新的页表。</p>
+<p>第一个函数当<code>pfn</code>只想实际物理RAM时使用。后者是当指向<code>I/O</code>内存时使用。</p>
+<h4 id="使用nopage-VMA每次建立一个页表"><a href="#使用nopage-VMA每次建立一个页表" class="headerlink" title="使用nopage_VMA每次建立一个页表"></a>使用<code>nopage_VMA</code>每次建立一个页表</h4>]]></content>
       
         
         <tags>
@@ -73,9 +198,9 @@
         
         <tags>
             
-            <tag> drivers </tag>
-            
             <tag> linux </tag>
+            
+            <tag> drivers </tag>
             
         </tags>
         
@@ -139,7 +264,7 @@
 </ul>
 <blockquote>
 <p>This helper doesn’t buy us much over calling kmap_atomic directly.<br>In fact in the only caller it does a bit of useless work as the<br>caller already has the bvec at hand, and said caller would even<br>buggy for a multi-segment bio due to the use of this helper. </p>
-<p>So just remove it.<br>Signed-off-by: default avatarChristoph Hellwig <a href="&#x6d;&#97;&#x69;&#x6c;&#116;&#x6f;&#58;&#x68;&#x63;&#x68;&#x40;&#x6c;&#x73;&#x74;&#x2e;&#100;&#x65;">&#x68;&#x63;&#x68;&#x40;&#x6c;&#x73;&#x74;&#x2e;&#100;&#x65;</a><br>Signed-off-by: default avatarJens Axboe <a href="&#x6d;&#x61;&#105;&#x6c;&#116;&#111;&#x3a;&#x61;&#120;&#x62;&#x6f;&#x65;&#64;&#107;&#101;&#114;&#x6e;&#101;&#108;&#x2e;&#x64;&#107;">&#x61;&#120;&#x62;&#x6f;&#x65;&#64;&#107;&#101;&#114;&#x6e;&#101;&#108;&#x2e;&#x64;&#107;</a></p>
+<p>So just remove it.<br>Signed-off-by: default avatarChristoph Hellwig <a href="&#109;&#97;&#105;&#108;&#x74;&#111;&#58;&#104;&#x63;&#x68;&#64;&#108;&#x73;&#116;&#x2e;&#x64;&#x65;">&#104;&#x63;&#x68;&#64;&#108;&#x73;&#116;&#x2e;&#x64;&#x65;</a><br>Signed-off-by: default avatarJens Axboe <a href="&#109;&#97;&#105;&#108;&#x74;&#111;&#x3a;&#97;&#120;&#98;&#111;&#x65;&#x40;&#x6b;&#x65;&#114;&#x6e;&#x65;&#x6c;&#46;&#x64;&#107;">&#97;&#120;&#98;&#111;&#x65;&#x40;&#x6b;&#x65;&#114;&#x6e;&#x65;&#x6c;&#46;&#x64;&#107;</a></p>
 </blockquote>
 <h3 id="struct-request中-cmd-type被删除"><a href="#struct-request中-cmd-type被删除" class="headerlink" title="struct request中 cmd_type被删除"></a><code>struct request</code>中 <code>cmd_type</code>被删除</h3><ul>
 <li><a href="https://lkml.org/lkml/2017/1/31/562" target="_blank" rel="noopener">链接及示例</a></li>
@@ -147,7 +272,7 @@
 <blockquote>
 <p>From    Christoph Hellwig &lt;&gt;<br>  Subject    [PATCH 08/10] block: introduce blk_rq_is_passthrough<br>  Date    Tue, 31 Jan 2017 16:57:29 +0100</p>
 <p>This can be used to check for fs vs non-fs requests and basically<br>removes all knowledge of BLOCK_PC specific from the block layer,<br>as well as preparing for removing the cmd_type field in struct request.</p>
-<p>Signed-off-by: Christoph Hellwig <a href="&#x6d;&#97;&#105;&#108;&#116;&#x6f;&#58;&#x68;&#99;&#x68;&#x40;&#108;&#x73;&#116;&#46;&#x64;&#x65;">&#x68;&#99;&#x68;&#x40;&#108;&#x73;&#116;&#46;&#x64;&#x65;</a></p>
+<p>Signed-off-by: Christoph Hellwig <a href="&#x6d;&#97;&#105;&#108;&#116;&#x6f;&#58;&#104;&#x63;&#104;&#x40;&#x6c;&#x73;&#x74;&#x2e;&#x64;&#101;">&#104;&#x63;&#104;&#x40;&#x6c;&#x73;&#x74;&#x2e;&#x64;&#101;</a></p>
 </blockquote>
 <h3 id="end-bio的参数变为一个"><a href="#end-bio的参数变为一个" class="headerlink" title="end_bio的参数变为一个"></a><a href="https://www.kernel.org/doc/htmldocs/filesystems/API-bio-endio.html" target="_blank" rel="noopener"><code>end_bio</code>的参数变为一个</a></h3><h3 id="构造函数必须强制类型转换"><a href="#构造函数必须强制类型转换" class="headerlink" title="构造函数必须强制类型转换"></a><a href="https://www.kernel.org/doc/htmldocs/kernel-api/API-blk-queue-make-request.html" target="_blank" rel="noopener">构造函数必须强制类型转换</a></h3><h3 id="样例块驱动代码"><a href="#样例块驱动代码" class="headerlink" title="样例块驱动代码"></a><code>样例块驱动代码</code></h3><ul>
 <li><a href="https://github.com/huqianshan/OperatingSystemAndCompiler/commit/ed07917c8e8902f8d1721dd93ce1513fb87e3b27" target="_blank" rel="noopener"><code>Test Device For Linux Block Drivers</code></a></li>
@@ -386,9 +511,9 @@
         
         <tags>
             
-            <tag> drivers </tag>
-            
             <tag> linux </tag>
+            
+            <tag> drivers </tag>
             
         </tags>
         
@@ -511,9 +636,9 @@
         
         <tags>
             
-            <tag> drivers </tag>
-            
             <tag> linux </tag>
+            
+            <tag> drivers </tag>
             
         </tags>
         
@@ -543,9 +668,9 @@
         
         <tags>
             
-            <tag> drivers </tag>
-            
             <tag> linux </tag>
+            
+            <tag> drivers </tag>
             
         </tags>
         
@@ -618,7 +743,7 @@
     <entry>
       <title><![CDATA[auto-google-translation]]></title>
       <url>/articles/auto-google-translation/</url>
-      <content type="html"><![CDATA[<h1 id="字幕也疯狂"><a href="#字幕也疯狂" class="headerlink" title="字幕也疯狂"></a>字幕也疯狂</h1><p><code>观曲千首 不如操琴一曲</code> 试着做一个勤劳的字幕组小员工~</p>
+      <content type="html"><![CDATA[<h2 id="字幕也疯狂"><a href="#字幕也疯狂" class="headerlink" title="字幕也疯狂"></a>字幕也疯狂</h2><p><code>观曲千首 不如操琴一曲</code> 试着做一个勤劳的字幕组小员工~</p>
 <a id="more"></a>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pathlib</span><br><span class="line"><span class="keyword">import</span> gevent</span><br><span class="line"><span class="keyword">from</span> gevent.pool <span class="keyword">import</span> Pool</span><br><span class="line"><span class="keyword">from</span> googletrans <span class="keyword">import</span> Translator</span><br><span class="line"></span><br><span class="line"><span class="keyword">global</span> sou_file</span><br><span class="line"><span class="keyword">global</span> des_file</span><br><span class="line">count = <span class="number">0</span></span><br><span class="line"><span class="keyword">global</span> translator</span><br><span class="line">translator = Translator(service_urls=[<span class="string">'translate.google.cn'</span>])</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">tran_sub</span><span class="params">(line)</span>:</span></span><br><span class="line">    <span class="keyword">global</span> des_file</span><br><span class="line">    <span class="keyword">global</span> count</span><br><span class="line">    <span class="keyword">global</span> translator</span><br><span class="line">    count += <span class="number">1</span></span><br><span class="line">    print(<span class="string">"count,%d"</span> % count)</span><br><span class="line">    line = line.decode(<span class="string">'utf-8'</span>)</span><br><span class="line">    <span class="keyword">if</span> line.startswith(<span class="string">'Dialogue'</span>) <span class="keyword">and</span> <span class="string">'student speaking'</span> <span class="keyword">not</span> <span class="keyword">in</span> line:</span><br><span class="line">        des_file.write(line.encode(<span class="string">'utf-8'</span>))</span><br><span class="line">        head_str,english_str = tuple(line.rsplit(<span class="string">',,'</span>, <span class="number">1</span>))</span><br><span class="line">        chinese_str = translator.translate(english_str, dest=<span class="string">'zh-CN'</span>).text</span><br><span class="line">        print(chinese_str)</span><br><span class="line">        c_line = <span class="string">',,'</span>.join([head_str,chinese_str+<span class="string">'\n'</span>]).replace(<span class="string">'English'</span>, <span class="string">'Chinese'</span>).replace(<span class="string">'您'</span>, <span class="string">'你'</span>).encode(<span class="string">'utf-8'</span>)</span><br><span class="line">        des_file.write(c_line)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        des_file.write(line.encode(<span class="string">'utf-8'</span>))</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">    sou_path = <span class="string">u"/Users/eugene/workspace/translationCSAPP/subtitle/English/"</span></span><br><span class="line">    des_path = <span class="string">u"/Users/eugene/workspace/translationCSAPP/subtitle/Chinese_English/"</span></span><br><span class="line"></span><br><span class="line">    filename = <span class="string">u"Lecture 23  Concurrent Programming.ass"</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">global</span> sou_file</span><br><span class="line">    <span class="keyword">global</span> des_file</span><br><span class="line">    sou_file = open(sou_path+filename, <span class="string">'rb'</span>)</span><br><span class="line">    des_file = open(des_path+filename, <span class="string">'wb+'</span>)</span><br><span class="line">    <span class="comment"># pool = Pool(10)</span></span><br><span class="line">    <span class="comment"># pool.map(tran_sub, sou_file)</span></span><br><span class="line">    threads = [gevent.spawn(tran_sub, line) <span class="keyword">for</span> line <span class="keyword">in</span> sou_file.readlines()]</span><br><span class="line">    gevent.joinall(threads)</span><br><span class="line">    sou_file.close()</span><br><span class="line">    des_file.close()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    main()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># for line in lines:</span></span><br><span class="line"><span class="comment">#      if line.startswith('Dialogue:'):</span></span><br><span class="line"><span class="comment">#         parts = line.rsplit(',,', 1)</span></span><br><span class="line"><span class="comment">#         line = ',,'.join([parts[0], parts[1].lstrip().capitalize()])</span></span><br><span class="line"><span class="comment">#     f.write(line)</span></span><br></pre></td></tr></table></figure>
 <p><code>说明：需要安装第三方库googletrans</code></p>
