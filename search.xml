@@ -3,6 +3,66 @@
   
     
     <entry>
+      <title><![CDATA[linux-kernel-address-space]]></title>
+      <url>/articles/linux-kernel-address-space/</url>
+      <content type="html"><![CDATA[<h2 id="Linux内核空间"><a href="#Linux内核空间" class="headerlink" title="Linux内核空间"></a><code>Linux</code>内核空间</h2><a id="more"></a>
+<p>内存分为三个区段: 1. 用于<code>DMA</code>的内存，2. <code>常规内存</code>，3.<code>高端内存</code></p>
+<ol>
+<li><code>x86</code>平台上位于<code>RAM</code>的前<code>16MB</code></li>
+</ol>
+<h2 id="内核空间分配api"><a href="#内核空间分配api" class="headerlink" title="内核空间分配api"></a>内核空间分配<code>api</code></h2><h3 id="kmalloc-and-kzalloc"><a href="#kmalloc-and-kzalloc" class="headerlink" title="kmalloc and kzalloc"></a><code>kmalloc and kzalloc</code></h3><h4 id="Description"><a href="#Description" class="headerlink" title="Description"></a><code>Description</code></h4><blockquote>
+<p><code>kmalloc is the normal method of allocating memory for objects smaller than page size in the kernel.</code></p>
+</blockquote>
+<p>最常用的内核空间内存分配函数。最终是通过调用<code>get_free_pages</code>来实现</p>
+<h4 id="flags-argument"><a href="#flags-argument" class="headerlink" title="flags argument"></a><code>flags argument</code></h4><blockquote>
+<p>GFP_USER - Allocate memory on behalf of user. May<br>sleep.</p>
+<p>GFP_KERNEL - Allocate normal kernel ram. May sleep.</p>
+<p>GFP_ATOMIC - Allocation will not sleep. May use emergency pools. For example, use this inside interrupt handlers.</p>
+<p>GFP_HIGHUSER - Allocate pages from high memory.</p>
+</blockquote>
+<p><del>貌似也能从<strong>高端内存</strong>分配</del> <strong>并不能</strong>,是说可能会从高端内存中分配，具体由平台决定</p>
+<h4 id="物理内存只能按页面进行分配，不超过128KB"><a href="#物理内存只能按页面进行分配，不超过128KB" class="headerlink" title="物理内存只能按页面进行分配，不超过128KB"></a>物理内存只能按页面进行分配，不超过<code>128KB</code></h4><h3 id="get-free-page"><a href="#get-free-page" class="headerlink" title="get_free_page"></a><code>get_free_page</code></h3><p>参数类似于<code>kmalloc</code>.</p>
+<p><code>alloc_pages</code>是<code>Linux</code>页分配器的核心函数<code>alloc_pages_node</code>的简单宏，主要处理了<code>NUMA</code></p>
+<h3 id="vmalloc"><a href="#vmalloc" class="headerlink" title="vmalloc"></a><code>vmalloc</code></h3><h4 id="vmalloc-Description"><a href="#vmalloc-Description" class="headerlink" title="vmalloc Description"></a><code>vmalloc Description</code></h4><p>分配虚拟地址空间的连续区域，尽管可能在物理地址上不是连续的。</p>
+<p>访问每个页面需要单独调用<code>alloc_pages</code></p>
+<h4 id="说明"><a href="#说明" class="headerlink" title="说明"></a><code>说明</code></h4><p>是<code>Linux</code>内存分配的基础。 内存分配使用效率不高，如可能，应该直接对页面进行分配。</p>
+<p>以上三个函数获得的内存地址均为虚拟地址。但<code>kmalloc、get_free_pages</code>地址与物理内存只差基于<code>PAGE_OFFSET</code>的偏移。不需要修改页表</p>
+<p><code>vmalloc</code>则不同。且分配得到的地址是不能在处理器之外使用。</p>
+<p>正确使用场合： <strong>分配一大堆连续的，只在软件中存在的，用于缓冲的内存区域</strong></p>
+<p>且其不能在原子上下文中使用，因为其内部实现调用了<code>kmalloc</code>来获取页表的存储空间，因而可能休眠</p>
+<h3 id="ioremap"><a href="#ioremap" class="headerlink" title="ioremap"></a><code>ioremap</code></h3><p>与<code>vmalloc</code>不同的是，<code>ioremap</code>并不实际分配内存。其返回的内存地址不能够被直接访问，需要通过特定的接口来操作。</p>
+<p>与<code>vmalloc</code>相同的是，<code>ioremap</code>也是面向页的，会修改页表</p>
+]]></content>
+      
+        
+        <tags>
+            
+            <tag> linux </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[pre-for-block-nvm-driver]]></title>
+      <url>/articles/pre-for-block-nvm-driver/</url>
+      <content type="html"><![CDATA[<h2 id="The-Block-Driver-39-s-Tasks"><a href="#The-Block-Driver-39-s-Tasks" class="headerlink" title="The Block Driver&#39;s Tasks"></a><code>The Block Driver&#39;s Tasks</code></h2><h3 id="Manaing-PM-space-and-providing-a-block-interface"><a href="#Manaing-PM-space-and-providing-a-block-interface" class="headerlink" title="Manaing PM space and providing a block interface"></a><code>Manaing PM space and providing a block interface</code></h3><h3 id="provide-protection"><a href="#provide-protection" class="headerlink" title="provide protection"></a><code>provide protection</code></h3><h3 id="assure-consistency-when-lost-power"><a href="#assure-consistency-when-lost-power" class="headerlink" title="assure consistency when lost power"></a><code>assure consistency when lost power</code></h3><a id="more"></a>
+<h2 id="DRAM内存模拟持久化设备的方法"><a href="#DRAM内存模拟持久化设备的方法" class="headerlink" title="DRAM内存模拟持久化设备的方法"></a>DRAM内存模拟持久化设备的方法</h2><h3 id="dmesg-grep-BIOS-e820"><a href="#dmesg-grep-BIOS-e820" class="headerlink" title="dmesg | grep BIOS-e820"></a><code>dmesg | grep BIOS-e820</code></h3><h3 id="sudo-su-vi-etc-default-grub"><a href="#sudo-su-vi-etc-default-grub" class="headerlink" title="sudo su; vi /etc/default/grub"></a><code>sudo su; vi /etc/default/grub</code></h3><h3 id="update-grub-reboot"><a href="#update-grub-reboot" class="headerlink" title="update-grub; reboot"></a><code>update-grub; reboot</code></h3><h3 id="dmesg-grep-user"><a href="#dmesg-grep-user" class="headerlink" title="dmesg | grep user;"></a><code>dmesg | grep user;</code></h3><h3 id="sudo-fdisk-l-dev-pmem0m"><a href="#sudo-fdisk-l-dev-pmem0m" class="headerlink" title="sudo fdisk -l /dev/pmem0m"></a><code>sudo fdisk -l /dev/pmem0m</code></h3><p><code>4KB each page</code>: transfer physical address to virtual address and make it accessible</p>
+<p>upon recive a request the driver computes the physical address of the demanded  PM page.</p>
+]]></content>
+      
+        
+        <tags>
+            
+            <tag> linux </tag>
+            
+            <tag> drivers </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[block-devices]]></title>
       <url>/articles/block-devices/</url>
       <content type="html"><![CDATA[<h2 id="块驱动设备"><a href="#块驱动设备" class="headerlink" title="块驱动设备"></a>块驱动设备</h2><h3 id="与字符驱动设备相比"><a href="#与字符驱动设备相比" class="headerlink" title="与字符驱动设备相比"></a>与字符驱动设备相比</h3><ul>
@@ -60,7 +120,7 @@
 </ul>
 <blockquote>
 <p>This helper doesn’t buy us much over calling kmap_atomic directly.<br>In fact in the only caller it does a bit of useless work as the<br>caller already has the bvec at hand, and said caller would even<br>buggy for a multi-segment bio due to the use of this helper. </p>
-<p>So just remove it.<br>Signed-off-by: default avatarChristoph Hellwig <a href="&#109;&#x61;&#105;&#x6c;&#x74;&#x6f;&#x3a;&#104;&#x63;&#104;&#64;&#108;&#115;&#116;&#x2e;&#100;&#101;">&#104;&#x63;&#104;&#64;&#108;&#115;&#116;&#x2e;&#100;&#101;</a><br>Signed-off-by: default avatarJens Axboe <a href="&#x6d;&#97;&#x69;&#108;&#116;&#111;&#x3a;&#x61;&#120;&#x62;&#x6f;&#101;&#x40;&#x6b;&#101;&#114;&#110;&#x65;&#108;&#x2e;&#100;&#107;">&#x61;&#120;&#x62;&#x6f;&#101;&#x40;&#x6b;&#101;&#114;&#110;&#x65;&#108;&#x2e;&#100;&#107;</a></p>
+<p>So just remove it.<br>Signed-off-by: default avatarChristoph Hellwig <a href="&#x6d;&#x61;&#x69;&#108;&#x74;&#x6f;&#x3a;&#104;&#99;&#x68;&#x40;&#x6c;&#x73;&#116;&#46;&#x64;&#x65;">&#104;&#99;&#x68;&#x40;&#x6c;&#x73;&#116;&#46;&#x64;&#x65;</a><br>Signed-off-by: default avatarJens Axboe <a href="&#x6d;&#97;&#105;&#108;&#x74;&#x6f;&#58;&#x61;&#x78;&#98;&#x6f;&#x65;&#x40;&#107;&#101;&#114;&#110;&#101;&#108;&#46;&#x64;&#107;">&#x61;&#x78;&#98;&#x6f;&#x65;&#x40;&#107;&#101;&#114;&#110;&#101;&#108;&#46;&#x64;&#107;</a></p>
 </blockquote>
 <h3 id="struct-request中-cmd-type被删除"><a href="#struct-request中-cmd-type被删除" class="headerlink" title="struct request中 cmd_type被删除"></a><code>struct request</code>中 <code>cmd_type</code>被删除</h3><ul>
 <li><a href="https://lkml.org/lkml/2017/1/31/562" target="_blank" rel="noopener">链接及示例</a></li>
@@ -68,7 +128,7 @@
 <blockquote>
 <p>From    Christoph Hellwig &lt;&gt;<br>  Subject    [PATCH 08/10] block: introduce blk_rq_is_passthrough<br>  Date    Tue, 31 Jan 2017 16:57:29 +0100</p>
 <p>This can be used to check for fs vs non-fs requests and basically<br>removes all knowledge of BLOCK_PC specific from the block layer,<br>as well as preparing for removing the cmd_type field in struct request.</p>
-<p>Signed-off-by: Christoph Hellwig <a href="&#x6d;&#x61;&#105;&#108;&#x74;&#111;&#x3a;&#x68;&#x63;&#x68;&#x40;&#x6c;&#115;&#116;&#46;&#100;&#101;">&#x68;&#x63;&#x68;&#x40;&#x6c;&#115;&#116;&#46;&#100;&#101;</a></p>
+<p>Signed-off-by: Christoph Hellwig <a href="&#109;&#x61;&#105;&#x6c;&#x74;&#x6f;&#58;&#104;&#99;&#x68;&#x40;&#x6c;&#x73;&#116;&#46;&#100;&#x65;">&#104;&#99;&#x68;&#x40;&#x6c;&#x73;&#116;&#46;&#100;&#x65;</a></p>
 </blockquote>
 <h3 id="end-bio的参数变为一个"><a href="#end-bio的参数变为一个" class="headerlink" title="end_bio的参数变为一个"></a><a href="https://www.kernel.org/doc/htmldocs/filesystems/API-bio-endio.html" target="_blank" rel="noopener"><code>end_bio</code>的参数变为一个</a></h3><h3 id="构造函数必须强制类型转换"><a href="#构造函数必须强制类型转换" class="headerlink" title="构造函数必须强制类型转换"></a><a href="https://www.kernel.org/doc/htmldocs/kernel-api/API-blk-queue-make-request.html" target="_blank" rel="noopener">构造函数必须强制类型转换</a></h3><h3 id="样例块驱动代码"><a href="#样例块驱动代码" class="headerlink" title="样例块驱动代码"></a><code>样例块驱动代码</code></h3><ul>
 <li><a href="https://github.com/huqianshan/OperatingSystemAndCompiler/commit/ed07917c8e8902f8d1721dd93ce1513fb87e3b27" target="_blank" rel="noopener"><code>Test Device For Linux Block Drivers</code></a></li>
@@ -694,7 +754,6 @@
 <li>装饰器</li>
 <li><code>with</code>语句和<code>ContexManager</code>上下文管理器</li>
 </ul>
-<p><img src="https://i.loli.net/2019/01/31/5c52e16861ba4.jpg" width="20%" height="20%"></p>
 <a id="more"></a>
 <h2 id="给函数添加一个装饰器"><a href="#给函数添加一个装饰器" class="headerlink" title="给函数添加一个装饰器"></a>给函数添加一个装饰器</h2><h3 id="需求"><a href="#需求" class="headerlink" title="需求"></a><code>需求</code></h3><p>你想在函数上添加一个包装器，增加额外的操作处理(比如日志、计时等)。</p>
 <h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a><code>解决方法</code></h3><p>如果你想使用额外的代码包装一个函数，可以定义一个装饰器函数，例如：</p>
@@ -929,11 +988,11 @@
         
         <tags>
             
+            <tag> Python </tag>
+            
             <tag> TensorFlow </tag>
             
             <tag> CNN </tag>
-            
-            <tag> Python </tag>
             
         </tags>
         
@@ -1029,11 +1088,11 @@
         
         <tags>
             
+            <tag> Python </tag>
+            
             <tag> TensorFlow </tag>
             
             <tag> CNN </tag>
-            
-            <tag> Python </tag>
             
             <tag> UESTC </tag>
             
@@ -1262,9 +1321,9 @@
         
         <tags>
             
-            <tag> Python </tag>
-            
             <tag> Script </tag>
+            
+            <tag> Python </tag>
             
         </tags>
         
