@@ -161,6 +161,16 @@
 </li>
 <li><p><a href="https://www.cnblogs.com/xiaojiang1025/p/6193959.html" target="_blank" rel="noopener">设备模型</a></p>
 </li>
+<li><p><a href="https://www.cnblogs.com/lifexy/p/7651667.html" target="_blank" rel="noopener">块设备体系结构</a></p>
+</li>
+<li><p><a href="https://www.byteisland.com/nvme-%E8%AE%BE%E8%AE%A1%E9%80%BB%E8%BE%91%E4%B8%8E%E5%8E%9F%E7%90%86%E8%A7%A3%E6%9E%90/" target="_blank" rel="noopener">nvme-设计逻辑与原理解析</a></p>
+</li>
+</ul>
+<h3 id="Linux相关"><a href="#Linux相关" class="headerlink" title="Linux相关"></a><code>Linux</code>相关</h3><h4 id="File-System"><a href="#File-System" class="headerlink" title="File System"></a><code>File System</code></h4><ul>
+<li><p><a href="https://www.cnblogs.com/huxiao-tee/p/4657851.html" target="_blank" rel="noopener">从内核视角看文件读写过程</a></p>
+</li>
+<li><p><a href="https://www.lenzhao.com/topic/5a29facc2e95f0fd0a9818ab" target="_blank" rel="noopener">页缓存和地址空间</a></p>
+</li>
 </ul>
 ]]></content>
       
@@ -211,7 +221,7 @@
     
     <entry>
       <title><![CDATA[linux-kernel-address-space]]></title>
-      <url>/articles/Drivers/linux-kernel-address-space/</url>
+      <url>/articles/Linux/linux-kernel-address-space/</url>
       <content type="html"><![CDATA[<a id="more"></a>
 <!-- TOC -->
 <ul>
@@ -411,6 +421,8 @@
 </li>
 <li><p><a href="http://chinaunix.net/uid-30282771-id-5162413.html" target="_blank" rel="noopener">用户态访问物理地址</a></p>
 </li>
+<li><p><a href="https://www.cnblogs.com/huxiao-tee/p/4660352.html" target="_blank" rel="noopener"><code>mmap</code>详解</a></p>
+</li>
 </ul>
 ]]></content>
       
@@ -458,7 +470,7 @@
     
     <entry>
       <title><![CDATA[block-drivers-devices]]></title>
-      <url>/articles/Drivers/block-devices/</url>
+      <url>/articles/Linux/Drivers/block-devices/</url>
       <content type="html"><![CDATA[<h2 id="块驱动设备"><a href="#块驱动设备" class="headerlink" title="块驱动设备"></a>块驱动设备</h2><!-- TOC -->
 <ul>
 <li><a href="#块驱动设备">块驱动设备</a><ul>
@@ -660,7 +672,7 @@
 </ul>
 <blockquote>
 <p>This helper doesn’t buy us much over calling kmap_atomic directly.<br>In fact in the only caller it does a bit of useless work as the<br>caller already has the bvec at hand, and said caller would even<br>buggy for a multi-segment bio due to the use of this helper.</p>
-<p>So just remove it.<br>Signed-off-by: default avatarChristoph Hellwig <a href="&#109;&#97;&#x69;&#108;&#x74;&#111;&#58;&#x68;&#x63;&#104;&#64;&#x6c;&#115;&#x74;&#46;&#x64;&#101;">&#x68;&#x63;&#104;&#64;&#x6c;&#115;&#x74;&#46;&#x64;&#101;</a><br>Signed-off-by: default avatarJens Axboe <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#x61;&#120;&#98;&#111;&#x65;&#64;&#107;&#101;&#114;&#110;&#x65;&#108;&#46;&#100;&#107;">&#x61;&#120;&#98;&#111;&#x65;&#64;&#107;&#101;&#114;&#110;&#x65;&#108;&#46;&#100;&#107;</a></p>
+<p>So just remove it.<br>Signed-off-by: default avatarChristoph Hellwig <a href="&#109;&#x61;&#x69;&#108;&#116;&#111;&#x3a;&#x68;&#99;&#x68;&#x40;&#x6c;&#115;&#116;&#46;&#x64;&#x65;">&#x68;&#99;&#x68;&#x40;&#x6c;&#115;&#116;&#46;&#x64;&#x65;</a><br>Signed-off-by: default avatarJens Axboe <a href="&#109;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#x3a;&#x61;&#120;&#98;&#x6f;&#101;&#64;&#x6b;&#101;&#114;&#110;&#101;&#108;&#46;&#x64;&#107;">&#x61;&#120;&#98;&#x6f;&#101;&#64;&#x6b;&#101;&#114;&#110;&#101;&#108;&#46;&#x64;&#107;</a></p>
 </blockquote>
 <h4 id="struct-request中-cmd-type被删除"><a href="#struct-request中-cmd-type被删除" class="headerlink" title="struct request中 cmd_type被删除"></a><code>struct request</code>中 <code>cmd_type</code>被删除</h4><ul>
 <li><a href="https://lkml.org/lkml/2017/1/31/562" target="_blank" rel="noopener">链接及示例</a></li>
@@ -668,7 +680,7 @@
 <blockquote>
 <p>From Christoph Hellwig &lt;&gt;<br>  Subject [PATCH 08/10] block: introduce blk_rq_is_passthrough<br>  Dat Tue, 31 Jan 2017 16:57:29 +0100</p>
 <p>This can be used to check for fs vs non-fs requests and basically<br>removes all knowledge of BLOCK_PC specific from the block layer,<br>as well as preparing for removing the cmd_type field in struct request.</p>
-<p>Signed-off-by: Christoph Hellwig <a href="&#x6d;&#97;&#x69;&#x6c;&#116;&#x6f;&#x3a;&#x68;&#99;&#x68;&#x40;&#x6c;&#115;&#116;&#x2e;&#x64;&#101;">&#x68;&#99;&#x68;&#x40;&#x6c;&#115;&#116;&#x2e;&#x64;&#101;</a></p>
+<p>Signed-off-by: Christoph Hellwig <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#x68;&#x63;&#104;&#64;&#x6c;&#115;&#116;&#46;&#x64;&#101;">&#x68;&#x63;&#104;&#64;&#x6c;&#115;&#116;&#46;&#x64;&#101;</a></p>
 </blockquote>
 <ul>
 <li><p><a href="https://www.kernel.org/doc/htmldocs/filesystems/API-bio-endio.html" target="_blank" rel="noopener"><code>end_bio</code>的参数变为一个</a></p>
