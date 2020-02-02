@@ -423,6 +423,8 @@
 </li>
 <li><p><a href="https://www.cnblogs.com/huxiao-tee/p/4660352.html" target="_blank" rel="noopener"><code>mmap</code>详解</a></p>
 </li>
+<li><p><a href="https://r00tk1ts.github.io/2017/10/20/Linux%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86-%E9%A1%B5%E6%A1%86%E7%AE%A1%E7%90%86/#" target="_blank" rel="noopener">Linux内存管理-页框管理-推荐阅读</a></p>
+</li>
 </ul>
 ]]></content>
       
@@ -672,7 +674,7 @@
 </ul>
 <blockquote>
 <p>This helper doesn’t buy us much over calling kmap_atomic directly.<br>In fact in the only caller it does a bit of useless work as the<br>caller already has the bvec at hand, and said caller would even<br>buggy for a multi-segment bio due to the use of this helper.</p>
-<p>So just remove it.<br>Signed-off-by: default avatarChristoph Hellwig <a href="&#109;&#x61;&#x69;&#108;&#116;&#111;&#x3a;&#x68;&#99;&#x68;&#x40;&#x6c;&#115;&#116;&#46;&#x64;&#x65;">&#x68;&#99;&#x68;&#x40;&#x6c;&#115;&#116;&#46;&#x64;&#x65;</a><br>Signed-off-by: default avatarJens Axboe <a href="&#109;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#x3a;&#x61;&#120;&#98;&#x6f;&#101;&#64;&#x6b;&#101;&#114;&#110;&#101;&#108;&#46;&#x64;&#107;">&#x61;&#120;&#98;&#x6f;&#101;&#64;&#x6b;&#101;&#114;&#110;&#101;&#108;&#46;&#x64;&#107;</a></p>
+<p>So just remove it.<br>Signed-off-by: default avatarChristoph Hellwig <a href="&#109;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#x3a;&#x68;&#99;&#x68;&#64;&#108;&#x73;&#x74;&#46;&#x64;&#x65;">&#x68;&#99;&#x68;&#64;&#108;&#x73;&#x74;&#46;&#x64;&#x65;</a><br>Signed-off-by: default avatarJens Axboe <a href="&#109;&#x61;&#105;&#x6c;&#116;&#x6f;&#58;&#x61;&#x78;&#x62;&#x6f;&#x65;&#64;&#x6b;&#x65;&#114;&#110;&#101;&#x6c;&#46;&#100;&#x6b;">&#x61;&#x78;&#x62;&#x6f;&#x65;&#64;&#x6b;&#x65;&#114;&#110;&#101;&#x6c;&#46;&#100;&#x6b;</a></p>
 </blockquote>
 <h4 id="struct-request中-cmd-type被删除"><a href="#struct-request中-cmd-type被删除" class="headerlink" title="struct request中 cmd_type被删除"></a><code>struct request</code>中 <code>cmd_type</code>被删除</h4><ul>
 <li><a href="https://lkml.org/lkml/2017/1/31/562" target="_blank" rel="noopener">链接及示例</a></li>
@@ -680,7 +682,7 @@
 <blockquote>
 <p>From Christoph Hellwig &lt;&gt;<br>  Subject [PATCH 08/10] block: introduce blk_rq_is_passthrough<br>  Dat Tue, 31 Jan 2017 16:57:29 +0100</p>
 <p>This can be used to check for fs vs non-fs requests and basically<br>removes all knowledge of BLOCK_PC specific from the block layer,<br>as well as preparing for removing the cmd_type field in struct request.</p>
-<p>Signed-off-by: Christoph Hellwig <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#x68;&#x63;&#104;&#64;&#x6c;&#115;&#116;&#46;&#x64;&#101;">&#x68;&#x63;&#104;&#64;&#x6c;&#115;&#116;&#46;&#x64;&#101;</a></p>
+<p>Signed-off-by: Christoph Hellwig <a href="&#x6d;&#x61;&#105;&#x6c;&#116;&#x6f;&#x3a;&#104;&#x63;&#104;&#x40;&#108;&#x73;&#116;&#46;&#x64;&#101;">&#104;&#x63;&#104;&#x40;&#108;&#x73;&#116;&#46;&#x64;&#101;</a></p>
 </blockquote>
 <ul>
 <li><p><a href="https://www.kernel.org/doc/htmldocs/filesystems/API-bio-endio.html" target="_blank" rel="noopener"><code>end_bio</code>的参数变为一个</a></p>
@@ -1117,70 +1119,6 @@
             <tag> linux </tag>
             
             <tag> drivers </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[funds]]></title>
-      <url>/articles/funds/</url>
-      <content type="html"><![CDATA[<!-- TOC -->
-<ul>
-<li><a href="#从零开始的基金之路">从零开始的基金之路</a><ul>
-<li><a href="#根本准则--追求持有成本尽可能的低于现有价格">根本准则 ： <code>追求持有成本尽可能的低于现有价格</code></a><ul>
-<li><a href="#此路缘何">此路缘何</a></li>
-<li><a href="#选择何路">选择何路</a></li>
-<li><a href="#路向何方">路向何方</a></li>
-<li><a href="#路的开始">路的开始</a><ul>
-<li><a href="#原则">原则</a></li>
-<li><a href="#定投为先">定投为先</a></li>
-<li><a href="#参考路标">参考路标</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<!-- /TOC -->
-<h1 id="从零开始的基金之路"><a href="#从零开始的基金之路" class="headerlink" title="从零开始的基金之路"></a>从零开始的基金之路</h1><p>人生有哲学，而哲学是指导思考的元科学。同样的，基金的操作也<br>应该有思考反思遵循的哲学。</p>
-<h2 id="根本准则-：-追求持有成本尽可能的低于现有价格"><a href="#根本准则-：-追求持有成本尽可能的低于现有价格" class="headerlink" title="根本准则 ： 追求持有成本尽可能的低于现有价格"></a>根本准则 ： <code>追求持有成本尽可能的低于现有价格</code></h2><p>若总的持有价格小于当前，且这个差值的累积之和，那么就可以使得<br>基金增持。</p>
-<a id="more"></a>
-<h3 id="此路缘何"><a href="#此路缘何" class="headerlink" title="此路缘何"></a>此路缘何</h3><ol>
-<li>当作养成游戏的娱乐</li>
-<li>养成储蓄的习惯</li>
-<li>保持学习，接触新鲜</li>
-</ol>
-<h3 id="选择何路"><a href="#选择何路" class="headerlink" title="选择何路"></a>选择何路</h3><ol>
-<li>沪深300</li>
-<li>中证500<br><strong>为什么</strong></li>
-</ol>
-<p>还应有行业基金，国际基金</p>
-<h3 id="路向何方"><a href="#路向何方" class="headerlink" title="路向何方"></a>路向何方</h3><h3 id="路的开始"><a href="#路的开始" class="headerlink" title="路的开始"></a>路的开始</h3><h4 id="原则"><a href="#原则" class="headerlink" title="原则"></a>原则</h4><ol>
-<li>追求钻石坑<br>如果当前处于最高点附近，继续买入则会拉高成本价，而基金的现有价格却在一直下降，从而使得利润变少。<br>如果，保持继续上涨，那么继续买入虽然会拉高成本价，但基金的<br>价格也在一直增加，而因为金额的增多，也带来了新的一部分利润。</li>
-</ol>
-<p>而钻石坑的关键在于，在价格下降的波谷里，购买近<br>更多的【低于均值】的份额，从而拉低成本价。</p>
-<h4 id="定投为先"><a href="#定投为先" class="headerlink" title="定投为先"></a>定投为先</h4><ul>
-<li><p>每月需要保持<code>￥150</code>的投入，每周至多操作一次</p>
-</li>
-<li><p>参考以往均值，低于即可购买 若判断仍能上涨，也继续购买</p>
-</li>
-<li><p>若当前的交易不能形成钻石坑形态，则不购买。</p>
-</li>
-</ul>
-<h4 id="参考路标"><a href="#参考路标" class="headerlink" title="参考路标"></a>参考路标</h4><ul>
-<li><p><a href="http://discuss.jiucaishuo.com/" target="_blank" rel="noopener">韭菜说社区</a><br>里面有指数的 PE分位信息。</p>
-</li>
-<li><p>MA5、10、20均线</p>
-</li>
-</ul>
-]]></content>
-      
-        
-        <tags>
-            
-            <tag> 基金 </tag>
             
         </tags>
         
