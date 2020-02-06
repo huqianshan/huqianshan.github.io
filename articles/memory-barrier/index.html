@@ -1,1 +1,483 @@
-<!DOCTYPE html><html lang=en><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1"><!--[if IE]><link rel="icon" href="/favicon.ico"><![endif]--><title>loading</title><link rel=prefetch href=https://unpkg.com/jquery@3.3.1/dist/jquery.min.js as=script><script src=https://unpkg.com/jquery@3.3.1/dist/jquery.min.js></script><link rel=stylesheet href=https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.css><script src=https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.js></script><link href=/css/articles.2c079b61.css rel=prefetch><link href=/css/articles~home~pages.c0eb9bab.css rel=prefetch><link href=/css/gitalk.b6623aae.css rel=prefetch><link href=/css/gitment.7f9b3023.css rel=prefetch><link href=/css/pages.2c079b61.css rel=prefetch><link href=/css/tagcloud.4509716a.css rel=prefetch><link href=/js/archives.056611fe.js rel=prefetch><link href=/js/articles.b0172c4b.js rel=prefetch><link href=/js/articles~home~pages.93d92545.js rel=prefetch><link href=/js/comment.4e874b4c.js rel=prefetch><link href=/js/dplayer.059be256.js rel=prefetch><link href=/js/gitalk.09835498.js rel=prefetch><link href=/js/gitment.5a54c974.js rel=prefetch><link href=/js/home.2482dec2.js rel=prefetch><link href=/js/leancloud-storage.d4827b27.js rel=prefetch><link href=/js/pages.5822fb57.js rel=prefetch><link href=/js/related.c8de4528.js rel=prefetch><link href=/js/tagcloud.8278d636.js rel=prefetch><link href=/js/valine.bdadea88.js rel=prefetch><link href=/css/app.efa6d461.css rel=preload as=style><link href=/css/chunk-bootstrap-vue.3c36c74a.css rel=preload as=style><link href=/css/chunk-bootstrap.6c57f554.css rel=preload as=style><link href=/js/app.a031425c.js rel=preload as=script><link href=/js/chunk-bootstrap-vue.c86bbd7c.js rel=preload as=script><link href=/js/chunk-bootstrap.3bd85c7e.js rel=preload as=script><link href=/js/chunk-font-awesome.8d2cd1c1.js rel=preload as=script><link href=/js/chunk-markdown-it.61e60a46.js rel=preload as=script><link href=/js/chunk-vue.3748bb0e.js rel=preload as=script><link href=/css/chunk-bootstrap-vue.3c36c74a.css rel=stylesheet><link href=/css/chunk-bootstrap.6c57f554.css rel=stylesheet><link href=/css/app.efa6d461.css rel=stylesheet><link rel=icon type=image/png sizes=32x32 href=/img/icons/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/img/icons/favicon-16x16.png><link rel=manifest href=/manifest.json><meta name=theme-color content=#ffffff><meta name=apple-mobile-web-app-capable content=no><meta name=apple-mobile-web-app-status-bar-style content=default><meta name=apple-mobile-web-app-title content=hexo-theme-amber><link rel=apple-touch-icon href=/img/icons/apple-touch-icon-152x152.png><link rel=mask-icon href=/img/icons/safari-pinned-tab.svg color=#ffffff><meta name=msapplication-TileImage content=/img/icons/msapplication-icon-144x144.png><meta name=msapplication-TileColor content=#ffffff></head><body><noscript><link rel=stylesheet href=https://unpkg.com/bootstrap@4.1.3/dist/css/bootstrap.min.css><div class=container style="position: relative;"><div class=text-center style="position: relative; margin: 0 auto; top: 50vh; transform: translateY(-65%);"><h1 style="font-size: 12.5rem; font-weight:lighter;">JS</h1><h4 style="font-weight: normal; color: #6c757d;">We're sorry but this site requires <strong style="color: #007bff;">JavaScript</strong> to function normally.</h4></div></div></noscript><div id=app><script>document.write('<img src="\/img\/loading.gif" width="64" height="64" style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);">');</script></div><script src=/js/chunk-bootstrap-vue.c86bbd7c.js></script><script src=/js/chunk-markdown-it.61e60a46.js></script><script src=/js/chunk-font-awesome.8d2cd1c1.js></script><script src=/js/chunk-bootstrap.3bd85c7e.js></script><script src=/js/chunk-vue.3748bb0e.js></script><script src=/js/app.a031425c.js></script></body></html>
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="For Nothing">
+  <meta name="keyword" content="hexo-theme, vuejs">
+  
+    <link rel="shortcut icon" href="/css/images/logo.png">
+  
+  <title>
+    
+      loweer-level-of-code | Hjl&#39; Blog
+    
+  </title>
+  <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+  
+    <link rel="stylesheet" href="/css/plugins/gitment.css">
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+  
+    <script src="/js/qrious.js"></script>
+  
+  
+    <script src="/js/gitment.js"></script>
+  
+  
+  
+    <!-- MathJax support START -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- MathJax support END -->
+  
+
+
+</head>
+<div class="wechat-share">
+  <img src="/css/images/logo.png" />
+</div>
+
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>Hjl' Blog</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">Tags</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/project/" class="item-link">Projects</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">About</a>
+          
+        </li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">Tags</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/project/" class="menu-link">Projects</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>loweer-level-of-code</h2>
+  <p class="post-date">2019-12-06</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content"><h2 id="数据一致性"><a href="#数据一致性" class="headerlink" title="数据一致性"></a>数据一致性</h2><a id="more"></a>
+<!-- TOC -->
+<ul>
+<li><a href="#数据一致性">数据一致性</a><ul>
+<li><a href="#缓存一致性">缓存一致性</a></li>
+<li><a href="#顺序一致性">顺序一致性</a></li>
+</ul>
+</li>
+<li><a href="#内存屏障">内存屏障</a><ul>
+<li><a href="#相关原语以及x86指令">相关原语以及<code>x86</code>指令</a><ul>
+<li><a href="#完全内存屏障full-memory-barrier">完全内存屏障(<code>full memory barrier</code>)</a></li>
+<li><a href="#内存读屏障read-memory-barrier">内存读屏障(<code>read memory barrier</code>)</a></li>
+<li><a href="#内存写屏障write-memory-barrier">内存写屏障(<code>write memory barrier</code>)</a></li>
+<li><a href="#实现">实现</a></li>
+<li><a href="#编译器内存屏障">编译器内存屏障</a></li>
+</ul>
+</li>
+<li><a href="#一些参考">一些参考</a></li>
+</ul>
+</li>
+<li><a href="#多处理器间同步">多处理器间同步</a></li>
+<li><a href="#控制寄存器">控制寄存器</a><ul>
+<li><a href="#cr0-4寄存器"><code>CR0-4</code>寄存器</a></li>
+</ul>
+</li>
+<li><a href="#缓存更新">缓存更新</a><ul>
+<li><a href="#write-through"><code>write through</code></a></li>
+<li><a href="#write-back"><code>write back</code></a></li>
+<li><a href="#dirty-cache"><code>dirty-cache</code></a></li>
+<li><a href="#clean-cache"><code>clean-cache</code></a></li>
+</ul>
+</li>
+</ul>
+<!-- /TOC -->
+<h3 id="缓存一致性"><a href="#缓存一致性" class="headerlink" title="缓存一致性"></a>缓存一致性</h3><p>所谓缓存一致性，就是在多处理器系统中，每个cpu都有自己的L1 cache。很可能两个不同cpu的L1 cache中缓存的是同一片内存的内容，如果一个cpu更改了自己被缓存的内容，它要保证另一个cpu读这块数据时也要读到这个最新的。</p>
+<p>不过你不要担心，这个复杂的工作完全是由硬件来完成的，通过实现一种MESI协议，硬件可以轻松的完成缓存一致性的工作。不要说一个读一个写，就是多个同时写都没问题。一个cpu读时总能读入最新的数据，不管它是在自己的cache中，还是在其它cpu的cache中，还是在内存中，这就是缓存一致性。</p>
+<p>之前一直认为linux中很多东西是用来保证缓存一致性的，其实不是。缓存一致性绝大部分是靠硬件机制实现的，只有在带lock前缀的指令执行时才与cache有一点关系。（这话说得绝对，但我目前看来就是这样）我们更多的时候是为了保证顺序一致性。</p>
+<h3 id="顺序一致性"><a href="#顺序一致性" class="headerlink" title="顺序一致性"></a>顺序一致性</h3><p> 所谓顺序一致性，说的则是与缓存一致性完全不同的概念，虽然它们都是处理器发展的产物。因为编译器的技术不断发展，它可能为了优化你的代码，而将某些操作的顺序更改执行。</p>
+<p> 处理器中也早就有了<strong>多发射、乱序执行</strong>的概念。这样的结果，就是实际执行的指令顺序会与编程时代码的执行顺序略有不同。这在单处理器下当然没什么，毕竟只要自己的代码不过问，就没人过问，编译器和处理器就是在保证自己的代码发现不了的情况下打乱执行顺序的。</p>
+<p> 但多处理器不是这样，可能一个处理器上指令的完成顺序，会对其它处理器上执行的代码造成很大影响。所以就有了顺序一致性的概念，即保证一个处理器上线程的执行顺序，在其它的处理器上的线程看来，都是一样的。这个问题的解决不是光靠处理器或者编译器就能解决的，需要软件的干预。</p>
+<h2 id="内存屏障"><a href="#内存屏障" class="headerlink" title="内存屏障"></a>内存屏障</h2><p>软件干预的方式也非常简单，那就是插入<strong>内存屏障(memory barrier)</strong>。</p>
+<p>其实内存屏障这个词，是由搞处理器的人造的，弄得我们很不好理解。内存屏障，很容易让我们串到缓存一致性去，乃至怀疑是否这样做才能让其它cpu看到被修改过的cache，这样想就错了。</p>
+<p>所谓内存屏障，从处理器角度来说，是用来串行化读写操作的，从软件角度来讲，就是用来解决顺序一致性问题的。</p>
+<p>编译器不是要打乱代码执行顺序吗，处理器不是要乱序执行吗，你插入一个内存屏障，就相当于告诉编译器，屏障前后的指令顺序不能颠倒，告诉处理器，只有等屏障前的指令执行完了，屏障后的指令才能开始执行。</p>
+<p>当然，内存屏障能阻挡编译器乱来，但处理器还是有办法。处理器中不是有多发射、乱序执行、顺序完成的概念吗，它在内存屏障时只要保证前面指令的读写操作，一定在后面指令的读写操作完成之前完成，就可以了。</p>
+<p>所以内存屏障才会对应有读屏障、写屏障和读写屏障三类。如x86之前保证写操作都是顺序完成的，所以不需要写屏障，但现在也有部分ia32处理器的写操作变成乱序完成，所以也需要写屏障。</p>
+<p>其实，除了专门的读写屏障指令，还有很多指令的执行是带有读写屏障功能的，比如带lock前缀的指令。在专门的读写屏障指令出现之前，linux就是靠lock熬过来的。</p>
+<p>至于在哪里插入读写屏障，要视软件的需求而定。读写屏障无法完全实现顺序一致性，但多处理器上的线程也不会一直盯着你的执行顺序看，只要保证在它看过来的时候，认为你符合顺序一致性，执行不会出现你代码中没有预料到的情况。所谓预料外的情况，举例而言，你的线程是先给变量a赋值，再给变量b赋值，结果别的处理器上运行的线程看过来，发现b赋值了，a却没有赋值，（注意这种不一致不是由缓存不一致造成的，而是处理器写操作完成的顺序不一致造成的），这时就要在a赋值与b赋值之间，加一个写屏障。</p>
+<h3 id="相关原语以及x86指令"><a href="#相关原语以及x86指令" class="headerlink" title="相关原语以及x86指令"></a>相关原语以及<code>x86</code>指令</h3><h4 id="完全内存屏障-full-memory-barrier"><a href="#完全内存屏障-full-memory-barrier" class="headerlink" title="完全内存屏障(full memory barrier)"></a>完全内存屏障(<code>full memory barrier</code>)</h4><ul>
+<li><p>保障了早于屏障的内存读写操作的结果提交到内存之后，再执行晚于屏障的读写操作。</p>
+</li>
+<li><p><code>mfence (asm), void _mm_mfence (void)</code></p>
+</li>
+</ul>
+<h4 id="内存读屏障-read-memory-barrier"><a href="#内存读屏障-read-memory-barrier" class="headerlink" title="内存读屏障(read memory barrier)"></a>内存读屏障(<code>read memory barrier</code>)</h4><ul>
+<li><p>仅确保了内存读操作</p>
+</li>
+<li><p><code>lfence (asm), void _mm_lfence (void)</code></p>
+</li>
+</ul>
+<h4 id="内存写屏障-write-memory-barrier"><a href="#内存写屏障-write-memory-barrier" class="headerlink" title="内存写屏障(write memory barrier)"></a>内存写屏障(<code>write memory barrier</code>)</h4><ul>
+<li><p>仅保证了内存写操作</p>
+</li>
+<li><p><code>sfence (asm), void _mm_sfence (void)</code></p>
+</li>
+</ul>
+<h4 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h4><p>常见的<code>x86/x64</code>，通常使用<code>lock</code>指令前缀加上一个空操作来实现，注意当然不能真的是<code>nop</code>指令，但是可以用来实现空操作的指令其实是很多的，比如<code>Linux</code>中采用的</p>
+<pre><code>addl $0, 0 (%esp)
+</code></pre><h4 id="编译器内存屏障"><a href="#编译器内存屏障" class="headerlink" title="编译器内存屏障"></a>编译器内存屏障</h4><p>编译器会对生成的可执行代码做一定优化，造成乱序执行甚至省略（不执行）。<code>gcc</code>编译器在遇到内嵌汇编语句：</p>
+<pre><code>asm volatile(&quot;&quot; ::: &quot;memory&quot;);
+</code></pre><p>将以此作为一条内存屏障，重排序内存操作。即此语句之前的各种编译优化将不会持续到此语句之后。也可用内建的<code>__sync_synchronize</code></p>
+<p><code>Microsoft Visual C++</code>的编译器内存屏障为：</p>
+<pre><code>_ReadWriteBarrier() MemoryBarrier()
+</code></pre><p><code>Intel C++</code>编译器的内存屏障为：</p>
+<pre><code>__memory_barrier()
+</code></pre><h3 id="一些参考"><a href="#一些参考" class="headerlink" title="一些参考"></a>一些参考</h3><ul>
+<li><p><a href="https://blog.csdn.net/zenny_chen/article/details/5980997" target="_blank" rel="noopener">乱序的例子</a></p>
+</li>
+<li><p><a href="https://monkeysayhi.github.io/2017/12/28/%E4%B8%80%E6%96%87%E8%A7%A3%E5%86%B3%E5%86%85%E5%AD%98%E5%B1%8F%E9%9A%9C/" target="_blank" rel="noopener">从Java角度总结</a></p>
+</li>
+<li><p><a href="https://zhuanlan.zhihu.com/p/41872203" target="_blank" rel="noopener">不同指令的测试</a></p>
+</li>
+</ul>
+<h2 id="多处理器间同步"><a href="#多处理器间同步" class="headerlink" title="多处理器间同步"></a>多处理器间同步</h2><p>有了SMP之后，线程就开始同时在多个处理器上运行。只要是线程就有通信和同步的要求。幸好SMP系统是共享内存的，也就是所有处理器看到的内存内容都一样，虽然有独立的L1 cache，但还是由硬件完成了缓存一致性处理的问题。</p>
+<p>那不同处理器上的线程要访问同一数据，需要临界区，需要同步。靠什么同步？之前在UP系统中，我们上靠信号量，下靠关中断和读修改写指令。现在在SMP系统中，关中断已经废了，虽然为了同步同一处理器上的线程还是需要的，但只靠它已经不行了。读修改写指令？也不行了。在你指令中读操作完成写操作还没进行时，就可能有另外的处理器进行了读操作或者写操作。缓存一致性协议是先进，但还没有先进到预测这条读操作是哪种指令发出来的。</p>
+<p>所以x86又发明了带lock前缀的指令。在此指令执行时，会将所有包含指令中读写地址的cache line失效，并锁定内存总线。这样别的处理器要想对同样的地址或者同一个cache line上的地址读写，既无法从cache中进行（cache中相关line已经失效了），也无法从内存总线上进行（整个内存总线都锁了），终于达到了原子性执行的目的。</p>
+<p>当然，从P6处理器开始，如果带lock前缀指令 要访问的地址本来就在cache中，就无需锁内存总线，也能完成原子性操作了（虽然我怀疑这是因为加了多处理器内部公共的L2 cache的缘故）。</p>
+<p>因为会锁内存总线，所以带lock前缀指令执行前，也会先将未完成的读写操作完成，也起到内存屏障的功能。</p>
+<p>现在多处理器间线程的同步，上用自旋锁，下用这种带了lock前缀的读修改写指令。当然，实际的同步还有加上禁止本处理器任务调度的，有加上任务关中断的，还会在外面加上信号量的外衣。linux中对这种自旋锁的实现，已历经四代发展，变得愈发高效强大。</p>
+<ul>
+<li><a href="https://blog.csdn.net/qb_2008/article/details/6840593" target="_blank" rel="noopener">原文链接</a></li>
+</ul>
+<h2 id="控制寄存器"><a href="#控制寄存器" class="headerlink" title="控制寄存器"></a>控制寄存器</h2><p>控制寄存器（CR0～CR3）用于控制和确定处理器的操作模式以及当前执行任务的特性</p>
+<h3 id="CR0-4寄存器"><a href="#CR0-4寄存器" class="headerlink" title="CR0-4寄存器"></a><code>CR0-4</code>寄存器</h3><ul>
+<li><p>CR0中含有控制处理器操作模式和状态的系统控制标志；</p>
+</li>
+<li><p>CR1保留不用；</p>
+</li>
+<li><p>CR2含有导致页错误的线性地址；</p>
+</li>
+<li><p>CR3中含有页目录表物理内存基地址，因此该寄存器也被称为页目录基地址寄存器PDBR（Page-Directory Base addressRegister）</p>
+</li>
+<li><p><a href="https://blog.csdn.net/epluguo/article/details/9260429" target="_blank" rel="noopener">参考</a></p>
+</li>
+</ul>
+<h2 id="缓存更新"><a href="#缓存更新" class="headerlink" title="缓存更新"></a>缓存更新</h2><h3 id="write-through"><a href="#write-through" class="headerlink" title="write through"></a><code>write through</code></h3><p>直写式（write through），也叫<strong>直写</strong>，即CPU在向Cache写入数据的同时，也把数据写入主存以保证Cache和主存中相应单元数据的一致性，其特点是简单可靠，但由于CPU每次更新时都要对主存写入，速度必然受影响。</p>
+<blockquote>
+<p>write throgh:In a write-through cache, data is writen to main memory at the sam e time as the cache is updated.</p>
+</blockquote>
+<p>cache的数据update后，main mem的数据同时update</p>
+<h3 id="write-back"><a href="#write-back" class="headerlink" title="write back"></a><code>write back</code></h3><p>回写式（write back）即CPU只向Cache写入，并用标记加以注明，直到Cache中被写过的块要被进入的信息块取代时，才一次写入主存。这种方式考虑到写入的往往是中间结果，每次写入主存速度慢而且不必要。其特点是速度快，避免了不必要的冗余写操作，但结构上较复杂。</p>
+<blockquote>
+<p>write back (also known as copyback):In a write-back cache, data is only written to main memory when it is forced out of the cache on line replacement following a cache miss. Otherwise, writes by the processor only update the cache.</p>
+</blockquote>
+<p>cache的数据update后，main mem的数据不同时update（cache line 被称为dirty）；直到cache数据无效时，才将main mem的数据 update（cache line被称为clean）</p>
+<h3 id="dirty-cache"><a href="#dirty-cache" class="headerlink" title="dirty-cache"></a><code>dirty-cache</code></h3><blockquote>
+<p>A cache line in a write-back cache that has been modified while it is in the cache is said to be dirty. A cache line is marked as dirty by setting the dirty bit. If a cache line is dirty, it must be written to memory on a cache miss because the next level of memory contains data that has not been updated. The process of writing dirdy data to main memory is called cache cleaning.</p>
+</blockquote>
+<h3 id="clean-cache"><a href="#clean-cache" class="headerlink" title="clean-cache"></a><code>clean-cache</code></h3><blockquote>
+<p>A cache line that has not been not modified while it is in the cache is said to be clean. To clean a cache is to write dirty cache entries into main memory.If a cache line is clean, it is not wirtten on a cache miss because the next level of memory contains the same data as the cache.</p>
+</blockquote>
+</section>
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#system" >
+    <span class="tag-code">system</span>
+  </a>
+
+  <a href="/tags#c" >
+    <span class="tag-code">c</span>
+  </a>
+
+      </div>
+    
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/articles/thoughts/to-read/">
+        <span class="nav-arrow">← </span>
+        
+          to-read-NVM
+        
+      </a>
+    
+    
+  </div>
+
+    <!-- NAV END -->
+    <!-- 打赏 START -->
+    
+    <!-- 打赏 END -->
+    <!-- 二维码 START -->
+    
+      <div class="qrcode">
+        <canvas id="share-qrcode"></canvas>
+        <p class="notice">扫描二维码，分享此文章</p>
+      </div>
+    
+    <!-- 二维码 END -->
+    
+      <!-- Gitment START -->
+      <div id="comments"></div>
+      <!-- Gitment END -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+    <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">Catalog</strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#数据一致性"><span class="toc-nav-text">数据一致性</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#缓存一致性"><span class="toc-nav-text">缓存一致性</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#顺序一致性"><span class="toc-nav-text">顺序一致性</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#内存屏障"><span class="toc-nav-text">内存屏障</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#相关原语以及x86指令"><span class="toc-nav-text">相关原语以及x86指令</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#完全内存屏障-full-memory-barrier"><span class="toc-nav-text">完全内存屏障(full memory barrier)</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#内存读屏障-read-memory-barrier"><span class="toc-nav-text">内存读屏障(read memory barrier)</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#内存写屏障-write-memory-barrier"><span class="toc-nav-text">内存写屏障(write memory barrier)</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#实现"><span class="toc-nav-text">实现</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#编译器内存屏障"><span class="toc-nav-text">编译器内存屏障</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#一些参考"><span class="toc-nav-text">一些参考</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#多处理器间同步"><span class="toc-nav-text">多处理器间同步</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#控制寄存器"><span class="toc-nav-text">控制寄存器</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#CR0-4寄存器"><span class="toc-nav-text">CR0-4寄存器</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#缓存更新"><span class="toc-nav-text">缓存更新</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#write-through"><span class="toc-nav-text">write through</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#write-back"><span class="toc-nav-text">write back</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#dirty-cache"><span class="toc-nav-text">dirty-cache</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#clean-cache"><span class="toc-nav-text">clean-cache</span></a></li></ol></li></ol>
+    
+  </div>
+</aside>
+  
+  <!-- Catalog END -->
+</main>
+
+<script>
+  (function () {
+    var url = 'https://huqianshan.github.io/articles/memory-barrier/';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+    // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', 'http://file.muyutech.com/error-img.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+  })();
+</script>
+
+
+  <script>
+    var qr = new QRious({
+      element: document.getElementById('share-qrcode'),
+      value: document.location.href
+    });
+  </script>
+
+
+
+  <script>
+    var gitmentConfig = "huqianshan";
+    if (gitmentConfig !== 'undefined') {
+      var gitment = new Gitment({
+        id: "loweer-level-of-code",
+        owner: "huqianshan",
+        repo: "huqianshan.github.io",
+        oauth: {
+          client_id: "0f87e490e00ee3fd87ef",
+          client_secret: "4a9d2b148e7971c2201ad12131ce8bf8159ccd2e"
+        },
+        theme: {
+          render(state, instance) {
+            const container = document.createElement('div')
+            container.lang = "en-US"
+            container.className = 'gitment-container gitment-root-container'
+            container.appendChild(instance.renderHeader(state, instance))
+            container.appendChild(instance.renderEditor(state, instance))
+            container.appendChild(instance.renderComments(state, instance))
+            container.appendChild(instance.renderFooter(state, instance))
+            return container;
+          }
+        }
+      })
+      gitment.render(document.getElementById('comments'))
+    }
+  </script>
+
+
+
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy; 2020 | Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+    <br>
+    Theme by <a href="https://github.com/yanm1ng">yanm1ng</a>
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+<script src="/js/script.js"></script>
+  </body>
+</html>

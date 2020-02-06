@@ -1,1 +1,395 @@
-<!DOCTYPE html><html lang=en><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1"><!--[if IE]><link rel="icon" href="/favicon.ico"><![endif]--><title>loading</title><link rel=prefetch href=https://unpkg.com/jquery@3.3.1/dist/jquery.min.js as=script><script src=https://unpkg.com/jquery@3.3.1/dist/jquery.min.js></script><link rel=stylesheet href=https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.css><script src=https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.js></script><link href=/css/articles.2c079b61.css rel=prefetch><link href=/css/articles~home~pages.c0eb9bab.css rel=prefetch><link href=/css/gitalk.b6623aae.css rel=prefetch><link href=/css/gitment.7f9b3023.css rel=prefetch><link href=/css/pages.2c079b61.css rel=prefetch><link href=/css/tagcloud.4509716a.css rel=prefetch><link href=/js/archives.056611fe.js rel=prefetch><link href=/js/articles.b0172c4b.js rel=prefetch><link href=/js/articles~home~pages.93d92545.js rel=prefetch><link href=/js/comment.4e874b4c.js rel=prefetch><link href=/js/dplayer.059be256.js rel=prefetch><link href=/js/gitalk.09835498.js rel=prefetch><link href=/js/gitment.5a54c974.js rel=prefetch><link href=/js/home.2482dec2.js rel=prefetch><link href=/js/leancloud-storage.d4827b27.js rel=prefetch><link href=/js/pages.5822fb57.js rel=prefetch><link href=/js/related.c8de4528.js rel=prefetch><link href=/js/tagcloud.8278d636.js rel=prefetch><link href=/js/valine.bdadea88.js rel=prefetch><link href=/css/app.efa6d461.css rel=preload as=style><link href=/css/chunk-bootstrap-vue.3c36c74a.css rel=preload as=style><link href=/css/chunk-bootstrap.6c57f554.css rel=preload as=style><link href=/js/app.a031425c.js rel=preload as=script><link href=/js/chunk-bootstrap-vue.c86bbd7c.js rel=preload as=script><link href=/js/chunk-bootstrap.3bd85c7e.js rel=preload as=script><link href=/js/chunk-font-awesome.8d2cd1c1.js rel=preload as=script><link href=/js/chunk-markdown-it.61e60a46.js rel=preload as=script><link href=/js/chunk-vue.3748bb0e.js rel=preload as=script><link href=/css/chunk-bootstrap-vue.3c36c74a.css rel=stylesheet><link href=/css/chunk-bootstrap.6c57f554.css rel=stylesheet><link href=/css/app.efa6d461.css rel=stylesheet><link rel=icon type=image/png sizes=32x32 href=/img/icons/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/img/icons/favicon-16x16.png><link rel=manifest href=/manifest.json><meta name=theme-color content=#ffffff><meta name=apple-mobile-web-app-capable content=no><meta name=apple-mobile-web-app-status-bar-style content=default><meta name=apple-mobile-web-app-title content=hexo-theme-amber><link rel=apple-touch-icon href=/img/icons/apple-touch-icon-152x152.png><link rel=mask-icon href=/img/icons/safari-pinned-tab.svg color=#ffffff><meta name=msapplication-TileImage content=/img/icons/msapplication-icon-144x144.png><meta name=msapplication-TileColor content=#ffffff></head><body><noscript><link rel=stylesheet href=https://unpkg.com/bootstrap@4.1.3/dist/css/bootstrap.min.css><div class=container style="position: relative;"><div class=text-center style="position: relative; margin: 0 auto; top: 50vh; transform: translateY(-65%);"><h1 style="font-size: 12.5rem; font-weight:lighter;">JS</h1><h4 style="font-weight: normal; color: #6c757d;">We're sorry but this site requires <strong style="color: #007bff;">JavaScript</strong> to function normally.</h4></div></div></noscript><div id=app><script>document.write('<img src="\/img\/loading.gif" width="64" height="64" style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);">');</script></div><script src=/js/chunk-bootstrap-vue.c86bbd7c.js></script><script src=/js/chunk-markdown-it.61e60a46.js></script><script src=/js/chunk-font-awesome.8d2cd1c1.js></script><script src=/js/chunk-bootstrap.3bd85c7e.js></script><script src=/js/chunk-vue.3748bb0e.js></script><script src=/js/app.a031425c.js></script></body></html>
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="For Nothing">
+  <meta name="keyword" content="hexo-theme, vuejs">
+  
+    <link rel="shortcut icon" href="/css/images/logo.png">
+  
+  <title>
+    
+      to-read-NVM | Hjl&#39; Blog
+    
+  </title>
+  <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+  
+    <link rel="stylesheet" href="/css/plugins/gitment.css">
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+  
+    <script src="/js/qrious.js"></script>
+  
+  
+    <script src="/js/gitment.js"></script>
+  
+  
+  
+    <!-- MathJax support START -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- MathJax support END -->
+  
+
+
+</head>
+<div class="wechat-share">
+  <img src="/css/images/logo.png" />
+</div>
+
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>Hjl' Blog</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">Tags</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/project/" class="item-link">Projects</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">About</a>
+          
+        </li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">Tags</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/project/" class="menu-link">Projects</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>to-read-NVM</h2>
+  <p class="post-date">2019-12-06</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content"><h2 id="书签"><a href="#书签" class="headerlink" title="书签"></a>书签</h2><p><a href="https://blog.csdn.net/Meditator_hkx/article/details/53106881" target="_blank" rel="noopener">NVM一致性</a></p>
+<h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><a id="more"></a>
+<h3 id="模拟器"><a href="#模拟器" class="headerlink" title="模拟器"></a>模拟器</h3><p><a href="http://pfzuo.github.io/2017/07/22/Using-Quartz-to-simulate-Persistent-Memory/" target="_blank" rel="noopener">Quartz</a></p>
+<p><a href="https://my.oschina.net/fileoptions/blog/1827801" target="_blank" rel="noopener">数据库存储引擎+模拟</a></p>
+<h3 id="相关实现"><a href="#相关实现" class="headerlink" title="相关实现"></a>相关实现</h3><ul>
+<li><p>google-pcmsim</p>
+</li>
+<li><p><a href="https://github.com/linux-pmbd/pmbd" target="_blank" rel="noopener">Persistent Memory Block Driver</a></p>
+</li>
+<li><p><a href="https://github.com/linux-pmfs/pmfs" target="_blank" rel="noopener">PMFS</a></p>
+</li>
+</ul>
+<h3 id="相关博客资料"><a href="#相关博客资料" class="headerlink" title="相关博客资料"></a>相关博客资料</h3><ul>
+<li><p><a href="https://sketch2sky.com/tag/%e5%ad%98%e5%82%a8%e7%b3%bb%e7%bb%9f/" target="_blank" rel="noopener">vfs+blockio</a></p>
+</li>
+<li><p><a href="https://www.cnblogs.com/xiaojiang1025/category/918665.html" target="_blank" rel="noopener">ldd3.6博客</a></p>
+</li>
+<li><p><a href="https://www.cnblogs.com/xiaojiang1025/p/6193959.html" target="_blank" rel="noopener">设备模型</a></p>
+</li>
+<li><p><a href="https://www.cnblogs.com/lifexy/p/7651667.html" target="_blank" rel="noopener">块设备体系结构</a></p>
+</li>
+<li><p><a href="https://www.byteisland.com/nvme-%E8%AE%BE%E8%AE%A1%E9%80%BB%E8%BE%91%E4%B8%8E%E5%8E%9F%E7%90%86%E8%A7%A3%E6%9E%90/" target="_blank" rel="noopener">nvme-设计逻辑与原理解析</a></p>
+</li>
+</ul>
+<h3 id="Linux相关"><a href="#Linux相关" class="headerlink" title="Linux相关"></a><code>Linux</code>相关</h3><h4 id="File-System"><a href="#File-System" class="headerlink" title="File System"></a><code>File System</code></h4><ul>
+<li><p><a href="https://www.cnblogs.com/huxiao-tee/p/4657851.html" target="_blank" rel="noopener">从内核视角看文件读写过程</a></p>
+</li>
+<li><p><a href="https://www.lenzhao.com/topic/5a29facc2e95f0fd0a9818ab" target="_blank" rel="noopener">页缓存和地址空间</a></p>
+</li>
+</ul>
+</section>
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#thoughts" >
+    <span class="tag-code">thoughts</span>
+  </a>
+
+      </div>
+    
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/articles/thoughts/thoughts-1/">
+        <span class="nav-arrow">← </span>
+        
+          thoughts-1
+        
+      </a>
+    
+    
+      <a class="nav-right" href="/articles/memory-barrier/">
+        
+          loweer-level-of-code
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
+  </div>
+
+    <!-- NAV END -->
+    <!-- 打赏 START -->
+    
+    <!-- 打赏 END -->
+    <!-- 二维码 START -->
+    
+      <div class="qrcode">
+        <canvas id="share-qrcode"></canvas>
+        <p class="notice">扫描二维码，分享此文章</p>
+      </div>
+    
+    <!-- 二维码 END -->
+    
+      <!-- Gitment START -->
+      <div id="comments"></div>
+      <!-- Gitment END -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+    <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">Catalog</strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#书签"><span class="toc-nav-text">书签</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#分类"><span class="toc-nav-text">分类</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#模拟器"><span class="toc-nav-text">模拟器</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#相关实现"><span class="toc-nav-text">相关实现</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#相关博客资料"><span class="toc-nav-text">相关博客资料</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Linux相关"><span class="toc-nav-text">Linux相关</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#File-System"><span class="toc-nav-text">File System</span></a></li></ol></li></ol></li></ol>
+    
+  </div>
+</aside>
+  
+  <!-- Catalog END -->
+</main>
+
+<script>
+  (function () {
+    var url = 'https://huqianshan.github.io/articles/thoughts/to-read/';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+    // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', 'http://file.muyutech.com/error-img.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+  })();
+</script>
+
+
+  <script>
+    var qr = new QRious({
+      element: document.getElementById('share-qrcode'),
+      value: document.location.href
+    });
+  </script>
+
+
+
+  <script>
+    var gitmentConfig = "huqianshan";
+    if (gitmentConfig !== 'undefined') {
+      var gitment = new Gitment({
+        id: "to-read-NVM",
+        owner: "huqianshan",
+        repo: "huqianshan.github.io",
+        oauth: {
+          client_id: "0f87e490e00ee3fd87ef",
+          client_secret: "4a9d2b148e7971c2201ad12131ce8bf8159ccd2e"
+        },
+        theme: {
+          render(state, instance) {
+            const container = document.createElement('div')
+            container.lang = "en-US"
+            container.className = 'gitment-container gitment-root-container'
+            container.appendChild(instance.renderHeader(state, instance))
+            container.appendChild(instance.renderEditor(state, instance))
+            container.appendChild(instance.renderComments(state, instance))
+            container.appendChild(instance.renderFooter(state, instance))
+            return container;
+          }
+        }
+      })
+      gitment.render(document.getElementById('comments'))
+    }
+  </script>
+
+
+
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy; 2020 | Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+    <br>
+    Theme by <a href="https://github.com/yanm1ng">yanm1ng</a>
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+<script src="/js/script.js"></script>
+  </body>
+</html>

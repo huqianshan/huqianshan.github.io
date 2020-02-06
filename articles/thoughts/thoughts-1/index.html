@@ -1,1 +1,387 @@
-<!DOCTYPE html><html lang=en><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1"><!--[if IE]><link rel="icon" href="/favicon.ico"><![endif]--><title>loading</title><link rel=prefetch href=https://unpkg.com/jquery@3.3.1/dist/jquery.min.js as=script><script src=https://unpkg.com/jquery@3.3.1/dist/jquery.min.js></script><link rel=stylesheet href=https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.css><script src=https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.js></script><link href=/css/articles.2c079b61.css rel=prefetch><link href=/css/articles~home~pages.c0eb9bab.css rel=prefetch><link href=/css/gitalk.b6623aae.css rel=prefetch><link href=/css/gitment.7f9b3023.css rel=prefetch><link href=/css/pages.2c079b61.css rel=prefetch><link href=/css/tagcloud.4509716a.css rel=prefetch><link href=/js/archives.056611fe.js rel=prefetch><link href=/js/articles.b0172c4b.js rel=prefetch><link href=/js/articles~home~pages.93d92545.js rel=prefetch><link href=/js/comment.4e874b4c.js rel=prefetch><link href=/js/dplayer.059be256.js rel=prefetch><link href=/js/gitalk.09835498.js rel=prefetch><link href=/js/gitment.5a54c974.js rel=prefetch><link href=/js/home.2482dec2.js rel=prefetch><link href=/js/leancloud-storage.d4827b27.js rel=prefetch><link href=/js/pages.5822fb57.js rel=prefetch><link href=/js/related.c8de4528.js rel=prefetch><link href=/js/tagcloud.8278d636.js rel=prefetch><link href=/js/valine.bdadea88.js rel=prefetch><link href=/css/app.efa6d461.css rel=preload as=style><link href=/css/chunk-bootstrap-vue.3c36c74a.css rel=preload as=style><link href=/css/chunk-bootstrap.6c57f554.css rel=preload as=style><link href=/js/app.a031425c.js rel=preload as=script><link href=/js/chunk-bootstrap-vue.c86bbd7c.js rel=preload as=script><link href=/js/chunk-bootstrap.3bd85c7e.js rel=preload as=script><link href=/js/chunk-font-awesome.8d2cd1c1.js rel=preload as=script><link href=/js/chunk-markdown-it.61e60a46.js rel=preload as=script><link href=/js/chunk-vue.3748bb0e.js rel=preload as=script><link href=/css/chunk-bootstrap-vue.3c36c74a.css rel=stylesheet><link href=/css/chunk-bootstrap.6c57f554.css rel=stylesheet><link href=/css/app.efa6d461.css rel=stylesheet><link rel=icon type=image/png sizes=32x32 href=/img/icons/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/img/icons/favicon-16x16.png><link rel=manifest href=/manifest.json><meta name=theme-color content=#ffffff><meta name=apple-mobile-web-app-capable content=no><meta name=apple-mobile-web-app-status-bar-style content=default><meta name=apple-mobile-web-app-title content=hexo-theme-amber><link rel=apple-touch-icon href=/img/icons/apple-touch-icon-152x152.png><link rel=mask-icon href=/img/icons/safari-pinned-tab.svg color=#ffffff><meta name=msapplication-TileImage content=/img/icons/msapplication-icon-144x144.png><meta name=msapplication-TileColor content=#ffffff></head><body><noscript><link rel=stylesheet href=https://unpkg.com/bootstrap@4.1.3/dist/css/bootstrap.min.css><div class=container style="position: relative;"><div class=text-center style="position: relative; margin: 0 auto; top: 50vh; transform: translateY(-65%);"><h1 style="font-size: 12.5rem; font-weight:lighter;">JS</h1><h4 style="font-weight: normal; color: #6c757d;">We're sorry but this site requires <strong style="color: #007bff;">JavaScript</strong> to function normally.</h4></div></div></noscript><div id=app><script>document.write('<img src="\/img\/loading.gif" width="64" height="64" style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);">');</script></div><script src=/js/chunk-bootstrap-vue.c86bbd7c.js></script><script src=/js/chunk-markdown-it.61e60a46.js></script><script src=/js/chunk-font-awesome.8d2cd1c1.js></script><script src=/js/chunk-bootstrap.3bd85c7e.js></script><script src=/js/chunk-vue.3748bb0e.js></script><script src=/js/app.a031425c.js></script></body></html>
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="For Nothing">
+  <meta name="keyword" content="hexo-theme, vuejs">
+  
+    <link rel="shortcut icon" href="/css/images/logo.png">
+  
+  <title>
+    
+      thoughts-1 | Hjl&#39; Blog
+    
+  </title>
+  <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+  
+    <link rel="stylesheet" href="/css/plugins/gitment.css">
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+  
+    <script src="/js/qrious.js"></script>
+  
+  
+    <script src="/js/gitment.js"></script>
+  
+  
+  
+    <!-- MathJax support START -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- MathJax support END -->
+  
+
+
+</head>
+<div class="wechat-share">
+  <img src="/css/images/logo.png" />
+</div>
+
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>Hjl' Blog</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">Tags</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/project/" class="item-link">Projects</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">About</a>
+          
+        </li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">Tags</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/project/" class="menu-link">Projects</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>thoughts-1</h2>
+  <p class="post-date">2019-12-06</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content"><h2 id="序言"><a href="#序言" class="headerlink" title="序言"></a>序言</h2><a id="more"></a>
+<p>自从选择了直博这条路，前前后后也看了有二十余篇文献，自己做的毕业设计也算是一个中型的论文，所以对于科研也可以说是稍微有点眉目了吧。</p>
+<p>而我相信，每一个研究生（无论博士还是硕士），都免不了要参加组会，并定期报告自己的工作和选题情况。</p>
+<p>我目前主要的研究（汇报）方向是数据库系统，经历了总共四次的论文汇报之后，我对于组会有了一些不是很明晰但自我感觉十分深刻的感受。关于汇报什么，如何汇报，时间把握，逻辑概念，也都有一些自己的思考。</p>
+<p>但归根结底，之所以要写这么一篇博文，其实是源于这周一开的组会。我作报告时许多概念和原因解释不清，导致很尴尬地被老师直接叫停，并被深刻教训了一番。老师话说得不重，也都是事实，但我自己感觉十分难受。</p>
+<p>老师说我这几次作报告的风格都是一样的，每次讲得他都听不懂。老师还说我最大的问题是没什么想法，令人担心。</p>
+<p>不谈更多私人的理由了，我简单结合自己失败的经历谈谈我所理解的好的和不好的论文组会汇报吧。</p>
+<h2 id="汇报大忌"><a href="#汇报大忌" class="headerlink" title="汇报大忌"></a>汇报大忌</h2><h3 id="冗长的PPT（Presentation）"><a href="#冗长的PPT（Presentation）" class="headerlink" title="冗长的PPT（Presentation）"></a>冗长的PPT（Presentation）</h3><p>每个人的接受能力是有限的，专注时间也是有限的。汇报者当然是花心思研读过论文的，但是他不能强求将论文中所有他认为的重点强加给听众。所以，presentation不能太长，PPT控制在20页左右为宜。</p>
+<h3 id="混乱的逻辑"><a href="#混乱的逻辑" class="headerlink" title="混乱的逻辑"></a>混乱的逻辑</h3><p>其实这是我的一个大问题。我之前只是按部就班地把作者写作的顺序原原本本地移植到PPT中，但这样前后思路其实不一定是连贯的，或者说对于讲解和呈现，这种方式不一定连贯。所以，在读文章之后要有一个自己的消化再生产过程，用自己的逻辑重新组织一遍再输出给听众，这样才是更加有效的方式。</p>
+<h3 id="缺少精读"><a href="#缺少精读" class="headerlink" title="缺少精读"></a>缺少精读</h3><p>自己无聊时随性看的论文可以粗读，但是在组会上汇报的论文则必须精读。因为汇报者是代表论文的生产者甚至站在更高的层次与展现和评判他们的工作，并且需要应对听众各种各样的提问和质疑，所以一定要精读之后再汇报。<br>像我之前汇报时就显得太过随意，许多文中的基本概念和前因后果都没有理清就厚着脸皮汇报，这样能做好才奇怪了呢！</p>
+<h3 id="缺少自己的想法"><a href="#缺少自己的想法" class="headerlink" title="缺少自己的想法"></a>缺少自己的想法</h3><p>读一篇论文之前，我们是带着自己的兴趣和动机的，比如想从中学习某个新技术、新模型、新方法；而读完论文之后，我们也要有自己的想法，比如研究者哪里做得最好，特色鲜明，哪里做得不好，有所隐瞒，哪里研究者是坦白需要进一步改进的。这些都可以作为我们思考的基石。<br>我最大的问题是基础不牢靠，数据库这边是这样，操作系统更是这样，而且相关代码阅读编写能力也严重不足。所以，我觉得要尽快做一个有想法的科研工作者，务必要能够理解每个研究者的设计和方法的基础，并掌握相关的代码技术，才能有所思有所悟。<br>真的不是我没想法，而是我压根不知道作者是怎么想到这样做的，换我来做我根本就不知道有哪些技术工具可以选择。这就是我现在最大的悲剧！</p>
+<h3 id="我心目中的好汇报"><a href="#我心目中的好汇报" class="headerlink" title="我心目中的好汇报"></a>我心目中的好汇报</h3><p>我觉得，好的汇报就是讲故事。讲故事的能力反映了一个人的很多特质：口才、逻辑、思想深度等等。对于科研工作者而言，做好一个汇报和讲好一个故事（童话、爱情、悬疑）并没有本质的区别。</p>
+<p>好故事需要一个清晰的框架，需要层层递进的逻辑，需要伏笔和最后让人豁然开朗或眼前一亮的解释。</p>
+<p>对于论文来说，我觉得首先要告诉听众研究者们大体上做了一个针对或者基于什么的研究工作。接下来就是：为什么他们会想到做这样一个工作（Motivation），这一点一定要解释明白，否则整篇文章的基础和整个汇报的基石都将不复存在；他们使用了什么样的新方法、新概念、新模型来做这样一个工作。</p>
+<p>听众如果不是在该领域做研究，当然很难明白研究者工作的基础是什么，所以一般化的方式应该是对背景有充分的诠释，从一个大家都能理解的commen knowledge开始讲起，逐步过渡到研究的动机与技术，在时空上就串起了一个能够衔接好的故事开端。</p>
+<p>也许研究者们的贡献：方案和设计，本质上是最终丫的内容。但是这一部分视情况可长可短，最重要的其实还是让听众明白，这个新技术到底是什么，怎么工作的，和旧的方法比有什么不一样，它的优势是否有什么代价。</p>
+<p>一个好的汇报者不会去讲述那些纷繁的技术细节，如果非要讲清一个技术，应该会举一个生活中或者工作上常见的例子，通过例子来分析新技术的工作流程，并与原有的方法作比较，从而让大部分人都听得懂。</p>
+<p>在讲解实验部分的时候，他应该能够解释研究者们为什么要做这样一个实验，想表达的重点是什么，是否还有其他可供选择的实验设计，每一个实验的结果背后的原因是什么。这就是精读的必要性，吃透一个文章，吃透每一个技术点和细节背后的细节。</p>
+<p>在回顾与总结的时候，好的汇报人应该能用他自己的语言复述研究者的主要工作和贡献，给予文章客观公正的评价，并引申到自己研究的课题领域，指出哪些地方值得借鉴，哪些技术点可以继续挖掘，哪些工作内容可以去完善。</p>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>写了这么多，其实都是把自己作为反面教材换个方向思考整理出来的，接下来我的汇报应该也要朝着自己总结出的方案去努力，争取把汇报作成一个圆满动听的故事，而且自己还能理清每一个技术细节和它的前因后果。<br>————————————————</p>
+<p><a href="https://blog.csdn.net/Meditator_hkx/article/details/52823936" target="_blank" rel="noopener">原文链接</a></p>
+<p><a href="https://blog.csdn.net/Meditator_hkx/article/details/52555969" target="_blank" rel="noopener">科研第一年总结</a></p>
+</section>
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#thoughts" >
+    <span class="tag-code">thoughts</span>
+  </a>
+
+      </div>
+    
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/articles/Linux/linux-kernel-address-space/">
+        <span class="nav-arrow">← </span>
+        
+          linux-kernel-address-space
+        
+      </a>
+    
+    
+      <a class="nav-right" href="/articles/thoughts/to-read/">
+        
+          to-read-NVM
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
+  </div>
+
+    <!-- NAV END -->
+    <!-- 打赏 START -->
+    
+    <!-- 打赏 END -->
+    <!-- 二维码 START -->
+    
+      <div class="qrcode">
+        <canvas id="share-qrcode"></canvas>
+        <p class="notice">扫描二维码，分享此文章</p>
+      </div>
+    
+    <!-- 二维码 END -->
+    
+      <!-- Gitment START -->
+      <div id="comments"></div>
+      <!-- Gitment END -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+    <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">Catalog</strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#序言"><span class="toc-nav-text">序言</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#汇报大忌"><span class="toc-nav-text">汇报大忌</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#冗长的PPT（Presentation）"><span class="toc-nav-text">冗长的PPT（Presentation）</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#混乱的逻辑"><span class="toc-nav-text">混乱的逻辑</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#缺少精读"><span class="toc-nav-text">缺少精读</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#缺少自己的想法"><span class="toc-nav-text">缺少自己的想法</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#我心目中的好汇报"><span class="toc-nav-text">我心目中的好汇报</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#结语"><span class="toc-nav-text">结语</span></a></li></ol>
+    
+  </div>
+</aside>
+  
+  <!-- Catalog END -->
+</main>
+
+<script>
+  (function () {
+    var url = 'https://huqianshan.github.io/articles/thoughts/thoughts-1/';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+    // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', 'http://file.muyutech.com/error-img.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+  })();
+</script>
+
+
+  <script>
+    var qr = new QRious({
+      element: document.getElementById('share-qrcode'),
+      value: document.location.href
+    });
+  </script>
+
+
+
+  <script>
+    var gitmentConfig = "huqianshan";
+    if (gitmentConfig !== 'undefined') {
+      var gitment = new Gitment({
+        id: "thoughts-1",
+        owner: "huqianshan",
+        repo: "huqianshan.github.io",
+        oauth: {
+          client_id: "0f87e490e00ee3fd87ef",
+          client_secret: "4a9d2b148e7971c2201ad12131ce8bf8159ccd2e"
+        },
+        theme: {
+          render(state, instance) {
+            const container = document.createElement('div')
+            container.lang = "en-US"
+            container.className = 'gitment-container gitment-root-container'
+            container.appendChild(instance.renderHeader(state, instance))
+            container.appendChild(instance.renderEditor(state, instance))
+            container.appendChild(instance.renderComments(state, instance))
+            container.appendChild(instance.renderFooter(state, instance))
+            return container;
+          }
+        }
+      })
+      gitment.render(document.getElementById('comments'))
+    }
+  </script>
+
+
+
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy; 2020 | Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+    <br>
+    Theme by <a href="https://github.com/yanm1ng">yanm1ng</a>
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+<script src="/js/script.js"></script>
+  </body>
+</html>
