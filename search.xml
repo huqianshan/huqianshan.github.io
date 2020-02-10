@@ -3,6 +3,142 @@
   
     
     <entry>
+      <title><![CDATA[Pythonic-Code-Catalog]]></title>
+      <url>/articles/python/Pythonic-Code-Catalog/</url>
+      <content type="html"><![CDATA[<!-- TOC -->
+<ul>
+<li><a href="#python高级用法目录"><code>Python</code>高级用法目录</a><ul>
+<li><a href="#built-in-objects语义部分"><code>Built-in Objects</code>语义部分</a><ul>
+<li><a href="#双值交换">双值交换</a></li>
+<li><a href="#切片与容器">切片与容器</a></li>
+</ul>
+</li>
+<li><a href="#函数式编程与高阶函数">函数式编程与高阶函数</a><ul>
+<li><a href="#迭代器">迭代器</a></li>
+<li><a href="#生成器-yield">生成器 <code>yield</code></a></li>
+<li><a href="#lambda-mapfunc-iterables-fileter等"><code>lambda map(func, *iterables) fileter</code>等</a></li>
+</ul>
+</li>
+<li><a href="#语法部分">语法部分</a><ul>
+<li><a href="#上下文管理器">上下文管理器</a></li>
+<li><a href="#装饰器">装饰器</a></li>
+<li><a href="#getattr"><code>getattr</code></a></li>
+<li><a href="#正则表达式">正则表达式</a></li>
+</ul>
+</li>
+<li><a href="#objected-oriented-programming"><code>Objected-Oriented-Programming</code></a><ul>
+<li><a href="#描述器">描述器</a></li>
+<li><a href="#property"><code>@property</code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<!-- /TOC -->
+<a id="more"></a>
+<h2 id="Python高级用法目录"><a href="#Python高级用法目录" class="headerlink" title="Python高级用法目录"></a><code>Python</code>高级用法目录</h2><h3 id="Built-in-Objects语义部分"><a href="#Built-in-Objects语义部分" class="headerlink" title="Built-in Objects语义部分"></a><code>Built-in Objects</code>语义部分</h3><h4 id="双值交换"><a href="#双值交换" class="headerlink" title="双值交换"></a>双值交换</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">```python</span><br><span class="line">a,b=b,a</span><br><span class="line">a,b,c=[<span class="string">'a'</span>,<span class="string">'b'</span>,<span class="string">'c'</span>]</span><br></pre></td></tr></table></figure>
+<h4 id="切片与容器"><a href="#切片与容器" class="headerlink" title="切片与容器"></a>切片与容器</h4><p>切片： <code>[begin:end:len]</code></p>
+<h3 id="函数式编程与高阶函数"><a href="#函数式编程与高阶函数" class="headerlink" title="函数式编程与高阶函数"></a>函数式编程与高阶函数</h3><h4 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h4><p>迭代器是一个表示数据流的对象；这个对象每次只返回一个元素。</p>
+<p><code>Python</code> 迭代器必须支持 <code>__next__()</code> 方法；这个方法不接受参数，并总是返回数据流中的下一个元素。如果数据流中没有元素，<code>__next__()</code> 会抛出 <code>StopIteration</code> 异常。</p>
+<p>内置的 <code>iter()</code> 函数接受任意对象并试图返回一个迭代器来输出对象的内容或元素，并会在对象不支持迭代的时候抛出 <code>TypeError</code> 异常。<code>Python</code> 有几种内置数据类型支持迭代，最常见的就是列表和字典。如果一个对象能生成迭代器，那么它就会被称作 <code>iterable</code>。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> iter(obj):</span><br><span class="line">    print(i)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> obj:</span><br><span class="line">    print(i)</span><br><span class="line"></span><br><span class="line"><span class="comment">#可以用 list() 或 tuple() 这样的构造函数把迭代器具体化成列表或元组:</span></span><br><span class="line">L = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line">iterator = iter(L)</span><br><span class="line">t = tuple(iterator)</span><br><span class="line"><span class="comment">#t (1, 2, 3)</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><a href="https://docs.python.org/zh-cn/3/howto/functional.html#generator-expressions-and-list-comprehensions" target="_blank" rel="noopener">生成器表达式和列表推导式的参考链接</a></li>
+<li><a href="https://docs.python.org/zh-cn/3/library/stdtypes.html#iterator-types" target="_blank" rel="noopener"><code>doc-python-link</code></a></li>
+</ul>
+<h4 id="生成器-yield"><a href="#生成器-yield" class="headerlink" title="生成器 yield"></a>生成器 <code>yield</code></h4><p>生成器是一类用来简化编写迭代器工作的特殊函数。普通的函数计算并返回一个值，而生成器返回一个能返回数据流的迭代器。</p>
+<p>毫无疑问，你已经对如何在 Python 和 C 中调用普通函数很熟悉了，这时候函数会获得一个创建局部变量的私有命名空间。当函数到达 return 表达式时，局部变量会被销毁然后把返回给调用者。之后调用同样的函数时会创建一个新的私有命名空间和一组全新的局部变量。但是，如果在退出一个函数时不扔掉局部变量会如何呢？如果稍后你能够从退出函数的地方重新恢复又如何呢？这就是生成器所提供的；他们可以被看成可恢复的函数。</p>
+<p>当你调用一个生成器函数，它并不会返回单独的值，而是返回一个支持生成器协议的生成器对象。当执行 yield 表达式时，生成器会输出 i 的值，就像 return 表达式一样。yield 和 return 最大的区别在于，到达 yield 的时候生成器的执行状态会挂起并保留局部变量。在下一次调用生成器 <strong>next</strong>() 方法的时候，函数会恢复执行。</p>
+<h4 id="lambda-map-func-iterables-fileter等"><a href="#lambda-map-func-iterables-fileter等" class="headerlink" title="lambda map(func, *iterables) fileter等"></a><code>lambda map(func, *iterables) fileter</code>等</h4><p><code>lambda</code>：能嵌入到其他表达式当中的匿名函数（闭包）。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">map(<span class="keyword">lambda</span> x: x*x, [y <span class="keyword">for</span> y <span class="keyword">in</span> range(<span class="number">10</span>)] )</span><br></pre></td></tr></table></figure>
+<p><code>map</code>它可以将一个函数映射到一个可枚举类型上面。也就是将函数 f 依次套用在 a 的每一个元素上面。</p>
+<p>“你会发现自己如果能将「遍历列表，给遇到的每个元素都做某种运算」的过程从一个循环里抽象出来成为一个函数 map，然后用 lambda 表达式将这种运算作为参数传给 map 的话，考虑事情的思维层级会高出一些来，需要顾及的细节也少了一点。”</p>
+<p>也就是将一个循环过程用一行map函数实现，并将lambda函数作为一个参数传递进去。</p>
+<ol>
+<li><p>Python 之中，类似能用到 lambda 表达式的「高级」函数还有 <code>reduce</code>、<code>filter</code> 等高级函数。</p>
+</li>
+<li><p>这种能够接受一个函数作为参数的函数叫做「高阶函数」（higher-order function），是来自函数式编程（functional programming）的思想。</p>
+</li>
+</ol>
+<ul>
+<li><p>它的第一个重要意义是可以在表达式当中直接定义一个函数，而不需要将定义函数和表达式分开，这样有助于将逻辑用更紧凑的方式表达出来。</p>
+</li>
+<li><p>它的第二个重要意义是引入了闭包。基本上来说常见的支持lambda表达式的语言里，不存在不支持闭包的lambda表达式；从函数式编程的角度来说，支持闭包也是很重要的。闭包是指将当前作用域中的变量通过值或者引用的方式封装到lambda表达式当中，成为表达式的一部分，它使你的lambda表达式从一个普通的函数变成了一个带隐藏参数的函数。</p>
+</li>
+<li><p>它的第三个重要意义（如果有的话）是允许函数作为一个对象来进行传递。某些语言由于历史原因，只有匿名函数可以作为对象传递，而具名函数不可以，比如PHP。</p>
+</li>
+<li><p><a href="https://www.zhihu.com/question/20125256" target="_blank" rel="noopener">参考连接</a></p>
+</li>
+</ul>
+<h3 id="语法部分"><a href="#语法部分" class="headerlink" title="语法部分"></a>语法部分</h3><h4 id="上下文管理器"><a href="#上下文管理器" class="headerlink" title="上下文管理器"></a>上下文管理器</h4><p>参见 <a href="https://huqianshan.github.io/articles/python%2Fpython-advanced#with%E8%AF%AD%E5%8F%A5%E5%92%8Ccontexmanager%E4%B8%8A%E4%B8%8B%E6%96%87%E7%AE%A1%E7%90%86%E5%99%A8"><code>with</code>语句和<code>ContexManager</code>上下文管理器</a></p>
+<h4 id="装饰器"><a href="#装饰器" class="headerlink" title="装饰器"></a>装饰器</h4><p>参见 <a href="https://huqianshan.github.io/articles/python%2Fpython-advanced#%E7%BB%99%E5%87%BD%E6%95%B0%E6%B7%BB%E5%8A%A0%E4%B8%80%E4%B8%AA%E8%A3%85%E9%A5%B0%E5%99%A8">装饰器</a></p>
+<h4 id="getattr"><a href="#getattr" class="headerlink" title="getattr"></a><code>getattr</code></h4><p><code>getattr()</code> 函数用于返回一个对象属性值。<code>getattr(object, name[, default])</code></p>
+<ul>
+<li>object – 对象。</li>
+<li>name – 字符串，对象属性。</li>
+<li>default – 默认返回值，如果不提供该参数，在没有对应属性时，将触发 AttributeError。</li>
+</ul>
+<h4 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h4><ul>
+<li><a href="https://docs.python.org/zh-cn/3/howto/regex.html#using-regular-expressions" target="_blank" rel="noopener">正则表达式参考链接</a></li>
+</ul>
+<h3 id="Objected-Oriented-Programming"><a href="#Objected-Oriented-Programming" class="headerlink" title="Objected-Oriented-Programming"></a><code>Objected-Oriented-Programming</code></h3><h4 id="描述器"><a href="#描述器" class="headerlink" title="描述器"></a>描述器</h4><ul>
+<li><a href="https://zhuanlan.zhihu.com/p/32764345" target="_blank" rel="noopener">描述器</a></li>
+</ul>
+<h4 id="property"><a href="#property" class="headerlink" title="@property"></a><code>@property</code></h4>]]></content>
+      
+        
+        <tags>
+            
+            <tag> Python </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[python-obeject-oriented]]></title>
+      <url>/articles/python/python-obeject-oriented/</url>
+      <content type="html"><![CDATA[<!-- TOC -->
+<ul>
+<li><a href="#python-面向对象编程"><code>Python</code> 面向对象编程</a><ul>
+<li><a href="#类class提供了一种什么样的编程模式思维范式">类<code>class</code>提供了一种什么样的编程模式（思维范式）</a></li>
+<li><a href="#相关定义">相关定义</a></li>
+</ul>
+</li>
+</ul>
+<!-- /TOC -->
+<a id="more"></a>
+<h2 id="Python-面向对象编程"><a href="#Python-面向对象编程" class="headerlink" title="Python 面向对象编程"></a><code>Python</code> 面向对象编程</h2><h3 id="类class提供了一种什么样的编程模式（思维范式）"><a href="#类class提供了一种什么样的编程模式（思维范式）" class="headerlink" title="类class提供了一种什么样的编程模式（思维范式）"></a>类<code>class</code>提供了一种什么样的编程模式（思维范式）</h3><p>类提供了一种组合数据和功能的方法。</p>
+<h3 id="相关定义"><a href="#相关定义" class="headerlink" title="相关定义"></a>相关定义</h3><ul>
+<li>类(Class): 用来描述具有相同属性和方法的对象的集合。它定义了该集合中每个对象所共有的属性和方法。其中的对象被称作类的实例。</li>
+<li>实例：也称对象。通过类定义的初始化方法，赋予具体的值，成为一个”有血有肉的实体”。</li>
+<li>实例化：创建类的实例的过程或操作。</li>
+<li>实例变量：定义在实例中的变量，只作用于当前实例。</li>
+<li>类变量：类变量是所有实例公有的变量。类变量定义在类中，但在方法体之外。</li>
+<li>数据成员：类变量、实例变量、方法、类方法、静态方法和属性等的统称。</li>
+<li>方法：类中定义的函数。</li>
+<li>实例方法： 通过实例调用类函数</li>
+<li>静态方法<code>@staticmethod</code>：不需要实例化就可以由类执行的方法</li>
+<li>类方法<code>@classmethod</code>：类方法是将类本身作为对象进行操作的方法。在不改变已经写好的类里面的方法的情况下，对输入的数据进行处理</li>
+<li>方法重写：如果从父类继承的方法不能满足子类的需求，可以对父类的方法进行改写，这个过程也称override。</li>
+<li>封装：将内部实现包裹起来，对外透明，提供api接口进行调用的机制</li>
+<li>继承：即一个派生类（derived class）继承父类（base class）的变量和方法。</li>
+<li>多态：根据对象类型的不同以不同的方式进行处理。</li>
+</ul>
+]]></content>
+      
+        
+        <tags>
+            
+            <tag> python </tag>
+            
+            <tag> obejec-oriented </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[python-advanced]]></title>
       <url>/articles/python/python-advanced/</url>
       <content type="html"><![CDATA[<!-- TOC -->
@@ -22,12 +158,6 @@
 <li><a href="#实例自定义文件打开类">实例：自定义文件打开类</a></li>
 <li><a href="#内置库contextlib">内置库<code>contextlib</code></a></li>
 <li><a href="#参考链接-1">参考链接</a></li>
-</ul>
-</li>
-<li><a href="#pythonic-code"><code>Pythonic Code</code></a><ul>
-<li><a href="#语法部分">语法部分</a></li>
-<li><a href="#对象编程">对象编程</a></li>
-<li><a href="#内置模块">内置模块</a></li>
 </ul>
 </li>
 </ul>
@@ -76,21 +206,6 @@
 <p><code>closing</code>类的<code>__exit__</code>方法自动调用传入的thing的<code>close</code>方法。</p>
 <h3 id="参考链接-1"><a href="#参考链接-1" class="headerlink" title="参考链接"></a>参考链接</h3><ul>
 <li><a href="https://www.python.org/dev/peps/pep-0343/" target="_blank" rel="noopener">python-dev</a></li>
-</ul>
-<h2 id="Pythonic-Code"><a href="#Pythonic-Code" class="headerlink" title="Pythonic Code"></a><code>Pythonic Code</code></h2><h3 id="语法部分"><a href="#语法部分" class="headerlink" title="语法部分"></a>语法部分</h3><ul>
-<li>迭代器</li>
-<li><a href="https://docs.python.org/zh-cn/3/howto/functional.html#generator-expressions-and-list-comprehensions" target="_blank" rel="noopener">生成器表达式 列表推导式</a></li>
-<li><a href="https://docs.python.org/zh-cn/3/howto/functional.html#generators" target="_blank" rel="noopener">生成器<code>yield map filter</code></a></li>
-<li>上下文管理器</li>
-<li>装饰器</li>
-<li><code>getattr</code></li>
-<li><a href="https://docs.python.org/zh-cn/3/howto/regex.html#using-regular-expressions" target="_blank" rel="noopener">正则表达式</a></li>
-</ul>
-<h3 id="对象编程"><a href="#对象编程" class="headerlink" title="对象编程"></a>对象编程</h3><ul>
-<li><a href="https://zhuanlan.zhihu.com/p/32764345" target="_blank" rel="noopener">描述器</a></li>
-</ul>
-<h3 id="内置模块"><a href="#内置模块" class="headerlink" title="内置模块"></a>内置模块</h3><ul>
-<li>双值交换</li>
 </ul>
 ]]></content>
       
@@ -774,7 +889,7 @@
 </ul>
 <blockquote>
 <p>This helper doesn’t buy us much over calling kmap_atomic directly.<br>In fact in the only caller it does a bit of useless work as the<br>caller already has the bvec at hand, and said caller would even<br>buggy for a multi-segment bio due to the use of this helper.</p>
-<p>So just remove it.<br>Signed-off-by: default avatarChristoph Hellwig <a href="&#109;&#x61;&#x69;&#108;&#x74;&#111;&#58;&#104;&#x63;&#x68;&#64;&#108;&#115;&#116;&#x2e;&#100;&#x65;">&#104;&#x63;&#x68;&#64;&#108;&#115;&#116;&#x2e;&#100;&#x65;</a><br>Signed-off-by: default avatarJens Axboe <a href="&#x6d;&#97;&#105;&#108;&#x74;&#111;&#58;&#97;&#x78;&#98;&#x6f;&#x65;&#64;&#x6b;&#101;&#x72;&#110;&#x65;&#108;&#46;&#x64;&#107;">&#97;&#x78;&#98;&#x6f;&#x65;&#64;&#x6b;&#101;&#x72;&#110;&#x65;&#108;&#46;&#x64;&#107;</a></p>
+<p>So just remove it.<br>Signed-off-by: default avatarChristoph Hellwig <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#x68;&#x63;&#104;&#x40;&#x6c;&#115;&#116;&#x2e;&#x64;&#101;">&#x68;&#x63;&#104;&#x40;&#x6c;&#115;&#116;&#x2e;&#x64;&#101;</a><br>Signed-off-by: default avatarJens Axboe <a href="&#x6d;&#97;&#105;&#108;&#116;&#111;&#x3a;&#97;&#120;&#98;&#111;&#x65;&#64;&#107;&#101;&#x72;&#110;&#x65;&#108;&#46;&#x64;&#x6b;">&#97;&#120;&#98;&#111;&#x65;&#64;&#107;&#101;&#x72;&#110;&#x65;&#108;&#46;&#x64;&#x6b;</a></p>
 </blockquote>
 <h4 id="struct-request中-cmd-type被删除"><a href="#struct-request中-cmd-type被删除" class="headerlink" title="struct request中 cmd_type被删除"></a><code>struct request</code>中 <code>cmd_type</code>被删除</h4><ul>
 <li><a href="https://lkml.org/lkml/2017/1/31/562" target="_blank" rel="noopener">链接及示例</a></li>
@@ -782,7 +897,7 @@
 <blockquote>
 <p>From Christoph Hellwig &lt;&gt;<br>  Subject [PATCH 08/10] block: introduce blk_rq_is_passthrough<br>  Dat Tue, 31 Jan 2017 16:57:29 +0100</p>
 <p>This can be used to check for fs vs non-fs requests and basically<br>removes all knowledge of BLOCK_PC specific from the block layer,<br>as well as preparing for removing the cmd_type field in struct request.</p>
-<p>Signed-off-by: Christoph Hellwig <a href="&#x6d;&#97;&#105;&#108;&#x74;&#x6f;&#x3a;&#104;&#x63;&#104;&#x40;&#x6c;&#115;&#116;&#x2e;&#x64;&#x65;">&#104;&#x63;&#104;&#x40;&#x6c;&#115;&#116;&#x2e;&#x64;&#x65;</a></p>
+<p>Signed-off-by: Christoph Hellwig <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#x3a;&#x68;&#99;&#x68;&#x40;&#x6c;&#x73;&#116;&#x2e;&#100;&#101;">&#x68;&#99;&#x68;&#x40;&#x6c;&#x73;&#116;&#x2e;&#100;&#101;</a></p>
 </blockquote>
 <ul>
 <li><p><a href="https://www.kernel.org/doc/htmldocs/filesystems/API-bio-endio.html" target="_blank" rel="noopener"><code>end_bio</code>的参数变为一个</a></p>
