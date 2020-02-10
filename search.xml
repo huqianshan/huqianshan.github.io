@@ -21,16 +21,15 @@
 </li>
 <li><a href="#语法部分">语法部分</a><ul>
 <li><a href="#上下文管理器">上下文管理器</a></li>
-<li><a href="#装饰器">装饰器</a></li>
+<li><a href="#装饰器">装饰器</a><ul>
+<li><a href="#常见的内置装饰器">常见的内置装饰器</a></li>
+</ul>
+</li>
 <li><a href="#getattr"><code>getattr</code></a></li>
 <li><a href="#正则表达式">正则表达式</a></li>
 </ul>
 </li>
-<li><a href="#objected-oriented-programming"><code>Objected-Oriented-Programming</code></a><ul>
-<li><a href="#描述器">描述器</a></li>
-<li><a href="#property"><code>@property</code></a></li>
-</ul>
-</li>
+<li><a href="#objected-oriented-programming"><code>Objected-Oriented-Programming</code></a></li>
 </ul>
 </li>
 </ul>
@@ -72,6 +71,9 @@
 </ul>
 <h3 id="语法部分"><a href="#语法部分" class="headerlink" title="语法部分"></a>语法部分</h3><h4 id="上下文管理器"><a href="#上下文管理器" class="headerlink" title="上下文管理器"></a>上下文管理器</h4><p>参见 <a href="https://huqianshan.github.io/articles/python%2Fpython-advanced#with%E8%AF%AD%E5%8F%A5%E5%92%8Ccontexmanager%E4%B8%8A%E4%B8%8B%E6%96%87%E7%AE%A1%E7%90%86%E5%99%A8"><code>with</code>语句和<code>ContexManager</code>上下文管理器</a></p>
 <h4 id="装饰器"><a href="#装饰器" class="headerlink" title="装饰器"></a>装饰器</h4><p>参见 <a href="https://huqianshan.github.io/articles/python%2Fpython-advanced#%E7%BB%99%E5%87%BD%E6%95%B0%E6%B7%BB%E5%8A%A0%E4%B8%80%E4%B8%AA%E8%A3%85%E9%A5%B0%E5%99%A8">装饰器</a></p>
+<h5 id="常见的内置装饰器"><a href="#常见的内置装饰器" class="headerlink" title="常见的内置装饰器"></a>常见的内置装饰器</h5><ul>
+<li><code>@unique</code>装饰器可以帮助我们检查保证没有重复值。</li>
+</ul>
 <h4 id="getattr"><a href="#getattr" class="headerlink" title="getattr"></a><code>getattr</code></h4><p><code>getattr()</code> 函数用于返回一个对象属性值。<code>getattr(object, name[, default])</code></p>
 <ul>
 <li>object – 对象。</li>
@@ -81,10 +83,10 @@
 <h4 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h4><ul>
 <li><a href="https://docs.python.org/zh-cn/3/howto/regex.html#using-regular-expressions" target="_blank" rel="noopener">正则表达式参考链接</a></li>
 </ul>
-<h3 id="Objected-Oriented-Programming"><a href="#Objected-Oriented-Programming" class="headerlink" title="Objected-Oriented-Programming"></a><code>Objected-Oriented-Programming</code></h3><h4 id="描述器"><a href="#描述器" class="headerlink" title="描述器"></a>描述器</h4><ul>
-<li><a href="https://zhuanlan.zhihu.com/p/32764345" target="_blank" rel="noopener">描述器</a></li>
+<h3 id="Objected-Oriented-Programming"><a href="#Objected-Oriented-Programming" class="headerlink" title="Objected-Oriented-Programming"></a><code>Objected-Oriented-Programming</code></h3><ul>
+<li><a href="https://huqianshan.github.io/articles/python%2Fpython-obeject-oriented"><code>Python</code>面向对象编程</a></li>
 </ul>
-<h4 id="property"><a href="#property" class="headerlink" title="@property"></a><code>@property</code></h4>]]></content>
+]]></content>
       
         
         <tags>
@@ -102,28 +104,83 @@
 <ul>
 <li><a href="#python-面向对象编程"><code>Python</code> 面向对象编程</a><ul>
 <li><a href="#类class提供了一种什么样的编程模式思维范式">类<code>class</code>提供了一种什么样的编程模式（思维范式）</a></li>
-<li><a href="#相关定义">相关定义</a></li>
+<li><a href="#相关概念">相关概念</a></li>
+<li><a href="#高级特性">高级特性</a><ul>
+<li><a href="#__slots__"><code>__slots__</code></a></li>
+<li><a href="#property装饰器"><code>@property</code>装饰器</a></li>
+<li><a href="#多重继承-mixin">多重继承 MixIn</a></li>
+<li><a href="#定制类">定制类</a></li>
+<li><a href="#运行期间动态创建类">运行期间动态创建类</a></li>
+<li><a href="#metaclass元类"><code>metaclass</code>元类</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 <!-- /TOC -->
 <a id="more"></a>
 <h2 id="Python-面向对象编程"><a href="#Python-面向对象编程" class="headerlink" title="Python 面向对象编程"></a><code>Python</code> 面向对象编程</h2><h3 id="类class提供了一种什么样的编程模式（思维范式）"><a href="#类class提供了一种什么样的编程模式（思维范式）" class="headerlink" title="类class提供了一种什么样的编程模式（思维范式）"></a>类<code>class</code>提供了一种什么样的编程模式（思维范式）</h3><p>类提供了一种组合数据和功能的方法。</p>
-<h3 id="相关定义"><a href="#相关定义" class="headerlink" title="相关定义"></a>相关定义</h3><ul>
-<li>类(Class): 用来描述具有相同属性和方法的对象的集合。它定义了该集合中每个对象所共有的属性和方法。其中的对象被称作类的实例。</li>
-<li>实例：也称对象。通过类定义的初始化方法，赋予具体的值，成为一个”有血有肉的实体”。</li>
+<h3 id="相关概念"><a href="#相关概念" class="headerlink" title="相关概念"></a>相关概念</h3><ul>
+<li>类(Class): 用来描述具有相同属性和方法的对象的集合。它定义了该集合中每个对象所共有的属性和方法。其中的对象被称作类的实例。<ul>
+<li>实例：也称对象。通过类定义的初始化方法，赋予具体的值，成为一个”有血有肉的实体”。在Python中实例与类是分开的。即<code>动态语言</code></li>
 <li>实例化：创建类的实例的过程或操作。</li>
 <li>实例变量：定义在实例中的变量，只作用于当前实例。</li>
 <li>类变量：类变量是所有实例公有的变量。类变量定义在类中，但在方法体之外。</li>
+</ul>
+</li>
 <li>数据成员：类变量、实例变量、方法、类方法、静态方法和属性等的统称。</li>
-<li>方法：类中定义的函数。</li>
+<li>方法：类中定义的函数。<ul>
 <li>实例方法： 通过实例调用类函数</li>
 <li>静态方法<code>@staticmethod</code>：不需要实例化就可以由类执行的方法</li>
-<li>类方法<code>@classmethod</code>：类方法是将类本身作为对象进行操作的方法。在不改变已经写好的类里面的方法的情况下，对输入的数据进行处理</li>
+<li>类方法<code>@classmethod</code>：类方法是将类本身作为对象进行操作的方法。在不改变已经写好的类里面的方法的 情况下，对输入的数据进行处理</li>
+</ul>
+</li>
+<li>面向对象特性<ul>
 <li>方法重写：如果从父类继承的方法不能满足子类的需求，可以对父类的方法进行改写，这个过程也称override。</li>
 <li>封装：将内部实现包裹起来，对外透明，提供api接口进行调用的机制</li>
 <li>继承：即一个派生类（derived class）继承父类（base class）的变量和方法。</li>
 <li>多态：根据对象类型的不同以不同的方式进行处理。</li>
+</ul>
+</li>
+<li>面向对象高级特性<ul>
+<li>多继承</li>
+<li>元类</li>
+<li>定制类</li>
+</ul>
+</li>
+</ul>
+<h3 id="高级特性"><a href="#高级特性" class="headerlink" title="高级特性"></a>高级特性</h3><h4 id="slots"><a href="#slots" class="headerlink" title="__slots__"></a><code>__slots__</code></h4><p>限制类实例添加属性，只能绑定由<code>__slots__</code>指定的属性。但只对当前<strong>类实例</strong>（不是类本身）起作用，继承的子类需要重新指定。</p>
+<blockquote>
+<p><code>Student.set_gender = MethodType(set_gender, Student)</code></p>
+</blockquote>
+<h4 id="property装饰器"><a href="#property装饰器" class="headerlink" title="@property装饰器"></a><code>@property</code>装饰器</h4><p>把类的方法当作属性使用。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span><span class="params">(object)</span>:</span></span><br><span class="line"></span><br><span class="line"><span class="meta">    @property</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">birth</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self._birth</span><br><span class="line"></span><br><span class="line"><span class="meta">    @birth.setter</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">birth</span><span class="params">(self, value)</span>:</span></span><br><span class="line">        self._birth = value</span><br><span class="line"></span><br><span class="line"><span class="meta">    @property</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">age</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> <span class="number">2015</span> - self._birth</span><br></pre></td></tr></table></figure>
+<p>则<code>birth</code>为可读写属性，<code>age</code>为只读属性</p>
+<h4 id="多重继承-MixIn"><a href="#多重继承-MixIn" class="headerlink" title="多重继承 MixIn"></a>多重继承 MixIn</h4><p>在设计类的继承关系时，通常，主线都是单一继承下来的，例如，Ostrich继承自Bird。但是，如果需要“混入”额外的功能，通过多重继承就可以实现，比如，让Ostrich除了继承自Bird外，再同时继承Runnable。这种设计通常称之为MixIn。</p>
+<p>MixIn的目的就是给一个类增加多个功能，这样，在设计类的时候，我们优先考虑通过多重继承来组合多个MixIn的功能，而不是设计多层次的复杂的继承关系</p>
+<h4 id="定制类"><a href="#定制类" class="headerlink" title="定制类"></a>定制类</h4><p>定制类实际上是通过修改一些内置方法，从而使得类展示出不同的功能或接口。</p>
+<ul>
+<li><code>__str__</code> 定义此方法，使得print(class_name)返回良好的语句</li>
+<li><code>__repr__</code>返回程序开发者看到的字符串</li>
+<li><code>__iter__ __next__()</code> 迭代方法</li>
+<li><code>__getitem__</code> 类似于列表</li>
+<li><code>__getattr__</code> 重要，常见的动态对象绑定 </li>
+<li><code>__call__</code>只需要定义一个<strong>call</strong>()方法，就可以直接对实例进行调用。对实例进行直接调用就好比对一个函数进行调用一样，所以你完全可以把对象看成函数，把函数看成对象，因为这两者之间本来就没啥根本的区别。<br>如果你把对象看成函数，那么函数本身其实也可以在运行期动态创建出来，因为类的实例都是运行期创建出来的，这么一来，我们就模糊了对象和函数的界限。</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">github</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, url=<span class="string">'Get /usr'</span>)</span>:</span></span><br><span class="line">        self.url = url</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__getattr__</span><span class="params">(self, attr)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> github((<span class="string">f"<span class="subst">&#123;self.url&#125;</span>/<span class="subst">&#123;attr&#125;</span>"</span>))</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__call__</span><span class="params">(self, attr)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> github((<span class="string">f"<span class="subst">&#123;self.url&#125;</span>/<span class="subst">&#123;attr&#125;</span>"</span>))</span><br><span class="line"><span class="comment">#GET /users/:user/repos</span></span><br><span class="line"><span class="comment"># github().users("hu").repos.url</span></span><br></pre></td></tr></table></figure>
+<h4 id="运行期间动态创建类"><a href="#运行期间动态创建类" class="headerlink" title="运行期间动态创建类"></a>运行期间动态创建类</h4><p>可以通过<code>type()</code>函数在运行期创建一个类。</p>
+<p>type()函数既可以返回一个对象的类型，又可以创建出新的类型。</p>
+<p>要创建一个class对象，type()函数依次传入3个参数：</p>
+<ol>
+<li>class的名称；</li>
+<li>继承的父类集合，注意Python支持多重继承，如果只有一个父类，别忘了tuple的单元素写法；</li>
+<li>class的方法名称与函数绑定，这里我们把函数fn绑定到方法名hello上。</li>
+</ol>
+<p>通过type()函数创建的类和直接写class是完全一样的，因为Python解释器遇到class定义时，仅仅是扫描一下class定义的语法，然后调用type()函数创建出class。</p>
+<p>正常情况下，我们都用class Xxx…来定义类，但是，type()函数也允许我们动态创建出类来，也就是说，动态语言本身支持运行期动态创建类，这和静态语言有非常大的不同，要在静态语言运行期创建类，必须构造源代码字符串再调用编译器，或者借助一些工具生成字节码实现，本质上都是动态编译，会非常复杂。</p>
+<h4 id="metaclass元类"><a href="#metaclass元类" class="headerlink" title="metaclass元类"></a><code>metaclass</code>元类</h4><ul>
+<li><a href="https://www.liaoxuefeng.com/wiki/1016959663602400/1017592449371072" target="_blank" rel="noopener">廖雪峰</a></li>
+<li><a href="http://rootkiter.com/2017/02/25/Python_ClassBuilder.html" target="_blank" rel="noopener">元类应用</a></li>
 </ul>
 ]]></content>
       
@@ -198,13 +255,11 @@
 <li>装饰器contextmanager。该装饰器将一个函数中yield语句之前的代码当做<strong>enter</strong>方法执行，yield语句之后的代码当做<strong>exit</strong>方法执行。同时yield返回值赋值给as后的变量。</li>
 </ol>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@contextlib.contextmanager</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">open_func</span><span class="params">(file_name)</span>:</span></span><br><span class="line">    <span class="comment"># __enter__方法</span></span><br><span class="line">    print(<span class="string">'open file:'</span>, file_name, <span class="string">'in __enter__'</span>)</span><br><span class="line">    file_handler = open(file_name, <span class="string">'r'</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">yield</span> file_handler</span><br><span class="line"></span><br><span class="line">    <span class="comment"># __exit__方法</span></span><br><span class="line">    print(<span class="string">'close file:'</span>, file_name, <span class="string">'in __exit__'</span>)</span><br><span class="line">    file_handler.close()</span><br><span class="line">    <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> open_func(<span class="string">'python_base.py'</span>) <span class="keyword">as</span> file_in:</span><br><span class="line">    <span class="keyword">for</span> line <span class="keyword">in</span> file_in:</span><br><span class="line">        print(line)</span><br></pre></td></tr></table></figure>
-<ol>
-<li><code>closing</code>类。该类会自动调用传入对象的<code>close</code>方法。使用实例如下：</li>
-</ol>
+<p>2.<code>closing</code>类。该类会自动调用传入对象的<code>close</code>方法。使用实例如下：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyOpen2</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, file_name)</span>:</span></span><br><span class="line">        <span class="string">"""初始化方法"""</span></span><br><span class="line">        self.file_handler = open(file_name, <span class="string">"r"</span>)</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">close</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">"""关闭文件，会被自动调用"""</span></span><br><span class="line">        print(<span class="string">"call close in MyOpen2"</span>)</span><br><span class="line">        <span class="keyword">if</span> self.file_handler:</span><br><span class="line">            self.file_handler.close()</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> contextlib.closing(MyOpen2(<span class="string">"python_base.py"</span>)) <span class="keyword">as</span> file_in:</span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">closing</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="string">"""Context to automatically close something at the end of a block."""</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, thing)</span>:</span></span><br><span class="line">        self.thing = thing</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__enter__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.thing</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__exit__</span><span class="params">(self, *exc_info)</span>:</span></span><br><span class="line">        self.thing.close()</span><br></pre></td></tr></table></figure>
 <p><code>closing</code>类的<code>__exit__</code>方法自动调用传入的thing的<code>close</code>方法。</p>
-<h3 id="参考链接-1"><a href="#参考链接-1" class="headerlink" title="参考链接"></a>参考链接</h3><ul>
+<h3 id="pep参考链接"><a href="#pep参考链接" class="headerlink" title="pep参考链接"></a><code>pep</code>参考链接</h3><ul>
 <li><a href="https://www.python.org/dev/peps/pep-0343/" target="_blank" rel="noopener">python-dev</a></li>
 </ul>
 ]]></content>
@@ -889,7 +944,7 @@
 </ul>
 <blockquote>
 <p>This helper doesn’t buy us much over calling kmap_atomic directly.<br>In fact in the only caller it does a bit of useless work as the<br>caller already has the bvec at hand, and said caller would even<br>buggy for a multi-segment bio due to the use of this helper.</p>
-<p>So just remove it.<br>Signed-off-by: default avatarChristoph Hellwig <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#x68;&#x63;&#104;&#x40;&#x6c;&#115;&#116;&#x2e;&#x64;&#101;">&#x68;&#x63;&#104;&#x40;&#x6c;&#115;&#116;&#x2e;&#x64;&#101;</a><br>Signed-off-by: default avatarJens Axboe <a href="&#x6d;&#97;&#105;&#108;&#116;&#111;&#x3a;&#97;&#120;&#98;&#111;&#x65;&#64;&#107;&#101;&#x72;&#110;&#x65;&#108;&#46;&#x64;&#x6b;">&#97;&#120;&#98;&#111;&#x65;&#64;&#107;&#101;&#x72;&#110;&#x65;&#108;&#46;&#x64;&#x6b;</a></p>
+<p>So just remove it.<br>Signed-off-by: default avatarChristoph Hellwig <a href="&#109;&#97;&#x69;&#x6c;&#x74;&#111;&#x3a;&#x68;&#x63;&#x68;&#64;&#x6c;&#115;&#116;&#x2e;&#x64;&#101;">&#x68;&#x63;&#x68;&#64;&#x6c;&#115;&#116;&#x2e;&#x64;&#101;</a><br>Signed-off-by: default avatarJens Axboe <a href="&#109;&#97;&#105;&#x6c;&#116;&#x6f;&#x3a;&#x61;&#120;&#98;&#x6f;&#x65;&#64;&#x6b;&#101;&#x72;&#x6e;&#x65;&#108;&#46;&#100;&#x6b;">&#x61;&#120;&#98;&#x6f;&#x65;&#64;&#x6b;&#101;&#x72;&#x6e;&#x65;&#108;&#46;&#100;&#x6b;</a></p>
 </blockquote>
 <h4 id="struct-request中-cmd-type被删除"><a href="#struct-request中-cmd-type被删除" class="headerlink" title="struct request中 cmd_type被删除"></a><code>struct request</code>中 <code>cmd_type</code>被删除</h4><ul>
 <li><a href="https://lkml.org/lkml/2017/1/31/562" target="_blank" rel="noopener">链接及示例</a></li>
@@ -897,7 +952,7 @@
 <blockquote>
 <p>From Christoph Hellwig &lt;&gt;<br>  Subject [PATCH 08/10] block: introduce blk_rq_is_passthrough<br>  Dat Tue, 31 Jan 2017 16:57:29 +0100</p>
 <p>This can be used to check for fs vs non-fs requests and basically<br>removes all knowledge of BLOCK_PC specific from the block layer,<br>as well as preparing for removing the cmd_type field in struct request.</p>
-<p>Signed-off-by: Christoph Hellwig <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#x3a;&#x68;&#99;&#x68;&#x40;&#x6c;&#x73;&#116;&#x2e;&#100;&#101;">&#x68;&#99;&#x68;&#x40;&#x6c;&#x73;&#116;&#x2e;&#100;&#101;</a></p>
+<p>Signed-off-by: Christoph Hellwig <a href="&#x6d;&#97;&#x69;&#108;&#x74;&#x6f;&#x3a;&#x68;&#99;&#104;&#x40;&#108;&#x73;&#116;&#x2e;&#100;&#101;">&#x68;&#99;&#104;&#x40;&#108;&#x73;&#116;&#x2e;&#100;&#101;</a></p>
 </blockquote>
 <ul>
 <li><p><a href="https://www.kernel.org/doc/htmldocs/filesystems/API-bio-endio.html" target="_blank" rel="noopener"><code>end_bio</code>的参数变为一个</a></p>
