@@ -4,7 +4,7 @@
     
     <entry>
       <title><![CDATA[Pythonic-Code-Catalog]]></title>
-      <url>/articles/python/Pythonic-Code-Catalog/</url>
+      <url>/python/Pythonic-Code-Catalog/</url>
       <content type="html"><![CDATA[<!-- TOC -->
 <ul>
 <li><a href="#python高级用法目录"><code>Python</code>高级用法目录</a><ul>
@@ -91,7 +91,7 @@
         
         <tags>
             
-            <tag> Python </tag>
+            <tag> python </tag>
             
         </tags>
         
@@ -99,7 +99,7 @@
     
     <entry>
       <title><![CDATA[python-obeject-oriented]]></title>
-      <url>/articles/python/python-obeject-oriented/</url>
+      <url>/python/python-obeject-oriented/</url>
       <content type="html"><![CDATA[<!-- TOC -->
 <ul>
 <li><a href="#python-面向对象编程"><code>Python</code> 面向对象编程</a><ul>
@@ -112,6 +112,7 @@
 <li><a href="#定制类">定制类</a></li>
 <li><a href="#运行期间动态创建类">运行期间动态创建类</a></li>
 <li><a href="#metaclass元类"><code>metaclass</code>元类</a></li>
+<li><a href="#描述符descriptor">描述符（<code>descriptor</code>）</a></li>
 </ul>
 </li>
 </ul>
@@ -122,13 +123,16 @@
 <h2 id="Python-面向对象编程"><a href="#Python-面向对象编程" class="headerlink" title="Python 面向对象编程"></a><code>Python</code> 面向对象编程</h2><h3 id="类class提供了一种什么样的编程模式（思维范式）"><a href="#类class提供了一种什么样的编程模式（思维范式）" class="headerlink" title="类class提供了一种什么样的编程模式（思维范式）"></a>类<code>class</code>提供了一种什么样的编程模式（思维范式）</h3><p>类提供了一种组合数据和功能的方法。</p>
 <h3 id="相关概念"><a href="#相关概念" class="headerlink" title="相关概念"></a>相关概念</h3><ul>
 <li>类(Class): 用来描述具有相同属性和方法的对象的集合。它定义了该集合中每个对象所共有的属性和方法。其中的对象被称作类的实例。<ul>
-<li>实例：也称对象。通过类定义的初始化方法，赋予具体的值，成为一个”有血有肉的实体”。在Python中实例与类是分开的。即<code>动态语言</code></li>
+<li>实例：也称对象。通过类定义的初始化方法，赋予具体的值，成为一个”有血有肉的实体”。在Python中实例与类是分开的。即<code>动态语言</code>（相关属性可能在运行时才创建）</li>
 <li>实例化：创建类的实例的过程或操作。</li>
 <li>实例变量：定义在实例中的变量，只作用于当前实例。</li>
 <li>类变量：类变量是所有实例公有的变量。类变量定义在类中，但在方法体之外。</li>
 </ul>
 </li>
-<li>数据成员：类变量、实例变量、方法、类方法、静态方法和属性等的统称。</li>
+<li>数据成员：类变量、实例变量、方法、类方法、静态方法和属性等的统称。<ul>
+<li><code>属性</code> 为数据变量，由实例直接访问。可由<code>dir</code>查看对象的所有方法与属性</li>
+</ul>
+</li>
 <li>方法：类中定义的函数。<ul>
 <li>实例方法： 通过实例调用类函数</li>
 <li>静态方法<code>@staticmethod</code>：不需要实例化就可以由类执行的方法</li>
@@ -180,7 +184,12 @@
 <p>正常情况下，我们都用class Xxx…来定义类，但是，type()函数也允许我们动态创建出类来，也就是说，动态语言本身支持运行期动态创建类，这和静态语言有非常大的不同，要在静态语言运行期创建类，必须构造源代码字符串再调用编译器，或者借助一些工具生成字节码实现，本质上都是动态编译，会非常复杂。</p>
 <h4 id="metaclass元类"><a href="#metaclass元类" class="headerlink" title="metaclass元类"></a><code>metaclass</code>元类</h4><ul>
 <li><a href="https://www.liaoxuefeng.com/wiki/1016959663602400/1017592449371072" target="_blank" rel="noopener">廖雪峰</a></li>
-<li><a href="http://rootkiter.com/2017/02/25/Python_ClassBuilder.html" target="_blank" rel="noopener">元类应用</a></li>
+<li><a href="http://rootkiter.com/2017/02/25/Python_ClassBuilder.html" target="_blank" rel="noopener">元类的一个小栗子</a></li>
+<li><a href="https://lotabout.me/2018/Understanding-Python-MetaClass/" target="_blank" rel="noopener">Python 元类 (MetaClass) 小教程</a></li>
+</ul>
+<h4 id="描述符（descriptor）"><a href="#描述符（descriptor）" class="headerlink" title="描述符（descriptor）"></a>描述符（<code>descriptor</code>）</h4><ul>
+<li><a href="https://docs.python.org/zh-cn/3/howto/descriptor.html" target="_blank" rel="noopener">python-how-to-decriptor</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/32764345" target="_blank" rel="noopener">面向对象（深入）|python描述器详解</a></li>
 </ul>
 ]]></content>
       
@@ -196,8 +205,8 @@
     </entry>
     
     <entry>
-      <title><![CDATA[python-advanced]]></title>
-      <url>/articles/python/python-advanced/</url>
+      <title><![CDATA[Python的高级烹饪方法]]></title>
+      <url>/python/python-advanced/</url>
       <content type="html"><![CDATA[<!-- TOC -->
 <ul>
 <li><a href="#python的高级烹饪方法"><code>Python</code>的高级烹饪方法</a><ul>
@@ -214,7 +223,7 @@
 <li><a href="#with语法"><code>with</code>语法</a></li>
 <li><a href="#实例自定义文件打开类">实例：自定义文件打开类</a></li>
 <li><a href="#内置库contextlib">内置库<code>contextlib</code></a></li>
-<li><a href="#参考链接-1">参考链接</a></li>
+<li><a href="#pep参考链接"><code>pep</code>参考链接</a></li>
 </ul>
 </li>
 </ul>
@@ -275,7 +284,7 @@
     
     <entry>
       <title><![CDATA[loweer-level-of-code]]></title>
-      <url>/articles/memory-barrier/</url>
+      <url>/memory-barrier/</url>
       <content type="html"><![CDATA[<h2 id="数据一致性"><a href="#数据一致性" class="headerlink" title="数据一致性"></a>数据一致性</h2><a id="more"></a>
 <!-- TOC -->
 <ul>
@@ -412,7 +421,7 @@
     
     <entry>
       <title><![CDATA[to-read-NVM]]></title>
-      <url>/articles/thoughts/to-read/</url>
+      <url>/thoughts/to-read/</url>
       <content type="html"><![CDATA[<h2 id="书签"><a href="#书签" class="headerlink" title="书签"></a>书签</h2><p><a href="https://blog.csdn.net/Meditator_hkx/article/details/53106881" target="_blank" rel="noopener">NVM一致性</a><br><a id="more"></a></p>
 <h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><h3 id="模拟器"><a href="#模拟器" class="headerlink" title="模拟器"></a>模拟器</h3><p><a href="http://pfzuo.github.io/2017/07/22/Using-Quartz-to-simulate-Persistent-Memory/" target="_blank" rel="noopener">Quartz</a></p>
 <p><a href="https://my.oschina.net/fileoptions/blog/1827801" target="_blank" rel="noopener">数据库存储引擎+模拟</a></p>
@@ -455,7 +464,7 @@
     
     <entry>
       <title><![CDATA[thoughts-1]]></title>
-      <url>/articles/thoughts/thoughts-1/</url>
+      <url>/thoughts/thoughts-1/</url>
       <content type="html"><![CDATA[<h2 id="序言"><a href="#序言" class="headerlink" title="序言"></a>序言</h2><a id="more"></a>
 <p>自从选择了直博这条路，前前后后也看了有二十余篇文献，自己做的毕业设计也算是一个中型的论文，所以对于科研也可以说是稍微有点眉目了吧。</p>
 <p>而我相信，每一个研究生（无论博士还是硕士），都免不了要参加组会，并定期报告自己的工作和选题情况。</p>
@@ -491,7 +500,7 @@
     
     <entry>
       <title><![CDATA[linux-kernel-address-space]]></title>
-      <url>/articles/Linux/linux-kernel-address-space/</url>
+      <url>/Linux/linux-kernel-address-space/</url>
       <content type="html"><![CDATA[<a id="more"></a>
 <!-- TOC -->
 <ul>
@@ -709,7 +718,7 @@
     
     <entry>
       <title><![CDATA[pre-for-block-nvm-driver]]></title>
-      <url>/articles/NVM/pre-for-block-nvm-driver/</url>
+      <url>/NVM/pre-for-block-nvm-driver/</url>
       <content type="html"><![CDATA[<h2 id="The-Block-Driver-39-s-Tasks"><a href="#The-Block-Driver-39-s-Tasks" class="headerlink" title="The Block Driver&#39;s Tasks"></a><code>The Block Driver&#39;s Tasks</code></h2><h3 id="Manaing-PM-space-and-providing-a-block-interface"><a href="#Manaing-PM-space-and-providing-a-block-interface" class="headerlink" title="Manaing PM space and providing a block interface"></a><code>Manaing PM space and providing a block interface</code></h3><h3 id="provide-protection"><a href="#provide-protection" class="headerlink" title="provide protection"></a><code>provide protection</code></h3><h3 id="assure-consistency-when-lost-power"><a href="#assure-consistency-when-lost-power" class="headerlink" title="assure consistency when lost power"></a><code>assure consistency when lost power</code></h3><a id="more"></a>
 <h2 id="DRAM内存模拟持久化设备的方法"><a href="#DRAM内存模拟持久化设备的方法" class="headerlink" title="DRAM内存模拟持久化设备的方法"></a>DRAM内存模拟持久化设备的方法</h2><h3 id="dmesg-grep-BIOS-e820"><a href="#dmesg-grep-BIOS-e820" class="headerlink" title="dmesg | grep BIOS-e820"></a><code>dmesg | grep BIOS-e820</code></h3><h3 id="sudo-su-vi-etc-default-grub"><a href="#sudo-su-vi-etc-default-grub" class="headerlink" title="sudo su; vi /etc/default/grub"></a><code>sudo su; vi /etc/default/grub</code></h3><p><code>GRUB_CMDLINE_LINUX=&quot;memmap=4G!12G&quot;</code></p>
 <p>begin 12 GB to 16 GB</p>
@@ -742,7 +751,7 @@
     
     <entry>
       <title><![CDATA[block-drivers-devices]]></title>
-      <url>/articles/Linux/Drivers/block-devices/</url>
+      <url>/Linux/Drivers/block-devices/</url>
       <content type="html"><![CDATA[<h2 id="块驱动设备"><a href="#块驱动设备" class="headerlink" title="块驱动设备"></a>块驱动设备</h2><!-- TOC -->
 <ul>
 <li><a href="#块驱动设备">块驱动设备</a><ul>
@@ -944,7 +953,7 @@
 </ul>
 <blockquote>
 <p>This helper doesn’t buy us much over calling kmap_atomic directly.<br>In fact in the only caller it does a bit of useless work as the<br>caller already has the bvec at hand, and said caller would even<br>buggy for a multi-segment bio due to the use of this helper.</p>
-<p>So just remove it.<br>Signed-off-by: default avatarChristoph Hellwig <a href="&#109;&#97;&#x69;&#x6c;&#x74;&#111;&#x3a;&#x68;&#x63;&#x68;&#64;&#x6c;&#115;&#116;&#x2e;&#x64;&#101;">&#x68;&#x63;&#x68;&#64;&#x6c;&#115;&#116;&#x2e;&#x64;&#101;</a><br>Signed-off-by: default avatarJens Axboe <a href="&#109;&#97;&#105;&#x6c;&#116;&#x6f;&#x3a;&#x61;&#120;&#98;&#x6f;&#x65;&#64;&#x6b;&#101;&#x72;&#x6e;&#x65;&#108;&#46;&#100;&#x6b;">&#x61;&#120;&#98;&#x6f;&#x65;&#64;&#x6b;&#101;&#x72;&#x6e;&#x65;&#108;&#46;&#100;&#x6b;</a></p>
+<p>So just remove it.<br>Signed-off-by: default avatarChristoph Hellwig <a href="&#109;&#x61;&#105;&#108;&#x74;&#x6f;&#x3a;&#104;&#99;&#x68;&#x40;&#x6c;&#115;&#116;&#x2e;&#100;&#x65;">&#104;&#99;&#x68;&#x40;&#x6c;&#115;&#116;&#x2e;&#100;&#x65;</a><br>Signed-off-by: default avatarJens Axboe <a href="&#109;&#x61;&#105;&#x6c;&#x74;&#x6f;&#x3a;&#x61;&#x78;&#98;&#x6f;&#101;&#x40;&#x6b;&#x65;&#114;&#110;&#x65;&#108;&#x2e;&#100;&#x6b;">&#x61;&#x78;&#98;&#x6f;&#101;&#x40;&#x6b;&#x65;&#114;&#110;&#x65;&#108;&#x2e;&#100;&#x6b;</a></p>
 </blockquote>
 <h4 id="struct-request中-cmd-type被删除"><a href="#struct-request中-cmd-type被删除" class="headerlink" title="struct request中 cmd_type被删除"></a><code>struct request</code>中 <code>cmd_type</code>被删除</h4><ul>
 <li><a href="https://lkml.org/lkml/2017/1/31/562" target="_blank" rel="noopener">链接及示例</a></li>
@@ -952,7 +961,7 @@
 <blockquote>
 <p>From Christoph Hellwig &lt;&gt;<br>  Subject [PATCH 08/10] block: introduce blk_rq_is_passthrough<br>  Dat Tue, 31 Jan 2017 16:57:29 +0100</p>
 <p>This can be used to check for fs vs non-fs requests and basically<br>removes all knowledge of BLOCK_PC specific from the block layer,<br>as well as preparing for removing the cmd_type field in struct request.</p>
-<p>Signed-off-by: Christoph Hellwig <a href="&#x6d;&#97;&#x69;&#108;&#x74;&#x6f;&#x3a;&#x68;&#99;&#104;&#x40;&#108;&#x73;&#116;&#x2e;&#100;&#101;">&#x68;&#99;&#104;&#x40;&#108;&#x73;&#116;&#x2e;&#100;&#101;</a></p>
+<p>Signed-off-by: Christoph Hellwig <a href="&#109;&#97;&#105;&#108;&#116;&#x6f;&#58;&#x68;&#99;&#x68;&#x40;&#x6c;&#x73;&#116;&#46;&#100;&#101;">&#x68;&#99;&#x68;&#x40;&#x6c;&#x73;&#116;&#46;&#100;&#101;</a></p>
 </blockquote>
 <ul>
 <li><p><a href="https://www.kernel.org/doc/htmldocs/filesystems/API-bio-endio.html" target="_blank" rel="noopener"><code>end_bio</code>的参数变为一个</a></p>
@@ -1008,7 +1017,7 @@
     
     <entry>
       <title><![CDATA[char-device-update]]></title>
-      <url>/articles/char-device-update/</url>
+      <url>/char-device-update/</url>
       <content type="html"><![CDATA[<!-- TOC -->
 <ul>
 <li><a href="#字符设备的改进">字符设备的改进</a><ul>
@@ -1158,7 +1167,7 @@
     
     <entry>
       <title><![CDATA[create-chardevice]]></title>
-      <url>/articles/create-chardevice/</url>
+      <url>/create-chardevice/</url>
       <content type="html"><![CDATA[<!-- TOC -->
 <ul>
 <li><a href="#linux字符设备驱动设计与实现"><code>linux</code>字符设备驱动设计与实现</a><ul>
@@ -1239,7 +1248,7 @@
     
     <entry>
       <title><![CDATA[copy-virtual-ubuntu]]></title>
-      <url>/articles/copy-virtual-ubuntu/</url>
+      <url>/copy-virtual-ubuntu/</url>
       <content type="html"><![CDATA[<!-- TOC -->
 <ul>
 <li><a href="#解决复制的虚拟机无法识别网卡eth0">解决复制的虚拟机无法识别网卡<code>eth0</code></a><ul>
@@ -1310,7 +1319,7 @@
     
     <entry>
       <title><![CDATA[build-hello-module-in-linux]]></title>
-      <url>/articles/build-hello-module-in-linux/</url>
+      <url>/build-hello-module-in-linux/</url>
       <content type="html"><![CDATA[<h1 id="编译简单的linux内核模块"><a href="#编译简单的linux内核模块" class="headerlink" title="编译简单的linux内核模块"></a>编译简单的<code>linux</code>内核模块</h1><a id="more"></a>
 <h2 id="hello-c"><a href="#hello-c" class="headerlink" title="hello.c"></a><code>hello.c</code></h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * a simple kernel module: hello</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * Copyright (C) 2014 Barry Song  (baohua@kernel.org)</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * Licensed under GPLv2 or later.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;linux/init.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;linux/module.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">int</span> __<span class="function">init <span class="title">hello_init</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	printk(KERN_INFO <span class="string">"Hello World in hjl's linux\n"</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line">module_init(hello_init);</span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">void</span> __<span class="function"><span class="built_in">exit</span> <span class="title">hello_exit</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	printk(KERN_INFO <span class="string">"Hello World exit byebye\n "</span>);</span><br><span class="line">&#125;</span><br><span class="line">module_exit(hello_exit);</span><br><span class="line"></span><br><span class="line">MODULE_AUTHOR(<span class="string">"Hu Jinlei &lt;hjl2016060203025@std.uestc.edu.cn&gt;"</span>);</span><br><span class="line">MODULE_LICENSE(<span class="string">"GPL v2"</span>);</span><br><span class="line">MODULE_DESCRIPTION(<span class="string">"A simple Hello World Module"</span>);</span><br><span class="line">MODULE_ALIAS(<span class="string">"a simplest module"</span>);</span><br></pre></td></tr></table></figure>
 <ol>
@@ -1335,7 +1344,7 @@
     
     <entry>
       <title><![CDATA[config-kernel-arm]]></title>
-      <url>/articles/config-kernel-arm/</url>
+      <url>/config-kernel-arm/</url>
       <content type="html"><![CDATA[<h1 id="linux-内核的配置"><a href="#linux-内核的配置" class="headerlink" title="linux 内核的配置"></a><code>linux</code> 内核的配置</h1><a id="more"></a>
 <h2 id="四种打开方式"><a href="#四种打开方式" class="headerlink" title="四种打开方式"></a>四种打开方式</h2><ul>
 <li><p><code>make config</code></p>
@@ -1364,7 +1373,7 @@
     
     <entry>
       <title><![CDATA[build-linux-kenel-in-qumu]]></title>
-      <url>/articles/build-linux-kenel-in-qumu/</url>
+      <url>/build-linux-kenel-in-qumu/</url>
       <content type="html"><![CDATA[<h1 id="在QEMU中运行编译的Linux内核"><a href="#在QEMU中运行编译的Linux内核" class="headerlink" title="在QEMU中运行编译的Linux内核"></a>在<code>QEMU</code>中运行编译的<code>Linux</code>内核</h1><a id="more"></a>
 <h2 id="内核编译脚本-build-sh"><a href="#内核编译脚本-build-sh" class="headerlink" title="内核编译脚本 build.sh"></a>内核编译脚本 <code>build.sh</code></h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">export ARCH=arm</span><br><span class="line">export EXTRADIR=$&#123;PWD&#125;/extra</span><br><span class="line">export CROSS_COMPILE=arm-linux-gnueabi-</span><br><span class="line">make LDDD3_vexpress_defconfig</span><br><span class="line">make zImage -j8</span><br><span class="line">make modules -j8</span><br><span class="line">make dtbs</span><br><span class="line">cp arch/arm/boot/zImage extra/</span><br><span class="line">cp arch/arm/boot/dts/*ca9.dtb	extra/</span><br><span class="line">cp .config extra/</span><br></pre></td></tr></table></figure>
 <ul>
@@ -1396,7 +1405,7 @@
     
     <entry>
       <title><![CDATA[auto-google-translation]]></title>
-      <url>/articles/auto-google-translation/</url>
+      <url>/auto-google-translation/</url>
       <content type="html"><![CDATA[<h2 id="字幕也疯狂"><a href="#字幕也疯狂" class="headerlink" title="字幕也疯狂"></a>字幕也疯狂</h2><p><code>观曲千首 不如操琴一曲</code> 试着做一个勤劳的字幕组小员工~</p>
 <a id="more"></a>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pathlib</span><br><span class="line"><span class="keyword">import</span> gevent</span><br><span class="line"><span class="keyword">from</span> gevent.pool <span class="keyword">import</span> Pool</span><br><span class="line"><span class="keyword">from</span> googletrans <span class="keyword">import</span> Translator</span><br><span class="line"></span><br><span class="line"><span class="keyword">global</span> sou_file</span><br><span class="line"><span class="keyword">global</span> des_file</span><br><span class="line">count = <span class="number">0</span></span><br><span class="line"><span class="keyword">global</span> translator</span><br><span class="line">translator = Translator(service_urls=[<span class="string">'translate.google.cn'</span>])</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">tran_sub</span><span class="params">(line)</span>:</span></span><br><span class="line">    <span class="keyword">global</span> des_file</span><br><span class="line">    <span class="keyword">global</span> count</span><br><span class="line">    <span class="keyword">global</span> translator</span><br><span class="line">    count += <span class="number">1</span></span><br><span class="line">    print(<span class="string">"count,%d"</span> % count)</span><br><span class="line">    line = line.decode(<span class="string">'utf-8'</span>)</span><br><span class="line">    <span class="keyword">if</span> line.startswith(<span class="string">'Dialogue'</span>) <span class="keyword">and</span> <span class="string">'student speaking'</span> <span class="keyword">not</span> <span class="keyword">in</span> line:</span><br><span class="line">        des_file.write(line.encode(<span class="string">'utf-8'</span>))</span><br><span class="line">        head_str,english_str = tuple(line.rsplit(<span class="string">',,'</span>, <span class="number">1</span>))</span><br><span class="line">        chinese_str = translator.translate(english_str, dest=<span class="string">'zh-CN'</span>).text</span><br><span class="line">        print(chinese_str)</span><br><span class="line">        c_line = <span class="string">',,'</span>.join([head_str,chinese_str+<span class="string">'\n'</span>]).replace(<span class="string">'English'</span>, <span class="string">'Chinese'</span>).replace(<span class="string">'您'</span>, <span class="string">'你'</span>).encode(<span class="string">'utf-8'</span>)</span><br><span class="line">        des_file.write(c_line)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        des_file.write(line.encode(<span class="string">'utf-8'</span>))</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">    sou_path = <span class="string">u"/Users/eugene/workspace/translationCSAPP/subtitle/English/"</span></span><br><span class="line">    des_path = <span class="string">u"/Users/eugene/workspace/translationCSAPP/subtitle/Chinese_English/"</span></span><br><span class="line"></span><br><span class="line">    filename = <span class="string">u"Lecture 23  Concurrent Programming.ass"</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">global</span> sou_file</span><br><span class="line">    <span class="keyword">global</span> des_file</span><br><span class="line">    sou_file = open(sou_path+filename, <span class="string">'rb'</span>)</span><br><span class="line">    des_file = open(des_path+filename, <span class="string">'wb+'</span>)</span><br><span class="line">    <span class="comment"># pool = Pool(10)</span></span><br><span class="line">    <span class="comment"># pool.map(tran_sub, sou_file)</span></span><br><span class="line">    threads = [gevent.spawn(tran_sub, line) <span class="keyword">for</span> line <span class="keyword">in</span> sou_file.readlines()]</span><br><span class="line">    gevent.joinall(threads)</span><br><span class="line">    sou_file.close()</span><br><span class="line">    des_file.close()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    main()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># for line in lines:</span></span><br><span class="line"><span class="comment">#      if line.startswith('Dialogue:'):</span></span><br><span class="line"><span class="comment">#         parts = line.rsplit(',,', 1)</span></span><br><span class="line"><span class="comment">#         line = ',,'.join([parts[0], parts[1].lstrip().capitalize()])</span></span><br><span class="line"><span class="comment">#     f.write(line)</span></span><br></pre></td></tr></table></figure>
@@ -1417,7 +1426,7 @@
     
     <entry>
       <title><![CDATA[some_tools_in_computer]]></title>
-      <url>/articles/some-tools-in-computer/</url>
+      <url>/some-tools-in-computer/</url>
       <content type="html"><![CDATA[<!-- TOC -->
 <ul>
 <li><a href="#龙套角色也精彩">龙套角色也精彩</a><ul>
@@ -1460,7 +1469,7 @@
     
     <entry>
       <title><![CDATA[latency-in-programmar]]></title>
-      <url>/articles/latency-in-programmar/</url>
+      <url>/latency-in-programmar/</url>
       <content type="html"><![CDATA[<!-- TOC -->
 <ul>
 <li><a href="#latency-comparison-numbers-2012">Latency Comparison Numbers (~2012)</a><ul>
@@ -1648,7 +1657,7 @@
     
     <entry>
       <title><![CDATA[crapy-speedup]]></title>
-      <url>/articles/crapy-speedup/</url>
+      <url>/crapy-speedup/</url>
       <content type="html"><![CDATA[<h1 id="二-让爬虫飞起来-crapy-speedup"><a href="#二-让爬虫飞起来-crapy-speedup" class="headerlink" title="(二) 让爬虫飞起来(crapy-speedup)"></a>(二) 让爬虫飞起来(<code>crapy-speedup</code>)</h1><ul>
 <li>多线程 <code>multithreading</code>$\to$<code>threading</code>库</li>
 <li>多进程 <code>multiprocess</code> <code>concurrent.futures</code></li>
@@ -1698,7 +1707,7 @@
     
     <entry>
       <title><![CDATA[crapy-summary]]></title>
-      <url>/articles/crapy-summary/</url>
+      <url>/crapy-summary/</url>
       <content type="html"><![CDATA[<!-- TOC -->
 <ul>
 <li><a href="#一-爬虫模块化总结">(一) 爬虫模块化总结</a><ul>
@@ -1798,7 +1807,7 @@
     
     <entry>
       <title><![CDATA[Modern art]]></title>
-      <url>/articles/Modern-art/</url>
+      <url>/Modern-art/</url>
       <content type="html"><![CDATA[<!-- TOC -->
 <ul>
 <li><a href="#透过摄影观看世界from-the-museum-of-modern-art-----new-york-modern-art-museum">透过摄影观看世界(From The Museum of Modern Art) —-New York Modern Art Museum</a><ul>
@@ -1829,7 +1838,7 @@
     
     <entry>
       <title><![CDATA[Scrapy Intergrity]]></title>
-      <url>/articles/Scrapy-Intergrity/</url>
+      <url>/Scrapy-Intergrity/</url>
       <content type="html"><![CDATA[<h1 id="THE-COLLECTION-OF-SCRAPY-PYTHON-SCRIPTS"><a href="#THE-COLLECTION-OF-SCRAPY-PYTHON-SCRIPTS" class="headerlink" title="THE COLLECTION OF SCRAPY PYTHON SCRIPTS"></a>THE COLLECTION OF SCRAPY PYTHON SCRIPTS</h1><a id="more"></a>
 <hr>
 <ol>
@@ -1852,7 +1861,7 @@
     
     <entry>
       <title><![CDATA[卷积神经网络预测危险车辆模型]]></title>
-      <url>/articles/model/</url>
+      <url>/model/</url>
       <content type="html"><![CDATA[<!-- TOC -->
 <ul>
 <li><a href="#卷积神经网络预测危险车辆">卷积神经网络预测危险车辆</a><pre><code>- [卷积神经网络模型概述](#卷积神经网络模型概述)
@@ -1908,7 +1917,7 @@
     
     <entry>
       <title><![CDATA[百度图库爬虫脚本]]></title>
-      <url>/articles/baidu-spider/</url>
+      <url>/baidu-spider/</url>
       <content type="html"><![CDATA[<!-- TOC -->
 <ul>
 <li><a href="#百度图库关键字爬虫脚本">百度图库关键字爬虫脚本</a><ul>
@@ -1950,7 +1959,7 @@
     
     <entry>
       <title><![CDATA[基于Tensor Flow的危险车辆识别]]></title>
-      <url>/articles/Car-recognize-md/</url>
+      <url>/Car-recognize-md/</url>
       <content type="html"><![CDATA[<h1 id="基于Tensor-Flow的危险车辆识别"><a href="#基于Tensor-Flow的危险车辆识别" class="headerlink" title="基于Tensor Flow的危险车辆识别"></a>基于Tensor Flow的危险车辆识别</h1><h4 id="这是大二下学期的综合课程设计的一个题目，本来四周的课时，前两周因为和信安大赛、数学建模冲突了，第三周才开始。各个模块都太仓促了，尤其卷积神经网络那块，其实可以做的稍微好一点的。只是按时按要求完成了任务要求，并没有什么很好的创新点，尤其是在模型方面"><a href="#这是大二下学期的综合课程设计的一个题目，本来四周的课时，前两周因为和信安大赛、数学建模冲突了，第三周才开始。各个模块都太仓促了，尤其卷积神经网络那块，其实可以做的稍微好一点的。只是按时按要求完成了任务要求，并没有什么很好的创新点，尤其是在模型方面" class="headerlink" title="这是大二下学期的综合课程设计的一个题目，本来四周的课时，前两周因为和信安大赛、数学建模冲突了，第三周才开始。各个模块都太仓促了，尤其卷积神经网络那块，其实可以做的稍微好一点的。只是按时按要求完成了任务要求，并没有什么很好的创新点，尤其是在模型方面"></a><em>这是大二下学期的综合课程设计的一个题目，本来四周的课时，前两周因为和信安大赛、数学建模冲突了，第三周才开始。各个模块都太仓促了，尤其卷积神经网络那块，其实可以做的稍微好一点的。只是按时按要求完成了任务要求，并没有什么很好的创新点，尤其是在模型方面</em></h4><a id="more"></a>
 <h4 id="主要任务要求为-："><a href="#主要任务要求为-：" class="headerlink" title="主要任务要求为 ："></a>主要任务要求为 ：</h4><p>利用Tenserflow框架，开发实现危险车辆识别模型，进行模型训练和验证</p>
 <h4 id="详细功能说明："><a href="#详细功能说明：" class="headerlink" title="详细功能说明："></a>详细功能说明：</h4><ol>
@@ -2020,7 +2029,7 @@
     
     <entry>
       <title><![CDATA[基于GBDT算法的不完全对称信息下的客户授信评估问题]]></title>
-      <url>/articles/xgboost/</url>
+      <url>/xgboost/</url>
       <content type="html"><![CDATA[<!-- TOC -->
 <ul>
 <li><a href="#这是数学建模校赛的题目两个人写建模论文确实太累了">这是数学建模校赛的题目，两个人写建模论文确实太累了</a><pre><code>- [针对问题1,](#针对问题1)
@@ -2077,7 +2086,7 @@
     
     <entry>
       <title><![CDATA[基于区块链的学历认证系统]]></title>
-      <url>/articles/contract/</url>
+      <url>/contract/</url>
       <content type="html"><![CDATA[<h1 id="基于区块链的学历认证系统"><a href="#基于区块链的学历认证系统" class="headerlink" title="基于区块链的学历认证系统"></a>基于区块链的学历认证系统</h1><a id="more"></a>
 <p>目前学位证书由中心机构进行管理，并提供查询服务。一旦中心机构遭到恶意攻击，数据被篡改、增加或者删除，就会导致学位证书信息的完整性被破坏。而为了避免这种攻击，就需要对存储和管理设备进行大量的投入。</p>
 <p>针对上述问题，本作品提供一种基于区块链的学位认证系统，本系统将学位证书默克尔哈希树树根信息发布在以太坊区块链上，以减少区块存储负担。能够通过智能合约对发布的信息进行增加、修改、查询等功能，采用分布式门限签名方案可以对学校发布的默克尔哈希树树根进行签名，也可以通过学生学位证书和一笔交易的Merkel Hash Root对具体交易信息进行验证。</p>
@@ -2124,7 +2133,7 @@
     
     <entry>
       <title><![CDATA[薅资本主义的羊毛，利用GitHub搭建一个hexo博客]]></title>
-      <url>/articles/the-First-MarkDown-File/</url>
+      <url>/the-First-MarkDown-File/</url>
       <content type="html"><![CDATA[<hr>
 <blockquote>
 <ul>
@@ -2181,7 +2190,7 @@
     
     <entry>
       <title><![CDATA[基于Gabor特征的人脸识别matlab实验]]></title>
-      <url>/articles/face-PCA/</url>
+      <url>/face-PCA/</url>
       <content type="html"><![CDATA[<!-- TOC -->
 <ul>
 <li><a href="#一实验综述">一、实验综述</a></li>
@@ -2245,7 +2254,7 @@
     
     <entry>
       <title><![CDATA[Uestc抢课脚本]]></title>
-      <url>/articles/Uestc-Class/</url>
+      <url>/Uestc-Class/</url>
       <content type="html"><![CDATA[<h1 id="一个电子科大的模块"><a href="#一个电子科大的模块" class="headerlink" title="一个电子科大的模块"></a>一个电子科大的模块</h1><h3 id="涉及登录，查分，抢课等功能"><a href="#涉及登录，查分，抢课等功能" class="headerlink" title="涉及登录，查分，抢课等功能"></a>涉及登录，查分，抢课等功能</h3><h2 id=""><a href="#" class="headerlink" title=""></a><a id="more"></a></h2><ul>
 <li><p><code>import uestc</code>  <em>导入文件</em></p>
 </li>
@@ -2277,7 +2286,7 @@
     
     <entry>
       <title><![CDATA[AboutMe]]></title>
-      <url>/articles/AboutMe/</url>
+      <url>/AboutMe/</url>
       <content type="html"><![CDATA[<h1 id="Me，nothing"><a href="#Me，nothing" class="headerlink" title="Me，nothing"></a>Me，nothing</h1><h3 id="nothing-at-all"><a href="#nothing-at-all" class="headerlink" title="nothing at all"></a>nothing at all</h3>]]></content>
       
         
@@ -2285,7 +2294,7 @@
     
     <entry>
       <title><![CDATA[Hello World]]></title>
-      <url>/articles/hello-world/</url>
+      <url>/hello-world/</url>
       <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
 <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><a id="more"></a>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
