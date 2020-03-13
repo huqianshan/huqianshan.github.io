@@ -1,4 +1,10 @@
-<!DOCTYPE html><html lang><head><meta name="generator" content="Hexo 3.9.0"><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="linux-kernel-address-space"><meta name="keywords" content="linux"><meta name="author" content="hjl,hjl1999@qq.com"><meta name="copyright" content="hjl"><title>linux-kernel-address-space | Hjl' Blog</title><link rel="shortcut icon" href="/melody-favicon.ico"><link rel="stylesheet" href="/css/index.css?version=1.7.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css?version=1.7.0"><meta name="format-detection" content="telephone=no"><meta http-equiv="x-dns-prefetch-control" content="on"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="manifest" href="/manifest.json"><link rel="manifest" href="/manifest.json"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><script>var GLOBAL_CONFIG = { 
+<!DOCTYPE html><html lang><head><meta name="generator" content="Hexo 3.9.0"><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="linux-kernel-address-space"><meta name="keywords" content="linux"><meta name="author" content="hjl,hjl1999@qq.com"><meta name="copyright" content="hjl"><title>linux-kernel-address-space | Hjl' Blog</title><link rel="shortcut icon" href="/melody-favicon.ico"><link rel="stylesheet" href="/css/index.css?version=1.7.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css?version=1.7.0"><meta name="format-detection" content="telephone=no"><meta http-equiv="x-dns-prefetch-control" content="on"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="manifest" href="/manifest.json"><link rel="manifest" href="/manifest.json"><link rel="dns-prefetch" href="https://www.google-analytics.com"><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-113512264-1', 'auto');
+ga('send', 'pageview');</script><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><script>var GLOBAL_CONFIG = { 
   root: '/',
   algolia: undefined,
   localSearch: undefined,
@@ -7,208 +13,290 @@
     error: 'Copy error',
     noSupport: 'The browser does not support'
   }
-} </script></head><body><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar" data-display="true"><div class="toggle-sidebar-info text-center"><span data-toggle="Toggle article">Toggle site</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">Catalog</div><div class="sidebar-toc__progress"><span class="progress-notice">You've read</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux内核地址空间"><span class="toc-number">1.</span> <span class="toc-text">Linux内核地址空间</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#内核空间分配api"><span class="toc-number">2.</span> <span class="toc-text">内核空间分配api</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#kmalloc-and-kzalloc"><span class="toc-number">2.1.</span> <span class="toc-text">kmalloc and kzalloc</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Description"><span class="toc-number">2.1.1.</span> <span class="toc-text">Description</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#flags-argument"><span class="toc-number">2.1.2.</span> <span class="toc-text">flags argument</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#get-free-page"><span class="toc-number">2.2.</span> <span class="toc-text">get_free_page</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#vmalloc"><span class="toc-number">2.3.</span> <span class="toc-text">vmalloc</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#vmalloc-Description"><span class="toc-number">2.3.1.</span> <span class="toc-text">vmalloc Description</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#说明"><span class="toc-number">2.3.2.</span> <span class="toc-text">说明</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ioremap"><span class="toc-number">2.4.</span> <span class="toc-text">ioremap</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux的内存管理"><span class="toc-number">3.</span> <span class="toc-text">Linux的内存管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#地址类型"><span class="toc-number">3.1.</span> <span class="toc-text">地址类型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#用户虚拟空间地址"><span class="toc-number">3.1.1.</span> <span class="toc-text">用户虚拟空间地址</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#内核地址空间"><span class="toc-number">3.1.2.</span> <span class="toc-text">内核地址空间</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#高端内存和低端内存"><span class="toc-number">3.1.3.</span> <span class="toc-text">高端内存和低端内存</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#内存管理结构"><span class="toc-number">3.2.</span> <span class="toc-text">内存管理结构</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#页结构struct-page"><span class="toc-number">3.2.1.</span> <span class="toc-text">页结构struct page</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#kmap映射"><span class="toc-number">3.2.2.</span> <span class="toc-text">kmap映射</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#页表与VMA"><span class="toc-number">3.2.3.</span> <span class="toc-text">页表与VMA</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#vm-area-struct结构"><span class="toc-number">3.2.4.</span> <span class="toc-text">vm_area_struct结构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#struct-mm-struct"><span class="toc-number">3.2.5.</span> <span class="toc-text">struct mm_struct</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#内存映射"><span class="toc-number">3.3.</span> <span class="toc-text">内存映射</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#mmap原型"><span class="toc-number">3.3.1.</span> <span class="toc-text">mmap原型</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#建立页表的方法"><span class="toc-number">3.4.</span> <span class="toc-text">建立页表的方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#使用remap-pfn-range一次性建立"><span class="toc-number">3.4.1.</span> <span class="toc-text">使用remap_pfn_range一次性建立</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#使用nopage-VMA每次建立一个页表"><span class="toc-number">3.4.2.</span> <span class="toc-text">使用nopage_VMA每次建立一个页表</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#地址映射关系"><span class="toc-number">3.5.</span> <span class="toc-text">地址映射关系</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考链接"><span class="toc-number">4.</span> <span class="toc-text">参考链接</span></a></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="/img/avatar.png"></div><div class="author-info__name text-center">hjl</div><div class="author-info__description text-center">For Nothing</div><div class="follow-button"><a href="https://github.com/huqianshan">Follow ME</a></div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">Articles</span><span class="pull-right">33</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">Tags</span><span class="pull-right">28</span></a></div></div></div><div id="content-outer"><div id="top-container" style="background-image: url(https://blog-1251750343.cos.ap-beijing.myqcloud.com/blog/blog-bg.jpg)"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">Hjl' Blog</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus">   <a class="site-page" href="/">Home</a><a class="site-page" href="/archives">Archives</a><a class="site-page" href="/tags">Tags</a><a class="site-page" href="/categories">Categories</a></span><span class="pull-right"></span></div><div id="post-info"><div id="post-title">linux-kernel-address-space</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2019-12-06</time><span class="post-meta__separator">|</span><i class="fa fa-comment-o post-meta__icon" aria-hidden="true"></i><a href="/Linux/linux-kernel-address-space/#disqus_thread"><span class="disqus-comment-count" data-disqus-identifier="Linux/linux-kernel-address-space/"></span></a><div class="post-meta-wordcount"><span>Word count: </span><span class="word-count">2,421</span><span class="post-meta__separator">|</span><span>Reading time: 8 min</span></div></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><a id="more"></a>
+} </script></head><body><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar" data-display="true"><div class="toggle-sidebar-info text-center"><span data-toggle="Toggle article">Toggle site</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">Catalog</div><div class="sidebar-toc__progress"><span class="progress-notice">You've read</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#linux内核地址空间"><span class="toc-number">1.</span> <span class="toc-text"> Linux内核地址空间</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#内核空间分配api"><span class="toc-number">2.</span> <span class="toc-text"> 内核空间分配api</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#kmalloc-and-kzalloc"><span class="toc-number">2.1.</span> <span class="toc-text"> kmalloc and kzalloc</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#description"><span class="toc-number">2.1.1.</span> <span class="toc-text"> Description</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#flags-argument"><span class="toc-number">2.1.2.</span> <span class="toc-text"> flags argument</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#get_free_page"><span class="toc-number">2.2.</span> <span class="toc-text"> get_free_page</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#vmalloc"><span class="toc-number">2.3.</span> <span class="toc-text"> vmalloc</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#vmalloc-description"><span class="toc-number">2.3.1.</span> <span class="toc-text"> vmalloc Description</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#说明"><span class="toc-number">2.3.2.</span> <span class="toc-text"> 说明</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ioremap"><span class="toc-number">2.4.</span> <span class="toc-text"> ioremap</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#linux的内存管理"><span class="toc-number">3.</span> <span class="toc-text"> Linux的内存管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#地址类型"><span class="toc-number">3.1.</span> <span class="toc-text"> 地址类型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#用户虚拟空间地址"><span class="toc-number">3.1.1.</span> <span class="toc-text"> 用户虚拟空间地址</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#内核地址空间"><span class="toc-number">3.1.2.</span> <span class="toc-text"> 内核地址空间</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#高端内存和低端内存"><span class="toc-number">3.1.3.</span> <span class="toc-text"> 高端内存和低端内存</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#内存管理结构"><span class="toc-number">3.2.</span> <span class="toc-text"> 内存管理结构</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#页结构struct-page"><span class="toc-number">3.2.1.</span> <span class="toc-text"> 页结构struct page</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#kmap映射"><span class="toc-number">3.2.2.</span> <span class="toc-text"> kmap映射</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#页表与vma"><span class="toc-number">3.2.3.</span> <span class="toc-text"> 页表与VMA</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#vm_area_struct结构"><span class="toc-number">3.2.4.</span> <span class="toc-text"> vm_area_struct结构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#struct-mm_struct"><span class="toc-number">3.2.5.</span> <span class="toc-text"> struct mm_struct</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#内存映射"><span class="toc-number">3.3.</span> <span class="toc-text"> 内存映射</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#mmap原型"><span class="toc-number">3.3.1.</span> <span class="toc-text"> mmap原型</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#建立页表的方法"><span class="toc-number">3.4.</span> <span class="toc-text"> 建立页表的方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#使用remap_pfn_range一次性建立"><span class="toc-number">3.4.1.</span> <span class="toc-text"> 使用remap_pfn_range一次性建立</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#使用nopage_vma每次建立一个页表"><span class="toc-number">3.4.2.</span> <span class="toc-text"> 使用nopage_VMA每次建立一个页表</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#地址映射关系"><span class="toc-number">3.5.</span> <span class="toc-text"> 地址映射关系</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考链接"><span class="toc-number">4.</span> <span class="toc-text"> 参考链接</span></a></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="/img/avatar.png"></div><div class="author-info__name text-center">hjl</div><div class="author-info__description text-center">For Nothing</div><div class="follow-button"><a href="https://github.com/huqianshan">Follow ME</a></div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">Articles</span><span class="pull-right">33</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">Tags</span><span class="pull-right">28</span></a></div></div></div><div id="content-outer"><div id="top-container" style="background-image: url(https://blog-1251750343.cos.ap-beijing.myqcloud.com/blog/blog-bg.jpg)"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">Hjl' Blog</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus">   <a class="site-page" href="/">Home</a><a class="site-page" href="/archives">Archives</a><a class="site-page" href="/tags">Tags</a><a class="site-page" href="/categories">Categories</a></span><span class="pull-right"></span></div><div id="post-info"><div id="post-title">linux-kernel-address-space</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2019-12-06</time><span class="post-meta__separator">|</span><i class="fa fa-comment-o post-meta__icon" aria-hidden="true"></i><a href="/Linux/linux-kernel-address-space/#disqus_thread"><span class="disqus-comment-count" data-disqus-identifier="Linux/linux-kernel-address-space/"></span></a><div class="post-meta-wordcount"><span>Word count: </span><span class="word-count">2,421</span><span class="post-meta__separator">|</span><span>Reading time: 8 min</span></div></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><a id="more"></a>
 <!-- TOC -->
 <ul>
-<li><a href="#linux内核地址空间"><code>Linux</code>内核地址空间</a></li>
-<li><a href="#内核空间分配api">内核空间分配<code>api</code></a><ul>
-<li><a href="#kmalloc-and-kzalloc"><code>kmalloc and kzalloc</code></a><ul>
+<li><a href="#linux%E5%86%85%E6%A0%B8%E5%9C%B0%E5%9D%80%E7%A9%BA%E9%97%B4"><code>Linux</code>内核地址空间</a></li>
+<li><a href="#%E5%86%85%E6%A0%B8%E7%A9%BA%E9%97%B4%E5%88%86%E9%85%8Dapi">内核空间分配<code>api</code></a>
+<ul>
+<li><a href="#kmalloc-and-kzalloc"><code>kmalloc and kzalloc</code></a>
+<ul>
 <li><a href="#description"><code>Description</code></a></li>
 <li><a href="#flags-argument"><code>flags argument</code></a></li>
 </ul>
 </li>
 <li><a href="#get_free_page"><code>get_free_page</code></a></li>
-<li><a href="#vmalloc"><code>vmalloc</code></a><ul>
+<li><a href="#vmalloc"><code>vmalloc</code></a>
+<ul>
 <li><a href="#vmalloc-description"><code>vmalloc Description</code></a></li>
-<li><a href="#说明"><code>说明</code></a></li>
+<li><a href="#%E8%AF%B4%E6%98%8E"><code>说明</code></a></li>
 </ul>
 </li>
 <li><a href="#ioremap"><code>ioremap</code></a></li>
 </ul>
 </li>
-<li><a href="#linux的内存管理"><code>Linux</code>的内存管理</a><ul>
-<li><a href="#地址类型">地址类型</a><ul>
-<li><a href="#用户虚拟空间地址">用户虚拟空间地址</a></li>
-<li><a href="#内核地址空间">内核地址空间</a></li>
-<li><a href="#高端内存和低端内存">高端内存和低端内存</a></li>
+<li><a href="#linux%E7%9A%84%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86"><code>Linux</code>的内存管理</a>
+<ul>
+<li><a href="#%E5%9C%B0%E5%9D%80%E7%B1%BB%E5%9E%8B">地址类型</a>
+<ul>
+<li><a href="#%E7%94%A8%E6%88%B7%E8%99%9A%E6%8B%9F%E7%A9%BA%E9%97%B4%E5%9C%B0%E5%9D%80">用户虚拟空间地址</a></li>
+<li><a href="#%E5%86%85%E6%A0%B8%E5%9C%B0%E5%9D%80%E7%A9%BA%E9%97%B4">内核地址空间</a></li>
+<li><a href="#%E9%AB%98%E7%AB%AF%E5%86%85%E5%AD%98%E5%92%8C%E4%BD%8E%E7%AB%AF%E5%86%85%E5%AD%98">高端内存和低端内存</a></li>
 </ul>
 </li>
-<li><a href="#内存管理结构">内存管理结构</a><ul>
-<li><a href="#页结构struct-page">页结构<code>struct page</code></a></li>
-<li><a href="#kmap映射"><code>kmap</code>映射</a></li>
-<li><a href="#页表与vma">页表与<code>VMA</code></a></li>
-<li><a href="#vm_area_struct结构"><code>vm_area_struct</code>结构</a></li>
+<li><a href="#%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86%E7%BB%93%E6%9E%84">内存管理结构</a>
+<ul>
+<li><a href="#%E9%A1%B5%E7%BB%93%E6%9E%84struct-page">页结构<code>struct page</code></a></li>
+<li><a href="#kmap%E6%98%A0%E5%B0%84"><code>kmap</code>映射</a></li>
+<li><a href="#%E9%A1%B5%E8%A1%A8%E4%B8%8Evma">页表与<code>VMA</code></a></li>
+<li><a href="#vm_area_struct%E7%BB%93%E6%9E%84"><code>vm_area_struct</code>结构</a></li>
 <li><a href="#struct-mm_struct"><code>struct mm_struct</code></a></li>
 </ul>
 </li>
-<li><a href="#内存映射">内存映射</a><ul>
-<li><a href="#mmap原型"><code>mmap</code>原型</a></li>
+<li><a href="#%E5%86%85%E5%AD%98%E6%98%A0%E5%B0%84">内存映射</a>
+<ul>
+<li><a href="#mmap%E5%8E%9F%E5%9E%8B"><code>mmap</code>原型</a></li>
 </ul>
 </li>
-<li><a href="#建立页表的方法">建立页表的方法</a><ul>
-<li><a href="#使用remap_pfn_range一次性建立">使用<code>remap_pfn_range</code>一次性建立</a></li>
-<li><a href="#使用nopage_vma每次建立一个页表">使用<code>nopage_VMA</code>每次建立一个页表</a></li>
+<li><a href="#%E5%BB%BA%E7%AB%8B%E9%A1%B5%E8%A1%A8%E7%9A%84%E6%96%B9%E6%B3%95">建立页表的方法</a>
+<ul>
+<li><a href="#%E4%BD%BF%E7%94%A8remap_pfn_range%E4%B8%80%E6%AC%A1%E6%80%A7%E5%BB%BA%E7%AB%8B">使用<code>remap_pfn_range</code>一次性建立</a></li>
+<li><a href="#%E4%BD%BF%E7%94%A8nopage_vma%E6%AF%8F%E6%AC%A1%E5%BB%BA%E7%AB%8B%E4%B8%80%E4%B8%AA%E9%A1%B5%E8%A1%A8">使用<code>nopage_VMA</code>每次建立一个页表</a></li>
 </ul>
 </li>
-<li><a href="#地址映射关系">地址映射关系</a></li>
+<li><a href="#%E5%9C%B0%E5%9D%80%E6%98%A0%E5%B0%84%E5%85%B3%E7%B3%BB">地址映射关系</a></li>
 </ul>
 </li>
-<li><a href="#参考链接">参考链接</a></li>
+<li><a href="#%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5">参考链接</a></li>
 </ul>
 <!-- /TOC -->
-<p><img src="https://pic1.zhimg.com/80/v2-c381d93642b716770c6705dac13a30c8_hd.jpg" alt="funciton call"><br><img src="https://i.loli.net/2019/12/06/aspKfcHJeBovSWm.png" alt="linux_storage.png"><br><img src="https://i.loli.net/2019/12/06/el7NgrRHvXcBjs6.png" alt="linux_addree_map.png"><br><img src="https://i.loli.net/2019/12/06/9IXsLMrzdEgoqTG.png" alt="linux_vm_area_struct.png"></p>
-<h2 id="Linux内核地址空间"><a href="#Linux内核地址空间" class="headerlink" title="Linux内核地址空间"></a><code>Linux</code>内核地址空间</h2><p>内存分为三个区段: 1. 用于<code>DMA</code>的内存，2. <code>常规内存</code>，3.<code>高端内存</code></p>
-<h2 id="内核空间分配api"><a href="#内核空间分配api" class="headerlink" title="内核空间分配api"></a>内核空间分配<code>api</code></h2><h3 id="kmalloc-and-kzalloc"><a href="#kmalloc-and-kzalloc" class="headerlink" title="kmalloc and kzalloc"></a><code>kmalloc and kzalloc</code></h3><h4 id="Description"><a href="#Description" class="headerlink" title="Description"></a><code>Description</code></h4><blockquote>
+<p><img src="https://pic1.zhimg.com/80/v2-c381d93642b716770c6705dac13a30c8_hd.jpg" alt="funciton call"><br>
+<img src="https://i.loli.net/2019/12/06/aspKfcHJeBovSWm.png" alt="linux_storage.png"><br>
+<img src="https://i.loli.net/2019/12/06/el7NgrRHvXcBjs6.png" alt="linux_addree_map.png"><br>
+<img src="https://i.loli.net/2019/12/06/9IXsLMrzdEgoqTG.png" alt="linux_vm_area_struct.png"></p>
+<h2 id="linux内核地址空间"><a class="markdownIt-Anchor" href="#linux内核地址空间"></a> <code>Linux</code>内核地址空间</h2>
+<p>内存分为三个区段: 1. 用于<code>DMA</code>的内存，2. <code>常规内存</code>，3.<code>高端内存</code></p>
+<h2 id="内核空间分配api"><a class="markdownIt-Anchor" href="#内核空间分配api"></a> 内核空间分配<code>api</code></h2>
+<h3 id="kmalloc-and-kzalloc"><a class="markdownIt-Anchor" href="#kmalloc-and-kzalloc"></a> <code>kmalloc and kzalloc</code></h3>
+<h4 id="description"><a class="markdownIt-Anchor" href="#description"></a> <code>Description</code></h4>
+<blockquote>
 <p><code>kmalloc is the normal method of allocating memory for objects smaller than page size in the kernel.</code></p>
 </blockquote>
 <p>最常用的内核空间内存分配函数。最终是通过调用<code>get_free_pages</code>来实现.<code>kmalloc()</code>是基于<code>slab/slob/slub</code>分配分配算法上实现的，不少地方将其作为<code>slab/slob/slub</code>分配算法的入口，实际上是略有区别的。</p>
 <p>最小分配大小 <code>32/64 Byte</code> 最大 <code>128 KB -16</code></p>
-<h4 id="flags-argument"><a href="#flags-argument" class="headerlink" title="flags argument"></a><code>flags argument</code></h4><blockquote>
-<p>GFP_USER - Allocate memory on behalf of user. May<br>sleep.<br>GFP_KERNEL - Allocate normal kernel ram. May sleep.<br>GFP_ATOMIC - Allocation will not sleep. May use emergency pools. For example, use this inside interrupt handlers.<br>GFP_HIGHUSER - Allocate pages from high memory.</p>
+<h4 id="flags-argument"><a class="markdownIt-Anchor" href="#flags-argument"></a> <code>flags argument</code></h4>
+<blockquote>
+<p>GFP_USER - Allocate memory on behalf of user. May<br>
+sleep.<br>
+GFP_KERNEL - Allocate normal kernel ram. May sleep.<br>
+GFP_ATOMIC - Allocation will not sleep. May use emergency pools. For example, use this inside interrupt handlers.<br>
+GFP_HIGHUSER - Allocate pages from high memory.</p>
 </blockquote>
-<p><del>貌似也能从<strong>高端内存</strong>分配</del> <strong>并不能</strong>,是说可能会从高端内存中分配，具体由平台决定</p>
+<p><s>貌似也能从<strong>高端内存</strong>分配</s> <strong>并不能</strong>,是说可能会从高端内存中分配，具体由平台决定</p>
 <p>物理内存只能按页面进行分配，不超过<code>128KB</code></p>
-<h3 id="get-free-page"><a href="#get-free-page" class="headerlink" title="get_free_page"></a><code>get_free_page</code></h3><p>参数类似于<code>kmalloc</code>.基于<code>buddy</code>机制</p>
+<h3 id="get_free_page"><a class="markdownIt-Anchor" href="#get_free_page"></a> <code>get_free_page</code></h3>
+<p>参数类似于<code>kmalloc</code>.基于<code>buddy</code>机制</p>
 <p><code>alloc_pages</code>是<code>Linux</code>页分配器的核心函数<code>alloc_pages_node</code>的简单宏，主要处理了<code>NUMA</code></p>
-<h3 id="vmalloc"><a href="#vmalloc" class="headerlink" title="vmalloc"></a><code>vmalloc</code></h3><h4 id="vmalloc-Description"><a href="#vmalloc-Description" class="headerlink" title="vmalloc Description"></a><code>vmalloc Description</code></h4><p>分配虚拟地址空间的连续区域，尽管可能在物理地址上不是连续的。</p>
+<h3 id="vmalloc"><a class="markdownIt-Anchor" href="#vmalloc"></a> <code>vmalloc</code></h3>
+<h4 id="vmalloc-description"><a class="markdownIt-Anchor" href="#vmalloc-description"></a> <code>vmalloc Description</code></h4>
+<p>分配虚拟地址空间的连续区域，尽管可能在物理地址上不是连续的。</p>
 <p>访问每个页面需要单独调用<code>alloc_pages</code>.通过红黑树管理</p>
-<h4 id="说明"><a href="#说明" class="headerlink" title="说明"></a><code>说明</code></h4><p>是<code>Linux</code>内存分配的基础。 内存分配使用效率不高，如可能，应该直接对页面进行分配。</p>
+<h4 id="说明"><a class="markdownIt-Anchor" href="#说明"></a> <code>说明</code></h4>
+<p>是<code>Linux</code>内存分配的基础。 内存分配使用效率不高，如可能，应该直接对页面进行分配。</p>
 <p>以上三个函数获得的内存地址均为虚拟地址。但<code>kmalloc、get_free_pages</code>地址与物理内存只差基于<code>PAGE_OFFSET</code>的偏移。不需要修改页表</p>
 <p><code>kmalloc()</code>分配的内存处于<code>3GB～high_memory</code>之间，而<code>vmalloc()</code>分配的内存在<code>VMALLOC_START～4GB</code>之间，也就是非连续内存区。</p>
 <p>一般情况下在驱动程序中都是调用<code>kmalloc()</code>来给数据结构分配内存，而<code>vmalloc(</code>)用在为活动的交换区分配数据结构，为某些I/O驱动程序分配缓冲区，或为模块分配空间</p>
 <p><code>vmalloc</code>则不同。且分配得到的地址是不能在处理器之外使用。</p>
 <p>正确使用场合： <strong>分配一大堆连续的，只在软件中存在的，用于缓冲的内存区域</strong></p>
 <p>且其不能在原子上下文中使用，因为其内部实现调用了<code>kmalloc</code>来获取页表的存储空间，因而可能休眠</p>
-<h3 id="ioremap"><a href="#ioremap" class="headerlink" title="ioremap"></a><code>ioremap</code></h3><p>与<code>vmalloc</code>不同的是，<code>ioremap</code>并不实际分配内存。其返回的内存地址不能够被直接访问，需要通过特定的接口来操作。</p>
+<h3 id="ioremap"><a class="markdownIt-Anchor" href="#ioremap"></a> <code>ioremap</code></h3>
+<p>与<code>vmalloc</code>不同的是，<code>ioremap</code>并不实际分配内存。其返回的内存地址不能够被直接访问，需要通过特定的接口来操作。</p>
 <p>与<code>vmalloc</code>相同的是，<code>ioremap</code>也是面向页的，会修改页表</p>
-<h2 id="Linux的内存管理"><a href="#Linux的内存管理" class="headerlink" title="Linux的内存管理"></a><code>Linux</code>的内存管理</h2><p><img src="https://i.loli.net/2019/12/06/aspKfcHJeBovSWm.png" alt="linux_storage.png"></p>
-<h3 id="地址类型"><a href="#地址类型" class="headerlink" title="地址类型"></a>地址类型</h3><h4 id="用户虚拟空间地址"><a href="#用户虚拟空间地址" class="headerlink" title="用户虚拟空间地址"></a>用户虚拟空间地址</h4><h4 id="内核地址空间"><a href="#内核地址空间" class="headerlink" title="内核地址空间"></a>内核地址空间</h4><ul>
-<li><p>内核逻辑地址</p>
-<pre><code>与物理地址只差一个偏移量，如`kmalloc`
-</code></pre></li>
-<li><p>内核虚拟地址</p>
-<pre><code>不必是线性对应一对一。
-</code></pre></li>
+<h2 id="linux的内存管理"><a class="markdownIt-Anchor" href="#linux的内存管理"></a> <code>Linux</code>的内存管理</h2>
+<p><img src="https://i.loli.net/2019/12/06/aspKfcHJeBovSWm.png" alt="linux_storage.png"></p>
+<h3 id="地址类型"><a class="markdownIt-Anchor" href="#地址类型"></a> 地址类型</h3>
+<h4 id="用户虚拟空间地址"><a class="markdownIt-Anchor" href="#用户虚拟空间地址"></a> 用户虚拟空间地址</h4>
+<h4 id="内核地址空间"><a class="markdownIt-Anchor" href="#内核地址空间"></a> 内核地址空间</h4>
+<ul>
+<li>
+<p>内核逻辑地址</p>
+<pre><code>  与物理地址只差一个偏移量，如`kmalloc`
+</code></pre>
+</li>
+<li>
+<p>内核虚拟地址</p>
+<pre><code>   不必是线性对应一对一。
+</code></pre>
+</li>
 </ul>
 <p>宏<code>__pa(),__va()</code>完成相应的转换</p>
-<h4 id="高端内存和低端内存"><a href="#高端内存和低端内存" class="headerlink" title="高端内存和低端内存"></a>高端内存和低端内存</h4><p>内核无法直接操作没有映射到内核地址空间的内存。</p>
+<h4 id="高端内存和低端内存"><a class="markdownIt-Anchor" href="#高端内存和低端内存"></a> 高端内存和低端内存</h4>
+<p>内核无法直接操作没有映射到内核地址空间的内存。</p>
 <p>为了获得更多的地址空间，处理器增添了地址扩展特性。</p>
 <ul>
-<li><p>只有内存的低端部分拥有逻辑地址 剩余的部分（高端内存）没有</p>
+<li>
+<p>只有内存的低端部分拥有逻辑地址 剩余的部分（高端内存）没有</p>
 </li>
-<li><p>访问高端内存前，内核必须建立明确的虚拟映射</p>
+<li>
+<p>访问高端内存前，内核必须建立明确的虚拟映射</p>
 </li>
 </ul>
-<h3 id="内存管理结构"><a href="#内存管理结构" class="headerlink" title="内存管理结构"></a>内存管理结构</h3><h4 id="页结构struct-page"><a href="#页结构struct-page" class="headerlink" title="页结构struct page"></a>页结构<code>struct page</code></h4><p>因为高端内存无法使用逻辑地址，且为了保存物理内存信息，对系统中每个物理页，都有一个<code>page</code>结构相对应。</p>
+<h3 id="内存管理结构"><a class="markdownIt-Anchor" href="#内存管理结构"></a> 内存管理结构</h3>
+<h4 id="页结构struct-page"><a class="markdownIt-Anchor" href="#页结构struct-page"></a> 页结构<code>struct page</code></h4>
+<p>因为高端内存无法使用逻辑地址，且为了保存物理内存信息，对系统中每个物理页，都有一个<code>page</code>结构相对应。</p>
 <ul>
-<li><p><code>atomic_t count;</code></p>
+<li>
+<p><code>atomic_t count;</code></p>
 <blockquote>
 <p>这个页的引用数. 当这个 count 掉到 0, 这页被返回给空闲列表.</p>
 </blockquote>
 </li>
-<li><p><code>void *virtual;</code></p>
+<li>
+<p><code>void *virtual;</code></p>
 <blockquote>
 <p>这页的内核虚拟地址, 如果它被映射; 否则, NULL. 低内存页一直被映射; 高内存页常常不是. 这个成员不是在所有体系上出现; 它通常只在页的内核虚拟地址无法轻易计算时被编译. 如果你想查看这个成员, 正确的方法是使用 <code>page_address</code> 宏.</p>
 </blockquote>
 </li>
-<li><p><code>struct page virt_to_page(void kaddr)</code></p>
+<li>
+<p><code>struct page virt_to_page(void kaddr)</code></p>
 <blockquote>
 <p>这个宏, 定义在 <code>&lt;asm/page.h&gt;</code>, 采用一个内核逻辑地址并返回它的被关联的<code>struct page</code>指针. 因为它需要一个逻辑地址, 它不能操作来自 <code>vmalloc</code> 的内存或者高端内存</p>
 </blockquote>
 </li>
-<li><p><code>struct page *pfn_to_page(int pfn)</code></p>
+<li>
+<p><code>struct page *pfn_to_page(int pfn)</code></p>
 <blockquote>
 <p>为给定的页帧号返回 <code>struct page</code>指针. 如果需要, 它在传递给 <code>pfn_to_page</code>之前使用<code>pfn_valid</code>来检查一个页帧号的有效性.</p>
 </blockquote>
 </li>
-<li><p><code>void page_address(struct page page)</code></p>
+<li>
+<p><code>void page_address(struct page page)</code></p>
 <blockquote>
 <p>返回这个页的内核虚拟地址, 如果这样一个地址存在. 对于高端内存, 那个地址仅当这个页已被映射才存在. 这个函数在<code>&lt;linux/mm.h&gt;</code> 中定义. 大部分情况下, 你应该使用 <code>kmap</code> 而不是 <code>page_address</code></p>
 </blockquote>
 </li>
 </ul>
-<h4 id="kmap映射"><a href="#kmap映射" class="headerlink" title="kmap映射"></a><code>kmap</code>映射</h4><p>  <code>include &lt;linux/highmem.h&gt;</code></p>
-<p>  <code>void kmap(struct page page);</code></p>
-<p>  <code>void kunmap(struct page *page);</code></p>
+<h4 id="kmap映射"><a class="markdownIt-Anchor" href="#kmap映射"></a> <code>kmap</code>映射</h4>
+<p><code>include &lt;linux/highmem.h&gt;</code></p>
+<p><code>void kmap(struct page page);</code></p>
+<p><code>void kunmap(struct page *page);</code></p>
 <blockquote>
 <p><code>kmap</code> 为系统中的任何页返回一个内核虚拟地址. 对于低端内存页, 它只返回页的逻辑地址; 对于高内存, <code>kmap</code> 在内核地址空间的一个专用部分中创建一个特殊的映射. 使用 <code>kmap</code> 创建的映射应当一直使用 <code>kunmap</code> 来释放;一个有限数目的这样的映射可用, 因此最好不要在它们上停留太长时间. <code>kmap</code> 调用维护一个计数器, 因此如果 2 个或 多个函数都在同一个页上调用 kmap,也是正确的. 还要注意 <code>kmap</code> 可能睡眠当没有映射可用时.</p>
 </blockquote>
-<h4 id="页表与VMA"><a href="#页表与VMA" class="headerlink" title="页表与VMA"></a>页表与<code>VMA</code></h4><ul>
-<li><p>页表<br>将虚拟地址转化为物理地址</p>
-</li>
-<li><p><code>VMA</code></p>
-<p>虚拟内存区( VMA )用来管理一个进程的地址空间的不同区域的内核数据结构. 一个 VMA 代表一个进程的虚拟内存的一个同类区域: 一个有相同许可标志和被相同对象(如, 一个文件或者交换空间)支持的连续虚拟地址范围. 它松散地对应于一个”段”的概念, 尽管可以更好地描述为”一个有它自己特性的内存对象”. 一个进程的内存映射有下列区组成:</p>
+<h4 id="页表与vma"><a class="markdownIt-Anchor" href="#页表与vma"></a> 页表与<code>VMA</code></h4>
 <ul>
-<li><p>给程序的可执行代码(常常称为 text)的一个区.</p>
+<li>
+<p>页表<br>
+将虚拟地址转化为物理地址</p>
 </li>
-<li><p>给数据的多个区, 包括初始化的数据(它有一个明确的被分配的值, 在执行开始), 未初始化数据(BBS),以及程序堆栈.</p>
-</li>
-<li><p>给每个获得的内存映射的一个区域.</p>
-</li>
-</ul>
-</li>
-</ul>
-<h4 id="vm-area-struct结构"><a href="#vm-area-struct结构" class="headerlink" title="vm_area_struct结构"></a><code>vm_area_struct</code>结构</h4><p><img src="https://i.loli.net/2019/12/06/9IXsLMrzdEgoqTG.png" alt="linux_vm_area_struct.png"></p>
+<li>
+<p><code>VMA</code></p>
+<p>虚拟内存区( VMA )用来管理一个进程的地址空间的不同区域的内核数据结构. 一个 VMA 代表一个进程的虚拟内存的一个同类区域: 一个有相同许可标志和被相同对象(如, 一个文件或者交换空间)支持的连续虚拟地址范围. 它松散地对应于一个&quot;段&quot;的概念, 尽管可以更好地描述为&quot;一个有它自己特性的内存对象&quot;. 一个进程的内存映射有下列区组成:</p>
 <ul>
-<li><p>当用户空间调用<code>mmap</code>完成地址映射时，系统会同时创建一个<code>vm_area_struct</code></p>
+<li>
+<p>给程序的可执行代码(常常称为 text)的一个区.</p>
 </li>
-<li><p>当驱动设备需要实现<code>mmap</code>接口时，会需要对此结构的函数进行操作</p>
+<li>
+<p>给数据的多个区, 包括初始化的数据(它有一个明确的被分配的值, 在执行开始), 未初始化数据(BBS),以及程序堆栈.</p>
 </li>
-<li><p>在<code>&lt;linux/mm.h&gt;</code>中定义</p>
-</li>
-</ul>
-<h4 id="struct-mm-struct"><a href="#struct-mm-struct" class="headerlink" title="struct mm_struct"></a><code>struct mm_struct</code></h4><ul>
-<li><p>每个进程都拥有一个<code>struct mm_struct  &lt;linux/sched.h&gt;</code>负责整合其他的数据结构.</p>
-</li>
-<li><p>其中包含了：虚拟内存区域链表，页表以及相关内存管理信息，还包括自旋锁以及信号量。</p>
-</li>
-<li><p>通常的方法是使用 <code>current-&gt;mm</code> 来获得此结构. 注意内存关联结构可在进程之间共享; <code>Linux</code> 线程的实现以这种方式工作</p>
+<li>
+<p>给每个获得的内存映射的一个区域.</p>
 </li>
 </ul>
-<h3 id="内存映射"><a href="#内存映射" class="headerlink" title="内存映射"></a>内存映射</h3><ul>
-<li><p>内存映射可被实现来提供用户程序对设备内存的直接存取。意味着关联一些用户空间地址到设备内存</p>
-</li>
-<li><p><code>mmap</code>限制以<code>PAGE_SIZE</code>为单位进行映射。可以极大提升吞吐量</p>
-</li>
-<li><p><code>mmap</code>是<code>file_operations</code>的结构一部分。</p>
 </li>
 </ul>
-<h4 id="mmap原型"><a href="#mmap原型" class="headerlink" title="mmap原型"></a><code>mmap</code>原型</h4><ul>
-<li><p><code>int (*mmap) (struct file *filp, struct vm_area_struct *vma);</code></p>
+<h4 id="vm_area_struct结构"><a class="markdownIt-Anchor" href="#vm_area_struct结构"></a> <code>vm_area_struct</code>结构</h4>
+<p><img src="https://i.loli.net/2019/12/06/9IXsLMrzdEgoqTG.png" alt="linux_vm_area_struct.png"></p>
+<ul>
+<li>
+<p>当用户空间调用<code>mmap</code>完成地址映射时，系统会同时创建一个<code>vm_area_struct</code></p>
 </li>
-<li><p>为了执行<code>mmap</code>只需要为该地址建立页表，并将<code>vma-&gt;vm_ops</code>替换成一系列新操作。</p>
+<li>
+<p>当驱动设备需要实现<code>mmap</code>接口时，会需要对此结构的函数进行操作</p>
+</li>
+<li>
+<p>在<code>&lt;linux/mm.h&gt;</code>中定义</p>
 </li>
 </ul>
-<h3 id="建立页表的方法"><a href="#建立页表的方法" class="headerlink" title="建立页表的方法"></a>建立页表的方法</h3><h4 id="使用remap-pfn-range一次性建立"><a href="#使用remap-pfn-range一次性建立" class="headerlink" title="使用remap_pfn_range一次性建立"></a>使用<code>remap_pfn_range</code>一次性建立</h4><p><code>int remap_pfn_range(struct vm_area_struct *vma, unsigned long virt_addr, unsigned long pfn, unsigned long size, pgprot_t prot);</code></p>
+<h4 id="struct-mm_struct"><a class="markdownIt-Anchor" href="#struct-mm_struct"></a> <code>struct mm_struct</code></h4>
+<ul>
+<li>
+<p>每个进程都拥有一个<code>struct mm_struct &lt;linux/sched.h&gt;</code>负责整合其他的数据结构.</p>
+</li>
+<li>
+<p>其中包含了：虚拟内存区域链表，页表以及相关内存管理信息，还包括自旋锁以及信号量。</p>
+</li>
+<li>
+<p>通常的方法是使用 <code>current-&gt;mm</code> 来获得此结构. 注意内存关联结构可在进程之间共享; <code>Linux</code> 线程的实现以这种方式工作</p>
+</li>
+</ul>
+<h3 id="内存映射"><a class="markdownIt-Anchor" href="#内存映射"></a> 内存映射</h3>
+<ul>
+<li>
+<p>内存映射可被实现来提供用户程序对设备内存的直接存取。意味着关联一些用户空间地址到设备内存</p>
+</li>
+<li>
+<p><code>mmap</code>限制以<code>PAGE_SIZE</code>为单位进行映射。可以极大提升吞吐量</p>
+</li>
+<li>
+<p><code>mmap</code>是<code>file_operations</code>的结构一部分。</p>
+</li>
+</ul>
+<h4 id="mmap原型"><a class="markdownIt-Anchor" href="#mmap原型"></a> <code>mmap</code>原型</h4>
+<ul>
+<li>
+<p><code>int (*mmap) (struct file *filp, struct vm_area_struct *vma);</code></p>
+</li>
+<li>
+<p>为了执行<code>mmap</code>只需要为该地址建立页表，并将<code>vma-&gt;vm_ops</code>替换成一系列新操作。</p>
+</li>
+</ul>
+<h3 id="建立页表的方法"><a class="markdownIt-Anchor" href="#建立页表的方法"></a> 建立页表的方法</h3>
+<h4 id="使用remap_pfn_range一次性建立"><a class="markdownIt-Anchor" href="#使用remap_pfn_range一次性建立"></a> 使用<code>remap_pfn_range</code>一次性建立</h4>
+<p><code>int remap_pfn_range(struct vm_area_struct *vma, unsigned long virt_addr, unsigned long pfn, unsigned long size, pgprot_t prot);</code></p>
 <p><code>int io_remap_page_range(struct vm_area_struct *vma, unsigned long virt_addr, unsigned long phys_addr, unsigned long size, pgprot_t prot);</code></p>
 <p>负责为一段物理地址建立新的页表。</p>
 <p>第一个函数当<code>pfn</code>只想实际物理RAM时使用。后者是当指向<code>I/O</code>内存时使用。</p>
-<h4 id="使用nopage-VMA每次建立一个页表"><a href="#使用nopage-VMA每次建立一个页表" class="headerlink" title="使用nopage_VMA每次建立一个页表"></a>使用<code>nopage_VMA</code>每次建立一个页表</h4><p><code>struct page *(*nopage)(struct vm_area_struct *vma,unsigned long address,int *type)</code></p>
-<h3 id="地址映射关系"><a href="#地址映射关系" class="headerlink" title="地址映射关系"></a>地址映射关系</h3><ul>
-<li><p>在进程的<code>task_struct</code> 结构中包含一个指向 <code>mm_struct</code> 结构的指针，<code>mm_strcut</code> 用来描述一个进程的虚拟地址空间。</p>
+<h4 id="使用nopage_vma每次建立一个页表"><a class="markdownIt-Anchor" href="#使用nopage_vma每次建立一个页表"></a> 使用<code>nopage_VMA</code>每次建立一个页表</h4>
+<p><code>struct page *(*nopage)(struct vm_area_struct *vma,unsigned long address,int *type)</code></p>
+<h3 id="地址映射关系"><a class="markdownIt-Anchor" href="#地址映射关系"></a> 地址映射关系</h3>
+<ul>
+<li>
+<p>在进程的<code>task_struct</code> 结构中包含一个指向 <code>mm_struct</code> 结构的指针，<code>mm_strcut</code> 用来描述一个进程的虚拟地址空间。</p>
 </li>
-<li><p>进程的 <code>mm_struct</code> 则包含装入的可执行映像信息以及进程的页目录指针<code>pgd</code>。该结构还包含有指向 <code>vm_area_struct</code> 结构的几个指针，每个<code>vm_area_struct</code>代表进程的一个虚拟地址区间。</p>
+<li>
+<p>进程的 <code>mm_struct</code> 则包含装入的可执行映像信息以及进程的页目录指针<code>pgd</code>。该结构还包含有指向 <code>vm_area_struct</code> 结构的几个指针，每个<code>vm_area_struct</code>代表进程的一个虚拟地址区间。</p>
 </li>
-<li><p><code>vm_area_struct</code> 结构含有指向<code>vm_operations_struct</code> 结构的一个指针，<code>vm_operations_struct</code> 描述了在这个区间的操作。</p>
+<li>
+<p><code>vm_area_struct</code> 结构含有指向<code>vm_operations_struct</code> 结构的一个指针，<code>vm_operations_struct</code> 描述了在这个区间的操作。</p>
 </li>
-<li><p><code>vm_operations</code> 结构中包含的是函数指针；其中，<code>open、close</code> 分别用于虚拟区间的打开、关闭，而<code>nopage</code> 用于当虚存页面不在物理内存而引起的“缺页异常”时所应该调用的函数，当<code>Linux</code>处理这一缺页异常时（请页机制），就可以为新的虚拟内存区分配实际的物理内存。</p>
+<li>
+<p><code>vm_operations</code> 结构中包含的是函数指针；其中，<code>open、close</code> 分别用于虚拟区间的打开、关闭，而<code>nopage</code> 用于当虚存页面不在物理内存而引起的“缺页异常”时所应该调用的函数，当<code>Linux</code>处理这一缺页异常时（请页机制），就可以为新的虚拟内存区分配实际的物理内存。</p>
 </li>
 </ul>
 <p><img src="https://i.loli.net/2019/12/06/el7NgrRHvXcBjs6.png" alt="linux_addree_map.png"></p>
-<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><ul>
-<li><p><a href="https://cloud.tencent.com/developer/article/1380637" target="_blank" rel="noopener"><code>kmalloc</code>分配物理内存与高端内存映射</a></p>
+<h2 id="参考链接"><a class="markdownIt-Anchor" href="#参考链接"></a> 参考链接</h2>
+<ul>
+<li>
+<p><a href="https://cloud.tencent.com/developer/article/1380637" target="_blank" rel="noopener"><code>kmalloc</code>分配物理内存与高端内存映射</a></p>
 </li>
-<li><p><a href="https://cloud.tencent.com/developer/article/1381015" target="_blank" rel="noopener">高端内存映射之<code>kmap_atomic</code>固定映射</a></p>
+<li>
+<p><a href="https://cloud.tencent.com/developer/article/1381015" target="_blank" rel="noopener">高端内存映射之<code>kmap_atomic</code>固定映射</a></p>
 </li>
-<li><p><a href="https://tinylab.gitbooks.io/linux-doc/content/zh-cn/vm/highmem.html" target="_blank" rel="noopener">高端内存处理</a></p>
+<li>
+<p><a href="https://tinylab.gitbooks.io/linux-doc/content/zh-cn/vm/highmem.html" target="_blank" rel="noopener">高端内存处理</a></p>
 </li>
-<li><p><a href="http://chinaunix.net/uid-30282771-id-5148360.html" target="_blank" rel="noopener">虚拟地址转物理地址</a></p>
+<li>
+<p><a href="http://chinaunix.net/uid-30282771-id-5148360.html" target="_blank" rel="noopener">虚拟地址转物理地址</a></p>
 </li>
-<li><p><a href="http://chinaunix.net/uid-30282771-id-5162413.html" target="_blank" rel="noopener">用户态访问物理地址</a></p>
+<li>
+<p><a href="http://chinaunix.net/uid-30282771-id-5162413.html" target="_blank" rel="noopener">用户态访问物理地址</a></p>
 </li>
-<li><p><a href="https://www.cnblogs.com/huxiao-tee/p/4660352.html" target="_blank" rel="noopener"><code>mmap</code>详解</a></p>
+<li>
+<p><a href="https://www.cnblogs.com/huxiao-tee/p/4660352.html" target="_blank" rel="noopener"><code>mmap</code>详解</a></p>
 </li>
-<li><p><a href="https://r00tk1ts.github.io/2017/10/20/Linux%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86-%E9%A1%B5%E6%A1%86%E7%AE%A1%E7%90%86/#" target="_blank" rel="noopener">Linux内存管理-页框管理-推荐阅读</a></p>
+<li>
+<p><a href="https://r00tk1ts.github.io/2017/10/20/Linux%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86-%E9%A1%B5%E6%A1%86%E7%AE%A1%E7%90%86/#" target="_blank" rel="noopener">Linux内存管理-页框管理-推荐阅读</a></p>
 </li>
 </ul>
 </div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:hjl1999@qq.com">hjl</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="https://huqianshan.github.io/Linux/linux-kernel-address-space/">https://huqianshan.github.io/Linux/linux-kernel-address-space/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/LINUX/">linux</a></div><nav id="pagination"><div class="prev-post pull-left"><a href="/thoughts/thoughts-1/"><i class="fa fa-chevron-left">  </i><span>thoughts-1</span></a></div><div class="next-post pull-right"><a href="/NVM/pre-for-block-nvm-driver/"><span>pre-for-block-nvm-driver</span><i class="fa fa-chevron-right"></i></a></div></nav><div id="disqus_thread"></div><script>var unused = null;
@@ -220,7 +308,7 @@ var disqus_config = function () {
 var d = document, s = d.createElement('script');
 s.src = "https://" + 'huqianshan' +".disqus.com/embed.js";
 s.setAttribute('data-timestamp', '' + +new Date());
-(d.head || d.body).appendChild(s);</script><script id="dsq-count-scr" src="https://huqianshan.disqus.com/count.js" async></script></div></div><footer class="footer-bg" style="background-image: url(https://blog-1251750343.cos.ap-beijing.myqcloud.com/blog/blog-bg.jpg)"><div class="layout" id="footer"><div class="copyright">&copy;2013 - 2020 By hjl</div><div class="framework-info"><span>Driven - </span><a href="http://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>Theme - </span><a href="https://github.com/Molunerfinn/hexo-theme-melody"><span>Melody</span></a></div><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fa fa-file"></i><span id="busuanzi_value_page_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.7.0"></script><script src="/js/fancybox.js?version=1.7.0"></script><script src="/js/sidebar.js?version=1.7.0"></script><script src="/js/copy.js?version=1.7.0"></script><script src="/js/fireworks.js?version=1.7.0"></script><script src="/js/transition.js?version=1.7.0"></script><script src="/js/scroll.js?version=1.7.0"></script><script src="/js/head.js?version=1.7.0"></script><script>if(/Android|webOS|iPhone|iPod|iPad|BlackBerry/i.test(navigator.userAgent)) {
+(d.head || d.body).appendChild(s);</script><script id="dsq-count-scr" src="https://huqianshan.disqus.com/count.js" async></script></div></div><footer class="footer-bg" style="background-image: url(https://blog-1251750343.cos.ap-beijing.myqcloud.com/blog/blog-bg.jpg)"><div class="layout" id="footer"><div class="copyright">&copy;2013 - 2020 By hjl</div><div class="framework-info"><span>Driven - </span><a href="http://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>Theme - </span><a href="https://github.com/Molunerfinn/hexo-theme-melody"><span>Melody</span></a></div><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fa fa-file"></i><span id="busuanzi_value_page_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.7.0"></script><script src="/js/fancybox.js?version=1.7.0"></script><script src="/js/sidebar.js?version=1.7.0"></script><script src="/js/copy.js?version=1.7.0"></script><script src="/js/fireworks.js?version=1.7.0"></script><script src="/js/transition.js?version=1.7.0"></script><script src="/js/scroll.js?version=1.7.0"></script><script src="/js/head.js?version=1.7.0"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css"><script src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css"><script src="/js/katex.js"></script><script>if(/Android|webOS|iPhone|iPod|iPad|BlackBerry/i.test(navigator.userAgent)) {
   $('#nav').addClass('is-mobile')
   $('footer').addClass('is-mobile')
   $('#top-container').addClass('is-mobile')

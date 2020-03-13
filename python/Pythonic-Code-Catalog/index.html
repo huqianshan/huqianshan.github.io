@@ -1,4 +1,10 @@
-<!DOCTYPE html><html lang><head><meta name="generator" content="Hexo 3.9.0"><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="Pythonic-Code-Catalog"><meta name="keywords" content="python"><meta name="author" content="hjl,hjl1999@qq.com"><meta name="copyright" content="hjl"><title>Pythonic-Code-Catalog | Hjl' Blog</title><link rel="shortcut icon" href="/melody-favicon.ico"><link rel="stylesheet" href="/css/index.css?version=1.7.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css?version=1.7.0"><meta name="format-detection" content="telephone=no"><meta http-equiv="x-dns-prefetch-control" content="on"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="manifest" href="/manifest.json"><link rel="manifest" href="/manifest.json"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><script>var GLOBAL_CONFIG = { 
+<!DOCTYPE html><html lang><head><meta name="generator" content="Hexo 3.9.0"><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="Pythonic-Code-Catalog"><meta name="keywords" content="python"><meta name="author" content="hjl,hjl1999@qq.com"><meta name="copyright" content="hjl"><title>Pythonic-Code-Catalog | Hjl' Blog</title><link rel="shortcut icon" href="/melody-favicon.ico"><link rel="stylesheet" href="/css/index.css?version=1.7.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css?version=1.7.0"><meta name="format-detection" content="telephone=no"><meta http-equiv="x-dns-prefetch-control" content="on"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="manifest" href="/manifest.json"><link rel="manifest" href="/manifest.json"><link rel="dns-prefetch" href="https://www.google-analytics.com"><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-113512264-1', 'auto');
+ga('send', 'pageview');</script><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><script>var GLOBAL_CONFIG = { 
   root: '/',
   algolia: undefined,
   localSearch: undefined,
@@ -7,28 +13,33 @@
     error: 'Copy error',
     noSupport: 'The browser does not support'
   }
-} </script></head><body><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar" data-display="true"><div class="toggle-sidebar-info text-center"><span data-toggle="Toggle article">Toggle site</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">Catalog</div><div class="sidebar-toc__progress"><span class="progress-notice">You've read</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Python高级用法目录"><span class="toc-number">1.</span> <span class="toc-text">Python高级用法目录</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Built-in-Objects语义部分"><span class="toc-number">1.1.</span> <span class="toc-text">Built-in Objects语义部分</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#双值交换"><span class="toc-number">1.1.1.</span> <span class="toc-text">双值交换</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#切片与容器"><span class="toc-number">1.1.2.</span> <span class="toc-text">切片与容器</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#函数式编程与高阶函数"><span class="toc-number">1.2.</span> <span class="toc-text">函数式编程与高阶函数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#迭代器"><span class="toc-number">1.2.1.</span> <span class="toc-text">迭代器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#生成器-yield"><span class="toc-number">1.2.2.</span> <span class="toc-text">生成器 yield</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#lambda-map-func-iterables-fileter等"><span class="toc-number">1.2.3.</span> <span class="toc-text">lambda map(func, *iterables) fileter等</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#语法部分"><span class="toc-number">1.3.</span> <span class="toc-text">语法部分</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#上下文管理器"><span class="toc-number">1.3.1.</span> <span class="toc-text">上下文管理器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#装饰器"><span class="toc-number">1.3.2.</span> <span class="toc-text">装饰器</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#常见的内置装饰器"><span class="toc-number">1.3.2.1.</span> <span class="toc-text">常见的内置装饰器</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#getattr"><span class="toc-number">1.3.3.</span> <span class="toc-text">getattr</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#正则表达式"><span class="toc-number">1.3.4.</span> <span class="toc-text">正则表达式</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Objected-Oriented-Programming"><span class="toc-number">1.4.</span> <span class="toc-text">Objected-Oriented-Programming</span></a></li></ol></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="/img/avatar.png"></div><div class="author-info__name text-center">hjl</div><div class="author-info__description text-center">For Nothing</div><div class="follow-button"><a href="https://github.com/huqianshan">Follow ME</a></div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">Articles</span><span class="pull-right">33</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">Tags</span><span class="pull-right">28</span></a></div></div></div><div id="content-outer"><div id="top-container" style="background-image: url(https://blog-1251750343.cos.ap-beijing.myqcloud.com/blog/blog-bg.jpg)"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">Hjl' Blog</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus">   <a class="site-page" href="/">Home</a><a class="site-page" href="/archives">Archives</a><a class="site-page" href="/tags">Tags</a><a class="site-page" href="/categories">Categories</a></span><span class="pull-right"></span></div><div id="post-info"><div id="post-title">Pythonic-Code-Catalog</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2020-02-10</time><span class="post-meta__separator">|</span><i class="fa fa-comment-o post-meta__icon" aria-hidden="true"></i><a href="/python/Pythonic-Code-Catalog/#disqus_thread"><span class="disqus-comment-count" data-disqus-identifier="python/Pythonic-Code-Catalog/"></span></a><div class="post-meta-wordcount"><span>Word count: </span><span class="word-count">1,427</span><span class="post-meta__separator">|</span><span>Reading time: 5 min</span></div></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><!-- TOC -->
+} </script></head><body><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar" data-display="true"><div class="toggle-sidebar-info text-center"><span data-toggle="Toggle article">Toggle site</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">Catalog</div><div class="sidebar-toc__progress"><span class="progress-notice">You've read</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#python高级用法目录"><span class="toc-number">1.</span> <span class="toc-text"> Python高级用法目录</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#built-in-objects语义部分"><span class="toc-number">1.1.</span> <span class="toc-text"> Built-in Objects语义部分</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#双值交换"><span class="toc-number">1.1.1.</span> <span class="toc-text"> 双值交换</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#切片与容器"><span class="toc-number">1.1.2.</span> <span class="toc-text"> 切片与容器</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#函数式编程与高阶函数"><span class="toc-number">1.2.</span> <span class="toc-text"> 函数式编程与高阶函数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#迭代器"><span class="toc-number">1.2.1.</span> <span class="toc-text"> 迭代器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#生成器-yield"><span class="toc-number">1.2.2.</span> <span class="toc-text"> 生成器 yield</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#lambda-mapfunc-iterables-fileter等"><span class="toc-number">1.2.3.</span> <span class="toc-text"> lambda map(func, *iterables) fileter等</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#语法部分"><span class="toc-number">1.3.</span> <span class="toc-text"> 语法部分</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#上下文管理器"><span class="toc-number">1.3.1.</span> <span class="toc-text"> 上下文管理器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#装饰器"><span class="toc-number">1.3.2.</span> <span class="toc-text"> 装饰器</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#常见的内置装饰器"><span class="toc-number">1.3.2.1.</span> <span class="toc-text"> 常见的内置装饰器</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#getattr"><span class="toc-number">1.3.3.</span> <span class="toc-text"> getattr</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#正则表达式"><span class="toc-number">1.3.4.</span> <span class="toc-text"> 正则表达式</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#objected-oriented-programming"><span class="toc-number">1.4.</span> <span class="toc-text"> Objected-Oriented-Programming</span></a></li></ol></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="/img/avatar.png"></div><div class="author-info__name text-center">hjl</div><div class="author-info__description text-center">For Nothing</div><div class="follow-button"><a href="https://github.com/huqianshan">Follow ME</a></div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">Articles</span><span class="pull-right">33</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">Tags</span><span class="pull-right">28</span></a></div></div></div><div id="content-outer"><div id="top-container" style="background-image: url(https://blog-1251750343.cos.ap-beijing.myqcloud.com/blog/blog-bg.jpg)"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">Hjl' Blog</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus">   <a class="site-page" href="/">Home</a><a class="site-page" href="/archives">Archives</a><a class="site-page" href="/tags">Tags</a><a class="site-page" href="/categories">Categories</a></span><span class="pull-right"></span></div><div id="post-info"><div id="post-title">Pythonic-Code-Catalog</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2020-02-10</time><span class="post-meta__separator">|</span><i class="fa fa-comment-o post-meta__icon" aria-hidden="true"></i><a href="/python/Pythonic-Code-Catalog/#disqus_thread"><span class="disqus-comment-count" data-disqus-identifier="python/Pythonic-Code-Catalog/"></span></a><div class="post-meta-wordcount"><span>Word count: </span><span class="word-count">1,427</span><span class="post-meta__separator">|</span><span>Reading time: 5 min</span></div></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><!-- TOC -->
 <ul>
-<li><a href="#python高级用法目录"><code>Python</code>高级用法目录</a><ul>
-<li><a href="#built-in-objects语义部分"><code>Built-in Objects</code>语义部分</a><ul>
-<li><a href="#双值交换">双值交换</a></li>
-<li><a href="#切片与容器">切片与容器</a></li>
+<li><a href="#python%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95%E7%9B%AE%E5%BD%95"><code>Python</code>高级用法目录</a>
+<ul>
+<li><a href="#built-in-objects%E8%AF%AD%E4%B9%89%E9%83%A8%E5%88%86"><code>Built-in Objects</code>语义部分</a>
+<ul>
+<li><a href="#%E5%8F%8C%E5%80%BC%E4%BA%A4%E6%8D%A2">双值交换</a></li>
+<li><a href="#%E5%88%87%E7%89%87%E4%B8%8E%E5%AE%B9%E5%99%A8">切片与容器</a></li>
 </ul>
 </li>
-<li><a href="#函数式编程与高阶函数">函数式编程与高阶函数</a><ul>
-<li><a href="#迭代器">迭代器</a></li>
-<li><a href="#生成器-yield">生成器 <code>yield</code></a></li>
-<li><a href="#lambda-mapfunc-iterables-fileter等"><code>lambda map(func, *iterables) fileter</code>等</a></li>
+<li><a href="#%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B%E4%B8%8E%E9%AB%98%E9%98%B6%E5%87%BD%E6%95%B0">函数式编程与高阶函数</a>
+<ul>
+<li><a href="#%E8%BF%AD%E4%BB%A3%E5%99%A8">迭代器</a></li>
+<li><a href="#%E7%94%9F%E6%88%90%E5%99%A8-yield">生成器 <code>yield</code></a></li>
+<li><a href="#lambda-mapfunc-iterables-fileter%E7%AD%89"><code>lambda map(func, *iterables) fileter</code>等</a></li>
 </ul>
 </li>
-<li><a href="#语法部分">语法部分</a><ul>
-<li><a href="#上下文管理器">上下文管理器</a></li>
-<li><a href="#装饰器">装饰器</a><ul>
-<li><a href="#常见的内置装饰器">常见的内置装饰器</a></li>
+<li><a href="#%E8%AF%AD%E6%B3%95%E9%83%A8%E5%88%86">语法部分</a>
+<ul>
+<li><a href="#%E4%B8%8A%E4%B8%8B%E6%96%87%E7%AE%A1%E7%90%86%E5%99%A8">上下文管理器</a></li>
+<li><a href="#%E8%A3%85%E9%A5%B0%E5%99%A8">装饰器</a>
+<ul>
+<li><a href="#%E5%B8%B8%E8%A7%81%E7%9A%84%E5%86%85%E7%BD%AE%E8%A3%85%E9%A5%B0%E5%99%A8">常见的内置装饰器</a></li>
 </ul>
 </li>
 <li><a href="#getattr"><code>getattr</code></a></li>
-<li><a href="#正则表达式">正则表达式</a></li>
+<li><a href="#%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F">正则表达式</a></li>
 </ul>
 </li>
 <li><a href="#objected-oriented-programming"><code>Objected-Oriented-Programming</code></a></li>
@@ -37,9 +48,15 @@
 </ul>
 <!-- /TOC -->
 <a id="more"></a>
-<h2 id="Python高级用法目录"><a href="#Python高级用法目录" class="headerlink" title="Python高级用法目录"></a><code>Python</code>高级用法目录</h2><h3 id="Built-in-Objects语义部分"><a href="#Built-in-Objects语义部分" class="headerlink" title="Built-in Objects语义部分"></a><code>Built-in Objects</code>语义部分</h3><h4 id="双值交换"><a href="#双值交换" class="headerlink" title="双值交换"></a>双值交换</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">```python</span><br><span class="line">a,b=b,a</span><br><span class="line">a,b,c=[<span class="string">'a'</span>,<span class="string">'b'</span>,<span class="string">'c'</span>]</span><br></pre></td></tr></table></figure>
-<h4 id="切片与容器"><a href="#切片与容器" class="headerlink" title="切片与容器"></a>切片与容器</h4><p>切片： <code>[begin:end:len]</code></p>
-<h3 id="函数式编程与高阶函数"><a href="#函数式编程与高阶函数" class="headerlink" title="函数式编程与高阶函数"></a>函数式编程与高阶函数</h3><h4 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h4><p>迭代器是一个表示数据流的对象；这个对象每次只返回一个元素。</p>
+<h2 id="python高级用法目录"><a class="markdownIt-Anchor" href="#python高级用法目录"></a> <code>Python</code>高级用法目录</h2>
+<h3 id="built-in-objects语义部分"><a class="markdownIt-Anchor" href="#built-in-objects语义部分"></a> <code>Built-in Objects</code>语义部分</h3>
+<h4 id="双值交换"><a class="markdownIt-Anchor" href="#双值交换"></a> 双值交换</h4>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">```python</span><br><span class="line">a,b=b,a</span><br><span class="line">a,b,c=[<span class="string">'a'</span>,<span class="string">'b'</span>,<span class="string">'c'</span>]</span><br></pre></td></tr></table></figure>
+<h4 id="切片与容器"><a class="markdownIt-Anchor" href="#切片与容器"></a> 切片与容器</h4>
+<p>切片： <code>[begin:end:len]</code></p>
+<h3 id="函数式编程与高阶函数"><a class="markdownIt-Anchor" href="#函数式编程与高阶函数"></a> 函数式编程与高阶函数</h3>
+<h4 id="迭代器"><a class="markdownIt-Anchor" href="#迭代器"></a> 迭代器</h4>
+<p>迭代器是一个表示数据流的对象；这个对象每次只返回一个元素。</p>
 <p><code>Python</code> 迭代器必须支持 <code>__next__()</code> 方法；这个方法不接受参数，并总是返回数据流中的下一个元素。如果数据流中没有元素，<code>__next__()</code> 会抛出 <code>StopIteration</code> 异常。</p>
 <p>内置的 <code>iter()</code> 函数接受任意对象并试图返回一个迭代器来输出对象的内容或元素，并会在对象不支持迭代的时候抛出 <code>TypeError</code> 异常。<code>Python</code> 有几种内置数据类型支持迭代，最常见的就是列表和字典。如果一个对象能生成迭代器，那么它就会被称作 <code>iterable</code>。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> iter(obj):</span><br><span class="line">    print(i)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> obj:</span><br><span class="line">    print(i)</span><br><span class="line"></span><br><span class="line"><span class="comment">#可以用 list() 或 tuple() 这样的构造函数把迭代器具体化成列表或元组:</span></span><br><span class="line">L = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line">iterator = iter(L)</span><br><span class="line">t = tuple(iterator)</span><br><span class="line"><span class="comment">#t (1, 2, 3)</span></span><br></pre></td></tr></table></figure>
@@ -47,45 +64,60 @@
 <li><a href="https://docs.python.org/zh-cn/3/howto/functional.html#generator-expressions-and-list-comprehensions" target="_blank" rel="noopener">生成器表达式和列表推导式的参考链接</a></li>
 <li><a href="https://docs.python.org/zh-cn/3/library/stdtypes.html#iterator-types" target="_blank" rel="noopener"><code>doc-python-link</code></a></li>
 </ul>
-<h4 id="生成器-yield"><a href="#生成器-yield" class="headerlink" title="生成器 yield"></a>生成器 <code>yield</code></h4><p>生成器是一类用来简化编写迭代器工作的特殊函数。普通的函数计算并返回一个值，而生成器返回一个能返回数据流的迭代器。</p>
+<h4 id="生成器-yield"><a class="markdownIt-Anchor" href="#生成器-yield"></a> 生成器 <code>yield</code></h4>
+<p>生成器是一类用来简化编写迭代器工作的特殊函数。普通的函数计算并返回一个值，而生成器返回一个能返回数据流的迭代器。</p>
 <p>毫无疑问，你已经对如何在 Python 和 C 中调用普通函数很熟悉了，这时候函数会获得一个创建局部变量的私有命名空间。当函数到达 return 表达式时，局部变量会被销毁然后把返回给调用者。之后调用同样的函数时会创建一个新的私有命名空间和一组全新的局部变量。但是，如果在退出一个函数时不扔掉局部变量会如何呢？如果稍后你能够从退出函数的地方重新恢复又如何呢？这就是生成器所提供的；他们可以被看成可恢复的函数。</p>
 <p>当你调用一个生成器函数，它并不会返回单独的值，而是返回一个支持生成器协议的生成器对象。当执行 yield 表达式时，生成器会输出 i 的值，就像 return 表达式一样。yield 和 return 最大的区别在于，到达 yield 的时候生成器的执行状态会挂起并保留局部变量。在下一次调用生成器 <strong>next</strong>() 方法的时候，函数会恢复执行。</p>
-<h4 id="lambda-map-func-iterables-fileter等"><a href="#lambda-map-func-iterables-fileter等" class="headerlink" title="lambda map(func, *iterables) fileter等"></a><code>lambda map(func, *iterables) fileter</code>等</h4><p><code>lambda</code>：能嵌入到其他表达式当中的匿名函数（闭包）。</p>
+<h4 id="lambda-mapfunc-iterables-fileter等"><a class="markdownIt-Anchor" href="#lambda-mapfunc-iterables-fileter等"></a> <code>lambda map(func, *iterables) fileter</code>等</h4>
+<p><code>lambda</code>：能嵌入到其他表达式当中的匿名函数（闭包）。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">map(<span class="keyword">lambda</span> x: x*x, [y <span class="keyword">for</span> y <span class="keyword">in</span> range(<span class="number">10</span>)] )</span><br></pre></td></tr></table></figure>
 <p><code>map</code>它可以将一个函数映射到一个可枚举类型上面。也就是将函数 f 依次套用在 a 的每一个元素上面。</p>
 <p>“你会发现自己如果能将「遍历列表，给遇到的每个元素都做某种运算」的过程从一个循环里抽象出来成为一个函数 map，然后用 lambda 表达式将这种运算作为参数传给 map 的话，考虑事情的思维层级会高出一些来，需要顾及的细节也少了一点。”</p>
 <p>也就是将一个循环过程用一行map函数实现，并将lambda函数作为一个参数传递进去。</p>
 <ol>
-<li><p>Python 之中，类似能用到 lambda 表达式的「高级」函数还有 <code>reduce</code>、<code>filter</code> 等高级函数。</p>
+<li>
+<p>Python 之中，类似能用到 lambda 表达式的「高级」函数还有 <code>reduce</code>、<code>filter</code> 等高级函数。</p>
 </li>
-<li><p>这种能够接受一个函数作为参数的函数叫做「高阶函数」（higher-order function），是来自函数式编程（functional programming）的思想。</p>
+<li>
+<p>这种能够接受一个函数作为参数的函数叫做「高阶函数」（higher-order function），是来自函数式编程（functional programming）的思想。</p>
 </li>
 </ol>
 <ul>
-<li><p>它的第一个重要意义是可以在表达式当中直接定义一个函数，而不需要将定义函数和表达式分开，这样有助于将逻辑用更紧凑的方式表达出来。</p>
+<li>
+<p>它的第一个重要意义是可以在表达式当中直接定义一个函数，而不需要将定义函数和表达式分开，这样有助于将逻辑用更紧凑的方式表达出来。</p>
 </li>
-<li><p>它的第二个重要意义是引入了闭包。基本上来说常见的支持lambda表达式的语言里，不存在不支持闭包的lambda表达式；从函数式编程的角度来说，支持闭包也是很重要的。闭包是指将当前作用域中的变量通过值或者引用的方式封装到lambda表达式当中，成为表达式的一部分，它使你的lambda表达式从一个普通的函数变成了一个带隐藏参数的函数。</p>
+<li>
+<p>它的第二个重要意义是引入了闭包。基本上来说常见的支持lambda表达式的语言里，不存在不支持闭包的lambda表达式；从函数式编程的角度来说，支持闭包也是很重要的。闭包是指将当前作用域中的变量通过值或者引用的方式封装到lambda表达式当中，成为表达式的一部分，它使你的lambda表达式从一个普通的函数变成了一个带隐藏参数的函数。</p>
 </li>
-<li><p>它的第三个重要意义（如果有的话）是允许函数作为一个对象来进行传递。某些语言由于历史原因，只有匿名函数可以作为对象传递，而具名函数不可以，比如PHP。</p>
+<li>
+<p>它的第三个重要意义（如果有的话）是允许函数作为一个对象来进行传递。某些语言由于历史原因，只有匿名函数可以作为对象传递，而具名函数不可以，比如PHP。</p>
 </li>
-<li><p><a href="https://www.zhihu.com/question/20125256" target="_blank" rel="noopener">参考连接</a></p>
+<li>
+<p><a href="https://www.zhihu.com/question/20125256" target="_blank" rel="noopener">参考连接</a></p>
 </li>
 </ul>
-<h3 id="语法部分"><a href="#语法部分" class="headerlink" title="语法部分"></a>语法部分</h3><h4 id="上下文管理器"><a href="#上下文管理器" class="headerlink" title="上下文管理器"></a>上下文管理器</h4><p>参见 <a href="https://huqianshan.github.io/articles/python%2Fpython-advanced#with%E8%AF%AD%E5%8F%A5%E5%92%8Ccontexmanager%E4%B8%8A%E4%B8%8B%E6%96%87%E7%AE%A1%E7%90%86%E5%99%A8"><code>with</code>语句和<code>ContexManager</code>上下文管理器</a></p>
-<h4 id="装饰器"><a href="#装饰器" class="headerlink" title="装饰器"></a>装饰器</h4><p>参见 <a href="https://huqianshan.github.io/articles/python%2Fpython-advanced#%E7%BB%99%E5%87%BD%E6%95%B0%E6%B7%BB%E5%8A%A0%E4%B8%80%E4%B8%AA%E8%A3%85%E9%A5%B0%E5%99%A8">装饰器</a></p>
-<h5 id="常见的内置装饰器"><a href="#常见的内置装饰器" class="headerlink" title="常见的内置装饰器"></a>常见的内置装饰器</h5><ul>
+<h3 id="语法部分"><a class="markdownIt-Anchor" href="#语法部分"></a> 语法部分</h3>
+<h4 id="上下文管理器"><a class="markdownIt-Anchor" href="#上下文管理器"></a> 上下文管理器</h4>
+<p>参见 <a href="https://huqianshan.github.io/articles/python%2Fpython-advanced#with%E8%AF%AD%E5%8F%A5%E5%92%8Ccontexmanager%E4%B8%8A%E4%B8%8B%E6%96%87%E7%AE%A1%E7%90%86%E5%99%A8"><code>with</code>语句和<code>ContexManager</code>上下文管理器</a></p>
+<h4 id="装饰器"><a class="markdownIt-Anchor" href="#装饰器"></a> 装饰器</h4>
+<p>参见 <a href="https://huqianshan.github.io/articles/python%2Fpython-advanced#%E7%BB%99%E5%87%BD%E6%95%B0%E6%B7%BB%E5%8A%A0%E4%B8%80%E4%B8%AA%E8%A3%85%E9%A5%B0%E5%99%A8">装饰器</a></p>
+<h5 id="常见的内置装饰器"><a class="markdownIt-Anchor" href="#常见的内置装饰器"></a> 常见的内置装饰器</h5>
+<ul>
 <li><code>@unique</code>装饰器可以帮助我们检查保证没有重复值。</li>
 </ul>
-<h4 id="getattr"><a href="#getattr" class="headerlink" title="getattr"></a><code>getattr</code></h4><p><code>getattr()</code> 函数用于返回一个对象属性值。<code>getattr(object, name[, default])</code></p>
+<h4 id="getattr"><a class="markdownIt-Anchor" href="#getattr"></a> <code>getattr</code></h4>
+<p><code>getattr()</code> 函数用于返回一个对象属性值。<code>getattr(object, name[, default])</code></p>
 <ul>
 <li>object – 对象。</li>
 <li>name – 字符串，对象属性。</li>
 <li>default – 默认返回值，如果不提供该参数，在没有对应属性时，将触发 AttributeError。</li>
 </ul>
-<h4 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h4><ul>
+<h4 id="正则表达式"><a class="markdownIt-Anchor" href="#正则表达式"></a> 正则表达式</h4>
+<ul>
 <li><a href="https://docs.python.org/zh-cn/3/howto/regex.html#using-regular-expressions" target="_blank" rel="noopener">正则表达式参考链接</a></li>
 </ul>
-<h3 id="Objected-Oriented-Programming"><a href="#Objected-Oriented-Programming" class="headerlink" title="Objected-Oriented-Programming"></a><code>Objected-Oriented-Programming</code></h3><ul>
+<h3 id="objected-oriented-programming"><a class="markdownIt-Anchor" href="#objected-oriented-programming"></a> <code>Objected-Oriented-Programming</code></h3>
+<ul>
 <li><a href="https://huqianshan.github.io/articles/python%2Fpython-obeject-oriented"><code>Python</code>面向对象编程</a></li>
 </ul>
 </div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:hjl1999@qq.com">hjl</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="https://huqianshan.github.io/python/Pythonic-Code-Catalog/">https://huqianshan.github.io/python/Pythonic-Code-Catalog/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/PYTHON/">python</a></div><nav id="pagination"><div class="prev-post pull-left"><a href="/OBJECTED-PATTERN/"><i class="fa fa-chevron-left">  </i><span>Objected-Pattern</span></a></div><div class="next-post pull-right"><a href="/python/python-obeject-oriented/"><span>python-obeject-oriented</span><i class="fa fa-chevron-right"></i></a></div></nav><div id="disqus_thread"></div><script>var unused = null;
@@ -97,7 +129,7 @@ var disqus_config = function () {
 var d = document, s = d.createElement('script');
 s.src = "https://" + 'huqianshan' +".disqus.com/embed.js";
 s.setAttribute('data-timestamp', '' + +new Date());
-(d.head || d.body).appendChild(s);</script><script id="dsq-count-scr" src="https://huqianshan.disqus.com/count.js" async></script></div></div><footer class="footer-bg" style="background-image: url(https://blog-1251750343.cos.ap-beijing.myqcloud.com/blog/blog-bg.jpg)"><div class="layout" id="footer"><div class="copyright">&copy;2013 - 2020 By hjl</div><div class="framework-info"><span>Driven - </span><a href="http://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>Theme - </span><a href="https://github.com/Molunerfinn/hexo-theme-melody"><span>Melody</span></a></div><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fa fa-file"></i><span id="busuanzi_value_page_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.7.0"></script><script src="/js/fancybox.js?version=1.7.0"></script><script src="/js/sidebar.js?version=1.7.0"></script><script src="/js/copy.js?version=1.7.0"></script><script src="/js/fireworks.js?version=1.7.0"></script><script src="/js/transition.js?version=1.7.0"></script><script src="/js/scroll.js?version=1.7.0"></script><script src="/js/head.js?version=1.7.0"></script><script>if(/Android|webOS|iPhone|iPod|iPad|BlackBerry/i.test(navigator.userAgent)) {
+(d.head || d.body).appendChild(s);</script><script id="dsq-count-scr" src="https://huqianshan.disqus.com/count.js" async></script></div></div><footer class="footer-bg" style="background-image: url(https://blog-1251750343.cos.ap-beijing.myqcloud.com/blog/blog-bg.jpg)"><div class="layout" id="footer"><div class="copyright">&copy;2013 - 2020 By hjl</div><div class="framework-info"><span>Driven - </span><a href="http://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>Theme - </span><a href="https://github.com/Molunerfinn/hexo-theme-melody"><span>Melody</span></a></div><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fa fa-file"></i><span id="busuanzi_value_page_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.7.0"></script><script src="/js/fancybox.js?version=1.7.0"></script><script src="/js/sidebar.js?version=1.7.0"></script><script src="/js/copy.js?version=1.7.0"></script><script src="/js/fireworks.js?version=1.7.0"></script><script src="/js/transition.js?version=1.7.0"></script><script src="/js/scroll.js?version=1.7.0"></script><script src="/js/head.js?version=1.7.0"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css"><script src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css"><script src="/js/katex.js"></script><script>if(/Android|webOS|iPhone|iPod|iPad|BlackBerry/i.test(navigator.userAgent)) {
   $('#nav').addClass('is-mobile')
   $('footer').addClass('is-mobile')
   $('#top-container').addClass('is-mobile')
