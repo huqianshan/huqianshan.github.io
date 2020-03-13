@@ -208,7 +208,7 @@
 </ul>
 <blockquote>
 <p>This helper doesn’t buy us much over calling kmap_atomic directly.<br>In fact in the only caller it does a bit of useless work as the<br>caller already has the bvec at hand, and said caller would even<br>buggy for a multi-segment bio due to the use of this helper.</p>
-<p>So just remove it.<br>Signed-off-by: default avatarChristoph Hellwig <a href="&#109;&#x61;&#105;&#x6c;&#x74;&#x6f;&#58;&#104;&#99;&#x68;&#64;&#x6c;&#x73;&#x74;&#x2e;&#100;&#x65;">&#104;&#99;&#x68;&#64;&#x6c;&#x73;&#x74;&#x2e;&#100;&#x65;</a><br>Signed-off-by: default avatarJens Axboe <a href="&#109;&#97;&#x69;&#108;&#x74;&#x6f;&#58;&#x61;&#120;&#x62;&#111;&#101;&#x40;&#107;&#101;&#114;&#x6e;&#x65;&#x6c;&#x2e;&#x64;&#107;">&#x61;&#120;&#x62;&#111;&#101;&#x40;&#107;&#101;&#114;&#x6e;&#x65;&#x6c;&#x2e;&#x64;&#107;</a></p>
+<p>So just remove it.<br>Signed-off-by: default avatarChristoph Hellwig <a href="&#x6d;&#x61;&#x69;&#108;&#x74;&#111;&#58;&#x68;&#99;&#104;&#64;&#108;&#115;&#116;&#x2e;&#x64;&#x65;">&#x68;&#99;&#104;&#64;&#108;&#115;&#116;&#x2e;&#x64;&#x65;</a><br>Signed-off-by: default avatarJens Axboe <a href="&#109;&#x61;&#x69;&#108;&#116;&#x6f;&#58;&#x61;&#120;&#98;&#x6f;&#101;&#x40;&#107;&#x65;&#114;&#x6e;&#101;&#108;&#46;&#100;&#107;">&#x61;&#120;&#98;&#x6f;&#101;&#x40;&#107;&#x65;&#114;&#x6e;&#101;&#108;&#46;&#100;&#107;</a></p>
 </blockquote>
 <h4 id="struct-request中-cmd-type被删除"><a href="#struct-request中-cmd-type被删除" class="headerlink" title="struct request中 cmd_type被删除"></a><code>struct request</code>中 <code>cmd_type</code>被删除</h4><ul>
 <li><a href="https://lkml.org/lkml/2017/1/31/562" target="_blank" rel="noopener">链接及示例</a></li>
@@ -216,7 +216,7 @@
 <blockquote>
 <p>From Christoph Hellwig &lt;&gt;<br>  Subject [PATCH 08/10] block: introduce blk_rq_is_passthrough<br>  Dat Tue, 31 Jan 2017 16:57:29 +0100</p>
 <p>This can be used to check for fs vs non-fs requests and basically<br>removes all knowledge of BLOCK_PC specific from the block layer,<br>as well as preparing for removing the cmd_type field in struct request.</p>
-<p>Signed-off-by: Christoph Hellwig <a href="&#x6d;&#97;&#105;&#x6c;&#116;&#111;&#58;&#104;&#x63;&#104;&#x40;&#108;&#115;&#116;&#46;&#100;&#101;">&#104;&#x63;&#104;&#x40;&#108;&#115;&#116;&#46;&#100;&#101;</a></p>
+<p>Signed-off-by: Christoph Hellwig <a href="&#109;&#97;&#105;&#108;&#x74;&#111;&#x3a;&#x68;&#99;&#x68;&#x40;&#x6c;&#x73;&#116;&#x2e;&#100;&#x65;">&#x68;&#99;&#x68;&#x40;&#x6c;&#x73;&#116;&#x2e;&#100;&#x65;</a></p>
 </blockquote>
 <ul>
 <li><p><a href="https://www.kernel.org/doc/htmldocs/filesystems/API-bio-endio.html" target="_blank" rel="noopener"><code>end_bio</code>的参数变为一个</a></p>
