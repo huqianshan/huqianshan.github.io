@@ -992,7 +992,7 @@
 </ul>
 <blockquote>
 <p>This helper doesn’t buy us much over calling kmap_atomic directly.<br>In fact in the only caller it does a bit of useless work as the<br>caller already has the bvec at hand, and said caller would even<br>buggy for a multi-segment bio due to the use of this helper.</p>
-<p>So just remove it.<br>Signed-off-by: default avatarChristoph Hellwig <a href="&#109;&#97;&#x69;&#x6c;&#x74;&#111;&#58;&#x68;&#x63;&#x68;&#x40;&#108;&#x73;&#116;&#x2e;&#100;&#x65;">&#x68;&#x63;&#x68;&#x40;&#108;&#x73;&#116;&#x2e;&#100;&#x65;</a><br>Signed-off-by: default avatarJens Axboe <a href="&#109;&#x61;&#x69;&#108;&#116;&#x6f;&#x3a;&#97;&#x78;&#x62;&#111;&#x65;&#64;&#x6b;&#x65;&#x72;&#110;&#x65;&#x6c;&#x2e;&#x64;&#107;">&#97;&#x78;&#x62;&#111;&#x65;&#64;&#x6b;&#x65;&#x72;&#110;&#x65;&#x6c;&#x2e;&#x64;&#107;</a></p>
+<p>So just remove it.<br>Signed-off-by: default avatarChristoph Hellwig <a href="&#109;&#x61;&#105;&#x6c;&#x74;&#x6f;&#58;&#104;&#99;&#x68;&#64;&#x6c;&#x73;&#x74;&#x2e;&#100;&#x65;">&#104;&#99;&#x68;&#64;&#x6c;&#x73;&#x74;&#x2e;&#100;&#x65;</a><br>Signed-off-by: default avatarJens Axboe <a href="&#109;&#97;&#x69;&#108;&#x74;&#x6f;&#58;&#x61;&#120;&#x62;&#111;&#101;&#x40;&#107;&#101;&#114;&#x6e;&#x65;&#x6c;&#x2e;&#x64;&#107;">&#x61;&#120;&#x62;&#111;&#101;&#x40;&#107;&#101;&#114;&#x6e;&#x65;&#x6c;&#x2e;&#x64;&#107;</a></p>
 </blockquote>
 <h4 id="struct-request中-cmd-type被删除"><a href="#struct-request中-cmd-type被删除" class="headerlink" title="struct request中 cmd_type被删除"></a><code>struct request</code>中 <code>cmd_type</code>被删除</h4><ul>
 <li><a href="https://lkml.org/lkml/2017/1/31/562" target="_blank" rel="noopener">链接及示例</a></li>
@@ -1000,7 +1000,7 @@
 <blockquote>
 <p>From Christoph Hellwig &lt;&gt;<br>  Subject [PATCH 08/10] block: introduce blk_rq_is_passthrough<br>  Dat Tue, 31 Jan 2017 16:57:29 +0100</p>
 <p>This can be used to check for fs vs non-fs requests and basically<br>removes all knowledge of BLOCK_PC specific from the block layer,<br>as well as preparing for removing the cmd_type field in struct request.</p>
-<p>Signed-off-by: Christoph Hellwig <a href="&#109;&#97;&#x69;&#108;&#116;&#x6f;&#x3a;&#104;&#x63;&#104;&#x40;&#108;&#x73;&#116;&#46;&#x64;&#x65;">&#104;&#x63;&#104;&#x40;&#108;&#x73;&#116;&#46;&#x64;&#x65;</a></p>
+<p>Signed-off-by: Christoph Hellwig <a href="&#x6d;&#97;&#105;&#x6c;&#116;&#111;&#58;&#104;&#x63;&#104;&#x40;&#108;&#115;&#116;&#46;&#100;&#101;">&#104;&#x63;&#104;&#x40;&#108;&#115;&#116;&#46;&#100;&#101;</a></p>
 </blockquote>
 <ul>
 <li><p><a href="https://www.kernel.org/doc/htmldocs/filesystems/API-bio-endio.html" target="_blank" rel="noopener"><code>end_bio</code>的参数变为一个</a></p>
@@ -1485,7 +1485,7 @@
 </li>
 </ul>
 <!-- /TOC -->
-<h1 id="龙套角色也精彩"><a href="#龙套角色也精彩" class="headerlink" title="龙套角色也精彩"></a>龙套角色也精彩</h1><p>这是学习<a href="">操作系统</a>时总结的一些编程开发工具，虽然这些并不是实实在在的<br>生产力开发工具，当在实际应用中，缺少他们却是万万不能的。</p>
+<h1 id="龙套角色也精彩"><a href="#龙套角色也精彩" class="headerlink" title="龙套角色也精彩"></a>龙套角色也精彩</h1><p>这是学习<a href>操作系统</a>时总结的一些编程开发工具，虽然这些并不是实实在在的<br>生产力开发工具，当在实际应用中，缺少他们却是万万不能的。</p>
 <p><img src="https://i.loli.net/2019/02/14/5c64efab4c2e4.jpg" width="60%" height="60%"><br><a id="more"></a>·</p>
 <h2 id="Linux’s-Tools"><a href="#Linux’s-Tools" class="headerlink" title="Linux’s Tools"></a><code>Linux’s Tools</code></h2><h3 id="Make-amp-Makefile"><a href="#Make-amp-Makefile" class="headerlink" title="Make &amp; Makefile"></a><code>Make &amp; Makefile</code></h3><p><code>GNU make</code>(简称make)是一种代码维护工具，在大中型项目中，它将根据程序各个模块的更新情况，自动的维护和生成目标代码。</p>
 <h4 id="makefile的规则。"><a href="#makefile的规则。" class="headerlink" title="makefile的规则。"></a>makefile的规则。</h4><figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">target ... : prerequisites ...</span><br><span class="line">    command</span><br><span class="line">    ...</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
@@ -2294,7 +2294,7 @@
     <entry>
       <title><![CDATA[Uestc抢课脚本]]></title>
       <url>/Uestc-Class/</url>
-      <content type="html"><![CDATA[<h1 id="一个电子科大的模块"><a href="#一个电子科大的模块" class="headerlink" title="一个电子科大的模块"></a>一个电子科大的模块</h1><h3 id="涉及登录，查分，抢课等功能"><a href="#涉及登录，查分，抢课等功能" class="headerlink" title="涉及登录，查分，抢课等功能"></a>涉及登录，查分，抢课等功能</h3><h2 id=""><a href="#" class="headerlink" title=""></a><a id="more"></a></h2><ul>
+      <content type="html"><![CDATA[<h1 id="一个电子科大的模块"><a href="#一个电子科大的模块" class="headerlink" title="一个电子科大的模块"></a>一个电子科大的模块</h1><h3 id="涉及登录，查分，抢课等功能"><a href="#涉及登录，查分，抢课等功能" class="headerlink" title="涉及登录，查分，抢课等功能"></a>涉及登录，查分，抢课等功能</h3><h2 id><a href="#" class="headerlink" title></a><a id="more"></a></h2><ul>
 <li><p><code>import uestc</code>  <em>导入文件</em></p>
 </li>
 <li><p><code>session=uestc.login(studentId,password)</code> 生成 <em><code>session</code></em> 登录</p>
