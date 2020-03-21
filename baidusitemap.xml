@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://huqianshan.github.io/Linux/Drivers/block-devices/</loc>
+    <lastmod>2020-03-21</lastmod>
+  </url>  <url>
+    <loc>https://huqianshan.github.io/Linux/build-hello-module-in-linux/</loc>
+    <lastmod>2020-03-21</lastmod>
+  </url>  <url>
+    <loc>https://huqianshan.github.io/Linux/Drivers/char-device-update/</loc>
+    <lastmod>2020-03-21</lastmod>
+  </url>  <url>
     <loc>https://huqianshan.github.io/OBJECTED-PATTERN/</loc>
     <lastmod>2020-03-16</lastmod>
-  </url>  <url>
-    <loc>https://huqianshan.github.io/Linux/Drivers/block-devices/</loc>
-    <lastmod>2020-03-13</lastmod>
   </url>  <url>
     <loc>https://huqianshan.github.io/Linux/linux-kernel-address-space/</loc>
     <lastmod>2020-03-13</lastmod>
@@ -67,12 +73,6 @@
     <loc>https://huqianshan.github.io/copy-virtual-ubuntu/</loc>
     <lastmod>2019-12-06</lastmod>
   </url>  <url>
-    <loc>https://huqianshan.github.io/char-device-update/</loc>
-    <lastmod>2019-12-06</lastmod>
-  </url>  <url>
-    <loc>https://huqianshan.github.io/build-hello-module-in-linux/</loc>
-    <lastmod>2019-12-06</lastmod>
-  </url>  <url>
     <loc>https://huqianshan.github.io/hello-world/</loc>
     <lastmod>2019-11-20</lastmod>
   </url>  <url>
@@ -83,9 +83,6 @@
     <lastmod>2019-11-18</lastmod>
   </url>  <url>
     <loc>https://huqianshan.github.io/contract/</loc>
-    <lastmod>2019-11-18</lastmod>
-  </url>  <url>
-    <loc>https://huqianshan.github.io/build-linux-kenel-in-qumu/</loc>
     <lastmod>2019-11-18</lastmod>
   </url>  <url>
     <loc>https://huqianshan.github.io/Uestc-Class/</loc>

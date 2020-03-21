@@ -7,68 +7,13 @@ ga('create', 'UA-113512264-1', 'auto');
 ga('send', 'pageview');</script><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><script>var GLOBAL_CONFIG = { 
   root: '/',
   algolia: undefined,
-  localSearch: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"We didn't find any results for the search: ${query}"}},
   copy: {
     success: 'Copy successfully',
     error: 'Copy error',
     noSupport: 'The browser does not support'
   }
-} </script></head><body><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar" data-display="true"><div class="toggle-sidebar-info text-center"><span data-toggle="Toggle article">Toggle site</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">Catalog</div><div class="sidebar-toc__progress"><span class="progress-notice">You've read</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#块驱动设备"><span class="toc-number">1.</span> <span class="toc-text"> 块驱动设备</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#与字符驱动设备对比"><span class="toc-number">1.1.</span> <span class="toc-text"> 与字符驱动设备对比</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#访问存储介质的架构"><span class="toc-number">1.2.</span> <span class="toc-text"> 访问存储介质的架构</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#io调度器"><span class="toc-number">1.2.1.</span> <span class="toc-text"> I/O调度器</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#存储结构的划分"><span class="toc-number">1.3.</span> <span class="toc-text"> 存储结构的划分</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#块设备驱动核心结构"><span class="toc-number">1.4.</span> <span class="toc-text"> 块设备驱动核心结构</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#block_device"><span class="toc-number">1.4.1.</span> <span class="toc-text"> block_device</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#gendisk"><span class="toc-number">1.4.2.</span> <span class="toc-text"> gendisk</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#hd_struct"><span class="toc-number">1.4.3.</span> <span class="toc-text"> hd_struct</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#block_device_operations"><span class="toc-number">1.4.4.</span> <span class="toc-text"> block_device_operations</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#request_queue"><span class="toc-number">1.4.5.</span> <span class="toc-text"> request_queue</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#request"><span class="toc-number">1.4.6.</span> <span class="toc-text"> request</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#bio"><span class="toc-number">1.4.7.</span> <span class="toc-text"> bio</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#bio_vec"><span class="toc-number">1.4.8.</span> <span class="toc-text"> bio_vec</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#bio_iter"><span class="toc-number">1.4.9.</span> <span class="toc-text"> bio_iter</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#块设备核心方法"><span class="toc-number">1.5.</span> <span class="toc-text"> 块设备核心方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#316版本源代码"><span class="toc-number">1.6.</span> <span class="toc-text"> 3.16版本源代码</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#block_device原型"><span class="toc-number">1.6.1.</span> <span class="toc-text"> block_device原型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#gendisk原型"><span class="toc-number">1.6.2.</span> <span class="toc-text"> gendisk原型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#hd_struct磁盘分区描述"><span class="toc-number">1.6.3.</span> <span class="toc-text"> hd_struct磁盘分区描述</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#block_device_operations原型"><span class="toc-number">1.6.4.</span> <span class="toc-text"> block_device_operations原型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#request_queue原型"><span class="toc-number">1.6.5.</span> <span class="toc-text"> request_queue原型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#request原型"><span class="toc-number">1.6.6.</span> <span class="toc-text"> request原型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#bio原型"><span class="toc-number">1.6.7.</span> <span class="toc-text"> bio原型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#bio_vec-bio_iter"><span class="toc-number">1.6.8.</span> <span class="toc-text"> bio_vec bio_iter</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#遍历函数"><span class="toc-number">1.6.9.</span> <span class="toc-text"> 遍历函数</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#测试步骤"><span class="toc-number">1.7.</span> <span class="toc-text"> 测试步骤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#api的更改"><span class="toc-number">1.8.</span> <span class="toc-text"> API的更改</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#__bio_kmap_atomic-被删除"><span class="toc-number">1.8.1.</span> <span class="toc-text"> __bio_kmap_atomic 被删除</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#struct-request中-cmd_type被删除"><span class="toc-number">1.8.2.</span> <span class="toc-text"> struct request中 cmd_type被删除</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#bio_rw-has-been-removed"><span class="toc-number">1.8.3.</span> <span class="toc-text"> bio_rw has been removed</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#blk_queue_bounce_limitblk_bounce_any"><span class="toc-number">1.8.4.</span> <span class="toc-text"> blk_queue_bounce_limit(BLK_BOUNCE_ANY)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#blk_queue_ordered-changed"><span class="toc-number">1.8.5.</span> <span class="toc-text"> blk_queue_ordered() changed</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#struct-bio-changed-some-values"><span class="toc-number">1.8.6.</span> <span class="toc-text"> struct bio changed some values</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#样例块驱动代码"><span class="toc-number">1.9.</span> <span class="toc-text"> 样例块驱动代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考链接"><span class="toc-number">1.10.</span> <span class="toc-text"> 参考链接</span></a></li></ol></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="/img/avatar.png"></div><div class="author-info__name text-center">hjl</div><div class="author-info__description text-center">For Nothing</div><div class="follow-button"><a href="https://github.com/huqianshan">Follow ME</a></div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">Articles</span><span class="pull-right">33</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">Tags</span><span class="pull-right">28</span></a></div></div></div><div id="content-outer"><div id="top-container" style="background-image: url(https://blog-1251750343.cos.ap-beijing.myqcloud.com/blog/blog-bg.jpg)"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">Hjl' Blog</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus">   <a class="site-page" href="/">Home</a><a class="site-page" href="/archives">Archives</a><a class="site-page" href="/tags">Tags</a><a class="site-page" href="/categories">Categories</a></span><span class="pull-right"></span></div><div id="post-info"><div id="post-title">block-drivers-devices</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2019-11-23</time><span class="post-meta__separator">|</span><i class="fa fa-comment-o post-meta__icon" aria-hidden="true"></i><a href="/Linux/Drivers/block-devices/#disqus_thread"><span class="disqus-comment-count" data-disqus-identifier="Linux/Drivers/block-devices/"></span></a><div class="post-meta-wordcount"><span>Word count: </span><span class="word-count">3,664</span><span class="post-meta__separator">|</span><span>Reading time: 15 min</span></div></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><h2 id="块驱动设备"><a class="markdownIt-Anchor" href="#块驱动设备"></a> 块驱动设备</h2>
-<!-- TOC -->
-<ul>
-<li><a href="#%E5%9D%97%E9%A9%B1%E5%8A%A8%E8%AE%BE%E5%A4%87">块驱动设备</a>
-<ul>
-<li><a href="#%E4%B8%8E%E5%AD%97%E7%AC%A6%E9%A9%B1%E5%8A%A8%E8%AE%BE%E5%A4%87%E5%AF%B9%E6%AF%94">与字符驱动设备对比</a></li>
-<li><a href="#%E8%AE%BF%E9%97%AE%E5%AD%98%E5%82%A8%E4%BB%8B%E8%B4%A8%E7%9A%84%E6%9E%B6%E6%9E%84">访问存储介质的架构</a>
-<ul>
-<li><a href="#io%E8%B0%83%E5%BA%A6%E5%99%A8"><code>I/O</code>调度器</a></li>
-</ul>
-</li>
-<li><a href="#%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84%E7%9A%84%E5%88%92%E5%88%86">存储结构的划分</a></li>
-<li><a href="#%E5%9D%97%E8%AE%BE%E5%A4%87%E9%A9%B1%E5%8A%A8%E6%A0%B8%E5%BF%83%E7%BB%93%E6%9E%84">块设备驱动核心结构</a>
-<ul>
-<li><a href="#block_device"><code>block_device</code></a></li>
-<li><a href="#gendisk"><code>gendisk</code></a></li>
-<li><a href="#hd_struct"><code>hd_struct</code></a></li>
-<li><a href="#block_device_operations"><code>block_device_operations</code></a></li>
-<li><a href="#request_queue"><code>request_queue</code></a></li>
-<li><a href="#request"><code>request</code></a></li>
-<li><a href="#bio"><code>bio</code></a></li>
-<li><a href="#bio_vec"><code>bio_vec</code></a></li>
-<li><a href="#bio_iter"><code>bio_iter</code></a></li>
-</ul>
-</li>
-<li><a href="#%E5%9D%97%E8%AE%BE%E5%A4%87%E6%A0%B8%E5%BF%83%E6%96%B9%E6%B3%95">块设备核心方法</a></li>
-<li><a href="#316%E7%89%88%E6%9C%AC%E6%BA%90%E4%BB%A3%E7%A0%81">3.16版本源代码</a>
-<ul>
-<li><a href="#block_device%E5%8E%9F%E5%9E%8B"><code>block_device</code>原型</a></li>
-<li><a href="#gendisk%E5%8E%9F%E5%9E%8B"><code>gendisk</code>原型</a></li>
-<li><a href="#hd_struct%E7%A3%81%E7%9B%98%E5%88%86%E5%8C%BA%E6%8F%8F%E8%BF%B0"><code>hd_struct</code>磁盘分区描述</a></li>
-<li><a href="#block_device_operations%E5%8E%9F%E5%9E%8B"><code>block_device_operations</code>原型</a></li>
-<li><a href="#request_queue%E5%8E%9F%E5%9E%8B"><code>request_queue</code>原型</a></li>
-<li><a href="#request%E5%8E%9F%E5%9E%8B"><code>request</code>原型</a></li>
-<li><a href="#bio%E5%8E%9F%E5%9E%8B"><code>bio</code>原型</a></li>
-<li><a href="#bio_vec-bio_iter"><code>bio_vec bio_iter</code></a></li>
-<li><a href="#%E9%81%8D%E5%8E%86%E5%87%BD%E6%95%B0">遍历函数</a></li>
-</ul>
-</li>
-<li><a href="#%E6%B5%8B%E8%AF%95%E6%AD%A5%E9%AA%A4">测试步骤</a></li>
-<li><a href="#api%E7%9A%84%E6%9B%B4%E6%94%B9"><code>API</code>的更改</a>
-<ul>
-<li><a href="#__bio_kmap_atomic-%E8%A2%AB%E5%88%A0%E9%99%A4"><code>__bio_kmap_atomic</code> 被删除</a></li>
-<li><a href="#struct-request%E4%B8%AD-cmd_type%E8%A2%AB%E5%88%A0%E9%99%A4"><code>struct request</code>中 <code>cmd_type</code>被删除</a></li>
-<li><a href="#bio_rw-has-been-removed"><code>bio_rw</code> has been removed</a></li>
-<li><a href="#blk_queue_bounce_limitblk_bounce_any"><code>blk_queue_bounce_limit(BLK_BOUNCE_ANY)</code></a></li>
-<li><a href="#blk_queue_ordered-changed"><code>blk_queue_ordered()</code> changed</a></li>
-<li><a href="#struct-bio-changed-some-values"><code>struct bio</code> changed some values</a></li>
-</ul>
-</li>
-<li><a href="#%E6%A0%B7%E4%BE%8B%E5%9D%97%E9%A9%B1%E5%8A%A8%E4%BB%A3%E7%A0%81"><code>样例块驱动代码</code></a></li>
-<li><a href="#%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5">参考链接</a></li>
-</ul>
-</li>
-</ul>
-<!-- /TOC -->
+} </script></head><body><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar" data-display="true"><div class="toggle-sidebar-info text-center"><span data-toggle="Toggle article">Toggle site</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">Catalog</div><div class="sidebar-toc__progress"><span class="progress-notice">You've read</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#块驱动设备"><span class="toc-number">1.</span> <span class="toc-text"> 块驱动设备</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#与字符驱动设备对比"><span class="toc-number">1.1.</span> <span class="toc-text"> 与字符驱动设备对比</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#访问存储介质的架构"><span class="toc-number">1.2.</span> <span class="toc-text"> 访问存储介质的架构</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#io调度器"><span class="toc-number">1.2.1.</span> <span class="toc-text"> I/O调度器</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设备文件与普通文件的区别"><span class="toc-number">1.3.</span> <span class="toc-text"> 设备文件与普通文件的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#存储结构的划分"><span class="toc-number">1.4.</span> <span class="toc-text"> 存储结构的划分</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#块设备驱动核心结构"><span class="toc-number">1.5.</span> <span class="toc-text"> 块设备驱动核心结构</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#block_device"><span class="toc-number">1.5.1.</span> <span class="toc-text"> block_device</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#gendisk"><span class="toc-number">1.5.2.</span> <span class="toc-text"> gendisk</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#hd_struct"><span class="toc-number">1.5.3.</span> <span class="toc-text"> hd_struct</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#block_device_operations"><span class="toc-number">1.5.4.</span> <span class="toc-text"> block_device_operations</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#request_queue"><span class="toc-number">1.5.5.</span> <span class="toc-text"> request_queue</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#request"><span class="toc-number">1.5.6.</span> <span class="toc-text"> request</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#bio"><span class="toc-number">1.5.7.</span> <span class="toc-text"> bio</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#bio_vec"><span class="toc-number">1.5.8.</span> <span class="toc-text"> bio_vec</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#bio_iter"><span class="toc-number">1.5.9.</span> <span class="toc-text"> bio_iter</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#块设备核心方法"><span class="toc-number">1.6.</span> <span class="toc-text"> 块设备核心方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#316版本源代码"><span class="toc-number">1.7.</span> <span class="toc-text"> 3.16版本源代码</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#block_device原型"><span class="toc-number">1.7.1.</span> <span class="toc-text"> block_device原型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#gendisk原型"><span class="toc-number">1.7.2.</span> <span class="toc-text"> gendisk原型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#hd_struct磁盘分区描述"><span class="toc-number">1.7.3.</span> <span class="toc-text"> hd_struct磁盘分区描述</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#block_device_operations原型"><span class="toc-number">1.7.4.</span> <span class="toc-text"> block_device_operations原型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#request_queue原型"><span class="toc-number">1.7.5.</span> <span class="toc-text"> request_queue原型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#request原型"><span class="toc-number">1.7.6.</span> <span class="toc-text"> request原型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#bio原型"><span class="toc-number">1.7.7.</span> <span class="toc-text"> bio原型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#bio_vec-bio_iter"><span class="toc-number">1.7.8.</span> <span class="toc-text"> bio_vec bio_iter</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#遍历函数"><span class="toc-number">1.7.9.</span> <span class="toc-text"> 遍历函数</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#测试步骤"><span class="toc-number">1.8.</span> <span class="toc-text"> 测试步骤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#api的更改"><span class="toc-number">1.9.</span> <span class="toc-text"> API的更改</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#__bio_kmap_atomic-被删除"><span class="toc-number">1.9.1.</span> <span class="toc-text"> __bio_kmap_atomic 被删除</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#struct-request中-cmd_type被删除"><span class="toc-number">1.9.2.</span> <span class="toc-text"> struct request中 cmd_type被删除</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#bio_rw-has-been-removed"><span class="toc-number">1.9.3.</span> <span class="toc-text"> bio_rw has been removed</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#blk_queue_bounce_limitblk_bounce_any"><span class="toc-number">1.9.4.</span> <span class="toc-text"> blk_queue_bounce_limit(BLK_BOUNCE_ANY)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#blk_queue_ordered-changed"><span class="toc-number">1.9.5.</span> <span class="toc-text"> blk_queue_ordered() changed</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#struct-bio-changed-some-values"><span class="toc-number">1.9.6.</span> <span class="toc-text"> struct bio changed some values</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#样例块驱动代码"><span class="toc-number">1.10.</span> <span class="toc-text"> 样例块驱动代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考链接"><span class="toc-number">1.11.</span> <span class="toc-text"> 参考链接</span></a></li></ol></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="/img/avatar.png"></div><div class="author-info__name text-center">hjl</div><div class="author-info__description text-center">For Nothing</div><div class="follow-button"><a href="https://github.com/huqianshan">Follow ME</a></div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">Articles</span><span class="pull-right">32</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">Tags</span><span class="pull-right">28</span></a></div></div></div><div id="content-outer"><div id="top-container" style="background-image: url(https://blog-1251750343.cos.ap-beijing.myqcloud.com/blog/blog-bg.jpg)"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">Hjl' Blog</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus">   <a class="site-page" href="/">Home</a><a class="site-page" href="/archives">Archives</a><a class="site-page" href="/tags">Tags</a><a class="site-page" href="/categories">Categories</a></span><span class="pull-right"><a class="site-page social-icon search"><i class="fa fa-search"></i><span> Search</span></a></span></div><div id="post-info"><div id="post-title">block-drivers-devices</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2019-11-23</time><span class="post-meta__separator">|</span><i class="fa fa-comment-o post-meta__icon" aria-hidden="true"></i><a href="/Linux/Drivers/block-devices/#disqus_thread"><span class="disqus-comment-count" data-disqus-identifier="Linux/Drivers/block-devices/"></span></a><div class="post-meta-wordcount"><span>Word count: </span><span class="word-count">3,838</span><span class="post-meta__separator">|</span><span>Reading time: 16 min</span></div></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><h2 id="块驱动设备"><a class="markdownIt-Anchor" href="#块驱动设备"></a> 块驱动设备</h2>
 <a id="more"></a>
 <h3 id="与字符驱动设备对比"><a class="markdownIt-Anchor" href="#与字符驱动设备对比"></a> 与字符驱动设备对比</h3>
 <ul>
@@ -117,16 +62,35 @@ ga('send', 'pageview');</script><meta http-equiv="Cache-Control" content="no-tra
 <p><code>CFQ I/O</code>为所有任务分配均匀的<code>I/O</code>带宽。</p>
 </li>
 <li>
-<blockquote>
-<p><code>kernel elevator=deadline</code></p>
-</blockquote>
-<p>内核传参改变调度算法</p>
+<p>改变内核调度算法</p>
+<ul>
+<li>
+<p>内核传参改变调度算法 <code>kernel elevator=deadline</code></p>
 </li>
 <li>
-<blockquote>
-<p><code>echo SCHEDULER &gt; /sys/block/DEVICE/queue/scheduler</code><br>
-使用如下命令改变内核调度算法</p>
-</blockquote>
+<p>使用如下命令改变内核调度算法 <code>echo SCHEDULER &gt; /sys/block/DEVICE/queue/scheduler</code></p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="设备文件与普通文件的区别"><a class="markdownIt-Anchor" href="#设备文件与普通文件的区别"></a> 设备文件与普通文件的区别</h3>
+<ul>
+<li>概念上
+<ul>
+<li><code>普通文件</code>: 文本，可执行程序、媒体文件等常规文件</li>
+<li><code>设备文件</code>: 就是I/O设备。如挂载在内核<code>/dev</code>上的设备，也能通过文件系统读写。
+<ul>
+<li>类unix操作系统都是基于文件概念的，文件是由字节序列而构成的信息载体。那么就可以把<code>设备文件</code>当作<code>可读写的I/O设备</code>。</li>
+<li>设备文件通常分为<code>字符设备</code>、<code>块设备</code>、<code>网络设备</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>寻址空间上
+<ul>
+<li>普通文件: 内核虚拟地址空间，普通文件比块设备文件多一层文件系统的地址转换机构。</li>
+<li>设备文件：物理寻址空间</li>
+</ul>
 </li>
 </ul>
 <h3 id="存储结构的划分"><a class="markdownIt-Anchor" href="#存储结构的划分"></a> 存储结构的划分</h3>
@@ -142,17 +106,26 @@ ga('send', 'pageview');</script><meta http-equiv="Cache-Control" content="no-tra
 <li>
 <p><code>BLOCK</code></p>
 <p>块：逻辑上进行数据存储的最小单位。</p>
-<p>逻辑块的大小是在格式化的时候确定的, 一个 <code>Block</code> 最多仅能容纳一个文件（即不存在多个文件同一个<code>Block</code>的情况.<br>
-<strong><code>Block</code>是<code>VFS</code>和文件系统传送数据的基本单位</strong></p>
+<p>逻辑块的大小是在格式化的时候确定的, 一个 <code>Block</code> 最多仅能容纳一个文件（即不存在多个文件同一个<code>Block</code>的情况.</p>
 <ul>
-<li>Linux内核要求 <code>Block_Size = Sector_Size * $$2^n$$</code>，并且<code>Block_Size &lt;= 内存的Page_Size(页大小）</code></li>
-<li>块设备文件的每次读或写操作是一种&quot;原始&quot;访问，因为它绕过了磁盘文件系统，内核通过使用最大的块<code>(4096)</code>执行该操作。</li>
+<li><strong><code>Block</code>是<code>VFS</code>和文件系统传送数据的基本单位</strong>
+<ul>
+<li>Linux内核要求 <code>Block_Size = Sector_Size *</code>$$2^n$$，并且<code>Block_Size &lt;= 内存的Page_Size(页大小）</code></li>
+<li>block是<code>VFS</code>和<code>文件系统</code>传送数据的基本单位。block对应磁盘上的一个或多个相邻的扇区，而<code>VFS</code>将其看成是一个单一的数据单元.</li>
+</ul>
+</li>
+<li>块设备的<code>block</code>
+<ul>
+<li>块设备的block的大小不是唯一的，创建一个磁盘文件系统时，管理员可以选择合适的扇区的大小，同一个磁盘的几个分区可以使用不同的块大小。</li>
+<li>块设备文件的每次读或写操作是一种&quot;原始&quot;访问，<strong>因为它绕过了磁盘文件系统</strong>，内核通过使用最大的块<code>(4096)</code>执行该操作。</li>
+</ul>
+</li>
 </ul>
 </li>
 <li>
 <p><code>Sector</code><br>
-扇区：硬件设备存储数据的基本单位</p>
-<p>这个Sector就是512byte，和物理设备上的概念不一样，如果实际的设备的sector不是512byte，而是4096byte(eg SSD)，那么只需要将多个内核sector对应一个设备sector即可</p>
+扇区：硬件<code>I/O</code>设备存储数据的基本单位</p>
+<p>这个Sector就是<code>512byte</code>，和实际物理存储介质设备上的概念不一样。如果实际的设备的sector不是512byte，而是4096byte(eg SSD)，那么只需要将多个内核sector对应一个ssd sector即可</p>
 </li>
 </ul>
 <h3 id="块设备驱动核心结构"><a class="markdownIt-Anchor" href="#块设备驱动核心结构"></a> 块设备驱动核心结构</h3>
@@ -362,7 +335,7 @@ as well as preparing for removing the cmd_type field in struct request.</p>
 <p><a href="https://www.cnblogs.com/cslunatic/archive/2013/04/08/3006808.html" target="_blank" rel="noopener">如何学习Linux设备驱动</a></p>
 </li>
 </ul>
-</div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:hjl1999@qq.com">hjl</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="https://huqianshan.github.io/Linux/Drivers/block-devices/">https://huqianshan.github.io/Linux/Drivers/block-devices/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/DRIVERS/">drivers</a></div><nav id="pagination"><div class="prev-post pull-left"><a href="/NVM/pre-for-block-nvm-driver/"><i class="fa fa-chevron-left">  </i><span>pre-for-block-nvm-driver</span></a></div><div class="next-post pull-right"><a href="/char-device-update/"><span>char-device-update</span><i class="fa fa-chevron-right"></i></a></div></nav><div id="disqus_thread"></div><script>var unused = null;
+</div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:hjl1999@qq.com">hjl</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="https://huqianshan.github.io/Linux/Drivers/block-devices/">https://huqianshan.github.io/Linux/Drivers/block-devices/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/DRIVERS/">drivers</a></div><nav id="pagination"><div class="prev-post pull-left"><a href="/NVM/pre-for-block-nvm-driver/"><i class="fa fa-chevron-left">  </i><span>pre-for-block-nvm-driver</span></a></div><div class="next-post pull-right"><a href="/Linux/Drivers/char-device-update/"><span>char-device-update</span><i class="fa fa-chevron-right"></i></a></div></nav><div id="disqus_thread"></div><script>var unused = null;
 var disqus_config = function () {
   this.page.url = 'https://huqianshan.github.io/Linux/Drivers/block-devices/';
   this.page.identifier = 'Linux/Drivers/block-devices/';
@@ -371,8 +344,8 @@ var disqus_config = function () {
 var d = document, s = d.createElement('script');
 s.src = "https://" + 'huqianshan' +".disqus.com/embed.js";
 s.setAttribute('data-timestamp', '' + +new Date());
-(d.head || d.body).appendChild(s);</script><script id="dsq-count-scr" src="https://huqianshan.disqus.com/count.js" async></script></div></div><footer class="footer-bg" style="background-image: url(https://blog-1251750343.cos.ap-beijing.myqcloud.com/blog/blog-bg.jpg)"><div class="layout" id="footer"><div class="copyright">&copy;2013 - 2020 By hjl</div><div class="framework-info"><span>Driven - </span><a href="http://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>Theme - </span><a href="https://github.com/Molunerfinn/hexo-theme-melody"><span>Melody</span></a></div><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fa fa-file"></i><span id="busuanzi_value_page_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.7.0"></script><script src="/js/fancybox.js?version=1.7.0"></script><script src="/js/sidebar.js?version=1.7.0"></script><script src="/js/copy.js?version=1.7.0"></script><script src="/js/fireworks.js?version=1.7.0"></script><script src="/js/transition.js?version=1.7.0"></script><script src="/js/scroll.js?version=1.7.0"></script><script src="/js/head.js?version=1.7.0"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css"><script src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css"><script src="/js/katex.js"></script><script>if(/Android|webOS|iPhone|iPod|iPad|BlackBerry/i.test(navigator.userAgent)) {
+(d.head || d.body).appendChild(s);</script><script id="dsq-count-scr" src="https://huqianshan.disqus.com/count.js" async></script></div></div><footer class="footer-bg" style="background-image: url(https://blog-1251750343.cos.ap-beijing.myqcloud.com/blog/blog-bg.jpg)"><div class="layout" id="footer"><div class="copyright">&copy;2017 - 2020 By hjl</div><div class="framework-info"><span>Driven - </span><a href="http://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>Theme - </span><a href="https://github.com/Molunerfinn/hexo-theme-melody"><span>Melody</span></a></div><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fa fa-file"></i><span id="busuanzi_value_page_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.7.0"></script><script src="/js/fancybox.js?version=1.7.0"></script><script src="/js/sidebar.js?version=1.7.0"></script><script src="/js/copy.js?version=1.7.0"></script><script src="/js/fireworks.js?version=1.7.0"></script><script src="/js/transition.js?version=1.7.0"></script><script src="/js/scroll.js?version=1.7.0"></script><script src="/js/head.js?version=1.7.0"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css"><script src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css"><script src="/js/katex.js"></script><script src="/js/search/local-search.js"></script><script>if(/Android|webOS|iPhone|iPod|iPad|BlackBerry/i.test(navigator.userAgent)) {
   $('#nav').addClass('is-mobile')
   $('footer').addClass('is-mobile')
   $('#top-container').addClass('is-mobile')
-}</script></body></html>
+}</script><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">Local search</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="Search for Posts"></div></div></div><hr><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>Powered by</span> <a href="https://github.com/wzpan/hexo-generator-search" style="color:#49B1F5;">hexo-generator-search</a></div></div></div><span class="search-close-button"><i class="fa fa-times"></i></span></div><div class="search-mask"></div></body></html>

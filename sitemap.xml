@@ -2,16 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://huqianshan.github.io/OBJECTED-PATTERN/</loc>
+    <loc>https://huqianshan.github.io/Linux/Drivers/block-devices/</loc>
     
-    <lastmod>2020-03-16T07:14:30.303Z</lastmod>
+    <lastmod>2020-03-21T03:32:21.648Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://huqianshan.github.io/Linux/Drivers/block-devices/</loc>
+    <loc>https://huqianshan.github.io/Linux/build-hello-module-in-linux/</loc>
     
-    <lastmod>2020-03-13T09:03:10.184Z</lastmod>
+    <lastmod>2020-03-21T03:32:07.853Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://huqianshan.github.io/Linux/Drivers/char-device-update/</loc>
+    
+    <lastmod>2020-03-21T03:31:22.887Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://huqianshan.github.io/OBJECTED-PATTERN/</loc>
+    
+    <lastmod>2020-03-16T07:14:30.303Z</lastmod>
     
   </url>
   
@@ -205,20 +219,6 @@
   </url>
   
   <url>
-    <loc>https://huqianshan.github.io/char-device-update/</loc>
-    
-    <lastmod>2019-12-06T03:21:49.719Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://huqianshan.github.io/build-hello-module-in-linux/</loc>
-    
-    <lastmod>2019-12-06T03:21:04.664Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://huqianshan.github.io/hello-world/</loc>
     
     <lastmod>2019-11-20T13:43:04.543Z</lastmod>
@@ -243,13 +243,6 @@
     <loc>https://huqianshan.github.io/contract/</loc>
     
     <lastmod>2019-11-18T11:25:20.718Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://huqianshan.github.io/build-linux-kenel-in-qumu/</loc>
-    
-    <lastmod>2019-11-18T11:25:20.686Z</lastmod>
     
   </url>
   
