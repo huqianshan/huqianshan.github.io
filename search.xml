@@ -4,6 +4,27 @@
   
     
     <entry>
+      <title>flask_demo</title>
+      <link href="/python/FLASK-DEMO/"/>
+      <url>/python/FLASK-DEMO/</url>
+      
+        <content type="html"><![CDATA[<h2 id="编写flask服务器应用程序"><a class="markdownIt-Anchor" href="#编写flask服务器应用程序"></a> 编写<code>flask</code>服务器应用程序</h2><h3 id="连接非结构化数据库"><a class="markdownIt-Anchor" href="#连接非结构化数据库"></a> 连接<code>非结构化</code>数据库</h3><h3 id="生成访问日志"><a class="markdownIt-Anchor" href="#生成访问日志"></a> 生成访问日志</h3><h2 id="配置gunicore-server"><a class="markdownIt-Anchor" href="#配置gunicore-server"></a> 配置<code>gunicore server</code></h2><p>gunicorn是一个python编写的高效的WSGI HTTP服务器，gunicorn使用pre-fork模型（一个master进程管理多个child子进程），使用gunicorn的方法十分简单：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gunicorn --workers=<span class="number">9</span> server:app --bind <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">8000</span></span><br></pre></td></tr></table></figure><p>文档说明使用（2 * cpu核心数量）+1个worker，还要传入一个兼容wsgi app的start up方法</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#import multiprocessing</span></span><br><span class="line">workers = <span class="number">5</span>   <span class="comment">#进程数   # 定义同时开启的处理请求的进程数量，根据网站流量适当调整</span></span><br><span class="line"></span><br><span class="line">threads = <span class="number">8</span> <span class="comment">#指定每个进程开启的线程数</span></span><br><span class="line">worker_class = <span class="string">"gevent"</span>   <span class="comment"># 采用gevent库，支持异步处理请求，提高吞吐量</span></span><br><span class="line">bind = <span class="string">"0.0.0.0:80"</span></span><br><span class="line"></span><br><span class="line">backlog = <span class="number">512</span> </span><br><span class="line">timeout = <span class="number">30</span> </span><br><span class="line">keepalive=<span class="number">8</span></span><br><span class="line">daemon=<span class="keyword">True</span></span><br><span class="line"></span><br><span class="line">loglevel = <span class="string">'info'</span> <span class="comment">#日志级别，这个日志级别指的是错误日志的级别，而访问日志的级别无法设置</span></span><br><span class="line">access_log_format = <span class="string">'%(t)s %(p)s %(h)s "%(r)s" %(s)s %(L)s %(b)s %(f)s" "%(a)s"'</span>    <span class="comment">#设置gunicorn访问日志格式，错误日志无法设置</span></span><br><span class="line"></span><br><span class="line">accesslog=<span class="string">'/home/www/flask_blog/logs/guni_access.log'</span></span><br><span class="line">errorlog=<span class="string">'/home/www/flask_blog/logs/guni_error.log'</span></span><br></pre></td></tr></table></figure><h3 id="gevent"><a class="markdownIt-Anchor" href="#gevent"></a> <code>gevent</code></h3><h3 id="async"><a class="markdownIt-Anchor" href="#async"></a> <code>async</code></h3><h2 id="server-proxy-nginx"><a class="markdownIt-Anchor" href="#server-proxy-nginx"></a> <code>Server Proxy: nginx</code></h2><h2 id="部署"><a class="markdownIt-Anchor" href="#部署"></a> 部署</h2><h3 id="supervisor"><a class="markdownIt-Anchor" href="#supervisor"></a> <code>Supervisor</code></h3><p>Sueprvisor是Linux上的一个可以监控应用和进程的工具，我们用它来作为守护进程，自动化地启动和停止应用。</p><h2 id="性能测试"><a class="markdownIt-Anchor" href="#性能测试"></a> 性能测试</h2><h3 id="wrk"><a class="markdownIt-Anchor" href="#wrk"></a> <code>wrk</code></h3><p><code>wrk -c 100 -t 12 -d 5s http://127.0.0.1:8000/todo</code></p><h3 id="参考文献"><a class="markdownIt-Anchor" href="#参考文献"></a> 参考文献</h3><ul><li><a href="https://zhuanlan.zhihu.com/p/25038203" target="_blank" rel="noopener"><strong>强烈推荐阅读</strong></a></li></ul>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> Python </tag>
+            
+            <tag> Flask </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>设计模式Desgin-Pattern</title>
       <link href="/OBJECTED-PATTERN/"/>
       <url>/OBJECTED-PATTERN/</url>
