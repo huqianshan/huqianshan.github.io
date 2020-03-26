@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://huqianshan.github.io/NVM/pre-for-block-nvm-driver/</loc>
+    <lastmod>2020-03-26</lastmod>
+  </url>  <url>
     <loc>https://huqianshan.github.io/python/FLASK-DEMO/</loc>
     <lastmod>2020-03-25</lastmod>
   </url>  <url>
@@ -39,9 +42,6 @@
   </url>  <url>
     <loc>https://huqianshan.github.io/baidu-spider/</loc>
     <lastmod>2019-12-09</lastmod>
-  </url>  <url>
-    <loc>https://huqianshan.github.io/NVM/pre-for-block-nvm-driver/</loc>
-    <lastmod>2019-12-08</lastmod>
   </url>  <url>
     <loc>https://huqianshan.github.io/thoughts/thoughts-1/</loc>
     <lastmod>2019-12-06</lastmod>
