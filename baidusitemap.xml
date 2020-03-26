@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://huqianshan.github.io/NVM/pre-for-block-nvm-driver/</loc>
+    <loc>https://huqianshan.github.io/python/FLASK-DEMO/</loc>
     <lastmod>2020-03-26</lastmod>
   </url>  <url>
-    <loc>https://huqianshan.github.io/python/FLASK-DEMO/</loc>
-    <lastmod>2020-03-25</lastmod>
+    <loc>https://huqianshan.github.io/auto-google-translation/</loc>
+    <lastmod>2020-03-26</lastmod>
+  </url>  <url>
+    <loc>https://huqianshan.github.io/NVM/pre-for-block-nvm-driver/</loc>
+    <lastmod>2020-03-26</lastmod>
   </url>  <url>
     <loc>https://huqianshan.github.io/DOCKER-HELLO/</loc>
     <lastmod>2020-03-25</lastmod>
@@ -47,9 +50,6 @@
     <lastmod>2019-12-06</lastmod>
   </url>  <url>
     <loc>https://huqianshan.github.io/memory-barrier/</loc>
-    <lastmod>2019-12-06</lastmod>
-  </url>  <url>
-    <loc>https://huqianshan.github.io/auto-google-translation/</loc>
     <lastmod>2019-12-06</lastmod>
   </url>  <url>
     <loc>https://huqianshan.github.io/xgboost/</loc>
