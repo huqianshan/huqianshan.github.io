@@ -1,20 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://huqianshan.github.io/NVM/NVM-DRIVERS/</loc>
+    <lastmod>2020-03-31</lastmod>
+  </url>  <url>
+    <loc>https://huqianshan.github.io/copy-virtual-ubuntu/</loc>
+    <lastmod>2020-03-31</lastmod>
+  </url>  <url>
+    <loc>https://huqianshan.github.io/NVM/pre-for-block-nvm-driver/</loc>
+    <lastmod>2020-03-29</lastmod>
+  </url>  <url>
+    <loc>https://huqianshan.github.io/Linux/Drivers/block-devices/</loc>
+    <lastmod>2020-03-26</lastmod>
+  </url>  <url>
     <loc>https://huqianshan.github.io/python/FLASK-DEMO/</loc>
     <lastmod>2020-03-26</lastmod>
   </url>  <url>
     <loc>https://huqianshan.github.io/auto-google-translation/</loc>
     <lastmod>2020-03-26</lastmod>
   </url>  <url>
-    <loc>https://huqianshan.github.io/NVM/pre-for-block-nvm-driver/</loc>
-    <lastmod>2020-03-26</lastmod>
-  </url>  <url>
     <loc>https://huqianshan.github.io/DOCKER-HELLO/</loc>
     <lastmod>2020-03-25</lastmod>
-  </url>  <url>
-    <loc>https://huqianshan.github.io/Linux/Drivers/block-devices/</loc>
-    <lastmod>2020-03-21</lastmod>
   </url>  <url>
     <loc>https://huqianshan.github.io/Linux/build-hello-module-in-linux/</loc>
     <lastmod>2020-03-21</lastmod>
@@ -39,9 +45,6 @@
   </url>  <url>
     <loc>https://huqianshan.github.io/python/Pythonic-Code-Catalog/</loc>
     <lastmod>2020-02-21</lastmod>
-  </url>  <url>
-    <loc>https://huqianshan.github.io/thoughts/to-read/</loc>
-    <lastmod>2020-02-09</lastmod>
   </url>  <url>
     <loc>https://huqianshan.github.io/baidu-spider/</loc>
     <lastmod>2019-12-09</lastmod>
@@ -76,13 +79,7 @@
     <loc>https://huqianshan.github.io/crapy-summary/</loc>
     <lastmod>2019-12-06</lastmod>
   </url>  <url>
-    <loc>https://huqianshan.github.io/copy-virtual-ubuntu/</loc>
-    <lastmod>2019-12-06</lastmod>
-  </url>  <url>
     <loc>https://huqianshan.github.io/hello-world/</loc>
-    <lastmod>2019-11-20</lastmod>
-  </url>  <url>
-    <loc>https://huqianshan.github.io/config-kernel-arm/</loc>
     <lastmod>2019-11-20</lastmod>
   </url>  <url>
     <loc>https://huqianshan.github.io/crapy-speedup/</loc>
