@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://huqianshan.github.io/Linux/Drivers/%E7%94%A8%E6%88%B7%E6%80%81%E9%A9%B1%E5%8A%A8%E6%A6%82%E8%BF%B0/</loc>
+    <lastmod>2020-05-16</lastmod>
+  </url>  <url>
+    <loc>https://huqianshan.github.io/Linux/Drivers/block-devices/</loc>
+    <lastmod>2020-04-08</lastmod>
+  </url>  <url>
+    <loc>https://huqianshan.github.io/Linux/linux-kernel-address-space/</loc>
+    <lastmod>2020-04-05</lastmod>
+  </url>  <url>
+    <loc>https://huqianshan.github.io/Linux/LINUX-DEBUG/</loc>
+    <lastmod>2020-04-05</lastmod>
+  </url>  <url>
     <loc>https://huqianshan.github.io/NVM/NVM-DRIVERS/</loc>
     <lastmod>2020-03-31</lastmod>
   </url>  <url>
@@ -9,9 +21,6 @@
   </url>  <url>
     <loc>https://huqianshan.github.io/NVM/pre-for-block-nvm-driver/</loc>
     <lastmod>2020-03-29</lastmod>
-  </url>  <url>
-    <loc>https://huqianshan.github.io/Linux/Drivers/block-devices/</loc>
-    <lastmod>2020-03-26</lastmod>
   </url>  <url>
     <loc>https://huqianshan.github.io/python/FLASK-DEMO/</loc>
     <lastmod>2020-03-26</lastmod>
@@ -30,9 +39,6 @@
   </url>  <url>
     <loc>https://huqianshan.github.io/OBJECTED-PATTERN/</loc>
     <lastmod>2020-03-16</lastmod>
-  </url>  <url>
-    <loc>https://huqianshan.github.io/Linux/linux-kernel-address-space/</loc>
-    <lastmod>2020-03-13</lastmod>
   </url>  <url>
     <loc>https://huqianshan.github.io/AboutMe/</loc>
     <lastmod>2020-03-13</lastmod>
