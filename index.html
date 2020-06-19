@@ -13,7 +13,7 @@ ga('send', 'pageview');</script><meta http-equiv="Cache-Control" content="no-tra
     error: 'Copy error',
     noSupport: 'The browser does not support'
   }
-} </script></head><body><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar" data-display="false"><div class="author-info"><div class="author-info__avatar text-center"><img src="/img/avatar.png"></div><div class="author-info__name text-center">hjl</div><div class="author-info__description text-center">For Nothing</div><div class="follow-button"><a href="https://github.com/huqianshan">Follow ME</a></div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">Articles</span><span class="pull-right">35</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">Tags</span><span class="pull-right">35</span></a></div></div></div><nav id="nav" style="background-image: url(https://blog-1251750343.cos.ap-beijing.myqcloud.com/blog/blog-bg.jpg)"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">Hjl' Blog</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus">   <a class="site-page" href="/">Home</a><a class="site-page" href="/archives">Archives</a><a class="site-page" href="/tags">Tags</a><a class="site-page" href="/categories">Categories</a></span><span class="pull-right"><a class="site-page social-icon search"><i class="fa fa-search"></i><span> Search</span></a></span></div><div id="site-info"><div id="site-title">Hjl' Blog</div><div id="site-sub-title">Nothing</div></div></nav><div id="content-outer"><div class="layout" id="content-inner"><div class="recent-post-item article-container"><a class="article-title" href="/Linux/Drivers/用户态驱动概述/">用户态驱动概述</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2020-05-16</time><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fa fa-tag article-meta__icon" aria-hidden="true"></i><a class="article-meta__tags" href="/tags/LINUX/">Linux</a><span class="article-meta__link">-</span><i class="fa fa-tag article-meta__icon" aria-hidden="true"></i><a class="article-meta__tags" href="/tags/DRIVER/">Driver</a></span><div class="content"><h2 id="概述"><a class="markdownIt-Anchor" href="#概述"></a> 概述</h2>
+} </script></head><body><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar" data-display="false"><div class="author-info"><div class="author-info__avatar text-center"><img src="/img/avatar.png"></div><div class="author-info__name text-center">hjl</div><div class="author-info__description text-center">For Nothing</div><div class="follow-button"><a href="https://github.com/huqianshan">Follow ME</a></div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">Articles</span><span class="pull-right">36</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">Tags</span><span class="pull-right">35</span></a></div></div></div><nav id="nav" style="background-image: url(https://blog-1251750343.cos.ap-beijing.myqcloud.com/blog/blog-bg.jpg)"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">Hjl' Blog</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus">   <a class="site-page" href="/">Home</a><a class="site-page" href="/archives">Archives</a><a class="site-page" href="/tags">Tags</a><a class="site-page" href="/categories">Categories</a></span><span class="pull-right"><a class="site-page social-icon search"><i class="fa fa-search"></i><span> Search</span></a></span></div><div id="site-info"><div id="site-title">Hjl' Blog</div><div id="site-sub-title">Nothing</div></div></nav><div id="content-outer"><div class="layout" id="content-inner"><div class="recent-post-item article-container"><a class="article-title" href="/Linux/Drivers/用户态驱动概述/">用户态驱动概述</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2020-05-16</time><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fa fa-tag article-meta__icon" aria-hidden="true"></i><a class="article-meta__tags" href="/tags/LINUX/">Linux</a><span class="article-meta__link">-</span><i class="fa fa-tag article-meta__icon" aria-hidden="true"></i><a class="article-meta__tags" href="/tags/DRIVER/">Driver</a></span><div class="content"><h2 id="概述"><a class="markdownIt-Anchor" href="#概述"></a> 概述</h2>
 <h2 id="user-space-drivers-in-linux"><a class="markdownIt-Anchor" href="#user-space-drivers-in-linux"></a> User Space Drivers in Linux</h2>
 <h3 id="uio"><a class="markdownIt-Anchor" href="#uio"></a> <code>uio</code></h3>
 <p><img src="https://github.com/huqianshan/myHexo/blob/amber/source/pics/uio.png?raw=true" alt="uio"></p>
@@ -85,24 +85,26 @@ them is deprecated in PCIe.</li>
 </ul>
 <h4 id="dpdk性能优化"><a class="markdownIt-Anchor" href="#dpdk性能优化"></a> DPDK性能优化</h4>
 <ol>
-<li>采用HugePage减少TLB Miss</li>
-</ol>
-<p>默认下Linux采用4KB为一页，页越小内存越大，页表的开销越大，页表的内存占用也越大。CPU有TLB（Translation Lookaside Buffer）成本高所以一般就只能存放几百到上千个页表项。如果进程要使用64G内存，则64G/4KB=16000000（一千六百万）页，每页在页表项中占用16000000 * 4B=62MB。如果用HugePage采用2MB作为一页，只需64G/2MB=2000，数量不在同个级别。</p>
-<p>而DPDK采用HugePage，在x86-64下支持2MB、1GB的页大小，几何级的降低了页表项的大小，从而减少TLB-Miss。并提供了内存池（Mempool）、MBuf、无锁环（Ring）、Bitmap等基础库。根据我们的实践，在数据平面（Data Plane）频繁的内存分配释放，必须使用内存池，不能直接使用rte_malloc，DPDK的内存分配实现非常简陋，不如ptmalloc。</p>
-<ol start="2">
-<li>SNA（Shared-nothing Architecture）</li>
-</ol>
+<li>
+<p>采用HugePage减少TLB Miss</p>
+<p>默认下Linux采用4KB为一页，页越小内存越大，页表的开销越大，页表的内存占用也越大。CPU有TLB（Translation Lookaside Buffer）成本高所以一般就只能存放几百到上千个页表项。如果进程要使用64G内存，则64G/4KB=16000000（一千六百万）页，每页在页表项中占用16000000 * 4B=62MB。</p>
+<p>如果用HugePage采用2MB作为一页，只需64G/2MB=2000，数量不在同个级别。而DPDK采用HugePage，在x86-64下支持2MB、1GB的页大小，几何级的降低了页表项的大小，从而减少TLB-Miss。并提供了内存池（Mempool）、MBuf、无锁环（Ring）、Bitmap等基础库。根据我们的实践，在数据平面（Data Plane）频繁的内存分配释放，必须使用内存池，不能直接使用rte_malloc，DPDK的内存分配实现非常简陋，不如ptmalloc。</p>
+</li>
+<li>
+<p>SNA（Shared-nothing Architecture）</p>
 <p>软件架构去中心化，尽量避免全局共享，带来全局竞争，失去横向扩展的能力。NUMA体系下不跨Node远程使用内存。</p>
-<ol start="3">
-<li>SIMD（Single Instruction Multiple Data）</li>
-</ol>
+</li>
+<li>
+<p>SIMD（Single Instruction Multiple Data）</p>
 <p>从最早的mmx/sse到最新的avx2，SIMD的能力一直在增强。DPDK采用批量同时处理多个包，再用向量编程，一个周期内对所有包进行处理。比如，memcpy就使用SIMD来提高速度。</p>
 <p>SIMD在游戏后台比较常见，但是其他业务如果有类似批量处理的场景，要提高性能，也可看看能否满足。</p>
-<ol start="4">
-<li>不使用慢速API</li>
-</ol>
+</li>
+<li>
+<p>不使用慢速API</p>
 <p>这里需要重新定义一下慢速API，比如说gettimeofday，虽然在64位下通过vDSO已经不需要陷入内核态，只是一个纯内存访问，每秒也能达到几千万的级别。但是，不要忘记了我们在10GE下，每秒的处理能力就要达到几千万。所以即使是gettimeofday也属于慢速API。DPDK提供Cycles接口，例如rte_get_tsc_cycles接口，基于HPET或TSC实现。</p>
 <p>在x86-64下使用RDTSC指令，直接从寄存器读取，需要输入2个参数，比较常见的实现：</p>
+</li>
+</ol>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="keyword">inline</span> <span class="keyword">uint64_t</span></span><br><span class="line">rte_rdtsc(<span class="keyword">void</span>)</span><br><span class="line">&#123;</span><br><span class="line">      <span class="keyword">uint32_t</span> lo, hi;</span><br><span class="line"></span><br><span class="line">      __asm__ __volatile__ (</span><br><span class="line">                 <span class="string">"rdtsc"</span> : <span class="string">"=a"</span>(lo), <span class="string">"=d"</span>(hi)</span><br><span class="line">                 );</span><br><span class="line"></span><br><span class="line">      <span class="keyword">return</span> ((<span class="keyword">unsigned</span> <span class="keyword">long</span> <span class="keyword">long</span>)lo) | (((<span class="keyword">unsigned</span> <span class="keyword">long</span> <span class="keyword">long</span>)hi) &lt;&lt; <span class="number">32</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>这么写逻辑没错，但是还不够极致，还涉及到2次位运算才能得到结果，我们看看DPDK是怎么实现：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="keyword">inline</span> <span class="keyword">uint64_t</span></span><br><span class="line">rte_rdtsc(<span class="keyword">void</span>)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">union</span> &#123;</span><br><span class="line">        <span class="keyword">uint64_t</span> tsc_64;</span><br><span class="line">        <span class="class"><span class="keyword">struct</span> &#123;</span></span><br><span class="line">            <span class="keyword">uint32_t</span> lo_32;</span><br><span class="line">            <span class="keyword">uint32_t</span> hi_32;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125; tsc;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">asm</span> <span class="title">volatile</span><span class="params">(<span class="string">"rdtsc"</span> :</span></span></span><br><span class="line">             "=a" (tsc.lo_32),</span><br><span class="line">             <span class="string">"=d"</span> (tsc.hi_32));</span><br><span class="line">    <span class="keyword">return</span> tsc.tsc_64;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -230,11 +232,19 @@ use of the kernel’s TCP/IP stack with StackMap</p>
 <li><a href="#built-in-objects%E8%AF%AD%E4%B9%89%E9%83%A8%E5%88%86"><code>Built-in Objects</code>语义部分</a>
 <ul>
 <li><a href="#%E5%8F%8C%E5%80%BC%E4%BA%A4%E6%8D%A2">双值交换</a></li>
-<li><a href="#%E5%88%87%E7%89%87%E4%B8%8E%E5%AE%B9%E5%99%A8">切片与容器</a></li>
+<li><a href="#%E5%AE%B9%E5%99%A8">容器</a></li>
+<li><a href="#%E5%85%83%E7%BB%84%E6%8B%86%E5%8C%85">元组拆包</a></li>
+<li><a href="#%E5%AE%B9%E5%99%A8%E7%9A%84%E9%80%89%E6%8B%A9">容器的选择</a>
+<ul>
+<li><a href="#%E6%95%B0%E7%BB%84arrayarray">数组<code>array.array</code></a></li>
+<li><a href="#%E5%86%85%E5%AD%98%E8%A7%86%E5%9B%BEmemoryview">内存视图（<code>memoryview</code>）</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a href="#%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B%E4%B8%8E%E9%AB%98%E9%98%B6%E5%87%BD%E6%95%B0">函数式编程与高阶函数</a>
 <ul>
+<li><a href="#%E5%8F%8C%E5%90%91%E9%98%9F%E5%88%97%E4%BB%A5%E5%8F%8A%E5%85%B6%E4%BB%96%E5%BD%A2%E5%BC%8F%E7%9A%84%E9%98%9F%E5%88%97">双向队列以及其他形式的队列</a></li>
 <li><a href="#%E8%BF%AD%E4%BB%A3%E5%99%A8">迭代器</a></li>
 <li><a href="#%E7%94%9F%E6%88%90%E5%99%A8-yield">生成器 <code>yield</code></a></li>
 <li><a href="#lambda-mapfunc-iterables-fileter%E7%AD%89"><code>lambda map(func, *iterables) fileter</code>等</a></li>

@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://huqianshan.github.io/thoughts/to-read/</loc>
+    <lastmod>2020-06-19</lastmod>
+  </url>  <url>
+    <loc>https://huqianshan.github.io/python/Pythonic-Code-Catalog/</loc>
+    <lastmod>2020-06-19</lastmod>
+  </url>  <url>
+    <loc>https://huqianshan.github.io/python/python-advanced/</loc>
+    <lastmod>2020-06-19</lastmod>
+  </url>  <url>
     <loc>https://huqianshan.github.io/Linux/Drivers/%E7%94%A8%E6%88%B7%E6%80%81%E9%A9%B1%E5%8A%A8%E6%A6%82%E8%BF%B0/</loc>
     <lastmod>2020-05-16</lastmod>
   </url>  <url>
@@ -45,12 +54,6 @@
   </url>  <url>
     <loc>https://huqianshan.github.io/python/python-obeject-oriented/</loc>
     <lastmod>2020-02-29</lastmod>
-  </url>  <url>
-    <loc>https://huqianshan.github.io/python/python-advanced/</loc>
-    <lastmod>2020-02-21</lastmod>
-  </url>  <url>
-    <loc>https://huqianshan.github.io/python/Pythonic-Code-Catalog/</loc>
-    <lastmod>2020-02-21</lastmod>
   </url>  <url>
     <loc>https://huqianshan.github.io/baidu-spider/</loc>
     <lastmod>2019-12-09</lastmod>
