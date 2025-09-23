@@ -1,8 +1,8 @@
 ---
 layout: post
-date: 2015-10-22 15:59:00-0400
+date: 2025-9-22 15:59:00-0400
 inline: true
 related_posts: false
 ---
 
-A simple inline announcement.
+Our Paper R2Hash is accepted by ICCD 2025, and is selected as Best Paper Candidate.
