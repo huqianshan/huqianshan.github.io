@@ -1,17 +1,16 @@
 ---
 layout: about
-title: about
+title: About
 permalink: /
-subtitle: <a href='https://storage.hust.edu.cn/'>HUST</a>. Wuhan National Laboratory for Optoelectronics, Key Laboratory of Information Storage System, Engineering Research Center of Data Storage Systems and Technology, MoE of China, Huazhong University of Science and Technology, Wuhan, China.
+subtitle: <a href='https://huqianshan.github.io/404.html'> "Simple Happy Simple Life." </a> Said by A Good Man. 
+
 
 profile:
   align: right
   image: head.jpg
   image_circular: true # crops the image to make it circular
-  # more_info: >
-    # <p>555 your office number</p>
-    # <p>123 your address street</p>
-    # <p>Your City, State 12345</p>
+  more_info: >
+    <p> Contact me: "hujinlei [AT] hust.edu.cn" </p>
 
 selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true # includes social icons at the bottom of the page
@@ -26,7 +25,8 @@ latest_posts:
   scrollable: true # adds a vertical scroll bar if there are more than 3 new posts items
   limit: 3 # leave blank to include all the blog posts
 ---
-I am a GOODMAN.
+I received the B.E. degree from the [UESTC](https://www.uestc.edu.cn/), Chengdu, in 2020. 
+From 2020 to 2023, I was enrolled in the integrated Master-Ph.D. program at [HUST](https://hust.edu.cn), Wuhan, where I completed the requirements for the M.S. degree. I am currently pursuing the Ph.D. degree at HUST under the supervision of Prof. [Jianxi Chen](http://faculty.hust.edu.cn/chenjianxi/zh_CN/index/1489977/list/index.htm) and Prof. [Dan Feng](https://hustdfeng.github.io/). 
+My research is primarily focused on high-performance index structures for persistent memory and SSDs.
 
-Jinlei Hu received the B.E. degree from the [University of Electronic Science and Technology of China, Chengdu, China, in 2020](https://www.uestc.edu.cn/). He is currently pursuing the Ph.D. degree with the School of Computer Science and Technology, Huazhong University of Science and Technology, Wuhan, China. His current research interests include persistent memory technologies, high-performance index, and zone-namespaced storage.
 
