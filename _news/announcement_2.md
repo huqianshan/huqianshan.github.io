@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-Our Paper R2Hash is selected as one of [Best Paper Candidates](https://www.iccd-conf.com/bestpaper.html)
+Our Paper R2Hash is selected as one of [ICCD 2025 Best Paper Candidates](https://www.iccd-conf.com/bestpaper.html)

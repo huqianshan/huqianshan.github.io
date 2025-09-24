@@ -2,7 +2,7 @@
 layout: about
 title: About
 permalink: /
-subtitle: <a href='https://huqianshan.github.io/404.html'> "Simple Happy Simple Life." </a> Said by A Good Man. 
+subtitle: <a href='https://huqianshan.github.io/404.html'> "To Be Simple, To Be Happy." </a> 
 
 
 profile:
@@ -25,8 +25,12 @@ latest_posts:
   scrollable: true # adds a vertical scroll bar if there are more than 3 new posts items
   limit: 3 # leave blank to include all the blog posts
 ---
+I am currently pursuing the Ph.D. degree at HUST under the supervision of Prof. [Jianxi Chen](http://faculty.hust.edu.cn/chenjianxi/zh_CN/index/1489977/list/index.htm) and Prof. [Dan Feng](https://hustdfeng.github.io/). 
+
 I received the B.E. degree from the [UESTC](https://www.uestc.edu.cn/), Chengdu, in 2020. 
-From 2020 to 2023, I was enrolled in the integrated Master-Ph.D. program at [HUST](https://hust.edu.cn), Wuhan, where I completed the requirements for the M.S. degree. I am currently pursuing the Ph.D. degree at HUST under the supervision of Prof. [Jianxi Chen](http://faculty.hust.edu.cn/chenjianxi/zh_CN/index/1489977/list/index.htm) and Prof. [Dan Feng](https://hustdfeng.github.io/). 
-My research is primarily focused on high-performance index structures for persistent memory and SSDs.
+From 2020 to 2023, I was enrolled in the integrated Master-Ph.D. program at [HUST](https://hust.edu.cn), Wuhan, where I completed the requirements for the M.S. degree. 
+
+
+My research is primarily focused on [high-performance index structures]()  for [persistent memory]() and [SSDs]().
 
 
