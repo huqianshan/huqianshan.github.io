@@ -16,6 +16,13 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/publications/";
           },
+        },{id: "nav-cv",
+          title: "CV",
+          description: "This is a description of the page. You can modify it in &#39;_pages/cv.md&#39;. You can also change or remove the top pdf download button.",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/cv/";
+          },
         },{id: "nav-blog",
           title: "Blog",
           description: "",
@@ -372,8 +379,8 @@ ninja.data = [{
             },},{id: "news-our-paper-r2hash-is-accepted-by-iccd-2025",
           title: 'Our Paper R2Hash is accepted by ICCD 2025.',
           description: "",
-          section: "News",},{id: "news-our-paper-r2hash-is-selected-as-one-of-best-paper-candidates",
-          title: 'Our Paper R2Hash is selected as one of Best Paper Candidates',
+          section: "News",},{id: "news-our-paper-r2hash-is-selected-as-one-of-iccd-2025-best-paper-candidates",
+          title: 'Our Paper R2Hash is selected as one of ICCD 2025 Best Paper Candidates...',
           description: "",
           section: "News",},{id: "projects-project-1",
           title: 'project 1',
